@@ -90,7 +90,8 @@ namespace VirtualRadar.WebSite {
         ///
         ///    &lt;script type=&quot;text/javascript&quot; src=&quot;http://maps.google.com/maps/api/js?v=3.10&amp;sensor=false&quot;&gt;&lt;/script&gt;
         ///    &lt;script type=&quot;text/javascript&quot; src=&quot;Common.js&quot;&gt;&lt;/script&gt;
-        ///    &lt;script type=&quot;text/javascript&quot; src=&quot;Events.js&quot;&gt;&lt;/script&gt;        /// [rest of string was truncated]&quot;;.
+        ///    &lt;script type=&quot;text/javascript&quot; src=&quot;Events.js&quot;&gt;&lt;/script&gt;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AircraftReport_htm {
             get {
@@ -220,7 +221,8 @@ namespace VirtualRadar.WebSite {
         ///
         ///    &lt;script type=&quot;text/javascript&quot; src=&quot;http://maps.google.com/maps/api/js?v=3.10&amp;sensor=false&quot;&gt;&lt;/script&gt;
         ///    &lt;script type=&quot;text/javascript&quot; src=&quot;Common.js&quot;&gt;&lt;/script&gt;
-        ///    &lt;script type=&quot;text/javascript&quot; src=&quot;Events.js&quot;&gt;&lt;/script&gt;        /// [rest of string was truncated]&quot;;.
+        ///    &lt;script type=&quot;text/javascript&quot; src=&quot;Events.js&quot;&gt;&lt;/script&gt;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string FlightReport_htm {
             get {
@@ -536,7 +538,8 @@ namespace VirtualRadar.WebSite {
         ///    function pauseChangedHandler(sender, args)
         ///    {
         ///        mPaused = args;
-        ///        setIconImage();        /// [rest of string was truncated]&quot;;.
+        ///        setIconImage();
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GoogleMapInfoButton_js {
             get {
@@ -706,7 +709,8 @@ namespace VirtualRadar.WebSite {
         ///    var mLastGeocodeResponse = mConstPositionLookupDisabled;
         ///
         ///    this.getLastResponse = function() { return mLastGeocodeResponse; }
-        ///        /// [rest of string was truncated]&quot;;.
+        ///
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GoogleMapReverseGeocode_js {
             get {
