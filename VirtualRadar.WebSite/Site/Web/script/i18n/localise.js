@@ -237,13 +237,13 @@
         function guessBrowserLocale()
         {
             var result = navigator.userLanguage || navigator.systemLanguage || navigator.browserLanguage || navigator.language;
-            if(!result) result = 'en-GB';
+            if (!result) result = 'zh-CN';//本地化尝试
             if(!_CultureInfos[result]) {
                 // If we know the base language (e.g. the 'en' in 'en-??') then use it
                 var hyphenPos = result.indexOf('-');
                 var language = hyphenPos === -1 ? null : result.substr(0, hyphenPos);
                 if(language && _CultureInfos[language]) result = language;
-                else result = 'en-GB';
+                else result = 'zh-CN';//本地化尝试
             }
 
             return result;
@@ -475,39 +475,40 @@
      */
     VRS.globalisation = new VRS.Localise();
 
+    // Chinese
+    VRS.globalisation.addCultureInfo('zh', { language: 'zh', englishName: 'Chinese', nativeName: '中文', forceCultureName: 'zh-CN' });
+    VRS.globalisation.addCultureInfo('zh-CN', { language: 'zh', englishName: 'Chinese (China)', nativeName: '中文 (中国)' });
+    VRS.globalisation.addCultureInfo('zh-HK', { language: 'zh', englishName: 'Chinese (HongKong)', nativeName: '中文 (香港)' });
+
     // English
-    VRS.globalisation.addCultureInfo('en',      { language: 'en',                    englishName: 'English', forceCultureName: 'en-GB' });  // Globalize uses American settings for the default 'en' language. This is a British program :P
-    VRS.globalisation.addCultureInfo('en-029',  { language: 'en',                    englishName: 'English (Caribbean)' });
-    VRS.globalisation.addCultureInfo('en-AU',   { language: 'en', countryFlag: 'au', englishName: 'English (Australia)' });
-    VRS.globalisation.addCultureInfo('en-BZ',   { language: 'en', countryFlag: 'bz', englishName: 'English (Belize)' });
-    VRS.globalisation.addCultureInfo('en-CA',   { language: 'en', countryFlag: 'ca', englishName: 'English (Canada)' });
+    VRS.globalisation.addCultureInfo('en',      { language: 'en', englishName: 'English', forceCultureName: 'en-US' });  // Globalize uses American settings for the default 'en' language. This is a British program :P
+    //VRS.globalisation.addCultureInfo('en-029',  { language: 'en',                    englishName: 'English (Caribbean)' });
+    //VRS.globalisation.addCultureInfo('en-AU',   { language: 'en', countryFlag: 'au', englishName: 'English (Australia)' });
+    //VRS.globalisation.addCultureInfo('en-BZ',   { language: 'en', countryFlag: 'bz', englishName: 'English (Belize)' });
+    //VRS.globalisation.addCultureInfo('en-CA',   { language: 'en', countryFlag: 'ca', englishName: 'English (Canada)' });
     VRS.globalisation.addCultureInfo('en-GB',   { language: 'en',                    englishName: 'English (United Kingdom)' });
-    VRS.globalisation.addCultureInfo('en-IE',   { language: 'en', countryFlag: 'ie', englishName: 'English (Ireland)' });
-    VRS.globalisation.addCultureInfo('en-IN',   { language: 'en', countryFlag: 'in', englishName: 'English (India)' });
-    VRS.globalisation.addCultureInfo('en-JM',   { language: 'en', countryFlag: 'jm', englishName: 'English (Jamaica)' });
-    VRS.globalisation.addCultureInfo('en-MY',   { language: 'en', countryFlag: 'my', englishName: 'English (Malaysia)' });
-    VRS.globalisation.addCultureInfo('en-NZ',   { language: 'en', countryFlag: 'nz', englishName: 'English (New Zealand)' });
-    VRS.globalisation.addCultureInfo('en-SG',   { language: 'en', countryFlag: 'sg', englishName: 'English (Singapore)' });
-    VRS.globalisation.addCultureInfo('en-TT',   { language: 'en', countryFlag: 'tt', englishName: 'English (Trinidad and Tobago)', nativeName: 'English (Trinidad y Tobago)' });
+    //VRS.globalisation.addCultureInfo('en-IE',   { language: 'en', countryFlag: 'ie', englishName: 'English (Ireland)' });
+    //VRS.globalisation.addCultureInfo('en-IN',   { language: 'en', countryFlag: 'in', englishName: 'English (India)' });
+    //VRS.globalisation.addCultureInfo('en-JM',   { language: 'en', countryFlag: 'jm', englishName: 'English (Jamaica)' });
+    //VRS.globalisation.addCultureInfo('en-MY',   { language: 'en', countryFlag: 'my', englishName: 'English (Malaysia)' });
+    //VRS.globalisation.addCultureInfo('en-NZ',   { language: 'en', countryFlag: 'nz', englishName: 'English (New Zealand)' });
+    //VRS.globalisation.addCultureInfo('en-SG',   { language: 'en', countryFlag: 'sg', englishName: 'English (Singapore)' });
+    //VRS.globalisation.addCultureInfo('en-TT',   { language: 'en', countryFlag: 'tt', englishName: 'English (Trinidad and Tobago)', nativeName: 'English (Trinidad y Tobago)' });
     VRS.globalisation.addCultureInfo('en-US',   { language: 'en', countryFlag: 'us', englishName: 'English (United States)' });
-    VRS.globalisation.addCultureInfo('en-ZA',   { language: 'en', countryFlag: 'za', englishName: 'English (South Africa)' });
+    //VRS.globalisation.addCultureInfo('en-ZA',   { language: 'en', countryFlag: 'za', englishName: 'English (South Africa)' });
 
     // French
-    VRS.globalisation.addCultureInfo('fr',    { language: 'fr',                    englishName: 'French',                  nativeName: 'Français' });
-    VRS.globalisation.addCultureInfo('fr-BE', { language: 'fr', countryFlag: 'be', englishName: 'French (Belgium)',        nativeName: 'Français (Belgique)' });
-    VRS.globalisation.addCultureInfo('fr-CA', { language: 'fr', countryFlag: 'ca', englishName: 'French (Canada)',         nativeName: 'Français (Canada)' });
-    VRS.globalisation.addCultureInfo('fr-CH', { language: 'fr', countryFlag: 'ch', englishName: 'French (Switzerland)',    nativeName: 'Français (Suisse)' });
-    VRS.globalisation.addCultureInfo('fr-FR', { language: 'fr',                    englishName: 'French (France)',         nativeName: 'Français (France)' });
-    VRS.globalisation.addCultureInfo('fr-LU', { language: 'fr', countryFlag: 'lu', englishName: 'French (Luxembourg)',     nativeName: 'Français (Luxembourg)' });
-    VRS.globalisation.addCultureInfo('fr-MC', { language: 'fr', countryFlag: 'mc', englishName: 'French (Monaco)',         nativeName: 'Français (Principauté de Monaco)' });
+    //VRS.globalisation.addCultureInfo('fr',    { language: 'fr',                    englishName: 'French',                  nativeName: 'Français' });
+    //VRS.globalisation.addCultureInfo('fr-BE', { language: 'fr', countryFlag: 'be', englishName: 'French (Belgium)',        nativeName: 'Français (Belgique)' });
+    //VRS.globalisation.addCultureInfo('fr-CA', { language: 'fr', countryFlag: 'ca', englishName: 'French (Canada)',         nativeName: 'Français (Canada)' });
+    //VRS.globalisation.addCultureInfo('fr-CH', { language: 'fr', countryFlag: 'ch', englishName: 'French (Switzerland)',    nativeName: 'Français (Suisse)' });
+    //VRS.globalisation.addCultureInfo('fr-FR', { language: 'fr',                    englishName: 'French (France)',         nativeName: 'Français (France)' });
+    //VRS.globalisation.addCultureInfo('fr-LU', { language: 'fr', countryFlag: 'lu', englishName: 'French (Luxembourg)',     nativeName: 'Français (Luxembourg)' });
+    //VRS.globalisation.addCultureInfo('fr-MC', { language: 'fr', countryFlag: 'mc', englishName: 'French (Monaco)',         nativeName: 'Français (Principauté de Monaco)' });
 
     // Russian
-    VRS.globalisation.addCultureInfo('ru',    { language: 'ru', englishName: 'Russian',                 nativeName: 'Русский' });
-    VRS.globalisation.addCultureInfo('ru-RU', { language: 'ru', englishName: 'Russian (Russia)', nativeName: 'Русский (Россия)' });
-
-    // Chinese
-    VRS.globalisation.addCultureInfo('zh', { language: 'zh', englishName: 'Chinese', nativeName: '中文' });
-    VRS.globalisation.addCultureInfo('zh-CN', { language: 'zh', englishName: 'Chinese (China)', nativeName: '中文 (中国)' });
+    //VRS.globalisation.addCultureInfo('ru',    { language: 'ru', englishName: 'Russian',                 nativeName: 'Русский' });
+    //VRS.globalisation.addCultureInfo('ru-RU', { language: 'ru', englishName: 'Russian (Russia)', nativeName: 'Русский (Россия)' });
 
     //endregion
 }(window.VRS = window.VRS || {}, jQuery));

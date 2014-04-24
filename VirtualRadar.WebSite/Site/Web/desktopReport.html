@@ -119,7 +119,7 @@
         VRS.serverConfig.fetch(function() {
             // Ensure that any accidental attempts to use globalised text before the bootstrapper has loaded the
             // correct locale will not throw an exception.
-            VRS.globalisation.setLocale('en-GB');
+            VRS.globalisation.setLocale('zh-CN');//本地化尝试
 
             if(!VRS.serverConfig.reportsEnabled()) $('body').append($('<p/>').text(VRS.$$.ReportsAreDisabled));
             else {
