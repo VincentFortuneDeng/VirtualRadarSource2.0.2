@@ -62,6 +62,7 @@ namespace Test.VirtualRadar.Interface.WebSite
         public void ChecksumFileEntry_GenerateChecksum_Generates_Correct_Checksum_For_Known_Content()
         {
             var fileName = Path.Combine(TestContext.TestDeploymentDir, "Dummy-Whatever-DeleteMe.txt");
+
             File.WriteAllText(fileName, "Don't change this");
             try {
                 var checksum = ChecksumFileEntry.GenerateChecksum(fileName);

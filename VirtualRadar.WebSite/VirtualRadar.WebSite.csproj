@@ -179,6 +179,8 @@
     <Content Include="Site\Web\images\regions\no.bmp" />
     <Content Include="Site\Web\images\regions\se.bmp" />
     <Content Include="Site\Web\mobileReport.html" />
+    <Content Include="Site\Web\script\i18n\globalize\globalize.culture.zh.js" />
+    <Content Include="Site\Web\script\i18n\globalize\globalize.culture.zh-CN.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.fi-FI.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.fi.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.fr-BE.js" />
@@ -192,6 +194,7 @@
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.se-NO.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.se-SE.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.se.js" />
+    <Content Include="Site\Web\script\i18n\strings.zh.js" />
     <Content Include="Site\Web\script\i18n\strings.fr.js" />
     <Content Include="Site\Web\script\jquery.colorPicker.js" />
     <Content Include="Site\Web\script\jquiplugin\jquery.vrs.aircraftInfoWindow.js" />
@@ -307,6 +310,7 @@
     <EmbeddedResource Include="SiteResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Site\Web\favicon.ico" />
     <Content Include="Site\Web\images\regions\en.bmp" />
