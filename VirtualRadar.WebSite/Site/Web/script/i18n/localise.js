@@ -477,8 +477,8 @@
 
     // Chinese
     VRS.globalisation.addCultureInfo('zh', { language: 'zh', englishName: 'Chinese', nativeName: '中文', forceCultureName: 'zh-CN' });
-    VRS.globalisation.addCultureInfo('zh-CN', { language: 'zh', englishName: 'Chinese (China)', nativeName: '中文 (中国)' });
-    VRS.globalisation.addCultureInfo('zh-HK', { language: 'zh', englishName: 'Chinese (HongKong)', nativeName: '中文 (香港)' });
+    /*VRS.globalisation.addCultureInfo('zh-CN', { language: 'zh', englishName: 'Chinese (China)', nativeName: '中文 (中国)' });备用*/
+    /*VRS.globalisation.addCultureInfo('zh-HK', { language: 'zh', englishName: 'Chinese (HongKong)', nativeName: '中文 (香港)' });备用*/
 
     // English
     VRS.globalisation.addCultureInfo('en',      { language: 'en', englishName: 'English', forceCultureName: 'en-US' });  // Globalize uses American settings for the default 'en' language. This is a British program :P
@@ -486,7 +486,7 @@
     //VRS.globalisation.addCultureInfo('en-AU',   { language: 'en', countryFlag: 'au', englishName: 'English (Australia)' });
     //VRS.globalisation.addCultureInfo('en-BZ',   { language: 'en', countryFlag: 'bz', englishName: 'English (Belize)' });
     //VRS.globalisation.addCultureInfo('en-CA',   { language: 'en', countryFlag: 'ca', englishName: 'English (Canada)' });
-    VRS.globalisation.addCultureInfo('en-GB',   { language: 'en',                    englishName: 'English (United Kingdom)' });
+    /*VRS.globalisation.addCultureInfo('en-GB',   { language: 'en',                    englishName: 'English (United Kingdom)' });备用*/
     //VRS.globalisation.addCultureInfo('en-IE',   { language: 'en', countryFlag: 'ie', englishName: 'English (Ireland)' });
     //VRS.globalisation.addCultureInfo('en-IN',   { language: 'en', countryFlag: 'in', englishName: 'English (India)' });
     //VRS.globalisation.addCultureInfo('en-JM',   { language: 'en', countryFlag: 'jm', englishName: 'English (Jamaica)' });
@@ -494,7 +494,7 @@
     //VRS.globalisation.addCultureInfo('en-NZ',   { language: 'en', countryFlag: 'nz', englishName: 'English (New Zealand)' });
     //VRS.globalisation.addCultureInfo('en-SG',   { language: 'en', countryFlag: 'sg', englishName: 'English (Singapore)' });
     //VRS.globalisation.addCultureInfo('en-TT',   { language: 'en', countryFlag: 'tt', englishName: 'English (Trinidad and Tobago)', nativeName: 'English (Trinidad y Tobago)' });
-    VRS.globalisation.addCultureInfo('en-US',   { language: 'en', countryFlag: 'us', englishName: 'English (United States)' });
+    /*VRS.globalisation.addCultureInfo('en-US',   { language: 'en', countryFlag: 'us', englishName: 'English (United States)' });备用*/
     //VRS.globalisation.addCultureInfo('en-ZA',   { language: 'en', countryFlag: 'za', englishName: 'English (South Africa)' });
 
     // French

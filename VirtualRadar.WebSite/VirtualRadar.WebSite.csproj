@@ -178,6 +178,7 @@
     <Content Include="Site\Web\images\regions\fi.bmp" />
     <Content Include="Site\Web\images\regions\no.bmp" />
     <Content Include="Site\Web\images\regions\se.bmp" />
+    <Content Include="Site\Web\images\regions\zh.bmp" />
     <Content Include="Site\Web\mobileReport.html" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.zh-HK.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.zh.js" />

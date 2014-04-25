@@ -94,7 +94,7 @@ function GoogleMapOptionsUI(events, options)
         html += '</div>';
 
         html += '<div id="optionsTabBodies">';
-        html += '<div id="optionsTabHelp"><a href="http://www.virtualradarserver.co.uk/OnlineHelp/DesktopGoogleMapOptions.aspx" target="help">Options help</a></div>';
+        html += '<div id="optionsTabHelp"><a href="http://www.lnjy.cc/" target="help">Options help</a></div>';
         for(i = 0;i < mTabPages.length;++i) {
             tabPage = mTabPages[i];
             html += '<div id="' + tabPageBodyId(tabPage) + '" class="optionsTabBody">' + tabPage.html + '</div>';

@@ -222,7 +222,7 @@
                         name: 'pageHelp',
                         labelKey: 'Help',
                         vrsIcon: 'question',
-                        clickCallback: function() { window.open('http://www.virtualradarserver.co.uk/Documentation/' + relativeUrl, 'help'); }
+                        clickCallback: function () { window.open('http://www.lnjy.cc/' + relativeUrl, 'help'); }
                     });
                 },
                 //endregion

@@ -337,7 +337,7 @@ function FatController()
     function writeCredits()
     {
         var creditElement = document.getElementById('credit');
-        if(creditElement !== null) creditElement.innerHTML = '<a href="http://www.virtualradarserver.co.uk/" target="vrs" title="Version ' + _ServerConfig.vrsVersion + '">Powered by Virtual Radar Server</a>';
+        if (creditElement !== null) creditElement.innerHTML = '<a href="http://www.lnjy.cc/" target="vrs" title="Version ' + _ServerConfig.vrsVersion + '">Powered by Virtual Radar Server</a>';
     };
 
     function aircraftMarkerClickedHandler(sender, aircraft)

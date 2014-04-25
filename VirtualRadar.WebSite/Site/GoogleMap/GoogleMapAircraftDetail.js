@@ -58,7 +58,7 @@ function GoogleMapAircraftDetail(mapMode, events, options, aircraftCollection, s
             "<span id='detail_hideSelectionLink'> :: <a href='#' onClick='googleMapAircraftDetailStopSelecting(" + mGlobalIndex + ")'>Hide selection</a></span>" +
             " :: ";
     }
-    visibilityElementHtml += '<a id="detail_pageHelp" href="http://www.virtualradarserver.co.uk/OnlineHelp/DesktopGoogleMap.aspx" target="help">Page help</a>';
+    visibilityElementHtml += '<a id="detail_pageHelp" href="http://www.lnjy.cc/" target="help">Page help</a>';
     visibilityElement.innerHTML = visibilityElementHtml;
     canvasElement.appendChild(visibilityElement);
 
