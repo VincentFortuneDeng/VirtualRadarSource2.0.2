@@ -242,7 +242,7 @@
     VRS.$$.ListModel =                                  '型号';
     VRS.$$.ListModelIcao =                              '类型';
     VRS.$$.ListModeSCountry =                           'Mode-S 国家';
-    VRS.$$.ListModelSilhouette =                        '头像';
+    VRS.$$.ListModelSilhouette =                        '外观';
     VRS.$$.ListModelSilhouetteAndOpFlag =               '标志';
     VRS.$$.ListOperator =                               '操作员';
     VRS.$$.ListOperatorFlag =                           '标志';
@@ -380,7 +380,7 @@
     VRS.$$.Route =                                      '航线';
     VRS.$$.RouteShort =                                 '航线 (短)';
     VRS.$$.RouteFull =                                  '航线 (全)';
-    VRS.$$.RouteNotKnown =                              '位置航线';
+    VRS.$$.RouteNotKnown =                              '未知航线';
     VRS.$$.RowNumber =                                  '行数';
     VRS.$$.Rows =                                       '行';
     VRS.$$.RunReport =                                  '运行报告';
@@ -408,8 +408,8 @@
     VRS.$$.ShowUnits =                                  '显示单位';
     VRS.$$.ShowVsiInSeconds =                           '显示每秒垂直速度';
     VRS.$$.SignalLevel =                                '信号水平面';
-    VRS.$$.Silhouette =                                 '头像';
-    VRS.$$.SilhouetteAndOpFlag =                        '头像和标志';
+    VRS.$$.Silhouette =                                 '外观';
+    VRS.$$.SilhouetteAndOpFlag =                        '外观和标志';
     VRS.$$.SiteTimedOut =                               '在非交互期间该站点暂停. 关闭消息框恢复更新站点.';
     VRS.$$.SortBy =                                     '排序';
     VRS.$$.Species =                                    '特殊';
