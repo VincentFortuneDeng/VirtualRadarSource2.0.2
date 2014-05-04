@@ -851,7 +851,7 @@
         hasValue:           function(/** VRS_JSON_REPORT_FLIGHT */ json) { return json.start !== undefined; },
         contentCallback:    function(/** VRS_JSON_REPORT_FLIGHT */ json, /** Object */ options) { return VRS.format.startDateTime(json.start, false, options.justShowStartTime); },
         sortColumn:         VRS.ReportSortColumn.Date,
-        groupValue:         function(/** VRS_JSON_REPORT_FLIGHT */ json) { return json.start ? Globalize.format(json.start, 'dddd d MMM yyyy') : null; }
+        groupValue:         function(/** VRS_JSON_REPORT_FLIGHT */ json) { return json.start ? Globalize.format(json.start, 'D') : null; }//'dddd d MMM yyyy'
     });
     //endregion
 

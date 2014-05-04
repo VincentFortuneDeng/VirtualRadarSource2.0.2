@@ -19,7 +19,7 @@ function DateReport()
 
     this.initialiseSubclass = function()
     {
-        document.title = 'Virtual Radar - Date Report';
+        document.title = 'ADS-B Radar - Date Report';
         that.setCriteria(new DateReportCriteria());
         that.setMap(new ReportMap('Fr'));
         that.getReportRowProvider().setReportId("date");
@@ -57,7 +57,7 @@ function DateReport()
         normaliseFlightList(reportContent.flights);
         normaliseAircraftList(reportContent.aircraftList);
 
-        if(mTitle !== null) document.title = 'Virtual Radar - ' + mTitle;
+        if(mTitle !== null) document.title = 'ADS-B Radar - ' + mTitle;
 
         var criteria = that.getCriteria();
         if(reportContent.fromDate !== undefined && reportContent.fromDate !== null) criteria.setFromDate(reportContent.fromDate);

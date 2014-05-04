@@ -120,7 +120,7 @@
                 _Locale = value;
                 var cultureInfo = _CultureInfos[_Locale];
                 if(cultureInfo) {
-                    loadLanguage('en');     // English is the base language, if other language files don't supply a string then the English version should be used instead.
+                    loadLanguage('zh');     // English is the base language, if other language files don't supply a string then the English version should be used instead.
                     loadLanguage(cultureInfo.language);
                     loadCulture(cultureInfo.cultureName);
                     Globalize.culture(cultureInfo.cultureName);
@@ -177,7 +177,7 @@
         this.applyState = function(config)
         {
             config = config || {};
-            this.setLocale(config.locale || 'en');
+            this.setLocale(config.locale || 'zh');
         };
 
         /**
@@ -392,6 +392,7 @@
             if(Object.prototype.toString.call(shortYear) !== '[object String]') shortYear %= 100;
 
             var monthYearPattern = calendar.patterns['Y'] || 'MMMM yyyy';
+            //var monthYearPattern = calendar.patterns['Y'] || 'yyyy MMMM';//修改日期格式
             var showMonthAfterYear = monthYearPattern[0] === 'y';
 
             return {

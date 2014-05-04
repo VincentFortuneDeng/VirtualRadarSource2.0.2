@@ -328,8 +328,8 @@ function FatController()
         mAircraftCollection.parseAircraftList(content);
 
         switch(_MapMode) {
-            case MapMode.normal:        document.title = 'Virtual Radar (' + content.acList.length + (mOptions.tempAvailableAircraft == content.acList.length ? '' : '/' + mOptions.tempAvailableAircraft) + ') - Live Map'; break;
-            case MapMode.flightSim:     document.title = 'Virtual Radar - Flight Simulator Map'; break;
+            case MapMode.normal:        document.title = 'ADS-B Radar (' + content.acList.length + (mOptions.tempAvailableAircraft == content.acList.length ? '' : '/' + mOptions.tempAvailableAircraft) + ') - Live Map'; break;
+            case MapMode.flightSim:     document.title = 'ADS-B Radar - Flight Simulator Map'; break;
             default:                    break;
         }
     };
@@ -337,7 +337,7 @@ function FatController()
     function writeCredits()
     {
         var creditElement = document.getElementById('credit');
-        if (creditElement !== null) creditElement.innerHTML = '<a href="http://www.lnjy.cc/" target="vrs" title="Version ' + _ServerConfig.vrsVersion + '">Powered by Virtual Radar Server</a>';
+        if (creditElement !== null) creditElement.innerHTML = '<a href="http://www.lnjy.cc/" target="vrs" title="Version ' + _ServerConfig.vrsVersion + '">Powered by HongLin Aviation</a>';
     };
 
     function aircraftMarkerClickedHandler(sender, aircraft)

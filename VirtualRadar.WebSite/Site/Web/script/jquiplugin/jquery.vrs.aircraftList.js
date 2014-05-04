@@ -24,7 +24,7 @@
     if(VRS.globalOptions.isMobile) {
         VRS.globalOptions.listPluginDefaultColumns = VRS.globalOptions.listPluginDefaultColumns || [            // The default set of columns to show to the user.
             VRS.RenderProperty.SilhouetteAndOpFlag,
-            VRS.RenderProperty.RegistrationAndIcao,
+            VRS.RenderProperty.RegistrationAndIcao,//修改为ICAO
             VRS.RenderProperty.CallsignAndShortRoute,
             VRS.RenderProperty.AltitudeAndVerticalSpeed,
             VRS.RenderProperty.Speed

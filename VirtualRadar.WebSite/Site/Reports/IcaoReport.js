@@ -18,7 +18,7 @@ function IcaoReport()
 
     this.initialiseSubclass = function()
     {
-        document.title = 'Virtual Radar - ICAO Report';
+        document.title = 'ADS-B Radar - ICAO Report';
         that.setCriteria(new IcaoReportCriteria());
         that.setMap(new ReportMap(''));
         that.getReportRowProvider().setReportId("icao");
@@ -42,7 +42,7 @@ function IcaoReport()
         normaliseAircraft(reportContent.aircraftDetail);
         normaliseFlightList(reportContent.flights);
 
-        document.title = 'Virtual Radar - ' + reportContent.aircraftDetail.icao;
+        document.title = 'ADS-B Radar - ' + reportContent.aircraftDetail.icao;
 
         mReportAircraftDetail.showDetail(reportContent.aircraftDetail);
         mReportAircraftFlights.showFlights(reportContent);

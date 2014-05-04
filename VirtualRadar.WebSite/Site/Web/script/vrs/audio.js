@@ -546,7 +546,17 @@
                     case 'X':   ch = VRS.$$.SayXRay; break;
                     case 'Y':   ch = VRS.$$.SayYankee; break;
                     case 'Z':   ch = VRS.$$.SayZulu; break;
-                    case '-':   ch = VRS.$$.SayHyphen; break;
+                    case '-': ch = VRS.$$.SayHyphen; break;
+                    case '0': ch = VRS.$$.SayZero; break;//幺两三四五六拐八勾洞
+                    case '1': ch = VRS.$$.SayOne; break;
+                    case '2': ch = VRS.$$.SayTwo; break;
+                    //case '3': ch = VRS.$$.SayThree; break;
+                    //case '4': ch = VRS.$$.SayFour; break;
+                    //case '5': ch = VRS.$$.SayFive; break;
+                    //case '6': ch = VRS.$$.SaySix; break;
+                    case '7': ch = VRS.$$.SaySeven; break;
+                    //case '8': ch = VRS.$$.SayEight; break;
+                    case '9': ch = VRS.$$.SayNine; break;
                 }
                 if(ch !== ' ') result += ch + ' - ';
             }

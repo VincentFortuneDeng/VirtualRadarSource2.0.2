@@ -123,7 +123,7 @@
     VRS.$$.FlightsCount =                               'Flights Count';
     VRS.$$.FlightsListShort =                           'Flights';
     VRS.$$.FlightSimPage =                              'Flight Sim Page';
-    VRS.$$.FlightSimTitle =                             'Virtual Radar - FSX';
+    VRS.$$.FlightSimTitle =                             'ADS-B Radar - FSX';
     VRS.$$.ForcePhoneOff =                              'Is not phone';                      // As in "force the page to ignore the fact that this is a smart phone"
     VRS.$$.ForcePhoneOn =                               'Is phone';                          // As in "force the page to pretend that this is a smart phone"
     VRS.$$.ForceTabletOff =                             'Is not tablet';                     // As in "force the page to ignore the fact that this is a tablet PC"
@@ -350,7 +350,7 @@
     VRS.$$.PinTextLines =                               'Number of label lines';
     VRS.$$.Piston =                                     'Piston';
     VRS.$$.Pixels =                                     'pixels';
-    VRS.$$.PoweredByVRS =                               'Powered by Virtual Radar Server';
+    VRS.$$.PoweredByVRS =                               'Powered by ADS-B Radar Server';
     VRS.$$.PreviousId =                                 'Previous ID';
     VRS.$$.Quantity =                                   'Quantity';
     VRS.$$.RadioMast =                                  'Radio Mast';
@@ -446,7 +446,7 @@
     VRS.$$.UseRelativeDates =                           'Use relative dates';
     VRS.$$.UserTag =                                    'User Tag';
     VRS.$$.VerticalSpeed =                              'Vertical Speed';
-    VRS.$$.VirtualRadar =                               'Virtual Radar';
+    VRS.$$.VirtualRadar =                               'ADS-B Radar';
     VRS.$$.Volume25 =                                   'Volume 25%';
     VRS.$$.Volume50 =                                   'Volume 50%';
     VRS.$$.Volume75 =                                   'Volume 75%';
@@ -637,7 +637,7 @@
                 case VRS.WakeTurbulenceCategory.Medium: result = 'Medium'; break;
                 case VRS.WakeTurbulenceCategory.Heavy:  result = 'Heavy'; break;
                 default: throw 'Unknown wake turbulence category ' + category;  // Do not translate this line
-            }
+            } Squawk
 
             if(expandedDescription && result) {
                 switch(category) {

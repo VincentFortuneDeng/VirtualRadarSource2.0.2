@@ -18,7 +18,7 @@ function RegReport()
 
     this.initialiseSubclass = function()
     {
-        document.title = 'Virtual Radar - Registration Report';
+        document.title = 'ADS-B Radar - Registration Report';
         that.setCriteria(new RegReportCriteria());
         that.setMap(new ReportMap(''));
         that.getReportRowProvider().setReportId("reg");
@@ -42,7 +42,7 @@ function RegReport()
         normaliseAircraft(reportContent.aircraftDetail);
         normaliseFlightList(reportContent.flights);
 
-        document.title = 'Virtual Radar - ' + reportContent.aircraftDetail.reg;
+        document.title = 'ADS-B Radar - ' + reportContent.aircraftDetail.reg;
 
         mReportAircraftDetail.showDetail(reportContent.aircraftDetail);
         mReportAircraftFlights.showFlights(reportContent);

@@ -123,7 +123,7 @@
     VRS.$$.FlightsCount =                               'Количество наблюдений';
     VRS.$$.FlightsListShort =                           'Полеты';
     VRS.$$.FlightSimPage =                              'Flight Sim Page';
-    VRS.$$.FlightSimTitle =                             'Virtual Radar - FSX';
+    VRS.$$.FlightSimTitle =                             'ADS-B Radar - FSX';
     VRS.$$.ForcePhoneOff =                              'Не смартфон';  // As in "force the page to ignore the fact that this is a smart phone"
     VRS.$$.ForcePhoneOn =                               'Смартфон';  // As in "force the page to pretend that this is a smart phone"
     VRS.$$.ForceTabletOff =                             'Не таблет';  // As in "force the page to ignore the fact that this is a tablet PC"
@@ -215,7 +215,7 @@
     VRS.$$.ListFirstSpeed =                             'С скор.';
     VRS.$$.ListFirstSquawk =                            'Со Сквоком';
     VRS.$$.ListFirstVerticalSpeed =                     'С верт.скор.';
-    VRS.$$.ListFlightLevel =                            'Эшелон';
+    VRS.$$.ListFlightLevel =            0                'Эшелон';
     VRS.$$.ListFlightLevelAndVerticalSpeed =            'FL & Верт.скор.';
     VRS.$$.ListFlightsCount =                           'Набл.';
     VRS.$$.ListGenericName =                            'Общ.назв.';
@@ -350,7 +350,7 @@
     VRS.$$.PinTextLines =                               'Количество линий у меток';  /** THIS IS NEW! **/
     VRS.$$.Piston =                                     'Поршневой';
     VRS.$$.Pixels =                                     'пикс.';
-    VRS.$$.PoweredByVRS =                               'Создано в Virtual Radar Server';
+    VRS.$$.PoweredByVRS =                               'Создано в ADS-B Radar Server';
     VRS.$$.PreviousId =                                 'Предыдущий №';
     VRS.$$.Quantity =                                   'Количество';
     VRS.$$.RadioMast =                                  'Радиомачта';  /** THIS IS NEW! **/

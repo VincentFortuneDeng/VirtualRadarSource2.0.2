@@ -29,7 +29,7 @@
     function fetchHandler(status, responseText)
     {
         var response = null;
-        if(status !== 200) response = { errorText: "Virtual Radar Server returned status " + status };
+        if (status !== 200) response = { errorText: "ADS-B Radar Server 返回状态 " + status };
         else {
             responseText = replaceDateConstructors(responseText);
             response = eval('(' + responseText + ')');

@@ -76,7 +76,7 @@ function iPhoneMapPlaneList(events, options, iPhoneMapPages, iPhoneAircraftDetai
         mCountBlock = createElement('div', 'acListCount acListCell acListRight', mPauseElement);
         mCountBlock.innerHTML = '0';
 
-        createElement('p', 'acListCredit', container).innerHTML = 'Powered by Virtual Radar Server';
+        createElement('p', 'acListCredit', container).innerHTML = 'Powered by HongLin Aviation';
     };
 
     function createListItemSkeleton()

@@ -33,33 +33,33 @@
     // [[ MARKER START SIMPLE STRINGS ]]
 
     VRS.$$.Add =                                        '添加';
-    VRS.$$.AddCondition =                               '添加情景';
+    VRS.$$.AddCondition =                               '添加条件';
     VRS.$$.AddCriteria =                                '添加规则';
     VRS.$$.AddFilter =                                  '添加过滤器';
-    VRS.$$.AircraftNotTransmittingCallsign =            '航空器没有传输其呼号';
-    VRS.$$.AircraftClass =                              '航空器类型';
+    VRS.$$.AircraftNotTransmittingCallsign =            '航空器没有传输其航班号';
+    VRS.$$.AircraftClass =                              '航空器类型';//?
     VRS.$$.Airport =                                    '机场';
     VRS.$$.AirportDataThumbnails =                      '缩略图 (来自airport-data.com)';
-    VRS.$$.AllAltitudes =                               '所有高程';
+    VRS.$$.AllAltitudes =                               '所有高度';
     VRS.$$.AllRows =                                    '所有行';
-    VRS.$$.Altitude =                                   '高程';
-    VRS.$$.AltitudeAndSpeedGraph =                      '高程&速度图';
-    VRS.$$.AltitudeAndVerticalSpeed =                   '高程&垂直速度';
-    VRS.$$.AltitudeGraph =                              '高程图';
+    VRS.$$.Altitude =                                   '高度';
+    VRS.$$.AltitudeAndSpeedGraph =                      '高度&速度表';
+    VRS.$$.AltitudeAndVerticalSpeed =                   '高度&垂直速度';
+    VRS.$$.AltitudeGraph =                              '高度表';
     VRS.$$.AllAircraft =                                '所有航空器';
-    VRS.$$.Amphibian =                                  '两栖';
+    VRS.$$.Amphibian =                                  '两栖飞机';
     VRS.$$.AnnounceSelected =                           '通知所有已选择航空器';
     VRS.$$.Ascending =                                  '升序';
     VRS.$$.AutoSelectAircraft =                         '自动选择航空器';
-    VRS.$$.AverageSignalLevel =                         '信号平均水平面';
-    VRS.$$.Bearing =                                    '承重';
-    VRS.$$.Between =                                    '间隔';
-    VRS.$$.Callsign =                                   '呼号';
-    VRS.$$.CallsignAndShortRoute =                      '呼号&短路径';
-    VRS.$$.CallsignMayNotBeCorrect =                    '可能不正确呼号';
+    VRS.$$.AverageSignalLevel =                         '平均信号电平';
+    VRS.$$.Bearing =                                    '方位';
+    VRS.$$.Between =                                    '在范围内';
+    VRS.$$.Callsign =                                   '航班号';
+    VRS.$$.CallsignAndShortRoute =                      '航班号&短路线';
+    VRS.$$.CallsignMayNotBeCorrect =                    '可能不正确的航班号';//?
     VRS.$$.CentreOnSelectedAircraft =                   '在地图上显示航空器';
     VRS.$$.Civil =                                      '民航';
-    VRS.$$.CivilOrMilitary =                            '民航/空军';
+    VRS.$$.CivilOrMilitary =                            '民航/军航';
     VRS.$$.ClosestToCurrentLocation =                   '距离当前最近';
     VRS.$$.CofACategory =                               'C/A(适航证) 类别';                     // certificate of airworthiness category
     VRS.$$.CofAExpiry =                                 'C/A(适航证) 期限';                       // certificate of airworthiness expiry
@@ -68,17 +68,17 @@
     VRS.$$.CountAdsb =                                  'ADS-B计数';
     VRS.$$.Country =                                    '国家';
     VRS.$$.CountModeS =                                 'Mode-S计数';
-    VRS.$$.CountPositions =                             '位置计数';
+    VRS.$$.CountPositions =                             '坐标计数';
     VRS.$$.Criteria =                                   '规则';
-    VRS.$$.CurrentLocationInstruction =                 '设置你的当前位置请单击 "设置当前位置" 并拖拽标记.';
-    VRS.$$.CurrentRegDate =                             '当前段日期';
+    VRS.$$.CurrentLocationInstruction =                 '设置你的当前坐标请单击 "设置当前坐标" 并拖拽标记.';
+    VRS.$$.CurrentRegDate =                             '有效注册日期';
     VRS.$$.Date =                                       '日期';
     VRS.$$.DateTimeShort =                              '{0} {1}';                          // Where "{0}" is a date, e.g. 10/10/2013; and "{1}" is a time, e.g. 17:41:32.
     VRS.$$.DefaultSetting =                             '< 默认 >';
     VRS.$$.DegreesAbbreviation =                        '{0}°';
-    VRS.$$.DeRegDate =                                  '起飞注册日期';
-    VRS.$$.DesktopPage =                                '桌面版本页面';
-    VRS.$$.DesktopReportPage =                          '桌面版本报告页面';
+    VRS.$$.DeRegDate =                                  '取消注册日期';
+    VRS.$$.DesktopPage =                                '桌面版页面';
+    VRS.$$.DesktopReportPage =                          '桌面版报告页面';
     VRS.$$.DetailItems =                                '航空器详细项';
     VRS.$$.DetailPanel =                                '详情面板';
     VRS.$$.DisableAutoSelect =                          '禁止自动选择';
@@ -86,7 +86,7 @@
     VRS.$$.Distances =                                  '距离';
     VRS.$$.DoNotShow =                                  '不显示';
     VRS.$$.Duration =                                   '持续时间';
-    VRS.$$.Electric =                                   '电力';
+    VRS.$$.Electric =                                   '电力引擎';
     VRS.$$.EnableAutoSelect =                           '开启自动选择';
     VRS.$$.EnableFilters =                              '启用过滤器';
     VRS.$$.EnableInfoWindow =                           '启用信息窗口';
@@ -95,7 +95,7 @@
     VRS.$$.EndsWith =                                   '结束:';
     VRS.$$.Engines =                                    '引擎';
     VRS.$$.EngineType =                                 '引擎类型';
-    VRS.$$.Equals =                                     '是';
+    VRS.$$.Equals =                                     '匹配';
     VRS.$$.Feet =                                       '英尺';
     VRS.$$.FeetAbbreviation =                           '{0} ft';
     VRS.$$.FeetPerMinuteAbbreviation =                  '{0} ft/m';
@@ -103,32 +103,32 @@
     VRS.$$.FetchPage =                                  '获取';
     VRS.$$.FillOpacity =                                '填充透明度';
     VRS.$$.Filters =                                    '过滤器';
-    VRS.$$.FindAllPermutationsOfCallsign =              '查询所有呼号排列';
-    VRS.$$.FirstAltitude =                              '首次高程';
-    VRS.$$.FirstHeading =                               '首次航向';
-    VRS.$$.FirstFlightLevel =                           '首次飞行水平面';
-    VRS.$$.FirstLatitude =                              '首次纬度';
-    VRS.$$.FirstLongitude =                             '首次精度';
-    VRS.$$.FirstOnGround =                              '首次地面位置';
-    VRS.$$.FirstRegDate =                               '首次注册日期';
-    VRS.$$.FirstSpeed =                                 '首次速度';
-    VRS.$$.FirstSquawk =                                '首次呼叫';
-    VRS.$$.FirstVerticalSpeed =                         '首次垂直速度';
+    VRS.$$.FindAllPermutationsOfCallsign =              '查询航班号的所有排列';
+    VRS.$$.FirstAltitude =                              '最初高度';
+    VRS.$$.FirstHeading =                               '最初航向';
+    VRS.$$.FirstFlightLevel =                           '最初飞行高度层';
+    VRS.$$.FirstLatitude =                              '最初纬度';
+    VRS.$$.FirstLongitude =                             '最初经度';
+    VRS.$$.FirstOnGround =                              '最初地面坐标';
+    VRS.$$.FirstRegDate =                               '最初注册日期';
+    VRS.$$.FirstSpeed =                                 '最初速度';
+    VRS.$$.FirstSquawk =                                '最初Squawk';
+    VRS.$$.FirstVerticalSpeed =                         '最初垂直速度';
     VRS.$$.FlightDetailShort =                          '详情';
-    VRS.$$.FlightLevel =                                '飞行水平面';
+    VRS.$$.FlightLevel =                                '飞行高度层';
     VRS.$$.FlightLevelAbbreviation =                    'FL{0}';
     VRS.$$.FlightLevelAndVerticalSpeed =                'FL & VSI';
-    VRS.$$.FlightLevelHeightUnit =                      '飞行水平面高度单位';
-    VRS.$$.FlightLevelTransitionAltitude =              '飞行水平面跃迁高程';
-    VRS.$$.FlightsCount =                               '航班数量';
+    VRS.$$.FlightLevelHeightUnit =                      '飞行高度层高度单位';
+    VRS.$$.FlightLevelTransitionAltitude =              '飞行高度层跃迁高度';
+    VRS.$$.FlightsCount =                               '观测次数';
     VRS.$$.FlightsListShort =                           '航班';
-    VRS.$$.FlightSimPage =                              '飞行模拟页面';
-    VRS.$$.FlightSimTitle =                             'ADS-B Server';
+    VRS.$$.FlightSimPage =                              '飞行模拟版页面';
+    VRS.$$.FlightSimTitle =                             'ADS-B Radar';
     VRS.$$.ForcePhoneOff =                              '非移动设备';                      // As in "force the page to ignore the fact that this is a smart phone"
     VRS.$$.ForcePhoneOn =                               '移动设备';                          // As in "force the page to pretend that this is a smart phone"
     VRS.$$.ForceTabletOff =                             '非平板设备';                     // As in "force the page to ignore the fact that this is a tablet PC"
     VRS.$$.ForceTabletOn =                              '平板设备';                         // As in "force the page to use the settings for a tablet PC"
-    VRS.$$.FromAltitude =                               '起始高程 {0}';
+    VRS.$$.FromAltitude =                               '起始 {0}';
     VRS.$$.FromToAltitude =                             '{0} 至 {1}';
     VRS.$$.FromToDate =                                 '{0} 至 {1}';
     VRS.$$.FromToFlightLevel =                          '{0} 至 {1}';
@@ -137,44 +137,44 @@
     VRS.$$.FurthestFromCurrentLocation =                '距离当前最远';
     VRS.$$.GenericName =                                '通用名';
     VRS.$$.GoogleMapsCouldNotBeLoaded =                 '地图无法加载';
-    VRS.$$.GotoCurrentLocation =                        '转到当前位置';
+    VRS.$$.GotoCurrentLocation =                        '转到当前坐标';
     VRS.$$.GotoSelectedAircraft =                       '转到已选择航空器';
     VRS.$$.GroundAbbreviation =                         'GND';
     VRS.$$.GroundVehicle =                              '地面车辆';
-    VRS.$$.Gyrocopter =                                 '螺旋翼';
-    VRS.$$.HadAlert =                                   '曾报警';
-    VRS.$$.HadEmergency =                               '曾遇险';
-    VRS.$$.HadSPI =                                     '曾被识别';                        // SPI is the name of a pulse in Mode-S, used when ATC has asked for ident from aircraft.
+    VRS.$$.Gyrocopter =                                 '螺旋桨飞机';
+    VRS.$$.HadAlert =                                   '警报';
+    VRS.$$.HadEmergency =                               '遇险';
+    VRS.$$.HadSPI =                                     'SPI';                        // SPI is the name of a pulse in Mode-S, used when ATC has asked for ident from aircraft.
     VRS.$$.Heading =                                    '航向';
     VRS.$$.Heights =                                    '高度';
-    VRS.$$.Helicopter =                                 '直升机';
+    VRS.$$.Helicopter =                                 '直升飞机';
     VRS.$$.Help =                                       '帮助';
     VRS.$$.HideAircraftNotOnMap =                       '在地图上隐藏航空器';
-    VRS.$$.HideEmptyPinTextLines =                      '隐藏空标签线';
-    VRS.$$.HideNoPosition =                             '包含位置';
-    VRS.$$.HighContrastMap =                            '对比度';                         // <-- please try to keep this one short, it appears as a button on the map and there may not be a lot of room
-    VRS.$$.Icao =                                       'ICAO号';
+    VRS.$$.HideEmptyPinTextLines =                      '隐藏空标签行';
+    VRS.$$.HideNoPosition =                             '存在坐标';
+    VRS.$$.HighContrastMap =                            '对比';                         // <-- please try to keep this one short, it appears as a button on the map and there may not be a lot of room
+    VRS.$$.Icao =                                       'ICAO代码';
     VRS.$$.Index =                                      '索引';
-    VRS.$$.IsMilitary =                                 '空军';
+    VRS.$$.IsMilitary =                                 '军航';
     VRS.$$.Interesting =                                '关注';
     VRS.$$.IntervalSeconds =                            '更新间隔(秒)';
-    VRS.$$.Jet =                                        '喷气式';
-    VRS.$$.JustPositions =                              '位置';
+    VRS.$$.Jet =                                        '喷气引擎';
+    VRS.$$.JustPositions =                              '坐标';
     VRS.$$.KilometreAbbreviation =                      '{0} km';
     VRS.$$.Kilometres =                                 '公里';
     VRS.$$.KilometresPerHour =                          '公里/小时';
     VRS.$$.KilometresPerHourAbbreviation =              '{0} km/h';
     VRS.$$.Knots =                                      '节';
     VRS.$$.KnotsAbbreviation =                          '{0} kts';
-    VRS.$$.LandPlane =                                  '陆上';
-    VRS.$$.LastAltitude =                               '最后高程';
-    VRS.$$.LastFlightLevel =                            '最后飞行水平面';
+    VRS.$$.LandPlane =                                  '陆上飞机';
+    VRS.$$.LastAltitude =                               '最后高度';
+    VRS.$$.LastFlightLevel =                            '最后飞行高度层';
     VRS.$$.LastHeading =                                '最后航向';
-    VRS.$$.LastOnGround =                               '最后地面位置';
+    VRS.$$.LastOnGround =                               '最后地面坐标';
     VRS.$$.LastLatitude =                               '最后纬度';
     VRS.$$.LastLongitude =                              '最后经度';
     VRS.$$.LastSpeed =                                  '最后速度';
-    VRS.$$.LastSquawk =                                 '最后呼叫';
+    VRS.$$.LastSquawk =                                 '最后Squawk';
     VRS.$$.LastVerticalSpeed =                          '最后垂直速度';
     VRS.$$.Latitude =                                   '纬度';
     VRS.$$.Layout =                                     '布局';
@@ -186,91 +186,91 @@
     VRS.$$.Layout6 =                                    '高详情和列表';
     VRS.$$.ListAircraftClass =                          'A/C(适航证) 类型';
     VRS.$$.ListAirportDataThumbnails =                  '缩略图 (来自airport-data.com)';
-    VRS.$$.ListAltitude =                               '高程';
-    VRS.$$.ListAltitudeAndVerticalSpeed =               '高程&垂直速度';
-    VRS.$$.ListAverageSignalLevel =                     '信号平均水平面';
-    VRS.$$.ListBearing =                                '承重';
-    VRS.$$.ListCallsign =                               '呼号';
-    VRS.$$.ListCivOrMil =                               '民航/空军';
+    VRS.$$.ListAltitude =                               '高度';
+    VRS.$$.ListAltitudeAndVerticalSpeed =               '高度&垂直速度';
+    VRS.$$.ListAverageSignalLevel =                     '平均信号电平';
+    VRS.$$.ListBearing =                                '方位';
+    VRS.$$.ListCallsign =                               '航班号';
+    VRS.$$.ListCivOrMil =                               '民航/军航';
     VRS.$$.ListCofACategory =                           'C/A(适航证) 类别';                 // Certificate of airworthiness category
     VRS.$$.ListCofAExpiry =                             'C/A(适航证) 期限';               // Certificate of airworthiness expiry
     VRS.$$.ListCountAdsb =                              'ADS-B 消息';
     VRS.$$.ListCountMessages =                          '消息';
     VRS.$$.ListCountModeS =                             'Mode-S 消息';
-    VRS.$$.ListCountPositions =                         '位置消息';
+    VRS.$$.ListCountPositions =                         '坐标消息'
     VRS.$$.ListCountry =                                '国家';
-    VRS.$$.ListCurrentRegDate =                         '当前注册日期';             // Date of current registration
-    VRS.$$.ListDeRegDate =                              '起飞注册日期';              // as in the date it was taken off the register
+    VRS.$$.ListCurrentRegDate =                         '有效注册日期';             // Date of current registration
+    VRS.$$.ListDeRegDate =                              '取消注册日期';              // as in the date it was taken off the register
     VRS.$$.ListDistance =                               '距离';
     VRS.$$.ListDuration =                               '持续时间';
     VRS.$$.ListEndTime =                                '最后消息';             // As in the date and time of the last message.
     VRS.$$.ListEngines =                                '引擎';
-    VRS.$$.ListFirstAltitude =                          '首次高程';
-    VRS.$$.ListFirstFlightLevel =                       '首次飞行水平面';
-    VRS.$$.ListFirstHeading =                           '首次航向';
-    VRS.$$.ListFirstLatitude =                          '首次纬度';
-    VRS.$$.ListFirstLongitude =                         '首次经度';
-    VRS.$$.ListFirstOnGround =                          '首次地面位置';
-    VRS.$$.ListFirstRegDate =                           '首次注册';               // Date of first registration
-    VRS.$$.ListFirstSpeed =                             '首次速度';
-    VRS.$$.ListFirstSquawk =                            '首次呼叫';
-    VRS.$$.ListFirstVerticalSpeed =                     '首次垂直速度';
-    VRS.$$.ListFlightLevel =                            '飞行水平面';
-    VRS.$$.ListFlightLevelAndVerticalSpeed =            '飞行水平面&垂直速度';
-    VRS.$$.ListFlightsCount =                           '航空器数量';
+    VRS.$$.ListFirstAltitude =                          '最初高度';
+    VRS.$$.ListFirstFlightLevel =                       '最初飞行高度层';
+    VRS.$$.ListFirstHeading =                           '最初航向';
+    VRS.$$.ListFirstLatitude =                          '最初纬度';
+    VRS.$$.ListFirstLongitude =                         '最初经度';
+    VRS.$$.ListFirstOnGround =                          '最初地面坐标';
+    VRS.$$.ListFirstRegDate =                           '最初注册';               // Date of first registration
+    VRS.$$.ListFirstSpeed =                             '最初速度';
+    VRS.$$.ListFirstSquawk =                            '最初Squawk';
+    VRS.$$.ListFirstVerticalSpeed =                     '最初垂直速度';
+    VRS.$$.ListFlightLevel =                            '飞行高度层';
+    VRS.$$.ListFlightLevelAndVerticalSpeed =            'FL & VSI';
+    VRS.$$.ListFlightsCount =                           '观测次数';
     VRS.$$.ListGenericName =                            '通用名';
-    VRS.$$.ListHadAlert =                               '曾报警';
-    VRS.$$.ListHadEmergency =                           '曾遇险';
-    VRS.$$.ListHadSPI =                                 '曾被识别';                      // Name of a pulse in Mode-S, may not need translation. Used when ATC has asked for ident from aircraft.
+    VRS.$$.ListHadAlert =                               '警报';
+    VRS.$$.ListHadEmergency =                           '遇险';
+    VRS.$$.ListHadSPI =                                 'SPI';                      // Name of a pulse in Mode-S, may not need translation. Used when ATC has asked for ident from aircraft.
     VRS.$$.ListHeading =                                '航向';
-    VRS.$$.ListIcao =                                   'ICAO号';
+    VRS.$$.ListIcao =                                   'ICAO代码';
     VRS.$$.ListInteresting =                            '关注';
-    VRS.$$.ListLastAltitude =                           '最后高程';
-    VRS.$$.ListLastFlightLevel =                        '最后飞行水平面';
+    VRS.$$.ListLastAltitude =                           '最后高度';
+    VRS.$$.ListLastFlightLevel =                        '最后飞行高度层';
     VRS.$$.ListLastHeading =                            '最后航向';
     VRS.$$.ListLastLatitude =                           '最后纬度';
     VRS.$$.ListLastLongitude =                          '最后经度';
-    VRS.$$.ListLastOnGround =                           '最后地面位置';
+    VRS.$$.ListLastOnGround =                           '最后地面坐标';
     VRS.$$.ListLastSpeed =                              '最后速度';
-    VRS.$$.ListLastSquawk =                             '最后呼叫';
+    VRS.$$.ListLastSquawk =                             '最后Squawk';
     VRS.$$.ListLastVerticalSpeed =                      '最后垂直速度';
     VRS.$$.ListLatitude =                               '纬度';
     VRS.$$.ListLongitude =                              '经度';
     VRS.$$.ListNotes =                                  '注意';
     VRS.$$.ListManufacturer =                           '制造商';
-    VRS.$$.ListMaxTakeoffWeight =                       '最大起飞承重';
-    VRS.$$.ListModel =                                  '型号';
-    VRS.$$.ListModelIcao =                              '类型';
+    VRS.$$.ListMaxTakeoffWeight =                       '最大起飞重量';
+    VRS.$$.ListModel =                                  '机型';
+    VRS.$$.ListModelIcao =                              '机型';
     VRS.$$.ListModeSCountry =                           'Mode-S 国家';
-    VRS.$$.ListModelSilhouette =                        '外观';
+    VRS.$$.ListModelSilhouette =                        '轮廓';
     VRS.$$.ListModelSilhouetteAndOpFlag =               '标志';
-    VRS.$$.ListOperator =                               '操作';
+    VRS.$$.ListOperator =                               '航空公司';
     VRS.$$.ListOperatorFlag =                           '标志';
-    VRS.$$.ListOperatorIcao =                           '操作ICAO码';
+    VRS.$$.ListOperatorIcao =                           '航空公司ICAO代码';
     VRS.$$.ListOwnershipStatus =                        '所属状态';
     VRS.$$.ListPicture =                                '图片';
-    VRS.$$.ListPopularName =                            '俗名';
-    VRS.$$.ListPreviousId =                             '曾用ID';
+    VRS.$$.ListPopularName =                            '昵称';
+    VRS.$$.ListPreviousId =                             '前一ID';
     VRS.$$.ListReceiver =                               '接收器';
-    VRS.$$.ListRegistration =                           '注册号';
+    VRS.$$.ListRegistration =                           '注册代码';
     VRS.$$.ListRowNumber =                              '行号';
-    VRS.$$.ListRoute =                                  '航线';
-    VRS.$$.ListSerialNumber =                           '串口';
-    VRS.$$.ListSignalLevel =                            '信号水平面';
-    VRS.$$.ListSpecies =                                '特殊';
+    VRS.$$.ListRoute =                                  '路线';
+    VRS.$$.ListSerialNumber =                           '序号';
+    VRS.$$.ListSignalLevel =                            '信号';
+    VRS.$$.ListSpecies =                                '类型';
     VRS.$$.ListSpeed =                                  '速度';
-    VRS.$$.ListSquawk =                                 '呼号';
+    VRS.$$.ListSquawk =                                 'Squawk';
     VRS.$$.ListStartTime =                              '开始时间';
     VRS.$$.ListStatus =                                 '状态';
     VRS.$$.ListTotalHours =                             '小时总计';
-    VRS.$$.ListUserTag =                                '标记';
+    VRS.$$.ListUserTag =                                '标签';
     VRS.$$.ListVerticalSpeed =                          '垂直速度';
     VRS.$$.ListWtc =                                    'WTC';
-    VRS.$$.ListYearBuilt =                              '制造';
+    VRS.$$.ListYearBuilt =                              '出厂';
     VRS.$$.Longitude =                                  '经度';
     VRS.$$.Manufacturer =                               '制造商';
     VRS.$$.Map =                                        '地图';
-    VRS.$$.MaxTakeoffWeight =                           '最大起飞承重';
+    VRS.$$.MaxTakeoffWeight =                           '最大起飞重量';
     VRS.$$.Menu =                                       '菜单';
     VRS.$$.MenuBack =                                   '返回';
     VRS.$$.MessageCount =                               '消息计数';
@@ -280,78 +280,78 @@
     VRS.$$.Metres =                                     '米';
     VRS.$$.MilesPerHour =                               '英里/小时';
     VRS.$$.MilesPerHourAbbreviation =                   '{0} mph';
-    VRS.$$.Military =                                   '空军';
-    VRS.$$.MobilePage =                                 '移动设备页面';
-    VRS.$$.MobileReportPage =                           '移动设备报告页面';
-    VRS.$$.Model =                                      '型号';
-    VRS.$$.ModelIcao =                                  '型号代码';
+    VRS.$$.Military =                                   '军航';
+    VRS.$$.MobilePage =                                 '移动版页面';
+    VRS.$$.MobileReportPage =                           '移动版报告页面';
+    VRS.$$.Model =                                      '机型';
+    VRS.$$.ModelIcao =                                  '机型代码';
     VRS.$$.ModeSCountry =                               'Mode-S 国家';
     VRS.$$.MovingMap =                                  '移动地图';
-    VRS.$$.MuteOff =                                    '静音关闭';
-    VRS.$$.MuteOn =                                     '静音开启';
+    VRS.$$.MuteOff =                                    '关闭静音';
+    VRS.$$.MuteOn =                                     '开启静音';
     VRS.$$.NauticalMileAbbreviation =                   '{0} nmi';
     VRS.$$.NauticalMiles =                              '海里';
     VRS.$$.No =                                         '否';
-    VRS.$$.NoLocalStorage = '该浏览器不支持本地存储. 您的配置信息将不能保存.\n\n如果您在"私人模式"访问请尝试转换关闭状态. 私人模式在某些浏览器上不能进行本地存储。';
+    VRS.$$.NoLocalStorage = '该浏览器不支持本地存储. 您的配置信息将不能保存.\n\n如果您在"私人模式"访问请尝试转换关闭状态. 私人模式在某些浏览器上不能进行本地存储.';
     VRS.$$.None =                                       '无';
     VRS.$$.Notes =                                      '注意';
     VRS.$$.NoSettingsFound =                            '设置未找到';
-    VRS.$$.NotBetween =                                 '不在之间';
+    VRS.$$.NotBetween =                                 '范围之外';
     VRS.$$.NotContains =                                '不包含';
     VRS.$$.NotEndsWith =                                '不以结尾';
-    VRS.$$.NotEquals =                                  '不是';
+    VRS.$$.NotEquals =                                  '不匹配';
     VRS.$$.NotStartsWith =                              '不以开始';
     VRS.$$.OffRadarAction =                             '当航空器超出范围:';
     VRS.$$.OffRadarActionWait =                         '取消选择航空器';
     VRS.$$.OffRadarActionEnableAutoSelect =             '启用自动选择';
     VRS.$$.OffRadarActionNothing =                      '无';
     VRS.$$.OfPages =                                    ': {0:N0}';                            // As in "1 of 10" pages
-    VRS.$$.OnlyAircraftOnMap =                          '仅列出可显示';
+    VRS.$$.OnlyAircraftOnMap =                          '仅列出可见';
     VRS.$$.OnlyAutoSelected =                           '仅通知自动选择航班详细';
-    VRS.$$.Operator =                                   '操作';
-    VRS.$$.OperatorCode =                               '选项码';
-    VRS.$$.OperatorFlag =                               '选项标志';
+    VRS.$$.Operator =                                   '航空公司';
+    VRS.$$.OperatorCode =                               '航空公司代码';
+    VRS.$$.OperatorFlag =                               '航空公司标志';
     VRS.$$.Options =                                    '选项';
     VRS.$$.OwnershipStatus =                            '所属状态';
     VRS.$$.PageAircraft =                               '航空器';
     VRS.$$.AircraftDetailShort =                        '详情';
     VRS.$$.PageFirst =                                  '首页';
     VRS.$$.PageGeneral =                                '通用';
-    VRS.$$.PageLast =                                   '尾页';
+    VRS.$$.PageLast =                                   '末页';
     VRS.$$.PageList =                                   '列表';
     VRS.$$.PageListShort =                              '列表';
     VRS.$$.PageMapShort =                               '地图';
-    VRS.$$.PageNext =                                   '下一页';
+    VRS.$$.PageNext =                                   '后一页';
     VRS.$$.PagePrevious =                               '前一页';
     VRS.$$.PaneAircraftDisplay =                        '航空器显示';
     VRS.$$.PaneAircraftTrails =                         '航空器轨迹';
     VRS.$$.PaneAudio =                                  '声音';
     VRS.$$.PaneAutoSelect =                             '自动选择';
-    VRS.$$.PaneCurrentLocation =                        '当前位置';
+    VRS.$$.PaneCurrentLocation =                        '当前坐标';
     VRS.$$.PaneDataFeed =                               '数据提供';
     VRS.$$.PaneDetailSettings =                         '航空器详情';
     VRS.$$.PaneInfoWindow =                             '航空器信息窗口';
     VRS.$$.PaneListSettings =                           '列表设置';
-    VRS.$$.PaneManyAircraft =                           '多重航空器报告';
+    VRS.$$.PaneManyAircraft =                           '多航空器报告';
     VRS.$$.PanePermanentLink =                          '永久链接';
     VRS.$$.PaneRangeCircles =                           '范围环';
     VRS.$$.PaneReceiverRange =                          '接收器范围';
-    VRS.$$.PaneSingleAircraft =                         '单个航空器报告';
+    VRS.$$.PaneSingleAircraft =                         '单独航空器报告';
     VRS.$$.PaneSortAircraftList =                       '排序航空器列表';
     VRS.$$.PaneSortReport =                             '排序报告';
     VRS.$$.PaneUnits =                                  '单位';
     VRS.$$.Pause =                                      '暂停';
-    VRS.$$.PinTextNumber =                              '航空器标签线 {0}';
-    VRS.$$.PopularName =                                '俗称';
-    VRS.$$.PositionAndAltitude =                        '位置和高程';
-    VRS.$$.PositionAndSpeed =                           '位置和速度';
+    VRS.$$.PinTextNumber =                              '航空器标签行 {0}';
+    VRS.$$.PopularName =                                '昵称';
+    VRS.$$.PositionAndAltitude =                        '坐标和高度';
+    VRS.$$.PositionAndSpeed =                           '坐标和速度';
     VRS.$$.Picture =                                    '图片';
     VRS.$$.PictureOrThumbnails =                        '图片或缩略图';
-    VRS.$$.PinTextLines =                               '标签线数量';
-    VRS.$$.Piston =                                     '活塞';
+    VRS.$$.PinTextLines =                               '标签行数';
+    VRS.$$.Piston =                                     '活塞引擎';
     VRS.$$.Pixels =                                     '像素';
     VRS.$$.PoweredByVRS =                               '宏林航空提供技术支持';
-    VRS.$$.PreviousId =                                 '曾用ID';
+    VRS.$$.PreviousId =                                 '前一ID';
     VRS.$$.Quantity =                                   '数量';
     VRS.$$.RadioMast =                                  '天线';
     VRS.$$.RangeCircleEvenColour =                      '偶数环颜色';
@@ -360,45 +360,45 @@
     VRS.$$.Receiver =                                   '接收器';
     VRS.$$.ReceiverRange =                              '接收器范围';
     VRS.$$.Refresh =                                    '刷新';
-    VRS.$$.Registration =                               '注册号';
-    VRS.$$.RegistrationAndIcao =                        '注册号和ICAO号';
+    VRS.$$.Registration =                               '注册代码';
+    VRS.$$.RegistrationAndIcao =                        '注册和ICAO代码';
     VRS.$$.Remove =                                     '删除';
     VRS.$$.RemoveAll =                                  '删除所有';
-    VRS.$$.ReportCallsignInvalid =                      '呼号报告';
-    VRS.$$.ReportCallsignValid =                        '呼号报告: {0}';
+    VRS.$$.ReportCallsignInvalid =                      '航班号报告';
+    VRS.$$.ReportCallsignValid =                        '航班号报告: {0}';
     VRS.$$.ReportEmpty =                                '没有找到符合该规则的记录';
-    VRS.$$.ReportFreeForm =                             '自由格式报告';
-    VRS.$$.ReportIcaoInvalid =                          '无ICAO号报告';
-    VRS.$$.ReportIcaoValid =                            '有ICAO号报告: {0}';
-    VRS.$$.ReportRegistrationInvalid =                  '注册号报告';
-    VRS.$$.ReportRegistrationValid =                    '注册号报告: {0}';
+    VRS.$$.ReportFreeForm =                             '自定义报告';
+    VRS.$$.ReportIcaoInvalid =                          'ICAO代码报告';
+    VRS.$$.ReportIcaoValid =                            'ICAO代码报告: {0}';
+    VRS.$$.ReportRegistrationInvalid =                  '注册代码报告';
+    VRS.$$.ReportRegistrationValid =                    '注册代码报告: {0}';
     VRS.$$.ReportTodaysFlights =                        '当日航班';
     VRS.$$.ReportYesterdaysFlights =                    '昨日航班';
     VRS.$$.Reports =                                    '报告';
     VRS.$$.ReportsAreDisabled =                         '服务器权限禁止运行报告';
     VRS.$$.Resume =                                     '恢复';
-    VRS.$$.Route =                                      '航线';
-    VRS.$$.RouteShort =                                 '航线 (短)';
-    VRS.$$.RouteFull =                                  '航线 (全)';
-    VRS.$$.RouteNotKnown =                              '未知航线';
-    VRS.$$.RowNumber =                                  '行数';
-    VRS.$$.Rows =                                       '行号';
-    VRS.$$.RunReport =                                  '运行报告';
-    VRS.$$.SeaPlane =                                   '水上';
+    VRS.$$.Route =                                      '路线';
+    VRS.$$.RouteShort =                                 '路线 (短)';
+    VRS.$$.RouteFull =                                  '路线 (全)';
+    VRS.$$.RouteNotKnown =                              '路线未知';
+    VRS.$$.RowNumber =                                  '行号';
+    VRS.$$.Rows =                                       '行数';
+    VRS.$$.RunReport =                                  '生成报告';
+    VRS.$$.SeaPlane =                                   '水上飞机';
     VRS.$$.Select =                                     '选择';
     VRS.$$.SeparateTwoValues =                          ' 和 ';
-    VRS.$$.SerialNumber =                               '串口';
+    VRS.$$.SerialNumber =                               '序号';
     VRS.$$.ServerFetchFailedTitle =                     '获取失败';
     VRS.$$.ServerFetchFailedBody =                      '无法从服务器获取. 错误 "{0}" 状态 "{1}".';
     VRS.$$.ServerFetchTimedOut =                        '请求超时.';
     VRS.$$.ServerReportExceptionBody =                  '在生成报告时服务器遇到异常. 异常 "{0}"';
     VRS.$$.ServerReportExceptionTitle =                 '服务器异常';
-    VRS.$$.SetCurrentLocation =                         '设置当前位置';
+    VRS.$$.SetCurrentLocation =                         '设置当前坐标';
     VRS.$$.Settings =                                   '设置';
-    VRS.$$.SettingsPage =                               '设置页面';
+    VRS.$$.SettingsPage =                               '设置';
     VRS.$$.Shortcuts =                                  '快捷操作';
-    VRS.$$.ShowAltitudeStalk =                          '显示高程线';
-    VRS.$$.ShowCurrentLocation =                        '显示当前位置';
+    VRS.$$.ShowAltitudeStalk =                          '显示高度线';
+    VRS.$$.ShowCurrentLocation =                        '显示当前坐标';
     VRS.$$.ShowDetail =                                 '显示详情';
     VRS.$$.ShowForAllAircraft =                         '显示所有航空器';
     VRS.$$.ShowEmptyValues =                            '显示空值';
@@ -407,31 +407,31 @@
     VRS.$$.ShowShortTrails =                            '显示短轨迹';
     VRS.$$.ShowUnits =                                  '显示单位';
     VRS.$$.ShowVsiInSeconds =                           '显示每秒垂直速度';
-    VRS.$$.SignalLevel =                                '信号水平面';
-    VRS.$$.Silhouette =                                 '外观';
-    VRS.$$.SilhouetteAndOpFlag =                        '外观和标志';
-    VRS.$$.SiteTimedOut =                               '在非交互期间该站点暂停. 关闭消息框恢复更新站点.';
+    VRS.$$.SignalLevel =                                '信号电平';
+    VRS.$$.Silhouette =                                 '轮廓';
+    VRS.$$.SilhouetteAndOpFlag =                        '轮廓和标志';
+    VRS.$$.SiteTimedOut =                               '在非交互期间该站点暂停. 关闭消息框恢复更新.';
     VRS.$$.SortBy =                                     '排序';
-    VRS.$$.Species =                                    '特殊';
+    VRS.$$.Species =                                    '类型';
     VRS.$$.Speed =                                      '速度';
-    VRS.$$.SpeedGraph =                                 '速度图';
+    VRS.$$.SpeedGraph =                                 '速度表';
     VRS.$$.Speeds =                                     '速度';
-    VRS.$$.Squawk =                                     '呼叫';
+    VRS.$$.Squawk =                                     'Squawk';
     VRS.$$.Start =                                      '开始';
     VRS.$$.StartsWith =                                 '开始:';
     VRS.$$.StartTime =                                  '开始时间';
-    VRS.$$.Status =                                     '规定';
+    VRS.$$.Status =                                     '状态';
     VRS.$$.StatuteMileAbbreviation =                    '{0} mi';
-    VRS.$$.StatuteMiles =                               '规定英里';
-    VRS.$$.StorageEngine =                              '引擎舱';
-    VRS.$$.StorageSize =                                '舱尺寸';
-    VRS.$$.StrokeOpacity =                              '过渡透明度';
-    VRS.$$.SubmitRoute =                                '提交航线';
-    VRS.$$.SubmitRouteCorrection =                      '提交航线修正';
-    VRS.$$.SuppressAltitudeStalkWhenZoomedOut =         '放大超过范围时限制高程线';
+    VRS.$$.StatuteMiles =                               '法定英里';
+    VRS.$$.StorageEngine =                              '存储引擎';
+    VRS.$$.StorageSize =                                '存储大小';
+    VRS.$$.StrokeOpacity =                              '路线透明度';
+    VRS.$$.SubmitRoute =                                '提交路线';
+    VRS.$$.SubmitRouteCorrection =                      '提交路线修正';
+    VRS.$$.SuppressAltitudeStalkWhenZoomedOut =         '放大超出范围时限制高度线';
     VRS.$$.ThenBy =                                     '依据';
-    VRS.$$.Tiltwing =                                   '倾斜翼';
-    VRS.$$.TimeTracked =                                '时间跟踪';
+    VRS.$$.Tiltwing =                                   '倾斜翼飞机';
+    VRS.$$.TimeTracked =                                '跟踪持续';
     VRS.$$.TitleAircraftDetail =                        '航空器详情';
     VRS.$$.TitleAircraftList =                          '航空器列表';
     VRS.$$.TitleFlightDetail =                          '详情';
@@ -441,12 +441,12 @@
     VRS.$$.TotalHours =                                 '小时总计';
     VRS.$$.TrackingCountAircraft =                      '跟踪 {0:N0} 航空器';
     VRS.$$.TrackingCountAircraftOutOf =                 '跟踪 {0:N0} 航空器 (越界 {1:N0})';
-    VRS.$$.Turbo =                                      '涡轮增压';
+    VRS.$$.Turbo =                                      '涡轮增压引擎';
     VRS.$$.UseBrowserLocation =                         '使用GPS定位';
-    VRS.$$.UseRelativeDates =                           '使用相关日期';
+    VRS.$$.UseRelativeDates =                           '使用相对日期';
     VRS.$$.UserTag =                                    '使用标签';
     VRS.$$.VerticalSpeed =                              '垂直速度';
-    VRS.$$.VirtualRadar =                               'ADS-B Server';
+    VRS.$$.VirtualRadar =                               'ADS-B Radar';
     VRS.$$.Volume25 =                                   '音量 25%';
     VRS.$$.Volume50 =                                   '音量 50%';
     VRS.$$.Volume75 =                                   '音量 75%';
@@ -454,18 +454,18 @@
     VRS.$$.VrsVersion =                                 '版本 {0}';
     VRS.$$.WakeTurbulenceCategory =                     '尾流';
     VRS.$$.Warning =                                    '警告';
-    VRS.$$.WorkingInOfflineMode =                       '工作在离线模式';
+    VRS.$$.WorkingInOfflineMode =                       '脱机工作';
     VRS.$$.WtcLight =                                   '轻微';
     VRS.$$.WtcMedium =                                  '中等';
     VRS.$$.WtcHeavy =                                   '严重';
-    VRS.$$.YearBuilt =                                  '制造年份';
+    VRS.$$.YearBuilt =                                  '出厂年份';
     VRS.$$.Yes =                                        '是';
 
     // Date picker text
     VRS.$$.DateClose =                                  '完成';                         // Keep this short
     VRS.$$.DateCurrent =                                '今天';                        // Keep this short
-    VRS.$$.DateNext =                                   '下一页';                         // Keep this short
-    VRS.$$.DatePrevious =                               '前一页';                         // Keep this short
+    VRS.$$.DateNext =                                   '后一天';                         // Keep this short
+    VRS.$$.DatePrevious =                               '前一天';                         // Keep this short
     VRS.$$.DateWeekAbbr =                               '周';                           // Keep this very short
     VRS.$$.DateYearSuffix =                             '年';                             // This is displayed after the year
     // If your language has a different month format when days preceed months, and the date picker
@@ -473,13 +473,13 @@
     VRS.$$.DateUseGenetiveMonths =                      false;
 
     // Text-to-speech formatting
-    VRS.$$.SayCallsign =                                '呼号 {0}.';
-    VRS.$$.SayHyphen =                                  '连字符';
-    VRS.$$.SayIcao =                                    'ICOA号 {0}.';
-    VRS.$$.SayModelIcao =                               '类型 {0}.';
-    VRS.$$.SayOperator =                                '操作 {0}.';
-    VRS.$$.SayRegistration =                            '注册号 {0}.';
-    VRS.$$.SayRouteNotKnown =                           '航线未知.';
+    VRS.$$.SayCallsign =                                '航班号 {0}.';
+    VRS.$$.SayHyphen =                                  '杠';
+    VRS.$$.SayIcao =                                    'ICOA代码 {0}.';
+    VRS.$$.SayModelIcao =                               '机型 {0}.';
+    VRS.$$.SayOperator =                                '航空公司 {0}.';
+    VRS.$$.SayRegistration =                            '注册代码 {0}.';
+    VRS.$$.SayRouteNotKnown =                           '路线未知.';
     VRS.$$.SayFromTo =                                  '行程从 {0} 至 {1}.';
     VRS.$$.SayFromToVia =                               '行程从 {0} 经过 {1} 至 {2}.';
 
@@ -509,6 +509,16 @@
     VRS.$$.SayXRay =                                    'x-ray';
     VRS.$$.SayYankee =                                  'yankee';
     VRS.$$.SayZulu =                                    'zulu';
+    VRS.$$.SayZero =                                    '洞';
+    VRS.$$.SayOne =                                     '幺';
+    VRS.$$.SayTwo =                                     '两';
+    //VRS.$$.SayThree =                                   'Three';
+    //VRS.$$.SayFour =                                    'Four';
+    //VRS.$$.SayFive =                                    'Five';
+    //VRS.$$.SaySix =                                     'Six';
+    VRS.$$.SaySeven =                                   '拐';
+    //VRS.$$.SayEight =                                   'Eight';
+    VRS.$$.SayNine =                                    '勾';
 
     // [[ MARKER END SIMPLE STRINGS ]]
 
@@ -591,23 +601,23 @@
         var result = '';
 
         switch(countEngines) {
-            case 'C':       result = '耦合'; break;
-            case '1':       result = '独立'; break;
-            case '2':       result = '成对'; break;
-            case '3':       result = '三个'; break;
-            case '4':       result = '四个'; break;
-            case '5':       result = '五个'; break;
-            case '6':       result = '六个'; break;
-            case '7':       result = '七个'; break;
-            case '8':       result = '八个'; break;
+            case 'C':       result = '复合'; break;
+            case '1':       result = '单'; break;
+            case '2':       result = '双'; break;
+            case '3':       result = '三'; break;
+            case '4':       result = '四'; break;
+            case '5':       result = '五'; break;
+            case '6':       result = '六'; break;
+            case '7':       result = '七'; break;
+            case '8':       result = '八'; break;
             default:        result = countEngines; break;
         }
 
         switch(engineType) {
-            case VRS.EngineType.Electric:   result += ' 电力'; break;
-            case VRS.EngineType.Jet:        result += ' 喷气'; break;
-            case VRS.EngineType.Piston:     result += ' 活塞'; break;
-            case VRS.EngineType.Turbo:      result += ' 涡轮增压'; break;
+            case VRS.EngineType.Electric:   result += ' 电力引擎'; break;
+            case VRS.EngineType.Jet:        result += ' 喷气引擎'; break;
+            case VRS.EngineType.Piston:     result += ' 活塞引擎'; break;
+            case VRS.EngineType.Turbo:      result += ' 涡轮增压引擎'; break;
         }
 
         return result;
@@ -632,7 +642,7 @@
         var result = '';
         if(category) {
             switch(category) {
-                case VRS.WakeTurbulenceCategory.None:   if(!ignoreNone) result = '无'; break;
+                case VRS.WakeTurbulenceCategory.None:   if(!ignoreNone) result = '未知'; break;
                 case VRS.WakeTurbulenceCategory.Light:  result = '轻微'; break;
                 case VRS.WakeTurbulenceCategory.Medium: result = '中等'; break;
                 case VRS.WakeTurbulenceCategory.Heavy:  result = '严重'; break;
@@ -680,7 +690,7 @@
         }
         var stopovers = via ? via.length : 0;
         if(stopovers > 0) {
-            result += ' 经过';
+            result += ' 途径';
             for(var i = 0;i < stopovers;++i) {
                 var stopover = via[i].val;
                 if(i > 0) result += ',';
@@ -703,7 +713,39 @@
             and the English version will be used. Otherwise you can delete the following line:
         */
 
-        return englishCountry;
+        switch (englishCountry) {
+             case 'Australia':          return '奥大利亚';
+             case 'Austria':            return '奥地利';
+             case 'Belgium':            return '比利时';
+             case 'Brazil':             return '巴西';
+             case 'Cambodia':           return '柬埔寨';
+             case 'Canada':             return '加拿大';
+             case 'Cayman Islands':     return '开曼群岛';
+             case 'China':              return '中国';
+             case 'Fiji':               return '斐济';
+             case 'Germany':            return '德国';
+             case 'Hong Kong':          return '香港';
+             case 'Indonesia':          return '印度尼西亚';
+             case 'Iraq':               return '伊拉克';
+             case 'Isle of Man':        return '马恩岛';
+             case 'Japan':              return '日本';
+             case 'Libya':              return '利比亚';
+             case 'Macau':              return '澳门';
+             case 'Malta':              return '马耳他';
+             case 'Nicaragua':          return '尼加拉瓜';
+             case 'North Korea':        return '朝鲜';
+             case 'Russia':             return '俄罗斯';
+             case 'Singapore':          return '新加坡';
+             case 'South Korea':        return '韩国';
+             case 'Taiwan':             return '台湾';
+             case 'United Kingdom':     return '英国';
+             case 'United States':      return '美国';
+             case 'Unknown or unassigned country': return '未知或未赋值的国家';
+                
+             default: return englishCountry;
+         }
+
+        //return englishCountry;
 
         /*
             and then remove the "//" from the start of every line after these comments and fill in the translations for the

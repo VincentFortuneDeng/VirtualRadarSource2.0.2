@@ -749,13 +749,13 @@
     VRS.renderPropertyHandlers[VRS.RenderProperty.RegistrationAndIcao] = new VRS.RenderPropertyHandler({
         property:               VRS.RenderProperty.RegistrationAndIcao,
         surfaces:               VRS.RenderSurface.List,
-        headingKey:             'ListRegistration',
+        headingKey:             'ListRegistration',//测试ListRegistration
         labelKey:               'RegistrationAndIcao',
         sortableField:          VRS.AircraftListSortableField.Registration,
         hasChangedCallback:     function(aircraft) { return aircraft.registration.chg || aircraft.icao.chg; },
         renderCallback:         function(aircraft) {
             return VRS.format.stackedValues(
-                aircraft.formatRegistration(),
+                aircraft.formatRegistration(),//测试Icao formatRegistration
                 aircraft.formatIcao()
             );
         }

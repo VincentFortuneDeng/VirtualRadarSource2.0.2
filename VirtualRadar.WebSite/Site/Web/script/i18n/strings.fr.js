@@ -122,7 +122,7 @@
     VRS.$$.FlightsCount =                               'Nombre de Vols';
     VRS.$$.FlightsListShort =                           'Vols';
     VRS.$$.FlightSimPage =                              'Page Flight Sim ';
-    VRS.$$.FlightSimTitle =                             'Virtual Radar - FSX';
+    VRS.$$.FlightSimTitle =                             'ADS-B Radar - FSX';
     VRS.$$.ForcePhoneOff =                              'Non Smartphone';  // As in "force the page to ignore the fact that this is a smart phone"
     VRS.$$.ForcePhoneOn =                               'Smartphone';  // As in "force the page to pretend that this is a smart phone"
     VRS.$$.ForceTabletOff =                             'Non tablette';  // As in "force the page to ignore the fact that this is a tablet PC"
@@ -349,7 +349,7 @@
     VRS.$$.PinTextLines =                               'Number of label lines';  /** THIS IS NEW! **/
     VRS.$$.Piston =                                     'Piston';
     VRS.$$.Pixels =                                     'pixels';
-    VRS.$$.PoweredByVRS =                               'Powered by Virtual Radar Server';
+    VRS.$$.PoweredByVRS =                               'Powered by ADS-B Radar Server';
     VRS.$$.PreviousId =                                 'ID précédent';
     VRS.$$.Quantity =                                   'Quantité';
     VRS.$$.RadioMast =                                  'Radio Mast';  /** THIS IS NEW! **/
@@ -444,7 +444,7 @@
     VRS.$$.UseRelativeDates =                           'Utiliser dates relatives';
     VRS.$$.UserTag =                                    'Tag utilisateur';
     VRS.$$.VerticalSpeed =                              'Vitesse verticale';
-    VRS.$$.VirtualRadar =                               'Radar Virtuel';
+    VRS.$$.VirtualRadar =                               'ADS-B Radar ';
     VRS.$$.Volume25 =                                   'Volume 25%';
     VRS.$$.Volume50 =                                   'Volume 50%';
     VRS.$$.Volume75 =                                   'Volume 75%';

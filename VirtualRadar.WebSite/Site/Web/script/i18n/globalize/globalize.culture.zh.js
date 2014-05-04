@@ -29,24 +29,43 @@ Globalize.addCultureInfo("zh", "default", {
     name: "zh",
 	englishName: "Chinese",
 	nativeName: "中文",
+	isRTL: false,
+	language: "zh",
 	numberFormat: {
 		currency: {
 		    pattern: ["$-n", "$n"],
-			symbol: "￥"
+		    symbol: "¥"
 		}
 	},
 	calendars: {
-		standard: {
-			firstDay: 1,
+	    standard: {
+	        "/": "-",
+	        firstDay: 1,
+            days: {
+				// full day names
+				names: [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],
+				// abbreviated day names
+				namesAbbr: [ "周日", "周一", "周二", "周三", "周四", "周五", "周六" ],
+				// shortest day names
+				namesShort: [ "日", "一", "二", "三", "四", "五", "六" ]
+			},
+			months: {
+				// full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+				names: [ "一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月", "" ],
+				// abbreviated month names
+				namesAbbr: [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月", "" ]
+			},
+			AM: null,
+			PM: null,
 			patterns: {
-			    d: "yyyy/MM/dd",
-			    D: "yyyy MMMM dd",
-				t: "HH:mm",
-				T: "HH:mm:ss",
-				f: "yyyy MMMM dd HH:mm",
-				F: "yyyy MMMM dd HH:mm:ss",
-				M: "MMMM dd",
-				Y: "yyyy MMMM"
+			    d: "yyyy/M/d",
+			    D: "yyyy年M月d日,dddd",
+				t: "H:mm",
+				T: "H:mm:ss",
+				f: "yyyy年M月d日,dddd H:mm",
+				F: "yyyy年M月d日,dddd H:mm:ss",
+				M: "M月d日",
+				Y: "yyyy年M月"
 			}
 		}
 	}

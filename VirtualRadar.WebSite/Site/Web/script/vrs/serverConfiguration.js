@@ -66,12 +66,14 @@
         /**
          * Returns true if the configuration allows for the submission of routes.
          * @returns {boolean}
+         * 修改为本地不显示提交
          */
-        this.routeSubmissionEnabled = function() { return _ServerConfig && (_ServerConfig.IsLocalAddress || _ServerConfig.InternetClientsCanSubmitRoutes); };
+        this.routeSubmissionEnabled = function () { return _ServerConfig && (_ServerConfig.IsLocalAddress && _ServerConfig.InternetClientsCanSubmitRoutes); };
 
         /**
          * Returns true if the configuration allows for the display of polar plots.
          * @returns {boolean}
+         * 
          */
         this.polarPlotsEnabled = function() { return _ServerConfig && (_ServerConfig.IsLocalAddress || _ServerConfig.InternetClientsCanSeePolarPlots); };
         //endregion

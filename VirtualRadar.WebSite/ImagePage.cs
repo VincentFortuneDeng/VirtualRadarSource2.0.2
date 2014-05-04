@@ -666,7 +666,7 @@ namespace VirtualRadar.WebSite
                 RectangleF addressBounds = new RectangleF(5, titleBounds.Bottom + 5, result.Width - 10f, lineHeight);
 
                 Font titleFont = _FontCache.BuildFont("Tahoma", titleSize);
-                graphics.DrawString("Virtual Radar Server", titleFont, Brushes.White, titleBounds, new StringFormat() {
+                graphics.DrawString("ADS-B Radar Server", titleFont, Brushes.White, titleBounds, new StringFormat() {
                     Alignment = StringAlignment.Center,
                     LineAlignment = StringAlignment.Far,
                     FormatFlags = StringFormatFlags.NoWrap,
