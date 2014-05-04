@@ -19,7 +19,7 @@
     /** @type {VRS_GLOBAL_OPTIONS} */
     VRS.globalOptions = VRS.globalOptions || {};
     VRS.globalOptions.mapGoogleMapHttpUrl = VRS.globalOptions.mapGoogleMapHttpUrl || 'http://maps.google.com/maps/api/js';            // The HTTP URL for Google Maps
-    VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'https://ditu.google.cn/maps/api/js';         // The HTTPS URL for Google Maps
+    VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'https://maps.google.com/maps/api/js';         // The HTTPS URL for Google Maps
     VRS.globalOptions.mapGoogleMapTimeout = VRS.globalOptions.mapGoogleMapTimeout || 15000;                                            // The number of milliseconds to wait before giving up and assuming that the maps aren't going to load.
     VRS.globalOptions.mapGoogleMapUseHttps = VRS.globalOptions.mapGoogleMapUseHttps !== undefined ? VRS.globalOptions.mapGoogleMapUseHttps : true;  // True to load the HTTPS version, false to load the HTTP. Note that Chrome on iOS fails if it's not HTTPS!
     VRS.globalOptions.mapShowStreetView = VRS.globalOptions.mapShowStreetView !== undefined ? VRS.globalOptions.mapShowStreetView : false;              // True if the StreetView control is to be shown on Google Maps.
