@@ -18,8 +18,8 @@
     //region Global options
     /** @type {VRS_GLOBAL_OPTIONS} */
     VRS.globalOptions = VRS.globalOptions || {};
-    VRS.globalOptions.mapGoogleMapHttpUrl = VRS.globalOptions.mapGoogleMapHttpUrl || 'http://maps.google.com/maps/api/js';            // The HTTP URL for Google Maps
-    VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'https://maps.google.com/maps/api/js';         // The HTTPS URL for Google Maps
+    VRS.globalOptions.mapGoogleMapHttpUrl = VRS.globalOptions.mapGoogleMapHttpUrl || 'http://maps.googleapis.com/maps/api/js';            // The HTTP URL for Google Maps
+    VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'https://maps.googleapis.com/maps/api/js';         // The HTTPS URL for Google Maps
     VRS.globalOptions.mapGoogleMapTimeout = VRS.globalOptions.mapGoogleMapTimeout || 15000;                                            // The number of milliseconds to wait before giving up and assuming that the maps aren't going to load.
     VRS.globalOptions.mapGoogleMapUseHttps = VRS.globalOptions.mapGoogleMapUseHttps !== undefined ? VRS.globalOptions.mapGoogleMapUseHttps : true;  // True to load the HTTPS version, false to load the HTTP. Note that Chrome on iOS fails if it's not HTTPS!
     VRS.globalOptions.mapShowStreetView = VRS.globalOptions.mapShowStreetView !== undefined ? VRS.globalOptions.mapShowStreetView : false;              // True if the StreetView control is to be shown on Google Maps.
@@ -1178,18 +1178,18 @@
         return $.extend({
             // Google Map load options - THESE ONLY HAVE ANY EFFECT ON THE FIRST MAP LOADED ON A PAGE
             key:                null,                                   // If supplied then the Google Maps script is loaded with this API key. API keys are optional for v3 of Google Maps.
-            version:            '3.15',                                 // The version of Google Maps to load.
+            version:            '3.exp',                                 // The version of Google Maps to load.
             sensor:             false,                                  // True if the location-aware stuff is to be turned on.
-            libraries:          [],                                     // The optional libraries to load.
+            libraries:          ['weather'],                            // The optional libraries to load.添加天气
             loadMarkerWithLabel:false,                                  // Loads the marker-with-labels library after loading Google Maps. Has no effect with other map providers.
 
             // Google map open options
             openOnCreate:       true,                                   // Open the map when the widget is created, if false then the code that creates the map has to call open() itself.
             waitUntilReady:     true,                                   // If true then the widget does not call afterOpen until after the map has completely loaded. If this is false then calling getBounds (and perhaps other calls) may fail until the map has loaded.
             zoom:               12,                                     // The zoom level to open with
-            center:             { lat: 51.5, lng: -0.125 },             // The location to centre the map on
+            center:             { lat: 40.060309, lng: 124.330393 },             // The location to centre the map on
             showMapTypeControl: true,                                   // True to show the map type control, false to hide it.
-            mapTypeId:          VRS.MapType.Hybrid,                     // The map type to start with
+            mapTypeId:          VRS.MapType.SATELLITE,                     // The map type to start with
             streetViewControl:  VRS.globalOptions.mapShowStreetView,    // Whether to show Street View or not
             scrollwheel:        VRS.globalOptions.mapScrollWheelActive, // Whether the scrollwheel zooms the map
             scaleControl:       VRS.globalOptions.mapShowScaleControl,  // Whether to show the scale control or not.
@@ -1719,6 +1719,17 @@
 
             var state = this._getState();
             state.map = new google.maps.Map(state.mapContainer[0], googleMapOptions);
+            //添加天气
+            /*var weatherLayerOptions = {
+                temperatureUnits: google.maps.weather.TemperatureUnit.CELSIUS,
+                windSpeedUnit: google.maps.weather.WindSpeedUnit.METERS_PER_SECOND
+            };
+
+            var weatherLayer = new google.maps.weather.WeatherLayer(weatherLayerOptions);
+            weatherLayer.setMap(state.map);
+
+            var cloudLayer = new google.maps.weather.CloudLayer();
+            cloudLayer.setMap(state.map);*/
 
             if(highContrastMap) {
                 state.map.mapTypes.set(highContrastMapName, /** @type {google.maps.MapType} */ highContrastMap);
