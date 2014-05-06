@@ -1114,6 +1114,18 @@
         this.map = undefined;
 
         /**
+         * 天气图层对象
+         * @type {google.maps.weather.WeatherLayer}
+         */
+        this.weatherLayer = undefined;
+
+        /**
+         * 云图图层对象
+         * @type {google.maps.weather.CloudLayer}
+         */
+        this.cloudLayer = undefined;
+
+        /**
          * The map's container.
          * @type {jQuery}
          */
@@ -1638,6 +1650,14 @@
         },
         //endregion
 
+        //设置云图
+        setCloudLayer: function()
+        {
+            var state = this._getState();
+            state.cloudLayer = new google.maps.weather.CloudLayer();
+            state.cloudLayer.setMap(state.map);
+        },
+
         //region -- Basic map operations: open, refreshMap, panTo, fitBounds
         /**
          * Opens the map. If you configure the options so that the map is not opened when the widget is created then the
@@ -1730,6 +1750,8 @@
 
             var cloudLayer = new google.maps.weather.CloudLayer();
             cloudLayer.setMap(state.map);*/
+
+            
 
             if(highContrastMap) {
                 state.map.mapTypes.set(highContrastMapName, /** @type {google.maps.MapType} */ highContrastMap);
