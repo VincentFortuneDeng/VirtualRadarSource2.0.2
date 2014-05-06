@@ -1651,6 +1651,7 @@
         //endregion
 
         //设置云图
+        
         setCloudLayer: function()
         {
             var state = this._getState();

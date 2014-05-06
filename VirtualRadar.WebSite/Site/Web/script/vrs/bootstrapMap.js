@@ -140,6 +140,9 @@
             if(pageSettings.mapPlugin && !pageSettings.mapPlugin.isOpen()) pageSettings.mapPlugin = null;
             base.raiseMapLoaded(pageSettings);
 
+            //添加天气图层
+            
+
             // Set up the current location
             if(VRS.currentLocation) {
                 if(pageSettings.mapJQ) VRS.currentLocation.setMapForApproximateLocation(pageSettings.mapJQ);

@@ -899,7 +899,7 @@
 
         if(VRS.serverConfig) {
             var config = VRS.serverConfig.get();
-            if(config && config.IsMono) _SuppressTextOnImages = true;
+            if (config && config.IsMono) _SuppressTextOnImages = true; 
         }
 
         /**
