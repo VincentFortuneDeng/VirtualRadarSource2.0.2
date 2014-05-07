@@ -1450,7 +1450,8 @@
          * Sets the currently selected map type.
          * @param {VRS.MapType} mapType
          */
-        setMapType: function(mapType) { this._setMapType(this._getState(), mapType); },
+        setMapType: function (mapType) { this._setMapType(this._getState(), mapType); },
+
         /**
          * Worker method for setMapType.
          * @param {VRS.MapPluginState} state
@@ -1463,6 +1464,23 @@
             else {
                 var currentMapType = this.getMapType();
                 if(currentMapType !== mapType) state.map.setMapTypeId(VRS.googleMapUtilities.toGoogleMapType(mapType));
+            }
+        },
+
+        /**
+         * 设置云图
+         * @param {number} zoom
+         */
+        setCloudLayer: function () { this._setCloudLayer(this._getState()); },
+        /**
+         * Worker method for getCenter.
+         * @param {VRS.MapPluginState} state
+         * @returns {VRS_LAT_LNG}
+         * @private
+         */
+        _setCloudLayer: function (state) {
+            if (state.map) {
+                state.cloudLayer.setMap(state.map);
             }
         },
 
@@ -1650,14 +1668,7 @@
         },
         //endregion
 
-        //设置云图
         
-        setCloudLayer: function()
-        {
-            var state = this._getState();
-            state.cloudLayer = new google.maps.weather.CloudLayer();
-            state.cloudLayer.setMap(state.map);
-        },
 
         //region -- Basic map operations: open, refreshMap, panTo, fitBounds
         /**
@@ -1751,7 +1762,7 @@
 
             var cloudLayer = new google.maps.weather.CloudLayer();
             cloudLayer.setMap(state.map);*/
-
+            state.cloudLayer = new google.maps.weather.CloudLayer();
             
 
             if(highContrastMap) {

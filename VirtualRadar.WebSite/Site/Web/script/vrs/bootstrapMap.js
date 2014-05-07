@@ -123,7 +123,7 @@
                 }, objSettings.mapSettings || {});
                 base.raiseMapSettingsInitialised(pageSettings);
 
-                pageSettings.mapJQ.vrsMap(VRS.jQueryUIHelper.getMapOptions(pageSettings.mapSettings));
+                pageSettings.mapJQ.vrsMap(VRS.jQueryUIHelper.getMapOptions(pageSettings.mapSettings));//打开地图，调用vrsMap.open
             }
         };
         //endregion
@@ -141,7 +141,9 @@
             base.raiseMapLoaded(pageSettings);
 
             //添加天气图层
-            
+            //pageSettings.mapPlugin
+            if (pageSettings.mapPlugin && pageSettings.mapPlugin.isOpen()) pageSettings.mapPlugin.setCloudLayer();
+
 
             // Set up the current location
             if(VRS.currentLocation) {

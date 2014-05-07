@@ -123,8 +123,8 @@ EC55232637E8D3AD9B496B90DC7AA4AC     41038 \script\jquiplugin\jquery.vrs.aircraf
 A70DA928288DF4F483CBD49274C065B1     27284 \script\jquiplugin\jquery.vrs.aircraftInfoWindow.js
 9DBD429739EF4ED7FD712C1784ABD33A     10664 \script\jquiplugin\jquery.vrs.aircraftLinks.js
 D937B8FFF5115ACEFC9BFFF87F691337     53137 \script\jquiplugin\jquery.vrs.aircraftList.js
-3A15D51D61F11822915E3E4891A03BE7     15969 \script\jquiplugin\jquery.vrs.aircraftPositionMap.js
-F6318F6C1C7AA0E71C2D1DE265D1FAB2    112975 \script\jquiplugin\jquery.vrs.map.js
+C14B570D4CAEAF792B51077C3D4CC4BC     15978 \script\jquiplugin\jquery.vrs.aircraftPositionMap.js
+BA6723D32FC207129D48291594589C51    113442 \script\jquiplugin\jquery.vrs.map.js
 E4FD5E7378E5A6233912301E449AC915      9914 \script\jquiplugin\jquery.vrs.mapNextPageButton.js
 3EFC03043E40B39EF40ED6EF0EB90222     18720 \script\jquiplugin\jquery.vrs.menu.js
 942383BCECB37B650FA26971F3BA5AA9      5282 \script\jquiplugin\jquery.vrs.optionDialog.js
@@ -158,12 +158,12 @@ BC30D0C74CB89DB0AC240EF4FEEE885E     16703 \script\vrs\aircraftList.js
 4D1B8DCB47C1D4D39AA86001C185EA26     26445 \script\vrs\aircraftListFetcher.js
 1F8428F54754F79F813F3ACCB6C42EEC     13298 \script\vrs\aircraftListFilter.js
 86C49550175A70340CD55F46BDA31E42     24800 \script\vrs\aircraftListSorter.js
-F49CE31403E82CC71D9D60A03E8946BF    115738 \script\vrs\aircraftPlotter.js
+7E35AA2B8EE55F8963844CDBCAD50BC8    115740 \script\vrs\aircraftPlotter.js
 628E8EEDA6286061D434ABE7932CB50F     79615 \script\vrs\aircraftRenderer.js
 28465BCA566F382F9C2130684E841711      3745 \script\vrs\airportDataApi.js
 E66C373E3A3157319838ABE1F240BC45     29766 \script\vrs\audio.js
 15B1F249A82BCC13B5728576682CAEDF     23622 \script\vrs\bootstrap.js
-3388EC137E464B18E3735594E483B1C7     56674 \script\vrs\bootstrapMap.js
+293E1F4D1E88CFC0EE8DCDEF8BD70B8A     56900 \script\vrs\bootstrapMap.js
 A3538C9B19B65A82D65B26A64F02A416      2247 \script\vrs\bootstrapMapDesktop.js
 AD14C67F8A847C7F29E9C899FA1991A4      2280 \script\vrs\bootstrapMapFsx.js
 B17F20D1399E40243CB76BE914B67128      2681 \script\vrs\bootstrapMapMobile.js

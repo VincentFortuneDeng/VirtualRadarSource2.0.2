@@ -345,7 +345,7 @@
         {
             var state = this._getState();
             if(state.mirrorMapPlugin && state.mapPlugin) {
-                state.mapPlugin.setMapType(state.mirrorMapPlugin.getMapType());
+                state.mapPlugin.setMapType(state.mirrorMapPlugin.getMapType()); state.ma
             }
         },
 
