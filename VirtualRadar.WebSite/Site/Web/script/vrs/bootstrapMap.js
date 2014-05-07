@@ -140,9 +140,10 @@
             if(pageSettings.mapPlugin && !pageSettings.mapPlugin.isOpen()) pageSettings.mapPlugin = null;
             base.raiseMapLoaded(pageSettings);
 
-            //添加天气图层
+            //添加天气\云图图层
             //pageSettings.mapPlugin
-            if (pageSettings.mapPlugin && pageSettings.mapPlugin.isOpen()) pageSettings.mapPlugin.setCloudLayer();
+            if (pageSettings.mapPlugin && pageSettings.mapPlugin.isOpen())
+                pageSettings.mapPlugin.setCloudLayer();
 
 
             // Set up the current location
