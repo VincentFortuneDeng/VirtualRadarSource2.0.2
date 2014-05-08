@@ -1,12 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{54EB6F05-B072-4EC1-A756-F83399256872}"
 	ProjectSection(SolutionItems) = preProject
 		Dependencies\Interop.NATUPNPLib.dll = Dependencies\Interop.NATUPNPLib.dll
 		Dependencies\Ionic.Zip.dll = Dependencies\Ionic.Zip.dll
 		LICENSE.txt = LICENSE.txt
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		Dependencies\log4net.dll = Dependencies\log4net.dll
 		Dependencies\Moq.dll = Dependencies\Moq.dll
 		Dependencies\System.Data.SQLite.DLL = Dependencies\System.Data.SQLite.DLL
 		VirtualRadar.vsmdi = VirtualRadar.vsmdi
@@ -63,9 +66,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualRadar.Plugin.CustomContent", "VirtualRadar.Plugin.CustomContent\VirtualRadar.Plugin.CustomContent.csproj", "{86248078-7A1C-486D-8D08-064CC14FDB70}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = VirtualRadar.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -349,5 +349,8 @@ Global
 		{3B80F85F-085D-4D89-8CC6-5167A58D7845} = {F3CB0F2F-8F5A-44B0-8AFE-D8DA9531612E}
 		{40F37767-C554-453F-8748-784EF41E0AFB} = {F3CB0F2F-8F5A-44B0-8AFE-D8DA9531612E}
 		{9E538513-A812-4A09-BD54-96734AD4A850} = {F3CB0F2F-8F5A-44B0-8AFE-D8DA9531612E}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = VirtualRadar.vsmdi
 	EndGlobalSection
 EndGlobal

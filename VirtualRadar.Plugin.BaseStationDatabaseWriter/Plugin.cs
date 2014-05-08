@@ -24,6 +24,7 @@ using VirtualRadar.Interface.Database;
 using VirtualRadar.Interface.Listener;
 using VirtualRadar.Interface.Settings;
 using VirtualRadar.Interface.StandingData;
+using log4net;
 
 namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
 {
@@ -32,6 +33,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
     /// </summary>
     public class Plugin : IPlugin
     {
+        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region Private class - DefaultProvider
         /// <summary>
         /// The default implementation of <see cref="IPluginProvider"/>.
@@ -364,7 +366,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                             Status = PluginStrings.EnabledNotUpdating;
                             StatusDescription = String.Format(PluginStrings.ExceptionCaughtWhenStartingSession, ex.Message);
 
-                            Factory.Singleton.Resolve<ILog>().Singleton.WriteLine("Database writer plugin caught exception on starting session: {0}", ex.ToString());
+                            Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine("Database writer plugin caught exception on starting session: {0}", ex.ToString());
                         }
                     }
                     OnStatusChanged(EventArgs.Empty);
@@ -391,7 +393,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                     } catch(Exception ex) {
                         Debug.WriteLine(String.Format("BaseStationDatabaseWriter.Plugin.EndSession caught exception {0}", ex.ToString()));
                         StatusDescription = String.Format(PluginStrings.ExceptionCaughtWhenClosingSession, ex.Message);
-                        Factory.Singleton.Resolve<ILog>().Singleton.WriteLine("Database writer plugin caught exception on closing session: {0}", ex.ToString());
+                        Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine("Database writer plugin caught exception on closing session: {0}", ex.ToString());
                     } finally {
                         _Session = null;
                     }
@@ -447,9 +449,26 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
                         flight.EndTime = localNow;
+
+                        log.Info("AircraftID:" + flight.AircraftID + " Callsign:" + flight.Callsign + " FlightID:" + flight.FlightID
+                            + " FirstAltitude:" + flight.FirstAltitude + " FirstGroundSpeed:" + flight.FirstGroundSpeed
+                           + " FirstLat:" + flight.FirstLat + " FirstLon:" + flight.FirstLon
+                           + " FirstTrack:" + flight.FirstTrack + " FirstVerticalRate:" + flight.FirstVerticalRate
+                           + " LastAltitude:" + flight.LastAltitude + " LastGroundSpeed:" + flight.LastGroundSpeed
+                           + " LastLat:" + flight.LastLat + " LastLon:" + flight.LastLon
+                           + " LastTrack:" + flight.LastTrack + " LastVerticalRate:" + flight.LastVerticalRate
+                           + " StartTime:" + flight.StartTime + " EndTime:" + flight.EndTime
+                           + " NumADSBMsgRec:" + flight.NumADSBMsgRec + " NumPosMsgRec:" + flight.NumPosMsgRec
+                           + " NumModeSMsgRec:" + flight.NumModeSMsgRec + " NumAirPosMsgRec:" + flight.NumAirPosMsgRec
+                           + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);
                         if(message.SquawkHasChanged.GetValueOrDefault()) flight.HadAlert = true;
                         if(message.IdentActive.GetValueOrDefault()) flight.HadSpi = true;
-                        if(message.Squawk == 7500 || message.Squawk == 7600 || message.Squawk == 7700) flight.HadEmergency = true;
+                        /*
+                         * 7500：非法行为（比如劫机）
+                         * 7600：通讯故障
+                         * 7700：紧急状况 
+                         */
+                        if (message.Squawk == 7500 || message.Squawk == 7600 || message.Squawk == 7700) flight.HadEmergency = true;
                         UpdateFirstLastValues(message, flight, flightRecords);
                         UpdateMessageCounters(message, flight);
                     }
@@ -689,7 +708,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
             } catch(ThreadAbortException) {
             } catch(Exception ex) {
                 Debug.WriteLine(String.Format("BaseStationDatabaseWriter.Plugin.MessageRelay_MessageReceived caught exception {0}", ex.ToString()));
-                Factory.Singleton.Resolve<ILog>().Singleton.WriteLine("Database writer plugin caught exception on message processing: {0}", ex.ToString());
+                Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine("Database writer plugin caught exception on message processing: {0}", ex.ToString());
                 StatusDescription = String.Format(PluginStrings.ExceptionCaught, ex.Message);
                 OnStatusChanged(EventArgs.Empty);
             }
@@ -717,7 +736,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
             } catch(ThreadAbortException) {
             } catch(Exception ex) {
                 Debug.WriteLine(String.Format("BaseStationDatabaseWriter.Plugin.Heartbeat_SlowTick caught exception {0}", ex.ToString()));
-                Factory.Singleton.Resolve<ILog>().Singleton.WriteLine("Database writer plugin caught exception on flushing old flights: {0}", ex.ToString());
+                Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine("Database writer plugin caught exception on flushing old flights: {0}", ex.ToString());
                 StatusDescription = String.Format(PluginStrings.ExceptionCaught, ex.Message);
                 OnStatusChanged(EventArgs.Empty);
             }
