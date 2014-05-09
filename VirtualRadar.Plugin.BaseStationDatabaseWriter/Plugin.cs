@@ -452,15 +452,15 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
 
                         log.Info("AircraftID:" + flight.AircraftID + " Callsign:" + flight.Callsign + " FlightID:" + flight.FlightID
                             + " FirstAltitude:" + flight.FirstAltitude + " FirstGroundSpeed:" + flight.FirstGroundSpeed
-                           + " FirstLat:" + flight.FirstLat + " FirstLon:" + flight.FirstLon
-                           + " FirstTrack:" + flight.FirstTrack + " FirstVerticalRate:" + flight.FirstVerticalRate
-                           + " LastAltitude:" + flight.LastAltitude + " LastGroundSpeed:" + flight.LastGroundSpeed
-                           + " LastLat:" + flight.LastLat + " LastLon:" + flight.LastLon
-                           + " LastTrack:" + flight.LastTrack + " LastVerticalRate:" + flight.LastVerticalRate
-                           + " StartTime:" + flight.StartTime + " EndTime:" + flight.EndTime
-                           + " NumADSBMsgRec:" + flight.NumADSBMsgRec + " NumPosMsgRec:" + flight.NumPosMsgRec
-                           + " NumModeSMsgRec:" + flight.NumModeSMsgRec + " NumAirPosMsgRec:" + flight.NumAirPosMsgRec
-                           + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);
+                            + " FirstLat:" + flight.FirstLat + " FirstLon:" + flight.FirstLon
+                            + " FirstTrack:" + flight.FirstTrack + " FirstVerticalRate:" + flight.FirstVerticalRate
+                            + " LastAltitude:" + flight.LastAltitude + " LastGroundSpeed:" + flight.LastGroundSpeed
+                            + " LastLat:" + flight.LastLat + " LastLon:" + flight.LastLon
+                            + " LastTrack:" + flight.LastTrack + " LastVerticalRate:" + flight.LastVerticalRate
+                            + " StartTime:" + flight.StartTime + " EndTime:" + flight.EndTime
+                            + " NumADSBMsgRec:" + flight.NumADSBMsgRec + " NumPosMsgRec:" + flight.NumPosMsgRec
+                            + " NumModeSMsgRec:" + flight.NumModeSMsgRec + " NumAirPosMsgRec:" + flight.NumAirPosMsgRec
+                            + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);
                         if(message.SquawkHasChanged.GetValueOrDefault()) flight.HadAlert = true;
                         if(message.IdentActive.GetValueOrDefault()) flight.HadSpi = true;
                         /*

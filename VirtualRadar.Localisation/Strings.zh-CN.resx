@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>About</value>
+    <value>关于</value>
     <comment>e.g. About Virtual Radar Server</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
@@ -225,7 +225,7 @@ French translation by Francois /F5ANN.</value>
     <comment>As in the organisation operating an aircraft</comment>
   </data>
   <data name="Port" xml:space="preserve">
-    <value>Port</value>
+    <value>端口</value>
     <comment>As in a TCP/IP port number</comment>
   </data>
   <data name="ReadingSpeed" xml:space="preserve">
