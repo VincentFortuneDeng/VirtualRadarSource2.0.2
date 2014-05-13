@@ -217,51 +217,51 @@
     <comment>As in a TCP/IP port number</comment>
   </data>
   <data name="ReadingSpeed" xml:space="preserve">
-    <value>Reading speed</value>
+    <value>朗读速度</value>
     <comment>How quickly some text is spoken</comment>
   </data>
   <data name="Reg" xml:space="preserve">
-    <value>Registration</value>
+    <value>注册代码</value>
     <comment>As in aircraft registration</comment>
   </data>
   <data name="ReverseDNS" xml:space="preserve">
-    <value>Reverse DNS</value>
+    <value>解析 DNS</value>
   </data>
   <data name="Sessions" xml:space="preserve">
     <value>Sessions</value>
     <comment>The number of times someone has connected to the server</comment>
   </data>
   <data name="SilhouettesFolder" xml:space="preserve">
-    <value>Silhouettes folder</value>
+    <value>轮廓文件夹</value>
     <comment>The folder containing images of aircraft silhouettes</comment>
   </data>
   <data name="Source" xml:space="preserve">
-    <value>Source</value>
+    <value>源</value>
     <comment>As in whether a connection was from the local network or the Internet</comment>
   </data>
   <data name="StatusCode" xml:space="preserve">
-    <value>Status Code</value>
+    <value>状态代码</value>
   </data>
   <data name="TestConnection" xml:space="preserve">
-    <value>Test Connection</value>
+    <value>测试连接</value>
     <comment>Testing the connection to a computer</comment>
   </data>
   <data name="TotalMessages" xml:space="preserve">
-    <value>Total messages</value>
+    <value>消息总计</value>
   </data>
   <data name="TransmissionType" xml:space="preserve">
-    <value>Transmission Type</value>
+    <value>传输类型</value>
   </data>
   <data name="Type" xml:space="preserve">
-    <value>Type</value>
+    <value>类型</value>
     <comment>As in aircraft type</comment>
   </data>
   <data name="UNC" xml:space="preserve">
-    <value>Address</value>
+    <value>地址</value>
     <comment>As in a UNC kind of address, but not using technical acronyms if possible</comment>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version</value>
+    <value>版本</value>
     <comment>e.g. Version 1.2.3.4</comment>
   </data>
   <data name="AcronymByte" xml:space="preserve">
@@ -357,49 +357,49 @@
     <comment>The version of the site for smartphones and tablet computers</comment>
   </data>
   <data name="Other" xml:space="preserve">
-    <value>Other</value>
+    <value>其他</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>密码</value>
   </data>
   <data name="Requests" xml:space="preserve">
     <value>Requests</value>
     <comment>The number of requests a server gets</comment>
   </data>
   <data name="ShowLocalAddress" xml:space="preserve">
-    <value>Show local address</value>
+    <value>显示局域网地址</value>
     <comment>As in show the address of the server on 127.0.0.1</comment>
   </data>
   <data name="ShowNetworkAddress" xml:space="preserve">
-    <value>Show network address</value>
+    <value>显示网络地址</value>
     <comment>As in show the address of the server on the network</comment>
   </data>
   <data name="Start" xml:space="preserve">
-    <value>Start</value>
+    <value>开始</value>
   </data>
   <data name="TakeWebServerOffline" xml:space="preserve">
-    <value>Take Offline</value>
+    <value>关闭在线</value>
   </data>
   <data name="TakeWebServerOnline" xml:space="preserve">
-    <value>Take Online</value>
+    <value>启用在线</value>
   </data>
   <data name="TheseSettingsOnlyAffectInternetBrowsers" xml:space="preserve">
-    <value>These settings only affect browsers that connect from the Internet.</value>
+    <value>这些设置仅影响浏览器自Internet连接.</value>
   </data>
   <data name="UserMustAuthenticate" xml:space="preserve">
-    <value>User must authenticate</value>
+    <value>用户必须授权</value>
   </data>
   <data name="UserName" xml:space="preserve">
-    <value>User name</value>
+    <value>用户名</value>
   </data>
   <data name="WebServerOffline" xml:space="preserve">
-    <value>The web server is offline</value>
+    <value>Web Server离线</value>
   </data>
   <data name="WebServerOnline" xml:space="preserve">
-    <value>The web server is online</value>
+    <value>Web Server在线</value>
   </data>
   <data name="WebServerStatus" xml:space="preserve">
-    <value>Web server status</value>
+    <value>Web Server状态</value>
   </data>
   <data name="ADSBAircraft" xml:space="preserve">
     <value>ADS-B 航空器</value>
@@ -437,35 +437,35 @@
     <value>由于Flight Simulator X正在退出断开连接</value>
   </data>
   <data name="ReceivedCountMessages" xml:space="preserve">
-    <value>Received {0:N0} messages</value>
+    <value>已接收 {0:N0} 消息</value>
     <comment>Where {0:N0} is an integer</comment>
   </data>
   <data name="RideAircraft" xml:space="preserve">
-    <value>Ride Aircraft</value>
+    <value>驾驶航空器</value>
     <comment>Ride in the cockpit of an aircraft (using Flight Simulator X)</comment>
   </data>
   <data name="RidingAircraft" xml:space="preserve">
-    <value>Riding {0}</value>
+    <value>驾驶 {0}</value>
     <comment>Riding in the cockpit of the aircraft whose registration is {0}</comment>
   </data>
   <data name="SelectAnAircraftToRide" xml:space="preserve">
-    <value>Select an aircraft to ride first</value>
+    <value>首先选择一个要驾驶的航空器</value>
     <comment>Validation message, refers to riding in cockpit of an aircraft in Flight Simulator X</comment>
   </data>
   <data name="Status" xml:space="preserve">
-    <value>Status</value>
+    <value>状态</value>
     <comment>The current state of something</comment>
   </data>
   <data name="StopRidingAircraft" xml:space="preserve">
-    <value>Stop Ride</value>
+    <value>停止驾驶</value>
     <comment>Stop riding in the cockpit of an aircraft</comment>
   </data>
   <data name="UseFreezeMethod" xml:space="preserve">
-    <value>Use "freeze" method</value>
+    <value>使用 "freeze" 方式</value>
     <comment>"Freeze" may not need translating? It is a mode in Flight Simulator X that allows aircraft to be positioned anywhere the user likes.</comment>
   </data>
   <data name="UseSlewMethod" xml:space="preserve">
-    <value>Use "slew" method</value>
+    <value>使用 "slew" 方式</value>
     <comment>"Slew" may not need translating? It is a mode in Flight Simulator X that allows aircraft to be positioned anywhere the user likes.</comment>
   </data>
   <data name="ConnectionClientLog" xml:space="preserve">
@@ -552,13 +552,13 @@
     <comment>Top-level menu</comment>
   </data>
   <data name="Show" xml:space="preserve">
-    <value>Show</value>
+    <value>显示</value>
   </data>
   <data name="To" xml:space="preserve">
-    <value>To</value>
+    <value>至</value>
   </data>
   <data name="VersionCheckResult" xml:space="preserve">
-    <value>Version Check Result</value>
+    <value>版本检测结果</value>
     <comment>Title for a dialog box displaying the result of a check for a later version</comment>
   </data>
   <data name="AnotherInstanceRunningFull" xml:space="preserve">
@@ -667,39 +667,39 @@
     <value>选项</value>
   </data>
   <data name="ResetSettingsToDefault" xml:space="preserve">
-    <value>Reset settings to defaults</value>
+    <value>重置默认值设置</value>
   </data>
   <data name="SomethingDoesNotExist" xml:space="preserve">
-    <value>"{0}" does not exist</value>
+    <value>"{0}" 不存在</value>
     <comment>Where {0} is a filename or a folder name</comment>
   </data>
   <data name="SuggestUseDifferentPortFull" xml:space="preserve">
-    <value>If the web server cannot start because another program is listening to the port then run the Virtual Radar Server installer again and choose a different port.
+    <value>如果Web Server由于另一个程序正在监听端口而不能启动，那么再次运行ADS-B Server安装程序并且选择一个不同的端口.
 
-For example when the installer asks for a port number try 8080 instead of 80.</value>
+例如当安装程序询问端口号时用8080端口代替已安装的80端口.</value>
     <comment>** MULTILINE, PLEASE CLICK IN FIELD TO SEE ALL **
 Suggestion made if the exception could indicate that the port number is in use.</comment>
   </data>
   <data name="SuggestUseDifferentPortTitle" xml:space="preserve">
-    <value>Possible Solution</value>
+    <value>可能的解决方案</value>
     <comment>Title for an error message box</comment>
   </data>
   <data name="UnrecognisedCommandLineParameterFull" xml:space="preserve">
-    <value>The command-line parameter {0} is unrecognised</value>
+    <value>命令行参数 {0} 未被识别</value>
     <comment>Where {0} is a string</comment>
   </data>
   <data name="UnrecognisedCommandLineParameterTitle" xml:space="preserve">
-    <value>Unrecognised Command-Line Parameter</value>
+    <value>未识别的命令行参数</value>
     <comment>Title for an error message box</comment>
   </data>
   <data name="WebServer" xml:space="preserve">
     <value>Web Server</value>
   </data>
   <data name="WindowsVersionTooLowFull" xml:space="preserve">
-    <value>This program will not work on the operating system you are using. If you are running Windows XP then please install Service Pack 2 or higher.</value>
+    <value>本程序在您使用的操作系统下无法工作. 如果您正在运行Windows XP请安装Service Pack 2或者更高版本.</value>
   </data>
   <data name="WindowsVersionTooLowTitle" xml:space="preserve">
-    <value>HttpListener Not Supported by O/S</value>
+    <value>HttpListener 不支持操作 O/S</value>
     <comment>Title for an error message box</comment>
   </data>
   <data name="CannotParseRouteFile" xml:space="preserve">
@@ -710,23 +710,23 @@ Suggestion made if the exception could indicate that the port number is in use.<
     <value>未加载</value>
   </data>
   <data name="RouteFileStatus" xml:space="preserve">
-    <value>Loaded {0:N0} routes for the period {1:d} to {2:d}</value>
+    <value>已加载 {0:N0} 前一路径 {1:d} 至 {2:d}</value>
     <comment>Routes are flight routes, {0} is the number of routes loaded, {1} and {2} are the start and end dates of the period over which flight routes were compiled</comment>
   </data>
   <data name="RouteStateFileContentInvalid" xml:space="preserve">
-    <value>Route state file content is invalid</value>
+    <value>路径状态文件内容无效</value>
     <comment>Route as in flight route, state file is a file containing version numbers of flight route data</comment>
   </data>
   <data name="RouteStateFileInvalid" xml:space="preserve">
-    <value>Route state file is invalid</value>
+    <value>路径状态无效</value>
     <comment>Route as in flight route</comment>
   </data>
   <data name="SomeRouteFilesMissing" xml:space="preserve">
-    <value>Some route files are missing</value>
+    <value>一些路径文件丢失</value>
     <comment>As in flight routes</comment>
   </data>
   <data name="Reconnecting" xml:space="preserve">
-    <value>Reconnecting</value>
+    <value>重新连接</value>
   </data>
   <data name="LicenseContent" xml:space="preserve">
     <value>Copyright © 2010 onwards, Andrew Whewell
@@ -744,143 +744,143 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>许可</value>
   </data>
   <data name="UPnpPort" xml:space="preserve">
-    <value>Internet port number</value>
+    <value>Internet 端口号</value>
     <comment>As in a TCP/IP port number, not the sailing kind</comment>
   </data>
   <data name="PutOnInternet" xml:space="preserve">
-    <value>Put onto Internet</value>
+    <value>发布到Internet</value>
   </data>
   <data name="TakeOffInternet" xml:space="preserve">
-    <value>Take off Internet</value>
+    <value>脱离Internet</value>
   </data>
   <data name="UPnpActive" xml:space="preserve">
-    <value>The web server is on the Internet</value>
+    <value>Web Server 不在 Internet上</value>
   </data>
   <data name="UPnpDisabled" xml:space="preserve">
-    <value>UPnP support has not been enabled</value>
+    <value>UPnP 支持未被启用</value>
     <comment>UPnP probably does not need translating</comment>
   </data>
   <data name="UPnpInactive" xml:space="preserve">
-    <value>The web server is not on the Internet</value>
+    <value>The web server 没有在 Internet 上</value>
   </data>
   <data name="UPnpActiveWhileDisabled" xml:space="preserve">
-    <value>UPnP support has been disabled but the server is on the Internet</value>
+    <value>UPnP 支持被禁用 但 Server 已经在 Internet上</value>
     <comment>UPnP may not need translating</comment>
   </data>
   <data name="Authentication" xml:space="preserve">
     <value>认证</value>
   </data>
   <data name="ShowInternetAddress" xml:space="preserve">
-    <value>Show Internet address</value>
+    <value>显示Internet地址</value>
   </data>
   <data name="UPnPNotPresent" xml:space="preserve">
-    <value>Cannot find a router on the network that supports UPnP</value>
+    <value>网络中无法找到支持 UPnP 的路由器</value>
     <comment>UPnP need not be translated</comment>
   </data>
   <data name="UPnpNotSupported" xml:space="preserve">
-    <value>This version of Windows does not support UPnP</value>
+    <value>Windows版本不支持 UPnP</value>
     <comment>UPnP does not need to be translated</comment>
   </data>
   <data name="PicturesFolder" xml:space="preserve">
-    <value>Pictures folder</value>
+    <value>图片文件夹</value>
   </data>
   <data name="AutoStartUPnP" xml:space="preserve">
     <value>服务器放在互联网上启动</value>
   </data>
   <data name="SplashScreenConnectingToBaseStation" xml:space="preserve">
-    <value>Connecting to data feed</value>
+    <value>正在连接到数据源</value>
   </data>
   <data name="SplashScreenInitialisingAircraftList" xml:space="preserve">
-    <value>Initialising aircraft list</value>
+    <value>正在初始化航空器列表</value>
   </data>
   <data name="SplashScreenInitialisingBaseStationListener" xml:space="preserve">
-    <value>Initialising data feed listener</value>
+    <value>正在初始化数据源监听器</value>
   </data>
   <data name="SplashScreenInitialisingConnectionLogger" xml:space="preserve">
-    <value>Initialising connection logger</value>
+    <value>正在初始化 connection logger</value>
   </data>
   <data name="SplashScreenInitialisingLog" xml:space="preserve">
-    <value>Initialising the log</value>
+    <value>正在初始化日志</value>
   </data>
   <data name="SplashScreenInitialisingUPnPManager" xml:space="preserve">
-    <value>Initialising UPnP manager</value>
+    <value>正在初始化 UPnP 管理器</value>
   </data>
   <data name="SplashScreenLoadingConfiguration" xml:space="preserve">
-    <value>Loading the configuration</value>
+    <value>正在加载配置</value>
   </data>
   <data name="SplashScreenOpeningBaseStationDatabase" xml:space="preserve">
-    <value>Opening the BaseStation database</value>
+    <value>正在打开 BaseStation 数据库</value>
   </data>
   <data name="SplashScreenParsingCommandLineParameters" xml:space="preserve">
-    <value>Parsing command-line parameters</value>
+    <value>正在解析命令行参数</value>
   </data>
   <data name="SplashScreenStartingConnectionLogger" xml:space="preserve">
-    <value>Starting connection logger</value>
+    <value>正在连接日志记录器</value>
   </data>
   <data name="SplashScreenStartingDataUpdate" xml:space="preserve">
-    <value>Starting background check for data update</value>
+    <value>正在启动后台数据更新检测 update</value>
   </data>
   <data name="SplashScreenStartingUPnP" xml:space="preserve">
-    <value>Connecting server to Internet via UPnP</value>
+    <value>正在通过 UPnP 连接Server到Internet</value>
   </data>
   <data name="SplashScreenStartingWebServer" xml:space="preserve">
-    <value>Starting web server</value>
+    <value>正在启动Web Server</value>
   </data>
   <data name="VirtualRadarServer" xml:space="preserve">
-    <value>Virtual Radar Server</value>
+    <value>ADS-B Server</value>
     <comment>The name of the application</comment>
   </data>
   <data name="UserNameMissing" xml:space="preserve">
-    <value>Please enter the name that users must enter when accessing the web site</value>
+    <value>请输入当访用户问网站时必须输入的name</value>
   </data>
   <data name="SplashScreenLoadingStandingData" xml:space="preserve">
-    <value>Loading standing data</value>
+    <value>正在加载参照数据</value>
   </data>
   <data name="Plugins" xml:space="preserve">
-    <value>Plugins</value>
+    <value>插件</value>
   </data>
   <data name="menuPlugins" xml:space="preserve">
     <value>&amp;P插件...</value>
   </data>
   <data name="PluginThrewExceptionFull" xml:space="preserve">
-    <value>Plugin {0} threw an exception ({1}) when it was started - it remains loaded but may not behave correctly. Full details are in the log.</value>
+    <value>插件 {0} 抛出一个异常 ({1}) 在启动后 - 仍然被加载但是可能不能正确运行. 完整详情在日志中.</value>
   </data>
   <data name="PluginThrewExceptionTitle" xml:space="preserve">
-    <value>A Plugin Threw An Exception During Startup</value>
+    <value>在启动期间一个插件抛出异常</value>
   </data>
   <data name="SplashScreenStartingPlugins" xml:space="preserve">
-    <value>Starting plugins</value>
+    <value>正在启动插件</value>
   </data>
   <data name="ShuttingDown" xml:space="preserve">
-    <value>Shutting Down Virtual Radar Server</value>
+    <value>正在关闭 ADS-B Server</value>
   </data>
   <data name="ShuttingDownBaseStationAircraftList" xml:space="preserve">
-    <value>Shutting down aircraft list</value>
+    <value>正在关闭航空器列表</value>
   </data>
   <data name="ShuttingDownBaseStationDatabase" xml:space="preserve">
-    <value>Closing BaseStation database</value>
+    <value>正在关闭BaseStation数据库</value>
     <comment>BaseStation is the name of an application</comment>
   </data>
   <data name="ShuttingDownBaseStationListener" xml:space="preserve">
-    <value>Closing connection to data feed</value>
+    <value>正在关闭数据源连接</value>
   </data>
   <data name="ShuttingDownConnectionLogger" xml:space="preserve">
-    <value>Shutting down connection logger</value>
+    <value>正在关闭日志记录器连接</value>
   </data>
   <data name="ShuttingDownLogDatabase" xml:space="preserve">
-    <value>Closing log database</value>
+    <value>正在关闭日志数据库</value>
   </data>
   <data name="ShuttingDownPlugin" xml:space="preserve">
-    <value>Shutting down {0} plugin</value>
+    <value>正在关闭 {0} 插件</value>
   </data>
   <data name="ShuttingDownUPnpManager" xml:space="preserve">
-    <value>Shutting down UPnP</value>
+    <value>正在关闭 UPnP</value>
   </data>
   <data name="ShuttingDownWebServer" xml:space="preserve">
-    <value>Shutting down web server</value>
+    <value>正在关闭Web Server</value>
   </data>
   <data name="TrackingAircraft" xml:space="preserve">
-    <value>Aircraft tracked</value>
+    <value>已跟踪航空器</value>
   </data>
   <data name="CouldNotFindManifest" xml:space="preserve">
     <value>不能发现货单</value>
@@ -889,37 +889,37 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>不能解析货单: {0}</value>
   </data>
   <data name="PluginCannotBeLoaded" xml:space="preserve">
-    <value>Plugin could not be loaded: {0}</value>
+    <value>插件不能被加载: {0}</value>
   </data>
   <data name="PluginDoesNotHaveJustOneIPlugin" xml:space="preserve">
-    <value>The plugin does not have just one class that implements IPlugin</value>
+    <value>插件没有实现IPlugin接口</value>
   </data>
   <data name="PluginMaximumVersionNotMet" xml:space="preserve">
-    <value>Plugin does not work with versions of VRS past {0}</value>
+    <value>插件不能在旧ADS-B Server版本 {0} 下工作</value>
   </data>
   <data name="PluginMaximumVersionUnparseable" xml:space="preserve">
-    <value>The manifest's maximum version cannot be parsed</value>
+    <value>清单的最大化版本不能被解析</value>
   </data>
   <data name="PluginMinimumVersionNotMet" xml:space="preserve">
-    <value>Plugin needs version {0} (or better) of VRS</value>
+    <value>插件需要版本 {0} (或者更高) ADS-B Server</value>
   </data>
   <data name="PluginMinumumVersionUnparseable" xml:space="preserve">
-    <value>The manifest's minimum version cannot be parsed</value>
+    <value>清单的最小化版本不能被解析</value>
   </data>
   <data name="CountPluginsCouldNotBeLoaded" xml:space="preserve">
     <value>{0:N0} 插件不能被加载</value>
   </data>
   <data name="PluginFileName" xml:space="preserve">
-    <value>Plugin File Name</value>
+    <value>插件文件名</value>
   </data>
   <data name="Reason" xml:space="preserve">
-    <value>Reason</value>
+    <value>结果</value>
   </data>
   <data name="InvalidPlugins" xml:space="preserve">
     <value>无效插件</value>
   </data>
   <data name="SplashScreenStartingPictureFolderCache" xml:space="preserve">
-    <value>Starting picture folder cache</value>
+    <value>正在启动图片文件夹缓存</value>
   </data>
   <data name="Feet" xml:space="preserve">
     <value>英尺</value>
@@ -958,25 +958,25 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>忽略格式错误消息</value>
   </data>
   <data name="TotalBadMessages" xml:space="preserve">
-    <value>Bad messages</value>
+    <value>错误消息</value>
   </data>
   <data name="PleaseSelectAFile" xml:space="preserve">
-    <value>Please select a file</value>
+    <value>请选择一个文件</value>
   </data>
   <data name="PleaseSelectAFolder" xml:space="preserve">
-    <value>Please select a folder</value>
+    <value>请选择一个文件夹</value>
   </data>
   <data name="PleaseSelectFlagsFolder" xml:space="preserve">
-    <value>Please select the folder holding operator logo images</value>
+    <value>请选请择控股航空公司标志图像文件夹</value>
   </data>
   <data name="PleaseSelectPicturesFolder" xml:space="preserve">
-    <value>Please select the folder containing aircraft pictures</value>
+    <value>请选择包含航空器照片的目录</value>
   </data>
   <data name="PleaseSelectSilhouettesFolder" xml:space="preserve">
-    <value>Please select the folder containing aircraft silhouette images</value>
+    <value>请选择包含航空器轮廓图像的文件夹</value>
   </data>
   <data name="SelectBaseStationDatabaseFile" xml:space="preserve">
-    <value>Select BaseStation Database File</value>
+    <value>选择 BaseStation 数据库文件</value>
     <comment>BaseStation is the name of a program and may not need translating</comment>
   </data>
   <data name="DataSource" xml:space="preserve">
@@ -991,13 +991,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <comment>BaseStation does not need translating</comment>
   </data>
   <data name="ReceiverLocation" xml:space="preserve">
-    <value>Receiver location</value>
+    <value>接收器坐标</value>
   </data>
   <data name="SBS3ModeSFeed" xml:space="preserve">
-    <value>SBS-3 Raw Feed</value>
+    <value>SBS-3 原始源</value>
   </data>
   <data name="UseDefaultPort" xml:space="preserve">
-    <value>Use default port</value>
+    <value>使用默认端口</value>
   </data>
   <data name="Data" xml:space="preserve">
     <value>数据</value>
@@ -1021,19 +1021,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>新建</value>
   </data>
   <data name="PleaseEnterNameForLocation" xml:space="preserve">
-    <value>Please enter a name for the location</value>
+    <value>请输入一个位置名称</value>
   </data>
   <data name="PleaseEnterUniqueNameForLocation" xml:space="preserve">
-    <value>This name has been used for another location</value>
+    <value>这个名称已经被用于另一个位置</value>
   </data>
   <data name="ReceiverLocationsTitle" xml:space="preserve">
-    <value>Receiver Locations</value>
+    <value>接收器坐标</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>重置</value>
   </data>
   <data name="UpdateFromBaseStationDatabase" xml:space="preserve">
-    <value>Update from BaseStation database</value>
+    <value>自 BaseStation 数据库更新</value>
   </data>
   <data name="BeastModeSFeed" xml:space="preserve">
     <value>AVR or Beast 原始数据源</value>
@@ -1065,23 +1065,23 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <comment>Abbreviation of kilometres</comment>
   </data>
   <data name="RawDecoding" xml:space="preserve">
-    <value>Raw Decoding</value>
+    <value>原始解码</value>
   </data>
   <data name="ReceiverRange" xml:space="preserve">
-    <value>Receiver range (kilometres)</value>
+    <value>接收器范围 (公里)</value>
   </data>
   <data name="Seconds" xml:space="preserve">
-    <value>seconds</value>
+    <value>秒</value>
     <comment>As in hours, minutes, seconds</comment>
   </data>
   <data name="SlowSurfaceGlobalPositionLimit" xml:space="preserve">
-    <value>Slow surface global position limit (seconds)</value>
+    <value>慢表面全局坐标限制 (秒)</value>
   </data>
   <data name="UseIcaoSpecificationSettings" xml:space="preserve">
-    <value>Use ICAO specification settings</value>
+    <value>使用ICAO的规范设置</value>
   </data>
   <data name="UseRecommendedSettings" xml:space="preserve">
-    <value>Use recommended settings</value>
+    <value>使用推荐的设置</value>
   </data>
   <data name="OptionsDataSourcesDataFeed" xml:space="preserve">
     <value>数据提供</value>
@@ -1262,54 +1262,54 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>How speeds are shown. Only used on a browser's first visit to the web site.</value>
   </data>
   <data name="OptionsDescribeWebSiteMinimumGoogleMapRefreshSeconds" xml:space="preserve">
-    <value>The smallest number of seconds that the web site will allow the user to choose when selecting the number of seconds between refreshes of aircraft data.</value>
+    <value>允许用户选择的网站航空器数据刷新间隔最小秒数.</value>
   </data>
   <data name="OptionsGeneralCategory" xml:space="preserve">
-    <value>General Settings</value>
+    <value>通用设置</value>
     <comment>As in miscellaneous settings</comment>
   </data>
   <data name="OptionsRawFeedDecoderParametersCategory" xml:space="preserve">
-    <value>Raw Decoding Parameters</value>
+    <value>原始解码参数</value>
   </data>
   <data name="OptionsRawFeedReceiverDetailsCategory" xml:space="preserve">
-    <value>Receiver Details</value>
+    <value>接收器详情</value>
   </data>
   <data name="OptionsRawFeedSheetTitle" xml:space="preserve">
-    <value>Raw Feed Decoding</value>
+    <value>原始源解码</value>
   </data>
   <data name="OptionsUPnPCategory" xml:space="preserve">
     <value>UPnP</value>
   </data>
   <data name="OptionsWebServerInternetClientsCategory" xml:space="preserve">
-    <value>Restrictions on Internet Users</value>
+    <value>限制 Internet 用户</value>
   </data>
   <data name="OptionsWebServerSheetTitle" xml:space="preserve">
     <value>Web Server</value>
   </data>
   <data name="OptionsWebSiteSettingsCategory" xml:space="preserve">
-    <value>Web Site Settings</value>
+    <value>网站设置</value>
   </data>
   <data name="OptionsWebSiteTitle" xml:space="preserve">
-    <value>Web Site</value>
+    <value>网站</value>
   </data>
   <data name="TextToSpeechVoice" xml:space="preserve">
-    <value>Text-to-speech voice</value>
+    <value>Text-to-speech 语音</value>
   </data>
   <data name="USBOverCOM" xml:space="preserve">
-    <value>Serial</value>
+    <value>串口</value>
     <comment>As in a serial port, serial communications etc.</comment>
   </data>
   <data name="TestAudioSettings" xml:space="preserve">
-    <value>Test Audio</value>
+    <value>测试声音</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>警告</value>
   </data>
   <data name="DataSourceNetworkAddressMissing" xml:space="preserve">
     <value>请输入要连接到的数据源IP地址</value>
   </data>
   <data name="PortOutOfBounds" xml:space="preserve">
-    <value>The port must be between 1 and 65535</value>
+    <value>串口号必须在 1 至 65535 之间</value>
   </data>
   <data name="AcceptableAirborneSpeedOutOfBounds" xml:space="preserve">
     <value>可接受的空中局部坐标速度必须在 0.005 至 45.0 之间</value>
@@ -1327,10 +1327,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>表面快速全局坐标限制必须在 1 至 75</value>
   </data>
   <data name="ReceiverRangeOutOfBounds" xml:space="preserve">
-    <value>The receiver range must be between 0 and 99999</value>
+    <value>接收器范围必须在 0 至 99999</value>
   </data>
   <data name="SlowSurfaceGlobalPositionLimitOutOfBounds" xml:space="preserve">
-    <value>The slow surface global position limit must be between 1 and 150</value>
+    <value>慢表面全局坐标限制必须在 1 至 150 之间</value>
   </data>
   <data name="DaysBetweenChecksOutOfBounds" xml:space="preserve">
     <value>检查新版本间隔必须在 1 至 365 之间</value>
@@ -1366,13 +1366,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>最小刷新值必须在 0 至 3600</value>
   </data>
   <data name="ReadingSpeedOutOfBounds" xml:space="preserve">
-    <value>The text to speech speed must be between -10 and 10</value>
+    <value>Text to speech 速度必须在 -10 至 10 之间</value>
   </data>
   <data name="ResetPortAssignmentsOnStartup" xml:space="preserve">
-    <value>Reset port assignments on startup</value>
+    <value>启动时重置端口分配</value>
   </data>
   <data name="UPnpPortOutOfBounds" xml:space="preserve">
-    <value>The UPnP port must be between 1 and 65535</value>
+    <value>UPnP端口必须在 1 至 65535 之间</value>
     <comment>UPnP may not need translating</comment>
   </data>
   <data name="menuReconnectToDataFeed" xml:space="preserve">
@@ -1403,75 +1403,75 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>当与串行设备通讯时每个字节结束的位数. 仅用于串行数据源.</value>
   </data>
   <data name="SerialBaudRate" xml:space="preserve">
-    <value>Baud rate</value>
+    <value>波特率</value>
     <comment>As in the baud rate of a serial port</comment>
   </data>
   <data name="SerialComPort" xml:space="preserve">
-    <value>COM port</value>
+    <value>串口号</value>
   </data>
   <data name="SerialDataBits" xml:space="preserve">
-    <value>Data bits</value>
+    <value>数据位</value>
     <comment>As in the bits per byte when talking over a serial port</comment>
   </data>
   <data name="SerialHandshake" xml:space="preserve">
-    <value>Handshake</value>
+    <value>握手</value>
     <comment>As in the handshaking protocol to use when talking over a serial port. Also known as flow control.</comment>
   </data>
   <data name="SerialParity" xml:space="preserve">
-    <value>Parity</value>
+    <value>奇偶校验</value>
     <comment>As in the parity check to apply when talking over a serial port.</comment>
   </data>
   <data name="SerialSettings" xml:space="preserve">
-    <value>Serial</value>
+    <value>串口</value>
     <comment>As in the settings for serial communications</comment>
   </data>
   <data name="SerialShutdownText" xml:space="preserve">
-    <value>Shutdown command</value>
+    <value>关闭命令</value>
     <comment>Text sent to a COM device when disconnecting.</comment>
   </data>
   <data name="SerialStartupText" xml:space="preserve">
-    <value>Startup command</value>
+    <value>启动命令</value>
     <comment>Text sent to a COM device when first connected.</comment>
   </data>
   <data name="SerialStopBits" xml:space="preserve">
-    <value>Stop bits</value>
+    <value>停止位</value>
     <comment>As in the number of stop bits at the end of each byte when talking over a serial port</comment>
   </data>
   <data name="SerialBaudRateInvalidValue" xml:space="preserve">
-    <value>Please enter a valid baud rate (such as 115200 or 921600)</value>
+    <value>请输入一个有效的波特率 (如 115200 或 921600)</value>
   </data>
   <data name="SerialComPortMissing" xml:space="preserve">
-    <value>Please enter the COM port that the receiver is connected to</value>
+    <value>请输入连接接收器的串口号</value>
   </data>
   <data name="SerialDataBitsOutOfBounds" xml:space="preserve">
-    <value>The data bits must be between 5 and 8</value>
+    <value>数据位必须在 5 至 8 之间</value>
   </data>
   <data name="SerialHandshakeNone" xml:space="preserve">
-    <value>None</value>
+    <value>无</value>
   </data>
   <data name="SerialHandshakeRts" xml:space="preserve">
-    <value>Hardware</value>
+    <value>硬件</value>
   </data>
   <data name="SerialHandshakeRtsXOnXOff" xml:space="preserve">
-    <value>Hardware and XOn / XOff</value>
+    <value>硬件 和 XOn / XOff</value>
   </data>
   <data name="SerialHandshakeXOnXOff" xml:space="preserve">
     <value>XOn / XOff</value>
   </data>
   <data name="SerialParityEven" xml:space="preserve">
-    <value>Even</value>
+    <value>偶校验</value>
   </data>
   <data name="SerialParityMark" xml:space="preserve">
-    <value>Mark</value>
+    <value>标记</value>
   </data>
   <data name="SerialParityNone" xml:space="preserve">
-    <value>None</value>
+    <value>无</value>
   </data>
   <data name="SerialParityOdd" xml:space="preserve">
-    <value>Odd</value>
+    <value>奇校验</value>
   </data>
   <data name="SerialParitySpace" xml:space="preserve">
-    <value>Space</value>
+    <value>间隔</value>
   </data>
   <data name="SerialStopBitsNone" xml:space="preserve">
     <value>0</value>
@@ -1495,10 +1495,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>否</value>
   </data>
   <data name="OptionsDescribeGeneralRebroadcastServers" xml:space="preserve">
-    <value>接收器重广播消息传输的服务器配置.</value>
+    <value>接收器转播消息传输的服务器配置.</value>
   </data>
   <data name="RebroadcastFormatPassthrough" xml:space="preserve">
-    <value>Pass-through</value>
+    <value>传递</value>
     <comment>A rebroadcast server that transmits exactly the same bytes that were transmitted by the receiver VRS is listening to</comment>
   </data>
   <data name="RebroadcastFormatPort30003" xml:space="preserve">
@@ -1506,28 +1506,28 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <comment>A rebroadcast server that transmits Kinetic Port 30003 format messages converted from raw messages transmitted by the receiver that VRS is listening to</comment>
   </data>
   <data name="RebroadcastOptionsTitle" xml:space="preserve">
-    <value>Rebroadcast Servers</value>
+    <value>转播服务器</value>
   </data>
   <data name="RebroadcastServer" xml:space="preserve">
-    <value>Rebroadcast server</value>
+    <value>转播服务器</value>
   </data>
   <data name="RebroadcastServersDescribeMany" xml:space="preserve">
-    <value>{0} servers configured, {1} enabled</value>
+    <value>{0} 服务器已配置, {1} 已启用</value>
   </data>
   <data name="RebroadcastServersDescribeSingle" xml:space="preserve">
-    <value>1 server configured, {0} enabled</value>
+    <value>1 服务器已配置, {0} 已启用</value>
   </data>
   <data name="RebroadcastServersLabel" xml:space="preserve">
-    <value>Rebroadcast servers</value>
+    <value>转播服务器</value>
   </data>
   <data name="RebroadcastServersNoneConfigured" xml:space="preserve">
-    <value>None</value>
+    <value>无</value>
   </data>
   <data name="RebroadcastServersTitle" xml:space="preserve">
-    <value>Rebroadcast Servers</value>
+    <value>转播服务器</value>
   </data>
   <data name="RebroadcastServersStatus" xml:space="preserve">
-    <value>Rebroadcast server status</value>
+    <value>转播服务器状态</value>
   </data>
   <data name="NameMustBeUnique" xml:space="preserve">
     <value>请输入一个没有被使用的名称</value>
@@ -1536,13 +1536,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>请输入一个名称</value>
   </data>
   <data name="PortMustBeUnique" xml:space="preserve">
-    <value>Please enter a port that has not already been used</value>
+    <value>请输入一个未被使用的串口号</value>
   </data>
   <data name="RebroadcastFormatRequired" xml:space="preserve">
-    <value>Please select the rebroadcast message format</value>
+    <value>请选择转播服务器消息格式</value>
   </data>
   <data name="SplashScreenStartingRebroadcastServers" xml:space="preserve">
-    <value>Starting rebroadcast servers</value>
+    <value>正在启动转播服务器</value>
   </data>
   <data name="Configuration" xml:space="preserve">
     <value>配置</value>
@@ -1551,7 +1551,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>数据源状态</value>
   </data>
   <data name="PIPresent" xml:space="preserve">
-    <value>PI present</value>
+    <value>PI 呈现</value>
   </data>
   <data name="RebroadcastFormatAvr" xml:space="preserve">
     <value>AVR</value>
@@ -1570,16 +1570,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>'Yes' will show aircraft positions earlier but aircraft at extreme ranges are more likely to first appear at an inaccurate position. Only takes effect if a receiver location has been entered.</value>
   </data>
   <data name="SuppressReceiverRangeCheck" xml:space="preserve">
-    <value>Show aircraft outside receiver range</value>
+    <value>在接收器范围之外显示航空器.</value>
   </data>
   <data name="UseLocalDecodeForInitialPosition" xml:space="preserve">
-    <value>Use local decoding for initial position fix</value>
+    <value>使用本地解码作为初始位置定位.</value>
   </data>
   <data name="LatitudeCannotBeZero" xml:space="preserve">
     <value>纬度不能是 0</value>
   </data>
   <data name="ShuttingDownRebroadcastServer" xml:space="preserve">
-    <value>Shutting down rebroadcast servers</value>
+    <value>正在关闭转播服务器</value>
   </data>
   <data name="ADSB" xml:space="preserve">
     <value>ADS-B</value>
@@ -1606,7 +1606,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>长帧</value>
   </data>
   <data name="PIBadParity" xml:space="preserve">
-    <value>Bad parity PI</value>
+    <value>失败的奇偶校验PI</value>
   </data>
   <data name="menuStatistics" xml:space="preserve">
     <value>统计</value>
@@ -1621,31 +1621,31 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>无 ADS-B 承载</value>
   </data>
   <data name="PositionResets" xml:space="preserve">
-    <value>Position resets</value>
+    <value>坐标复位</value>
   </data>
   <data name="PositionsOutOfRange" xml:space="preserve">
-    <value>Positions out of range</value>
+    <value>坐标超出范围</value>
   </data>
   <data name="ResetCounters" xml:space="preserve">
-    <value>Reset Counters</value>
+    <value>重置计数器</value>
   </data>
   <data name="ShortFrame" xml:space="preserve">
-    <value>Short frame</value>
+    <value>短帧</value>
   </data>
   <data name="ShortFrameUnusable" xml:space="preserve">
-    <value>Unusable</value>
+    <value>无法使用</value>
   </data>
   <data name="SpeedChecksExceeded" xml:space="preserve">
-    <value>Speed checks exceeded</value>
+    <value>速度异常检测</value>
   </data>
   <data name="StatisticsTitle" xml:space="preserve">
-    <value>Statistics</value>
+    <value>统计</value>
   </data>
   <data name="Throughput" xml:space="preserve">
-    <value>Throughput</value>
+    <value>吞吐量</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>是</value>
   </data>
   <data name="AdsbRejected" xml:space="preserve">
     <value>ADS-B rejected</value>
@@ -1666,10 +1666,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>The number of seconds that must elapse since a message from an aircraft was last received before it will stop being tracked.</value>
   </data>
   <data name="TrackingTimeoutLessThanDisplayTimeout" xml:space="preserve">
-    <value>The tracking timeout cannot be less than the display timeout</value>
+    <value>跟踪超时不能少于显示超时.</value>
   </data>
   <data name="TrackingTimeoutOutOfBounds" xml:space="preserve">
-    <value>The tracking timeout cannot be more than 3600</value>
+    <value>跟踪超时不能超过3600.</value>
   </data>
   <data name="AcceptIcaoInNonPICount" xml:space="preserve">
     <value>Mode-S 消息计数</value>
@@ -1708,7 +1708,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>The number of seconds over which messages that have good parity must be received before the ICAO24 will be accepted.</value>
   </data>
   <data name="OptionsRawFeedAcceptIcaoAsValidCategory" xml:space="preserve">
-    <value>ICAO24 Validation Settings</value>
+    <value>ICAO24 验证设置</value>
   </data>
   <data name="InternetClientCanSubmitRoutes" xml:space="preserve">
     <value>可以提交路径</value>
@@ -1717,19 +1717,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>Yes if browsers connecting from the Internet are allowed to see links to submit routes, no if they cannot.</value>
   </data>
   <data name="OptionsDescribeWebSitePreferIataAirportCodes" xml:space="preserve">
-    <value>Yes to display IATA airport codes (e.g. LHR), no to display ICAO airport codes (e.g. EGLL).</value>
+    <value>是 显示 IATA 机场代码 (例如 LHR), 否 显示 ICAO 机场代码 (例如 EGLL).</value>
   </data>
   <data name="PreferIataAirportCodes" xml:space="preserve">
-    <value>Show IATA airport codes</value>
+    <value>显示 IATA 机场代码</value>
   </data>
   <data name="BytesBuffered" xml:space="preserve">
     <value>已缓冲字节</value>
   </data>
   <data name="PleaseSelectSiteRootFolder" xml:space="preserve">
-    <value>Please select the root folder of the site to serve</value>
+    <value>请选择 Server 网站根文件夹</value>
   </data>
   <data name="OptionsWebSiteCustomisationCategory" xml:space="preserve">
-    <value>Web Site Customisation</value>
+    <value>网站定制</value>
   </data>
   <data name="EnableBundling" xml:space="preserve">
     <value>启用捆绑</value>
@@ -1776,22 +1776,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>The unique name for this receiver. Must also be unique across all merged feeds.</value>
   </data>
   <data name="Receivers" xml:space="preserve">
-    <value>Receivers</value>
+    <value>接收器</value>
   </data>
   <data name="PleaseConfigureAtLeastOneReceiver" xml:space="preserve">
-    <value>Please configure at least one receiver.</value>
+    <value>请配置至少一个接收器.</value>
   </data>
   <data name="PleaseEnableAtLeastOneReceiver" xml:space="preserve">
-    <value>Please enable at least one receiver.</value>
+    <value>请启用至少一个接收器.</value>
   </data>
   <data name="OptionsDescribeRebroadcastReceiver" xml:space="preserve">
     <value>The receiver that you want to rebroadcast messages from.</value>
   </data>
   <data name="Receiver" xml:space="preserve">
-    <value>Receiver</value>
+    <value>接收器</value>
   </data>
   <data name="ReceiverRequired" xml:space="preserve">
-    <value>Please specify a receiver.</value>
+    <value>请指定接收器.</value>
   </data>
   <data name="AircraftCountTitle" xml:space="preserve">
     <value>已跟踪航空器</value>
@@ -1803,19 +1803,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>名称</value>
   </data>
   <data name="TotalBadMessagesTitle" xml:space="preserve">
-    <value>Bad Messages</value>
+    <value>错误消息</value>
   </data>
   <data name="TotalMessagesTitle" xml:space="preserve">
-    <value>Total Messages</value>
+    <value>消息总计</value>
   </data>
   <data name="OptionsDescribeWebSiteReceiverId" xml:space="preserve">
-    <value>The receiver to show to users when they first visit the web site.</value>
+    <value>当首次访问网站显示给用户的接收器site.</value>
   </data>
   <data name="WebSiteReceiverId" xml:space="preserve">
-    <value>Web site receiver</value>
+    <value>网站接收器</value>
   </data>
   <data name="WebSiteReceiverRequired" xml:space="preserve">
-    <value>Please specify the initial receiver to show on the web site</value>
+    <value>请指定在网站上显示的初始接收器.</value>
   </data>
   <data name="ClosestAircraftReceiverRequired" xml:space="preserve">
     <value>请指定接收器,桌面小部件将使用最近的航空器</value>
@@ -1848,7 +1848,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>添加</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>删除</value>
   </data>
   <data name="IcaoTimeoutOutOfBounds" xml:space="preserve">
     <value>超时必须在 1 至 30 秒</value>
@@ -1860,7 +1860,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>名称不能包含逗号</value>
   </data>
   <data name="ReceiversAndMergedFeedNamesMustBeUnique" xml:space="preserve">
-    <value>Receivers and merged feeds cannot share names</value>
+    <value>接收器和合并源不能共享名称</value>
   </data>
   <data name="IgnoreAircraftWithNoPosition" xml:space="preserve">
     <value>忽略无坐标航空器</value>
@@ -1896,7 +1896,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>是 搜索图片文件夹子文件夹图片, 否 仅搜索图片文件夹.</value>
   </data>
   <data name="SearchPictureSubFolders" xml:space="preserve">
-    <value>Search sub-folders for pictures</value>
+    <value>搜索子文件夹图片</value>
   </data>
   <data name="BadListenerTimeout" xml:space="preserve">
     <value>失败监听器超时</value>
@@ -1929,16 +1929,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>The type of proxy that the server is behind. If you aren't sure whether the server is behind a proxy then leave the setting at 'Unknown'.</value>
   </data>
   <data name="ProxyType" xml:space="preserve">
-    <value>Proxy type</value>
+    <value>代理类型</value>
   </data>
   <data name="Reverse" xml:space="preserve">
-    <value>Reverse</value>
+    <value>解析</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>未知</value>
   </data>
   <data name="SettingsPage" xml:space="preserve">
-    <value>Settings Page</value>
+    <value>设置页</value>
   </data>
   <data name="InternetClientCanShowPolarPlots" xml:space="preserve">
     <value>互联网用户可以看到接收器范围平面图</value>
