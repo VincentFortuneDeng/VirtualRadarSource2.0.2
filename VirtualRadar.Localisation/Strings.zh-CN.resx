@@ -1172,94 +1172,94 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>文本转换语音使用的声音.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptableAirborneSpeed" xml:space="preserve">
-    <value>The number of kilometres that an aircraft can travel in 30 seconds before a local decode is deemed to be invalid. ICAO recommend 11.112 km. High values prevent detection of inaccurate local decode positions.</value>
+    <value>航空器在本地解码之前，在30秒内被视为无效的行驶公里数。ICAO建议11.112公里. 高值防止检测不准确的定位解码位置.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptableAirSurfaceTransitionSpeed" xml:space="preserve">
-    <value>The number of kilometres that an aircraft taking off or landing can travel in 30 seconds before a local decode is deemed to be invalid. ICAO recommend 4.63 km. High values prevent detection of inaccurate local decode positions.</value>
+    <value>航空器在定位解码之前被视为的起飞或者着陆30秒内行驶的公里数. ICAO 推荐 4.63 公里. 高值防止检测不准确的定位解码位置.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptableSurfaceSpeed" xml:space="preserve">
-    <value>The number of kilometres that an vehicle on the surface can travel in 30 seconds before a local decode is deemed to be invalid. ICAO recommend 1.4km. High values prevent detection of inaccurate local decode positions.</value>
+    <value>在一个定位解码前被认为是无效的运输工具在地面30秒内行驶的公里数. ICAO 推荐 1.4公里. 高值防止检测不正确的定位解码位置.</value>
   </data>
   <data name="OptionsDescribeRawFeedAirborneGlobalPositionLimit" xml:space="preserve">
-    <value>The number of seconds that can elapse between odd/even format airborne position messages in global decoding. ICAO recommend 10 seconds. High values can cause aircraft to initially appear several hundred miles from their true location.</value>
+    <value>在奇偶格式空中位置消息全局解码经过的秒数秒数. ICAO 推荐 10 秒. 高值可以引起航空器初始位置离真实位置数百英里的偏差.</value>
   </data>
   <data name="OptionsDescribeRawFeedFastSurfaceGlobalPositionLimit" xml:space="preserve">
-    <value>The number of seconds that can elapse between odd/even format surface position messages in global decoding for vehicles travelling over 25 knots. ICAO recommend 25 seconds. High values can cause vehicles to initially appear several hundred miles from their true location.</value>
+    <value>在奇偶格式地面位置消息全局解码运输工具行驶超过25节经历的秒数. ICAO 推荐 25 秒. 高值会引起运输工具初始位置离真实位置数百英里的偏差.</value>
   </data>
   <data name="OptionsDescribeRawFeedIgnoreMilitaryExtendedSquitter" xml:space="preserve">
-    <value>Yes to ignore DF19/AF0 messages, no to decode them as if they were DF17 messages. Some ICAO documents state that they can be treated as DF17 messages, other documents disagree.</value>
+    <value>是 忽略 DF19/AF0 消息, 否 作为DF17消息解码. 一些 ICAO 文档状态可以被视为 DF17 消息, 有些文档不允许.</value>
   </data>
   <data name="OptionsDescribeRawFeedReceiverLocation" xml:space="preserve">
-    <value>The location of the receiver. ADS-B position messages for surface traffic decode into 8 possible locations on the Earth from which the location closest to the receiver is selected.</value>
+    <value>接收器位置. 地面交通ADS-B 位置消息解码到8个可能被选择的最近接收器地面位置.</value>
   </data>
   <data name="OptionsDescribeRawFeedReceiverRange" xml:space="preserve">
-    <value>The maximum range of the receiver. Any ADS-B messages decoding to a position further away from the receiver's location than this value are discarded.</value>
+    <value>接收器最大范围.任何远离接收器位置的ADS-B解码消息被抛弃.</value>
   </data>
   <data name="OptionsDescribeRawFeedSlowSurfaceGlobalPositionLimit" xml:space="preserve">
-    <value>The number of seconds that can elapse between odd/even format surface position messages in global decoding for vehicles travelling at or below 25 knots. ICAO recommend 50 seconds. High values can cause vehicles to initially appear several hundred miles from their true location.</value>
+    <value>在奇偶格式地面位置消息全局解码之间行驶经历的秒数或者低于25节. ICAO 推荐 50 秒.高值可以引起运输工具初始位置离真实位置数百英里偏差.</value>
   </data>
   <data name="OptionsDescribeWebServerAllowInternetProximityGadgets" xml:space="preserve">
-    <value>Yes if proximity gadgets connecting from the Internet are allowed to fetch aircraft data, no if they cannot. Proximity gadgets on the local network are not affected by this setting.</value>
+    <value>是 邻近小工具从 Internet 连接允许获取航空器数据,否 将不能.局域网中邻近小工具不受此设置影响.</value>
   </data>
   <data name="OptionsDescribeWebServerAutoStartUPnp" xml:space="preserve">
-    <value>Yes to automatically make VRS accessible from the Internet when the program starts, no if you want it to be inaccessible until manually connected.</value>
+    <value>是 将自动使ADS-B Server可以在程序启动时通过 Internet被访问,否 直到手动连接后才能被访问 .</value>
   </data>
   <data name="OptionsDescribeWebServerEnableUPnpFeatures" xml:space="preserve">
-    <value>Yes to enable the Universal Plug and Play features of the program, no to disable them.</value>
+    <value>是 启用程序通用即插即用功能 , 否 禁用.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanPlayAudio" xml:space="preserve">
-    <value>Yes if users connecting from the Internet are allowed to use the audio features, no if they cannot. Audio features consume bandwidth and increase server workload. Local network users are not affected by this setting.</value>
+    <value>是 如果用户连接自 Internet 被允许使用声音功能, 否 将不能. 声音功能消耗带宽并增加服务器工作负荷. 该设置不影响局域网用户.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanRunReports" xml:space="preserve">
-    <value>Yes if users connecting from the Internet are allowed to run reports, no if they cannot. Running reports consumes bandwidth and increases server workload. Local network users are not affected by this setting.</value>
+    <value>是 如果用户从 Internet 连接被允许运行报告, 否 将不能. 生成报告消耗带宽并且会增加服务器的工作负载. 该设置不影响局域网用户.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanSeeLabels" xml:space="preserve">
-    <value>Yes if users connecting from the Internet are allowed to view aircraft labels, no if they cannot. Aircraft labels consume bandwidth. Local network users are not affected by this setting.</value>
+    <value>是 如果用户从 Internet 连接被允许查看航空器标签,否 将不能. 航空器标签消耗带宽并且会增加服务器的工作负载.该设置不影响局域网用户.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanSeePictures" xml:space="preserve">
-    <value>Yes if users connecting from the Internet are allowed to view pictures of aircraft, no if they are not. Aircraft pictures consume bandwidth and resizing them can increase server workload. Local network users are not affected by this setting.</value>
+    <value>是 如果用户从 Internet 连接被允许查看航空器图片,否 将不能.航空器图片消耗带宽,调整他们会增加服务器的工作负载. 此设置不影响局域网用户.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientTimeoutMinutes" xml:space="preserve">
-    <value>How many minutes of inactivity can elapse before the site will stop responding to a user connecting from the Internet. 0 disables this feature. Local network users are never timed out.</value>
+    <value>Internet上网站停止响应用户连接前经历非互动多少分钟. 0 禁用该功能. 局域网用户不会超时.</value>
   </data>
   <data name="OptionsDescribeWebServerIsOnlyVirtualRadarServerOnLan" xml:space="preserve">
-    <value>Yes if this is the only computer running VRS on this network that you want to put onto the Internet, no if it is not.</value>
+    <value>是 如果这是你想发布到Internet上在网络中运行ADS-B Server的唯一计算机, 否 相反.</value>
   </data>
   <data name="OptionsDescribeWebServerPassword" xml:space="preserve">
-    <value>The password that users must enter when logging onto the web site.</value>
+    <value>在登录到网站时必须输入的用户密码.</value>
   </data>
   <data name="OptionsDescribeWebServerUPnpPort" xml:space="preserve">
-    <value>The port number that Internet traffic will connect to on the UPnP router to access Virtual Radar Server.</value>
+    <value>流量连接到UPnp路由器访问ADS-B Server的端口号.</value>
   </data>
   <data name="OptionsDescribeWebServerUserMustAuthenticate" xml:space="preserve">
-    <value>Yes if users must authenticate before browing the web site, no if they do not.</value>
+    <value>是 在用户浏览网站前必须授权, 否 不需要授权.</value>
   </data>
   <data name="OptionsDescribeWebServerUserName" xml:space="preserve">
-    <value>The name that users must enter when logging onto the web site.</value>
+    <value>在登录到网站时必须输入的用户名.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialDistanceUnit" xml:space="preserve">
-    <value>How distances are shown. Only used on a browser's first visit to the web site.</value>
+    <value>距离如何被显示. 仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialGoogleMapLatitude" xml:space="preserve">
-    <value>The line of latitude to centre the map on. Only used on a browser's first visit to the web site.</value>
+    <value>居中到地图的维度线. 仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialGoogleMapLongitude" xml:space="preserve">
-    <value>The line of longitude to centre the map on. Only used on a browser's first visit to the web site.</value>
+    <value>居中到地图的经度线. 仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialGoogleMapRefreshSeconds" xml:space="preserve">
-    <value>The number of seconds between updates of aircraft data on the web site. Only used on a browser's first visit to the web site.</value>
+    <value>网站更新航空器数据间隔秒数. 仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialGoogleMapType" xml:space="preserve">
-    <value>The type of map to display. Only used on a browser's first visit to the web site.</value>
+    <value>用于显示的地图类型. 仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialGoogleMapZoom" xml:space="preserve">
-    <value>The zoom level to use, where 0 shows the Earth fully zoomed out and higher numbers (up to about 20) show more detail. Only used on a browser's first visit to the web site.</value>
+    <value>0地球完全缩小显示,更高的数值 (到约 20) 显示更多细节. 仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialHeightUnit" xml:space="preserve">
-    <value>How heights are shown. Only used on a browser's first visit to the web site.</value>
+    <value>高度如何被显示.仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteInitialSpeedUnit" xml:space="preserve">
-    <value>How speeds are shown. Only used on a browser's first visit to the web site.</value>
+    <value>速度如何被显示.仅用在浏览器首次访问站点.</value>
   </data>
   <data name="OptionsDescribeWebSiteMinimumGoogleMapRefreshSeconds" xml:space="preserve">
     <value>允许用户选择的网站航空器数据刷新间隔最小秒数.</value>
@@ -1561,13 +1561,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>忽略来自 BDS2,0 消息</value>
   </data>
   <data name="OptionsDescribeRawFeedIgnoreCallsignsInBds20" xml:space="preserve">
-    <value>Yes if VRS should only extract callsigns from ADS-B messages, no if it should also try to detect BDS2,0 messages and extract callsigns from those.</value>
+    <value>是 如果ADS-B Server 应该只从ADS-B消息中提取航班号,否 如果也尝试检测 BDS2,0 消息 并且 从中提取航班号.</value>
   </data>
   <data name="OptionsDescribeRawFeedSuppressReceiverRangeCheck" xml:space="preserve">
-    <value>Set to 'Yes' if the receiver location or range are not accurate. A setting of 'No' will discard any positions that are outside the range of the receiver.</value>
+    <value>如果接收器位置或者范围不精确设置 "是",否 将抛弃任何超出接收器范围的位置.</value>
   </data>
   <data name="OptionsDescribeRawFeedUseLocalDecodeForInitialPosition" xml:space="preserve">
-    <value>'Yes' will show aircraft positions earlier but aircraft at extreme ranges are more likely to first appear at an inaccurate position. Only takes effect if a receiver location has been entered.</value>
+    <value>'是' 将显示航空器经过的位置 但是 飞机在极端的范围更可能出现在错误的位置. 仅在接收器位置已经被输入才会生效.</value>
   </data>
   <data name="SuppressReceiverRangeCheck" xml:space="preserve">
     <value>在接收器范围之外显示航空器.</value>
@@ -1663,7 +1663,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>信号丢失后停止跟踪 (秒)</value>
   </data>
   <data name="OptionsDescribeGeneralTrackingTimeoutSeconds" xml:space="preserve">
-    <value>The number of seconds that must elapse since a message from an aircraft was last received before it will stop being tracked.</value>
+    <value>在停止跟踪之前从一个航空器最后一次被接收到消息必须经过的秒数.</value>
   </data>
   <data name="TrackingTimeoutLessThanDisplayTimeout" xml:space="preserve">
     <value>跟踪超时不能少于显示超时.</value>
@@ -1696,16 +1696,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>ADS-B 消息秒数必须在 1 and 60 之间</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInNonPICount" xml:space="preserve">
-    <value>The number of times an ICAO24 must be seen in a message that has no parity before it will be accepted. If 0 then only ICAO24s from messages with good parity will be accepted. Once accepted all further messages for the ICAO24 will be used.</value>
+    <value>一个 ICAO24代码在被接受之前必须在一个无奇偶校验错误的消息中被发现次数.如果0那么仅 来自校验正确消息的 ICAO24s 代码被接受. 一旦被接受所有以后 ICAO24 代码将被使用.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInNonPISeconds" xml:space="preserve">
-    <value>The number of seconds over which messages that have no parity must be received before the ICAO24 will be accepted.</value>
+    <value>在 ICAO24 代码 被接受之前消息必须无奇偶校验异常被接收超过的秒数.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInPI0Count" xml:space="preserve">
-    <value>The number of times an ICAO24 must be seen in a message that has good parity before it will be accepted. Once accepted all further messages for the ICAO24 will be used.</value>
+    <value>在ICAO24 代码从消息中发现被接受之前必须成功奇偶校验的次数. 一旦接受全部来自远处的 ICAO24 消息将被使用.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInPI0Seconds" xml:space="preserve">
-    <value>The number of seconds over which messages that have good parity must be received before the ICAO24 will be accepted.</value>
+    <value>在 ICAO24 消息被接受之前消息必须成功奇偶校验超过的秒数.</value>
   </data>
   <data name="OptionsRawFeedAcceptIcaoAsValidCategory" xml:space="preserve">
     <value>ICAO24 验证设置</value>
@@ -1714,7 +1714,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>可以提交路径</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanSubmitRoutes" xml:space="preserve">
-    <value>Yes if browsers connecting from the Internet are allowed to see links to submit routes, no if they cannot.</value>
+    <value>是 览器连接被允许看到提交路径连接 , 否 不能看到.</value>
   </data>
   <data name="OptionsDescribeWebSitePreferIataAirportCodes" xml:space="preserve">
     <value>是 显示 IATA 机场代码 (例如 LHR), 否 显示 ICAO 机场代码 (例如 EGLL).</value>
@@ -1746,34 +1746,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>是 当提供这些文件到浏览器时压缩 CSS 和 JavaScript 文件 , 否 发送未更改的文件.</value>
   </data>
   <data name="OptionsDescribeReceiverLocationLatitude" xml:space="preserve">
-    <value>The latitude of the receiver. This can be between -90° and 90° but cannot be exactly zero.</value>
+    <value>接收器维度. 可以在 -90° 至 90° 但是不能为0.</value>
   </data>
   <data name="OptionsDescribeReceiverLocationLongitude" xml:space="preserve">
-    <value>The longitude of the receiver. This can be between -180° and 180°.</value>
+    <value>接收器经度. 可以在 -180° 至 180° 之间.</value>
   </data>
   <data name="OptionsDescribeReceiverLocationName" xml:space="preserve">
-    <value>The unique name for the location.</value>
+    <value>位置的唯一名称.</value>
   </data>
   <data name="None" xml:space="preserve">
     <value>无</value>
   </data>
   <data name="OptionsDescribeRebroadcastServerEnabled" xml:space="preserve">
-    <value>Yes if this rebroadcast server can serve requests for a data feed, no if it cannot.</value>
+    <value>是 这个转播服务器可以为数据源请求提供服务,否 将不能.</value>
   </data>
   <data name="OptionsDescribeRebroadcastServerFormat" xml:space="preserve">
-    <value>The format of the data feed to serve.</value>
+    <value>数据源提供格式.</value>
   </data>
   <data name="OptionsDescribeRebroadcastServerName" xml:space="preserve">
-    <value>The unique name to give to the rebroadcast server.</value>
+    <value>给出转播服务器唯一名称.</value>
   </data>
   <data name="OptionsDescribeRebroadcastServerPort" xml:space="preserve">
-    <value>The port to serve the data feed from.</value>
+    <value>数据源服务端口.</value>
   </data>
   <data name="OptionsDescribeReceiverEnabled" xml:space="preserve">
-    <value>Yes to enable this receiver, no to disable it. Note that at least one receiver must be enabled.</value>
+    <value>是 启用接收器, 否 禁用. 注意至少一个接收器被启用.</value>
   </data>
   <data name="OptionsDescribeReceiverName" xml:space="preserve">
-    <value>The unique name for this receiver. Must also be unique across all merged feeds.</value>
+    <value>接收器唯一名称. 也必须在所有合并中唯一.</value>
   </data>
   <data name="Receivers" xml:space="preserve">
     <value>接收器</value>
@@ -1785,7 +1785,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>请启用至少一个接收器.</value>
   </data>
   <data name="OptionsDescribeRebroadcastReceiver" xml:space="preserve">
-    <value>The receiver that you want to rebroadcast messages from.</value>
+    <value>你要转播消息的来源接收器.</value>
   </data>
   <data name="Receiver" xml:space="preserve">
     <value>接收器</value>
@@ -1833,16 +1833,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>合并数据源</value>
   </data>
   <data name="OptionsDescribeIcaoTimeout" xml:space="preserve">
-    <value>The number of seconds that must elapse before a receiver is no longer considered to be the only receiver allowed to receive messages for an ICAO. If this is too low then you will get planes appearing to jump backwards. If it is too high then you will get pauses when planes move from one receiver to another.</value>
+    <value>接收器不再被考虑允许作为唯一接收ICAO消息接收器必须经过的秒数. 如果这个值太低你将得到向后跳的飞机.如果这个值太高你将得到暂停时飞机从一个一个接收器移动到另一个接收器.</value>
   </data>
   <data name="OptionsDescribeMergedFeedEnabled" xml:space="preserve">
-    <value>Yes to enable this merged feed, no to disable it.</value>
+    <value>是 启用此合并源,否 禁用.</value>
   </data>
   <data name="OptionsDescribeMergedFeedName" xml:space="preserve">
-    <value>The unique name to give to this merged feed. Must also be unique across all receivers.</value>
+    <value>给这个合并源的唯一名称 也必须是所有接收器中的唯一.</value>
   </data>
   <data name="OptionsDescribeMergedFeedReceviers" xml:space="preserve">
-    <value>The receivers that are merged into this feed.</value>
+    <value>合并到一个源的接收器.</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>添加</value>
@@ -1866,7 +1866,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>忽略无坐标航空器</value>
   </data>
   <data name="OptionsDescribeIgnoreAircraftWithNoPosition" xml:space="preserve">
-    <value>Yes to only show aircraft that are transmitting positions, no to show all aircraft on the merged feed.</value>
+    <value>是 仅显示传输位置的航空器,否 显示所有合并源上的航空器.</value>
   </data>
   <data name="FeedStatus" xml:space="preserve">
     <value>数据源状态</value>
@@ -1887,7 +1887,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>最小化到系统托盘</value>
   </data>
   <data name="OptionsDescribeMinimiseToSystemTray" xml:space="preserve">
-    <value>Yes to minimise the application to the system tray, no to minimise it to the taskbar.</value>
+    <value>是 最小化应用程序到系统托盘, 否 最小化到任务栏.</value>
   </data>
   <data name="menuShowWindow" xml:space="preserve">
     <value>&amp;S显示窗口</value>
@@ -1926,7 +1926,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>向前</value>
   </data>
   <data name="OptionsDescribeProxyType" xml:space="preserve">
-    <value>The type of proxy that the server is behind. If you aren't sure whether the server is behind a proxy then leave the setting at 'Unknown'.</value>
+    <value>服务器后台代理类型. 如果你不能确认服务器是否后台代理保留"未知"设置.</value>
   </data>
   <data name="ProxyType" xml:space="preserve">
     <value>代理类型</value>
@@ -1944,7 +1944,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>互联网用户可以看到接收器范围平面图</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanShowPolarPlots" xml:space="preserve">
-    <value>Yes if users connecting from the Internet can see plots of receiver ranges. Note that these plots can pinpoint the receiver's location.</value>
+    <value>是 如果用户从 Internet连接可以看到接收器范围图. 注意这些图可以精确定位接收器位置.</value>
   </data>
   <data name="CannotResolveAddress" xml:space="preserve">
     <value>地址 {0} 不能被解析</value>
