@@ -338,7 +338,7 @@
     <comment>Default level of zoom on Google map</comment>
   </data>
   <data name="LastRequest" xml:space="preserve">
-    <value>最后请求</value>
+    <value>最后 Request</value>
     <comment>The time of the last request from a client to the server</comment>
   </data>
   <data name="LastURL" xml:space="preserve">
@@ -1726,7 +1726,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>已缓冲字节</value>
   </data>
   <data name="PleaseSelectSiteRootFolder" xml:space="preserve">
-    <value>请选择 Server 网站根文件夹</value>
+    <value>请选择 Server 网站根目录</value>
   </data>
   <data name="OptionsWebSiteCustomisationCategory" xml:space="preserve">
     <value>网站定制</value>
