@@ -62,9 +62,9 @@
             // checkBoxPluginViewEnabled
             // 
             this.checkBoxPluginViewEnabled.AutoSize = true;
-            this.checkBoxPluginViewEnabled.Location = new System.Drawing.Point(12, 12);
+            this.checkBoxPluginViewEnabled.Location = new System.Drawing.Point(12, 11);
             this.checkBoxPluginViewEnabled.Name = "checkBoxPluginViewEnabled";
-            this.checkBoxPluginViewEnabled.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxPluginViewEnabled.Size = new System.Drawing.Size(90, 16);
             this.checkBoxPluginViewEnabled.TabIndex = 0;
             this.checkBoxPluginViewEnabled.Text = "::Enabled::";
             this.checkBoxPluginViewEnabled.UseVisualStyleBackColor = true;
@@ -74,17 +74,17 @@
             this.folderControlSiteRootFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.errorProvider.SetIconAlignment(this.folderControlSiteRootFolder, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.folderControlSiteRootFolder.Location = new System.Drawing.Point(122, 19);
+            this.folderControlSiteRootFolder.Location = new System.Drawing.Point(122, 18);
             this.folderControlSiteRootFolder.Name = "folderControlSiteRootFolder";
-            this.folderControlSiteRootFolder.Size = new System.Drawing.Size(524, 20);
+            this.folderControlSiteRootFolder.Size = new System.Drawing.Size(524, 18);
             this.folderControlSiteRootFolder.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.Size = new System.Drawing.Size(113, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "::SiteRootLabel:::";
             // 
@@ -92,9 +92,9 @@
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(508, 417);
+            this.buttonOK.Location = new System.Drawing.Point(508, 385);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
+            this.buttonOK.Size = new System.Drawing.Size(75, 21);
             this.buttonOK.TabIndex = 6;
             this.buttonOK.Text = "::OK::";
             this.buttonOK.UseVisualStyleBackColor = true;
@@ -104,9 +104,9 @@
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(589, 417);
+            this.buttonCancel.Location = new System.Drawing.Point(589, 385);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 21);
             this.buttonCancel.TabIndex = 7;
             this.buttonCancel.Text = "::Cancel::";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -121,9 +121,9 @@
             this.comboBoxInjectAt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInjectAt.FormattingEnabled = true;
             this.errorProvider.SetIconAlignment(this.comboBoxInjectAt, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.comboBoxInjectAt.Location = new System.Drawing.Point(122, 45);
+            this.comboBoxInjectAt.Location = new System.Drawing.Point(122, 42);
             this.comboBoxInjectAt.Name = "comboBoxInjectAt";
-            this.comboBoxInjectAt.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxInjectAt.Size = new System.Drawing.Size(121, 20);
             this.comboBoxInjectAt.TabIndex = 3;
             // 
             // fileNameControlInjectFile
@@ -134,9 +134,9 @@
             this.fileNameControlInjectFile.BrowserCheckFileExists = true;
             this.fileNameControlInjectFile.BrowserFilter = "All files (*.*)|*.*|JavaScript files (*.js)|*.js|HTML files (*.html)|*.html";
             this.errorProvider.SetIconAlignment(this.fileNameControlInjectFile, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.fileNameControlInjectFile.Location = new System.Drawing.Point(122, 19);
+            this.fileNameControlInjectFile.Location = new System.Drawing.Point(122, 18);
             this.fileNameControlInjectFile.Name = "fileNameControlInjectFile";
-            this.fileNameControlInjectFile.Size = new System.Drawing.Size(524, 20);
+            this.fileNameControlInjectFile.Size = new System.Drawing.Size(524, 18);
             this.fileNameControlInjectFile.TabIndex = 1;
             // 
             // textBoxInjectPathAndFile
@@ -144,9 +144,9 @@
             this.textBoxInjectPathAndFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.errorProvider.SetIconAlignment(this.textBoxInjectPathAndFile, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.textBoxInjectPathAndFile.Location = new System.Drawing.Point(122, 72);
+            this.textBoxInjectPathAndFile.Location = new System.Drawing.Point(122, 66);
             this.textBoxInjectPathAndFile.Name = "textBoxInjectPathAndFile";
-            this.textBoxInjectPathAndFile.Size = new System.Drawing.Size(524, 20);
+            this.textBoxInjectPathAndFile.Size = new System.Drawing.Size(524, 21);
             this.textBoxInjectPathAndFile.TabIndex = 7;
             // 
             // comboBoxInjectOf
@@ -154,9 +154,9 @@
             this.comboBoxInjectOf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxInjectOf.FormattingEnabled = true;
             this.errorProvider.SetIconAlignment(this.comboBoxInjectOf, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
-            this.comboBoxInjectOf.Location = new System.Drawing.Point(350, 45);
+            this.comboBoxInjectOf.Location = new System.Drawing.Point(350, 42);
             this.comboBoxInjectOf.Name = "comboBoxInjectOf";
-            this.comboBoxInjectOf.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxInjectOf.Size = new System.Drawing.Size(121, 20);
             this.comboBoxInjectOf.TabIndex = 5;
             // 
             // groupBox1
@@ -173,9 +173,9 @@
             this.groupBox1.Controls.Add(this.fileNameControlInjectFile);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBoxInjectPathAndFile);
-            this.groupBox1.Location = new System.Drawing.Point(12, 214);
+            this.groupBox1.Location = new System.Drawing.Point(12, 198);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(652, 129);
+            this.groupBox1.Size = new System.Drawing.Size(652, 119);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "::InjectHtml::";
@@ -183,9 +183,9 @@
             // checkBoxInjectEnabled
             // 
             this.checkBoxInjectEnabled.AutoSize = true;
-            this.checkBoxInjectEnabled.Location = new System.Drawing.Point(122, 102);
+            this.checkBoxInjectEnabled.Location = new System.Drawing.Point(122, 94);
             this.checkBoxInjectEnabled.Name = "checkBoxInjectEnabled";
-            this.checkBoxInjectEnabled.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxInjectEnabled.Size = new System.Drawing.Size(90, 16);
             this.checkBoxInjectEnabled.TabIndex = 9;
             this.checkBoxInjectEnabled.Text = "::Enabled::";
             this.checkBoxInjectEnabled.UseVisualStyleBackColor = true;
@@ -193,47 +193,47 @@
             // buttonReset
             // 
             this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReset.Location = new System.Drawing.Point(571, 98);
+            this.buttonReset.Location = new System.Drawing.Point(571, 90);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(75, 23);
+            this.buttonReset.Size = new System.Drawing.Size(75, 21);
             this.buttonReset.TabIndex = 8;
-            this.buttonReset.Text = "Reset";
+            this.buttonReset.Text = "::Reset::";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(269, 48);
+            this.label5.Location = new System.Drawing.Point(269, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
+            this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 4;
             this.label5.Text = "::Of:::";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 48);
+            this.label4.Location = new System.Drawing.Point(6, 44);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.Size = new System.Drawing.Size(47, 12);
             this.label4.TabIndex = 2;
             this.label4.Text = "::At:::";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 22);
+            this.label3.Location = new System.Drawing.Point(6, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.Size = new System.Drawing.Size(95, 12);
             this.label3.TabIndex = 0;
             this.label3.Text = "::InjectFile:::";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 75);
+            this.label2.Location = new System.Drawing.Point(6, 69);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 6;
             this.label2.Text = "::Address:::";
             // 
@@ -243,9 +243,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.folderControlSiteRootFolder);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 349);
+            this.groupBox2.Location = new System.Drawing.Point(12, 322);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(652, 53);
+            this.groupBox2.Size = new System.Drawing.Size(652, 49);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "::ReplaceAndAddSiteContent::";
@@ -264,9 +264,9 @@
             this.listViewInjectSettings.FullRowSelect = true;
             this.listViewInjectSettings.GridLines = true;
             this.listViewInjectSettings.HideSelection = false;
-            this.listViewInjectSettings.Location = new System.Drawing.Point(12, 35);
+            this.listViewInjectSettings.Location = new System.Drawing.Point(12, 32);
             this.listViewInjectSettings.Name = "listViewInjectSettings";
-            this.listViewInjectSettings.Size = new System.Drawing.Size(652, 144);
+            this.listViewInjectSettings.Size = new System.Drawing.Size(652, 133);
             this.listViewInjectSettings.TabIndex = 1;
             this.listViewInjectSettings.UseCompatibleStateImageBehavior = false;
             this.listViewInjectSettings.View = System.Windows.Forms.View.Details;
@@ -300,30 +300,30 @@
             // buttonDelete
             // 
             this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDelete.Location = new System.Drawing.Point(93, 185);
+            this.buttonDelete.Location = new System.Drawing.Point(93, 171);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.Size = new System.Drawing.Size(75, 21);
             this.buttonDelete.TabIndex = 3;
-            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.Text = "::Delete::";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonNew
             // 
             this.buttonNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonNew.Location = new System.Drawing.Point(12, 185);
+            this.buttonNew.Location = new System.Drawing.Point(12, 171);
             this.buttonNew.Name = "buttonNew";
-            this.buttonNew.Size = new System.Drawing.Size(75, 23);
+            this.buttonNew.Size = new System.Drawing.Size(75, 21);
             this.buttonNew.TabIndex = 2;
-            this.buttonNew.Text = "New";
+            this.buttonNew.Text = "::New::";
             this.buttonNew.UseVisualStyleBackColor = true;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // OptionsView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 452);
+            this.ClientSize = new System.Drawing.Size(676, 417);
             this.Controls.Add(this.listViewInjectSettings);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonNew);

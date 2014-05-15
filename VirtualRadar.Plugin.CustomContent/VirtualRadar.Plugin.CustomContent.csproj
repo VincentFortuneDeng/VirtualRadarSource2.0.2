@@ -70,6 +70,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomContentStrings.pl-PL.Designer.cs">
+      <DependentUpon>CustomContentStrings.pl-PL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="CustomContentStrings.zh-CN.Designer.cs">
       <DependentUpon>CustomContentStrings.zh-CN.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -115,12 +120,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomContentStrings.pl-PL.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CustomContentStrings.pl-PL.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomContentStrings.zh-CN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CustomContentStrings.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomContentStrings.fr-FR.resx" />
-    <EmbeddedResource Include="CustomContentStrings.pl-PL.resx" />
     <EmbeddedResource Include="CustomContentStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CustomContentStrings.Designer.cs</LastGenOutput>

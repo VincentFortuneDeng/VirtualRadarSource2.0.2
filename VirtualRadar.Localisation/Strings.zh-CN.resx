@@ -122,7 +122,7 @@
     <comment>e.g. About Virtual Radar Server</comment>
   </data>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>ADS-B Server Web服务器程序用于显示ADS-B接收器数据。</value>
+    <value>ADS-B Server Web 服务器程序用于显示ADS-B接收器数据。</value>
     <comment>** MULTILINE, PLEASE CLICK IN FIELD TO SEE ALL **</comment>
   </data>
   <data name="BaseStationStatus" xml:space="preserve">
@@ -181,7 +181,7 @@
     <comment>The folder containing images of country or airline flags</comment>
   </data>
   <data name="ICAO" xml:space="preserve">
-    <value>ICAO</value>
+    <value>ICAO 代码</value>
     <comment>The initials of the United Nations organisation</comment>
   </data>
   <data name="Internet" xml:space="preserve">
@@ -285,7 +285,7 @@
     <comment>Shorthand for 1024 x 1024 x 1024 x 1024 bytes</comment>
   </data>
   <data name="AllowInternetProximityGadgets" xml:space="preserve">
-    <value>允许互联网邻近小工具</value>
+    <value>允许 Internet 邻近小工具</value>
     <comment>Allow Windows 7 desktop gadgets that display the closest aircraft details to connect from the Internet</comment>
   </data>
   <data name="Audio" xml:space="preserve">
@@ -299,7 +299,7 @@
     <value>默认版本</value>
   </data>
   <data name="DesktopVersion" xml:space="preserve">
-    <value>桌面版本</value>
+    <value>Desktop 版本</value>
     <comment>The version of the site for desktop computers</comment>
   </data>
   <data name="DurationBeforeAircraftRemovedFromMap" xml:space="preserve">
@@ -326,11 +326,11 @@
     <comment>As in a line of longitude on a map</comment>
   </data>
   <data name="InitialMapType" xml:space="preserve">
-    <value>地图类型缩写</value>
+    <value>初始地图类型</value>
     <comment>Default Google map type</comment>
   </data>
   <data name="InitialRefresh" xml:space="preserve">
-    <value>地图更新间隔秒数</value>
+    <value>初始地图更新间隔秒数</value>
     <comment>Number of seconds between each update of the map</comment>
   </data>
   <data name="InitialZoom" xml:space="preserve">
@@ -353,7 +353,7 @@
     <comment>The smallest number of seconds a browser can request between map updates</comment>
   </data>
   <data name="MobileVersion" xml:space="preserve">
-    <value>移动设备版本</value>
+    <value>Mobile 版本</value>
     <comment>The version of the site for smartphones and tablet computers</comment>
   </data>
   <data name="Other" xml:space="preserve">
@@ -393,13 +393,13 @@
     <value>用户名</value>
   </data>
   <data name="WebServerOffline" xml:space="preserve">
-    <value>Web Server离线</value>
+    <value>Web 服务器 离线</value>
   </data>
   <data name="WebServerOnline" xml:space="preserve">
-    <value>Web Server在线</value>
+    <value>Web 服务器 在线</value>
   </data>
   <data name="WebServerStatus" xml:space="preserve">
-    <value>Web Server状态</value>
+    <value>Web 服务器 状态</value>
   </data>
   <data name="ADSBAircraft" xml:space="preserve">
     <value>ADS-B 航空器</value>
@@ -469,11 +469,11 @@
     <comment>"Slew" may not need translating? It is a mode in Flight Simulator X that allows aircraft to be positioned anywhere the user likes.</comment>
   </data>
   <data name="ConnectionClientLog" xml:space="preserve">
-    <value>连接Client日志</value>
+    <value>连接 Client 日志</value>
     <comment>Logged connections of clients to the web server</comment>
   </data>
   <data name="ConnectionSessionLog" xml:space="preserve">
-    <value>连接Session日志</value>
+    <value>连接 Session 日志</value>
     <comment>Logged sessions for a client connecting to the web server</comment>
   </data>
   <data name="CouldNotCheckForUpdate" xml:space="preserve">
@@ -504,7 +504,7 @@
     <value>从</value>
   </data>
   <data name="LatestVersion" xml:space="preserve">
-    <value>这是有效的最版本程序</value>
+    <value>这是可用的最版本程序</value>
   </data>
   <data name="menuAbout" xml:space="preserve">
     <value>&amp;A关于...</value>
@@ -513,10 +513,10 @@
     <value>&amp;C检查更新</value>
   </data>
   <data name="menuConnectionClientLog" xml:space="preserve">
-    <value>连接 &amp;Client日志...</value>
+    <value>连接 &amp;Client 日志...</value>
   </data>
   <data name="menuConnectionSessionLog" xml:space="preserve">
-    <value>连接 &amp;Session日志...</value>
+    <value>连接 &amp;Session 日志...</value>
   </data>
   <data name="menuDebug" xml:space="preserve">
     <value>&amp;D调试</value>
@@ -586,26 +586,26 @@
     <value>不能确认网络地址</value>
   </data>
   <data name="CannotLoadFlightRouteDataFull" xml:space="preserve">
-    <value>不能加载航班路径数据 - {0}</value>
+    <value>无法加载航班路径数据 - {0}</value>
     <comment>Where {0} is an exception message</comment>
   </data>
   <data name="CannotLoadFlightRouteDataTitle" xml:space="preserve">
-    <value>不能加载航班路径数据</value>
+    <value>无法加载航班路径数据</value>
     <comment>Title for an error message box</comment>
   </data>
   <data name="CannotOpenBaseStationDatabaseFull" xml:space="preserve">
-    <value>不能连接到 BaseStation 数据库在 {0}</value>
+    <value>无法连接到 BaseStation 数据库在 {0}</value>
     <comment>Where {0} is a filename. BaseStation is the name of a program and may not need translating</comment>
   </data>
   <data name="CannotOpenBaseStationDatabaseTitle" xml:space="preserve">
-    <value>不能打开 BaseStation 数据库</value>
+    <value>无法打开 BaseStation 数据库</value>
     <comment>BaseStation is the name of a program and may not need translating</comment>
   </data>
   <data name="CannotStartWebServerFull" xml:space="preserve">
-    <value>不能启动ADS-B Web服务器在端口 {0}</value>
+    <value>无法启动ADS-B Web 服务器在端口 {0}</value>
   </data>
   <data name="CannotStartWebServerTitle" xml:space="preserve">
-    <value>不能启动Web服务器</value>
+    <value>无法启动 Web 服务器</value>
     <comment>Title for an error message box</comment>
   </data>
   <data name="DefaultSettingsSavedFull" xml:space="preserve">
@@ -646,7 +646,7 @@
     <value>Google Maps</value>
   </data>
   <data name="InternetClients" xml:space="preserve">
-    <value>互联网客户端</value>
+    <value>Internet 客户端</value>
     <comment>Options that affect clients connecting to the web server from the Internet (instead of from the local network)</comment>
   </data>
   <data name="InvalidConfigurationFileFull" xml:space="preserve">
@@ -674,7 +674,7 @@
     <comment>Where {0} is a filename or a folder name</comment>
   </data>
   <data name="SuggestUseDifferentPortFull" xml:space="preserve">
-    <value>如果Web Server由于另一个程序正在监听端口而不能启动，那么再次运行ADS-B Server安装程序并且选择一个不同的端口.
+    <value>如果 Web 服务器 由于另一个程序正在监听端口而不能启动，那么再次运行ADS-B Server安装程序并且选择一个不同的端口.
 
 例如当安装程序询问端口号时用8080端口代替已安装的80端口.</value>
     <comment>** MULTILINE, PLEASE CLICK IN FIELD TO SEE ALL **
@@ -693,7 +693,7 @@ Suggestion made if the exception could indicate that the port number is in use.<
     <comment>Title for an error message box</comment>
   </data>
   <data name="WebServer" xml:space="preserve">
-    <value>Web Server</value>
+    <value>Web 服务器</value>
   </data>
   <data name="WindowsVersionTooLowFull" xml:space="preserve">
     <value>本程序在您使用的操作系统下无法工作. 如果您正在运行Windows XP请安装Service Pack 2或者更高版本.</value>
@@ -754,14 +754,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>脱离Internet</value>
   </data>
   <data name="UPnpActive" xml:space="preserve">
-    <value>Web Server 不在 Internet上</value>
+    <value>Web 服务器 不在 Internet上</value>
   </data>
   <data name="UPnpDisabled" xml:space="preserve">
     <value>UPnP 支持未被启用</value>
     <comment>UPnP probably does not need translating</comment>
   </data>
   <data name="UPnpInactive" xml:space="preserve">
-    <value>The web server 没有在 Internet 上</value>
+    <value>Web 服务器 不在 Internet 上</value>
   </data>
   <data name="UPnpActiveWhileDisabled" xml:space="preserve">
     <value>UPnP 支持被禁用 但 Server 已经在 Internet上</value>
@@ -771,7 +771,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>认证</value>
   </data>
   <data name="ShowInternetAddress" xml:space="preserve">
-    <value>显示Internet地址</value>
+    <value>显示 Internet 地址</value>
   </data>
   <data name="UPnPNotPresent" xml:space="preserve">
     <value>网络中无法找到支持 UPnP 的路由器</value>
@@ -785,7 +785,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>图片文件夹</value>
   </data>
   <data name="AutoStartUPnP" xml:space="preserve">
-    <value>服务器放在互联网上启动</value>
+    <value>服务器放在 Internet 上启动</value>
   </data>
   <data name="SplashScreenConnectingToBaseStation" xml:space="preserve">
     <value>正在连接到数据源</value>
@@ -824,7 +824,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>正在通过 UPnP 连接Server到Internet</value>
   </data>
   <data name="SplashScreenStartingWebServer" xml:space="preserve">
-    <value>正在启动Web Server</value>
+    <value>正在启动 Web 服务器</value>
   </data>
   <data name="VirtualRadarServer" xml:space="preserve">
     <value>ADS-B Server</value>
@@ -877,7 +877,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>正在关闭 UPnP</value>
   </data>
   <data name="ShuttingDownWebServer" xml:space="preserve">
-    <value>正在关闭Web Server</value>
+    <value>正在关闭 Web 服务器</value>
   </data>
   <data name="TrackingAircraft" xml:space="preserve">
     <value>已跟踪航空器</value>
@@ -895,7 +895,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>插件没有实现IPlugin接口</value>
   </data>
   <data name="PluginMaximumVersionNotMet" xml:space="preserve">
-    <value>插件不能在旧ADS-B Server版本 {0} 下工作</value>
+    <value>插件不能在旧 ADS-B Server 版本 {0} 下工作</value>
   </data>
   <data name="PluginMaximumVersionUnparseable" xml:space="preserve">
     <value>清单的最大化版本不能被解析</value>
@@ -925,13 +925,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>英尺</value>
   </data>
   <data name="InitialDistanceUnits" xml:space="preserve">
-    <value>距离单位缩写</value>
+    <value>初始距离单位</value>
   </data>
   <data name="InitialHeightUnits" xml:space="preserve">
-    <value>高度单位缩写</value>
+    <value>初始高度单位</value>
   </data>
   <data name="InitialSpeedUnits" xml:space="preserve">
-    <value>速度单位缩写</value>
+    <value>初始速度单位</value>
   </data>
   <data name="Kilometres" xml:space="preserve">
     <value>公里</value>
@@ -991,10 +991,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <comment>BaseStation does not need translating</comment>
   </data>
   <data name="ReceiverLocation" xml:space="preserve">
-    <value>接收器坐标</value>
+    <value>接收器位置</value>
   </data>
   <data name="SBS3ModeSFeed" xml:space="preserve">
-    <value>SBS-3 原始源</value>
+    <value>SBS-3 Raw Feed</value>
   </data>
   <data name="UseDefaultPort" xml:space="preserve">
     <value>使用默认端口</value>
@@ -1012,7 +1012,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>纬度</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value>Location</value>
+    <value>位置</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>经度</value>
@@ -1027,7 +1027,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>这个名称已经被用于另一个位置</value>
   </data>
   <data name="ReceiverLocationsTitle" xml:space="preserve">
-    <value>接收器坐标</value>
+    <value>接收器位置</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>重置</value>
@@ -1036,7 +1036,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>自 BaseStation 数据库更新</value>
   </data>
   <data name="BeastModeSFeed" xml:space="preserve">
-    <value>AVR or Beast 原始数据源</value>
+    <value>AVR or Beast Raw Feed</value>
     <comment>'Beast' is the name of a product and may not need translating</comment>
   </data>
   <data name="AcceptableAirborneSpeed" xml:space="preserve">
@@ -1049,13 +1049,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>可接受的表面速度 (公里 / 30 秒)</value>
   </data>
   <data name="AirborneGlobalPositionLimit" xml:space="preserve">
-    <value>空中全局坐标限制 (秒)</value>
+    <value>空中全局位置限制 (秒)</value>
   </data>
   <data name="DecoderSettings" xml:space="preserve">
     <value>解码器设置</value>
   </data>
   <data name="FastSurfaceGlobalPositionLimit" xml:space="preserve">
-    <value>表面快速全局坐标限制 (秒)</value>
+    <value>表面快速全局位置限制 (秒)</value>
   </data>
   <data name="IgnoreMilitaryExtendedSquitter" xml:space="preserve">
     <value>忽略 DF19/AF0</value>
@@ -1075,16 +1075,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <comment>As in hours, minutes, seconds</comment>
   </data>
   <data name="SlowSurfaceGlobalPositionLimit" xml:space="preserve">
-    <value>慢表面全局坐标限制 (秒)</value>
+    <value>表面慢速全局位置限制 (秒)</value>
   </data>
   <data name="UseIcaoSpecificationSettings" xml:space="preserve">
-    <value>使用ICAO的规范设置</value>
+    <value>使用 ICAO 规范设置</value>
   </data>
   <data name="UseRecommendedSettings" xml:space="preserve">
     <value>使用推荐的设置</value>
   </data>
   <data name="OptionsDataSourcesDataFeed" xml:space="preserve">
-    <value>数据提供</value>
+    <value>数据源</value>
   </data>
   <data name="OptionsDataSourcesSheetTitle" xml:space="preserve">
     <value>数据源</value>
@@ -1111,19 +1111,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>连接类型</value>
   </data>
   <data name="InternetUserCanSeeLabels" xml:space="preserve">
-    <value>互联网用户可以看到航空器标签</value>
+    <value>Internet 用户可以看到航空器标签</value>
   </data>
   <data name="InternetUserIdleTimeout" xml:space="preserve">
-    <value>互联网用户空闲超时 (分钟)</value>
+    <value>Internet 用户空闲超时 (分钟)</value>
   </data>
   <data name="InternetUsersCanListenToAudio" xml:space="preserve">
-    <value>互联网用户可以听到声音</value>
+    <value>Internet 用户可以听到声音</value>
   </data>
   <data name="InternetUsersCanRunReports" xml:space="preserve">
-    <value>互联网用户可以生成报告</value>
+    <value>Internet 用户可以生成报告</value>
   </data>
   <data name="InternetUsersCanViewPictures" xml:space="preserve">
-    <value>互联网用户可以看到航空器图片</value>
+    <value>Internet 用户可以看到航空器图片</value>
   </data>
   <data name="Network" xml:space="preserve">
     <value>网络</value>
@@ -1136,16 +1136,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>包含关于航空器附加信息的BaseStation 数据库完整路径和文件名.</value>
   </data>
   <data name="OptionsDescribeDataSourcesFlagsFolder" xml:space="preserve">
-    <value>包含使用ICAO航空公司代码作为文件名的航空公司标志图像文件的文件夹.</value>
+    <value>包含使用 ICAO 航空公司代码作为文件名的航空公司标志图像文件的文件夹.</value>
   </data>
   <data name="OptionsDescribeDataSourcesIgnoreBadConnection" xml:space="preserve">
     <value>否 当错误格式被接收断开连接, 是 忽略错误消息并仍然连接到数据源.</value>
   </data>
   <data name="OptionsDescribeDataSourcesPicturesFolder" xml:space="preserve">
-    <value>包含使用航空器注册和/或ICAO代码作为文件名的航空器照片的文件夹.</value>
+    <value>包含使用航空器注册和/或 ICAO 代码作为文件名的航空器照片的文件夹.</value>
   </data>
   <data name="OptionsDescribeDataSourcesSilhouettesFolder" xml:space="preserve">
-    <value>包含用于航空器ICAO型号类型代码作为文件名的轮廓图像文件的文件夹.</value>
+    <value>包含用于航空器 ICAO 型号类型代码作为文件名的轮廓图像文件的文件夹.</value>
   </data>
   <data name="OptionsDescribeGeneralAudioEnabled" xml:space="preserve">
     <value>是 启用网站声音功能, 否 禁用.</value>
@@ -1172,7 +1172,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>文本转换语音使用的声音.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptableAirborneSpeed" xml:space="preserve">
-    <value>航空器在本地解码之前，在30秒内被视为无效的行驶公里数。ICAO建议11.112公里. 高值防止检测不准确的定位解码位置.</value>
+    <value>航空器在本地解码之前，在30秒内被视为无效的行驶公里数。ICAO 建议11.112公里. 高值防止检测不准确的定位解码位置.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptableAirSurfaceTransitionSpeed" xml:space="preserve">
     <value>航空器在定位解码之前被视为的起飞或者着陆30秒内行驶的公里数. ICAO 推荐 4.63 公里. 高值防止检测不准确的定位解码位置.</value>
@@ -1284,7 +1284,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>限制 Internet 用户</value>
   </data>
   <data name="OptionsWebServerSheetTitle" xml:space="preserve">
-    <value>Web Server</value>
+    <value>Web 服务器</value>
   </data>
   <data name="OptionsWebSiteSettingsCategory" xml:space="preserve">
     <value>网站设置</value>
@@ -1312,25 +1312,25 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>串口号必须在 1 至 65535 之间</value>
   </data>
   <data name="AcceptableAirborneSpeedOutOfBounds" xml:space="preserve">
-    <value>可接受的空中局部坐标速度必须在 0.005 至 45.0 之间</value>
+    <value>可接受的空中局部位置速度必须在 0.005 至 45.0 之间</value>
   </data>
   <data name="AcceptableAirSurfaceTransitionSpeedOutOfBounds" xml:space="preserve">
-    <value>可接受的过渡坐标速度必须在 0.003 至 20.0 之间</value>
+    <value>可接受的过渡位置速度必须在 0.003 至 20.0 之间</value>
   </data>
   <data name="AcceptableSurfaceSpeedOutOfBounds" xml:space="preserve">
-    <value>可接受的表面坐标速度必须在 0.001 至 10.0 之间</value>
+    <value>可接受的表面位置速度必须在 0.001 至 10.0 之间</value>
   </data>
   <data name="AirborneGlobalPositionLimitOutOfBounds" xml:space="preserve">
-    <value>空中全局坐标限制必须在 1 至 30 之间</value>
+    <value>空中全局位置限制必须在 1 至 30 之间</value>
   </data>
   <data name="FastSurfaceGlobalPositionLimitOutOfBounds" xml:space="preserve">
-    <value>表面快速全局坐标限制必须在 1 至 75</value>
+    <value>表面快速全局位置限制必须在 1 至 75</value>
   </data>
   <data name="ReceiverRangeOutOfBounds" xml:space="preserve">
     <value>接收器范围必须在 0 至 99999</value>
   </data>
   <data name="SlowSurfaceGlobalPositionLimitOutOfBounds" xml:space="preserve">
-    <value>慢表面全局坐标限制必须在 1 至 150 之间</value>
+    <value>慢表面全局位置限制必须在 1 至 150 之间</value>
   </data>
   <data name="DaysBetweenChecksOutOfBounds" xml:space="preserve">
     <value>检查新版本间隔必须在 1 至 365 之间</value>
@@ -1354,7 +1354,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>初始刷新值必须在 0 至 3600</value>
   </data>
   <data name="InternetUserIdleTimeoutOutOfBounds" xml:space="preserve">
-    <value>互联网用户空闲超时必须在 0 至 1440</value>
+    <value>Internet 用户空闲超时必须在 0 至 1440</value>
   </data>
   <data name="LatitudeOutOfBounds" xml:space="preserve">
     <value>纬度必须在 -90.0 (南) 至 90.0 (北)</value>
@@ -1597,7 +1597,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>连接</value>
   </data>
   <data name="Count" xml:space="preserve">
-    <value>Count</value>
+    <value>计数</value>
   </data>
   <data name="DF" xml:space="preserve">
     <value>DF</value>
@@ -1621,10 +1621,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>无 ADS-B 承载</value>
   </data>
   <data name="PositionResets" xml:space="preserve">
-    <value>坐标复位</value>
+    <value>位置复位</value>
   </data>
   <data name="PositionsOutOfRange" xml:space="preserve">
-    <value>坐标超出范围</value>
+    <value>位置超出范围</value>
   </data>
   <data name="ResetCounters" xml:space="preserve">
     <value>重置计数器</value>
@@ -1696,13 +1696,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>ADS-B 消息秒数必须在 1 and 60 之间</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInNonPICount" xml:space="preserve">
-    <value>一个 ICAO24代码在被接受之前必须在一个无奇偶校验错误的消息中被发现次数.如果0那么仅 来自校验正确消息的 ICAO24s 代码被接受. 一旦被接受所有以后 ICAO24 代码将被使用.</value>
+    <value>一个 ICAO24 代码在被接受之前必须在一个无奇偶校验错误的消息中被发现次数.如果0那么仅 来自校验正确消息的 ICAO24s 代码被接受. 一旦被接受所有以后 ICAO24 代码将被使用.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInNonPISeconds" xml:space="preserve">
     <value>在 ICAO24 代码 被接受之前消息必须无奇偶校验异常被接收超过的秒数.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInPI0Count" xml:space="preserve">
-    <value>在ICAO24 代码从消息中发现被接受之前必须成功奇偶校验的次数. 一旦接受全部来自远处的 ICAO24 消息将被使用.</value>
+    <value>在 ICAO24 代码从消息中发现被接受之前必须成功奇偶校验的次数. 一旦接受全部来自远处的 ICAO24 消息将被使用.</value>
   </data>
   <data name="OptionsDescribeRawFeedAcceptIcaoInPI0Seconds" xml:space="preserve">
     <value>在 ICAO24 消息被接受之前消息必须成功奇偶校验超过的秒数.</value>
@@ -1833,7 +1833,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>合并数据源</value>
   </data>
   <data name="OptionsDescribeIcaoTimeout" xml:space="preserve">
-    <value>接收器不再被考虑允许作为唯一接收ICAO消息接收器必须经过的秒数. 如果这个值太低你将得到向后跳的飞机.如果这个值太高你将得到暂停时飞机从一个一个接收器移动到另一个接收器.</value>
+    <value>接收器不再被考虑允许作为唯一接收 ICAO 消息接收器必须经过的秒数. 如果这个值太低你将得到向后跳的飞机.如果这个值太高你将得到暂停时飞机从一个一个接收器移动到另一个接收器.</value>
   </data>
   <data name="OptionsDescribeMergedFeedEnabled" xml:space="preserve">
     <value>是 启用此合并源,否 禁用.</value>
@@ -1863,7 +1863,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>接收器和合并源不能共享名称</value>
   </data>
   <data name="IgnoreAircraftWithNoPosition" xml:space="preserve">
-    <value>忽略无坐标航空器</value>
+    <value>忽略无位置航空器</value>
   </data>
   <data name="OptionsDescribeIgnoreAircraftWithNoPosition" xml:space="preserve">
     <value>是 仅显示传输位置的航空器,否 显示所有合并源上的航空器.</value>
@@ -1881,7 +1881,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>请指定接收器,FSX ride-along功能将使用</value>
   </data>
   <data name="CompressedPort30003" xml:space="preserve">
-    <value>压缩的ADS-B</value>
+    <value>Compressed VRS</value>
   </data>
   <data name="MinimiseToSystemTray" xml:space="preserve">
     <value>最小化到系统托盘</value>
@@ -1914,16 +1914,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>是 压缩发送到浏览器的响应(responses), 否发送未压缩的响应(responses).</value>
   </data>
   <data name="DesktopVersionOld" xml:space="preserve">
-    <value>旧桌面版本</value>
+    <value>旧的 Desktop 版本</value>
   </data>
   <data name="FlightSimVersionOld" xml:space="preserve">
-    <value>旧 Flight Sim 版本</value>
+    <value>旧的 Flight Sim 版本</value>
   </data>
   <data name="MobileVersionOld" xml:space="preserve">
-    <value>Old Mobile Version</value>
+    <value>旧的 Mobile 版本</value>
   </data>
   <data name="Forward" xml:space="preserve">
-    <value>向前</value>
+    <value>转发</value>
   </data>
   <data name="OptionsDescribeProxyType" xml:space="preserve">
     <value>服务器后台代理类型. 如果你不能确认服务器是否后台代理保留"未知"设置.</value>
@@ -1932,7 +1932,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>代理类型</value>
   </data>
   <data name="Reverse" xml:space="preserve">
-    <value>解析</value>
+    <value>反向</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>未知</value>
@@ -1941,15 +1941,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>设置页</value>
   </data>
   <data name="InternetClientCanShowPolarPlots" xml:space="preserve">
-    <value>互联网用户可以看到接收器范围平面图</value>
+    <value>Internet 用户可以看到接收器范围图</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanShowPolarPlots" xml:space="preserve">
     <value>是 如果用户从 Internet连接可以看到接收器范围图. 注意这些图可以精确定位接收器位置.</value>
   </data>
   <data name="CannotResolveAddress" xml:space="preserve">
-    <value>地址 {0} 不能被解析</value>
+    <value>地址 {0} 无法被解析</value>
   </data>
   <data name="menuResetReceiverRange" xml:space="preserve">
-    <value>重置接收器范围 &amp;P平面图</value>
+    <value>重置接收器范围 &amp;P图</value>
   </data>
 </root>
