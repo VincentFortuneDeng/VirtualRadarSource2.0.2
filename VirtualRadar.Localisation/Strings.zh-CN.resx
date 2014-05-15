@@ -562,7 +562,7 @@
     <comment>Title for a dialog box displaying the result of a check for a later version</comment>
   </data>
   <data name="AnotherInstanceRunningFull" xml:space="preserve">
-    <value>另一个ADS-B Server 实例已经运行.</value>
+    <value>另一个 ADS-B Server 实例已经运行.</value>
   </data>
   <data name="AnotherInstanceRunningTitle" xml:space="preserve">
     <value>另一个实例正在运行</value>
@@ -674,7 +674,7 @@
     <comment>Where {0} is a filename or a folder name</comment>
   </data>
   <data name="SuggestUseDifferentPortFull" xml:space="preserve">
-    <value>如果 Web 服务器 由于另一个程序正在监听端口而不能启动，那么再次运行ADS-B Server安装程序并且选择一个不同的端口.
+    <value>如果 Web 服务器 由于另一个程序正在监听端口而不能启动，那么再次运行 ADS-B Server 安装程序并且选择一个不同的端口.
 
 例如当安装程序询问端口号时用8080端口代替已安装的80端口.</value>
     <comment>** MULTILINE, PLEASE CLICK IN FIELD TO SEE ALL **
@@ -696,7 +696,7 @@ Suggestion made if the exception could indicate that the port number is in use.<
     <value>Web 服务器</value>
   </data>
   <data name="WindowsVersionTooLowFull" xml:space="preserve">
-    <value>本程序在您使用的操作系统下无法工作. 如果您正在运行Windows XP请安装Service Pack 2或者更高版本.</value>
+    <value>本程序在您使用的操作系统下无法工作. 如果您正在运行 Windows XP 请安装 Service Pack 2 或者更高版本.</value>
   </data>
   <data name="WindowsVersionTooLowTitle" xml:space="preserve">
     <value>HttpListener 不支持操作 O/S</value>
@@ -1211,7 +1211,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>是 如果用户连接自 Internet 被允许使用声音功能, 否 将不能. 声音功能消耗带宽并增加服务器工作负荷. 该设置不影响局域网用户.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanRunReports" xml:space="preserve">
-    <value>是 如果用户从 Internet 连接被允许运行报告, 否 将不能. 生成报告消耗带宽并且会增加服务器的工作负载. 该设置不影响局域网用户.</value>
+    <value>是 如果用户从 Internet 连接被允许生成报告, 否 将不能. 生成报告消耗带宽并且会增加服务器的工作负载. 该设置不影响局域网用户.</value>
   </data>
   <data name="OptionsDescribeWebServerInternetClientCanSeeLabels" xml:space="preserve">
     <value>是 如果用户从 Internet 连接被允许查看航空器标签,否 将不能. 航空器标签消耗带宽并且会增加服务器的工作负载.该设置不影响局域网用户.</value>
@@ -1223,7 +1223,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <value>Internet上网站停止响应用户连接前经历非互动多少分钟. 0 禁用该功能. 局域网用户不会超时.</value>
   </data>
   <data name="OptionsDescribeWebServerIsOnlyVirtualRadarServerOnLan" xml:space="preserve">
-    <value>是 如果这是你想发布到Internet上在网络中运行ADS-B Server的唯一计算机, 否 相反.</value>
+    <value>是 如果这是你想发布到Internet上在网络中运行 ADS-B Server 的唯一计算机, 否 相反.</value>
   </data>
   <data name="OptionsDescribeWebServerPassword" xml:space="preserve">
     <value>在登录到网站时必须输入的用户密码.</value>
