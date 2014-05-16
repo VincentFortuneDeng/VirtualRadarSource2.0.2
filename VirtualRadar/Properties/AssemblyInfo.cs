@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Virtual Radar Server")]
-[assembly: AssemblyDescription("This is a web server that can be used to display the aircraft tracked by an installation of BaseStation")]
+[assembly: AssemblyDescription("此 Web 服务器可以用于显示被 BaseStation 设备跟踪的航空器")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Virtual Radar Server")]
-[assembly: AssemblyCopyright("Copyright ©  2010 onwards Andrew Whewell")]
+[assembly: AssemblyCompany("Honglin Aviation")]
+[assembly: AssemblyProduct("ADS-B Server")]
+[assembly: AssemblyCopyright("Copyright ©  2014 Honglin Aviation")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
