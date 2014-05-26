@@ -129,6 +129,7 @@
     <Compile Include="AircraftDetail.cs" />
     <Compile Include="Certainty.cs" />
     <Compile Include="IAircraftSanityChecker.cs" />
+    <Compile Include="ITrackFlightLogProvider.cs" />
     <Compile Include="ITrackFlightLog.cs" />
     <Compile Include="Listener\IPolarPlotter.cs" />
     <Compile Include="Listener\PolarPlot.cs" />
