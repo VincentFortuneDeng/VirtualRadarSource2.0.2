@@ -24,7 +24,7 @@ using VirtualRadar.Interface.Database;
 using VirtualRadar.Interface.Listener;
 using VirtualRadar.Interface.Settings;
 using VirtualRadar.Interface.StandingData;
-using log4net;
+//using log4net;
 
 namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
 {
@@ -33,7 +33,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
     /// </summary>
     public class Plugin : IPlugin
     {
-        private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         #region Private class - DefaultProvider
         /// <summary>
         /// The default implementation of <see cref="IPluginProvider"/>.
@@ -62,6 +62,11 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         #endregion
 
         #region Fields
+        /// <summary>
+        /// 记录飞机轨迹日志对象
+        /// </summary>
+        private ITrackFlightLog trackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
+
         /// <summary>
         /// The object that different threads synchronise on before using the contents of the fields.
         /// </summary>
@@ -449,7 +454,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
                         flight.EndTime = localNow;
-
+                        /*
                         log.Info("AircraftID:" + flight.AircraftID + " Callsign:" + flight.Callsign + " FlightID:" + flight.FlightID
                             + " FirstAltitude:" + flight.FirstAltitude + " FirstGroundSpeed:" + flight.FirstGroundSpeed
                             + " FirstLat:" + flight.FirstLat + " FirstLon:" + flight.FirstLon
@@ -460,7 +465,13 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                             + " StartTime:" + flight.StartTime + " EndTime:" + flight.EndTime
                             + " NumADSBMsgRec:" + flight.NumADSBMsgRec + " NumPosMsgRec:" + flight.NumPosMsgRec
                             + " NumModeSMsgRec:" + flight.NumModeSMsgRec + " NumAirPosMsgRec:" + flight.NumAirPosMsgRec
-                            + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);
+                            + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);*/
+                        //log.Info(String.Concat(message.ToBaseStationString(), "\r\n"));
+                        //log.Logger.
+                        //记录轨迹日志
+                        trackFlightLog.FileName = localNow.ToString("yyyyMMdd") + message.Icao24;
+                        trackFlightLog.WriteLine(message.ToBaseStationString());
+
                         if(message.SquawkHasChanged.GetValueOrDefault()) flight.HadAlert = true;
                         if(message.IdentActive.GetValueOrDefault()) flight.HadSpi = true;
                         /*

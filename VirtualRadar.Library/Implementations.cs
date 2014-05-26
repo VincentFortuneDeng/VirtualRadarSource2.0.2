@@ -1,4 +1,4 @@
-// Copyright © 2010 onwards, Andrew Whewell
+// Copyright ?2010 onwards, Andrew Whewell
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -82,6 +82,7 @@ namespace VirtualRadar.Library
             factory.Register<IHeartbeatService, HeartbeatService>();
             factory.Register<IImageFileManager, ParallelAccessImageFileManager>();
             factory.Register<ILog, Log>();
+            factory.Register<ITrackFlightLog, TrackFlightLog>();
             factory.Register<INewVersionChecker, NewVersionChecker>();
             factory.Register<IPluginManager, PluginManager>();
             factory.Register<IRebroadcastServer, RebroadcastServer>();
