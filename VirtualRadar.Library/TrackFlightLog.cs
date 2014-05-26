@@ -84,8 +84,8 @@ namespace VirtualRadar.Library
         /// </summary>
         public string FileName
         {
-            get {  return _FileName; }
-            set { _FileName = value + ".log"; }
+            get { Initialise(); return _FileName; }
+            set { Initialise(); _FileName = Path.Combine(_Folder, value + ".log"); }
         }
 
         /// <summary>
@@ -105,7 +105,10 @@ namespace VirtualRadar.Library
             if(_Folder == null) {
                 _Folder = Path.Combine(Application.StartupPath, "TrackFlight");
                 
-                FileName = Path.Combine(_Folder, _FileName);
+            }
+
+            if(_FileName == null) {
+                _FileName = Path.Combine(_Folder, DateTime.Now.ToString("yyyyMMdd:") + "TrackFlight.log");
             }
         }
 

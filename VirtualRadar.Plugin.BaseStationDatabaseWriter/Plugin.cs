@@ -451,6 +451,10 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                             }
                         }
 
+                        //记录轨迹日志
+                        trackFlightLog.FileName = localNow.ToString("yyyyMMdd:") + message.Icao24;
+                        trackFlightLog.WriteLine(message.ToBaseStationString());
+
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
                         flight.EndTime = localNow;
@@ -468,10 +472,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                             + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);*/
                         //log.Info(String.Concat(message.ToBaseStationString(), "\r\n"));
                         //log.Logger.
-                        //记录轨迹日志
-                        trackFlightLog.FileName = localNow.ToString("yyyyMMdd") + message.Icao24;
-                        trackFlightLog.WriteLine(message.ToBaseStationString());
-
+                        
                         if(message.SquawkHasChanged.GetValueOrDefault()) flight.HadAlert = true;
                         if(message.IdentActive.GetValueOrDefault()) flight.HadSpi = true;
                         /*
