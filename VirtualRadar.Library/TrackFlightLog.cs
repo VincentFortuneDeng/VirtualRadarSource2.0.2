@@ -108,7 +108,7 @@ namespace VirtualRadar.Library
             }
 
             if(_FileName == null) {
-                _FileName = Path.Combine(_Folder, DateTime.Now.ToString("yyyyMMdd:") + "TrackFlight.log");
+                _FileName = Path.Combine(_Folder, DateTime.Now.ToString("yyyyMMdd") + "TrackFlight.log");
             }
         }
 
@@ -119,7 +119,7 @@ namespace VirtualRadar.Library
         public void WriteLine(string message)
         {
             Initialise();
-
+            //Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine(FileName);
             if(message != null) {
                 lock(_SyncLock) {
                     if(!Provider.FolderExists(_Folder)) Provider.CreateFolder(_Folder);

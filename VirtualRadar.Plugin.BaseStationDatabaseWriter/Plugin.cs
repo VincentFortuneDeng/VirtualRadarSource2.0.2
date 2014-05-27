@@ -452,8 +452,9 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         }
 
                         //记录轨迹日志
-                        trackFlightLog.FileName = localNow.ToString("yyyyMMdd:") + message.Icao24;
-                        trackFlightLog.WriteLine(message.ToBaseStationString());
+                        trackFlightLog.FileName = localNow.ToString("yyyyMMdd") + "ICAO" + message.Icao24;
+
+                        trackFlightLog.WriteLine(String.Concat(message.ToBaseStationString(), "\r\n"));
 
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
