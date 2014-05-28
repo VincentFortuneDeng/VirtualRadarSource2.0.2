@@ -15,7 +15,7 @@ if(VRS && VRS.LinkRenderHandler && VRS.linkRenderHandlers) {
             displayOrder:       10000,      // <-- If this is > 0 then the link is rendered anywhere that default aircraft links are used on the site
             canLinkAircraft:    function(/** VRS.Aircraft */ aircraft) { return true; },        // <-- see aircraft.js, return true if you want your link rendered for the aircraft passed across
             hasChanged:         function(/** VRS.Aircraft */ aircraft) { return false; },       // <-- see aircraft.js, return true if a value that you rely upon has changed on the aircraft
-            title:              function(/** VRS.Aircraft */ aircraft) { return 'Example'; },   // <-- see aircraft.js, return the text to show for the link.
+            title:              function(/** VRS.Aircraft */ aircraft) { return '示例'; },   // <-- see aircraft.js, return the text to show for the link.
             buildUrl:           function(/** VRS.Aircraft */ aircraft) { return 'Example/Index.html?icao=' + encodeURIComponent(aircraft.formatIcao()); },      // <-- see aircraft.js, return the HREF for the link
             target:             'example'                                                       // <-- return the target page for the link. Omit if you don't want a target (not recommended).
         })

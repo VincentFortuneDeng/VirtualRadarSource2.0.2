@@ -78,7 +78,7 @@ namespace VirtualRadar.Plugin.Example
                 StatusDescription = null;
             } else {
                 Status = "Enabled";
-                StatusDescription = "Enabled, browse to /VirtualRadar/Example/Index.html";
+                StatusDescription = "已启用, 浏览 /VirtualRadar/Example/Index.html";
             }
 
             OnStatusChanged(EventArgs.Empty);
@@ -185,8 +185,8 @@ namespace VirtualRadar.Plugin.Example
             // To keep things simple the plugin only has one configuration setting - an enabled switch. Rather than using
             // a form to ask the user for the setting of this we'll just use a standard message box.
             _Settings.Enabled = MessageBox.Show(
-                "Enabling this plugin adds the example content to the web site. Do you want to enable it?",
-                "Enable Plugin",
+                "启用此插件添加示例内容到网站. 要启用吗?",
+                "启用插件",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button1
