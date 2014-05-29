@@ -125,7 +125,8 @@ namespace VirtualRadar.Plugin.CustomContent
         /// <param name="args"></param>
         protected virtual void OnStatusChanged(EventArgs args)
         {
-            if(StatusChanged != null) StatusChanged(this, args);
+            if(StatusChanged != null)
+                StatusChanged(this, args);
         }
         #endregion
 
@@ -219,8 +220,10 @@ namespace VirtualRadar.Plugin.CustomContent
         private void ApplyOptions()
         {
             if(_WebSite != null) {
-                if(!_Options.Enabled) DisableSiteRoot();
-                else EnableSiteRoot(_Options.SiteRootFolder);
+                if(!_Options.Enabled)
+                    DisableSiteRoot();
+                else
+                    EnableSiteRoot(_Options.SiteRootFolder);
 
                 foreach(var existingInjector in _ContentInjectors) {
                     _WebSite.RemoveHtmlContentInjector(existingInjector);
@@ -241,10 +244,13 @@ namespace VirtualRadar.Plugin.CustomContent
                     }
                 }
 
-                if(!_Options.Enabled) Status = CustomContentStrings.Disabled;
+                if(!_Options.Enabled)
+                    Status = CustomContentStrings.Disabled;
                 else {
-                    if(String.IsNullOrEmpty(_Options.SiteRootFolder)) Status = CustomContentStrings.EnabledNoSiteRoot;
-                    else Status = String.Format(CustomContentStrings.EnabledWithSiteRoot, _Options.SiteRootFolder);
+                    if(String.IsNullOrEmpty(_Options.SiteRootFolder))
+                        Status = CustomContentStrings.EnabledNoSiteRoot;
+                    else
+                        Status = String.Format(CustomContentStrings.EnabledWithSiteRoot, _Options.SiteRootFolder);
                 }
             }
 
@@ -261,7 +267,8 @@ namespace VirtualRadar.Plugin.CustomContent
         {
             if(_WebSite != null) {
                 _SiteRoot.Folder = folder;
-                if(String.IsNullOrEmpty(_SiteRoot.Folder)) _WebSite.RemoveSiteRoot(_SiteRoot);
+                if(String.IsNullOrEmpty(_SiteRoot.Folder))
+                    _WebSite.RemoveSiteRoot(_SiteRoot);
                 else {
                     var siteRootActive = _WebSite.IsSiteRootActive(_SiteRoot, false);
 
@@ -271,7 +278,8 @@ namespace VirtualRadar.Plugin.CustomContent
                         siteRootActive = false;
                     }
 
-                    if(!siteRootActive) _WebSite.AddSiteRoot(_SiteRoot);
+                    if(!siteRootActive)
+                        _WebSite.AddSiteRoot(_SiteRoot);
                 }
             }
         }

@@ -24,5 +24,10 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// Gets or sets a value indicating that the plugin is enabled.
         /// </summary>
         public bool Enabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the receiver to maintain the database for.
+        /// </summary>
+        public int ReceiverId { get; set; }
     }
 }

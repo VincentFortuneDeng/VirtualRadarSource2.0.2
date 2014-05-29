@@ -36,6 +36,11 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         bool PluginEnabled { get; set; }
 
         /// <summary>
+        /// Gets or sets the identifier of the receiver that the plugin will listen to.
+        /// </summary>
+        int ReceiverId { get; set; }
+
+        /// <summary>
         /// Gets a list of every InjectSettings object on display to the user.
         /// </summary>
         /*List<InjectSettings> InjectSettings { get; }*/

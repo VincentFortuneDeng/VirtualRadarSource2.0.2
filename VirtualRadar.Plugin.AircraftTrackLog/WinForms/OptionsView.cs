@@ -46,11 +46,18 @@ namespace VirtualRadar.Plugin.AircraftTrackLog.WinForms
         /*public IWebSite WebSite { get; set; }*/
 
         /*public SiteRoot SiteRoot { get; set; }*/
-
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
+        public int ReceiverId
+        {
+            get { return feedSelectControl.SelectedFeedId; }
+            set { feedSelectControl.SelectedFeedId = value; }
+        }
         public bool PluginEnabled
-        {/*
+        {
             get { return checkBoxPluginViewEnabled.Checked; }
-            set { checkBoxPluginViewEnabled.Checked = value; }*/
+            set { checkBoxPluginViewEnabled.Checked = value; }
         }
 
         /*public List<InjectSettings> InjectSettings { get; private set; }*/
@@ -107,19 +114,11 @@ namespace VirtualRadar.Plugin.AircraftTrackLog.WinForms
         #endregion
 
         #region Events
-        
-        
-
-       
-        
-
-        
-
-        
-        
-
-        
-        
+        public event CancelEventHandler SaveClicked;
+        protected virtual void OnSaveClicked(CancelEventArgs args)
+        {
+            if (SaveClicked != null) SaveClicked(this, args);
+        }
         #endregion
 
         #region Constructor
@@ -130,9 +129,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog.WinForms
             /*InjectSettings = new List<InjectSettings>();*/
 
             _ValidationHelper = new ValidationHelper(errorProvider);
-            _ValidationHelper.RegisterValidationField(ValidationField.Name, fileNameControlInjectFile);
-            _ValidationHelper.RegisterValidationField(ValidationField.PathAndFile, textBoxInjectPathAndFile);
-            _ValidationHelper.RegisterValidationField(ValidationField.SiteRootFolder, folderControlSiteRootFolder);
+            _ValidationHelper.RegisterValidationField(ValidationField.ReceiverIds, feedSelectControl);
+            //_ValidationHelper.RegisterValidationField(ValidationField.PathAndFile, textBoxInjectPathAndFile);
+            //_ValidationHelper.RegisterValidationField(ValidationField.SiteRootFolder, folderControlSiteRootFolder);
         }
         #endregion
 
@@ -141,6 +140,14 @@ namespace VirtualRadar.Plugin.AircraftTrackLog.WinForms
         {
             //PopulateInjectSettings();
             return ShowDialog() == DialogResult.OK;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            var args = new CancelEventArgs();
+            OnSaveClicked(args);
+            if(args.Cancel)
+                DialogResult = DialogResult.None;
         }
         #endregion
 
@@ -215,13 +222,13 @@ namespace VirtualRadar.Plugin.AircraftTrackLog.WinForms
 
                 /*FillDropDownWithValues<InjectionLocation>(comboBoxInjectOf, Enum.GetValues(typeof(InjectionLocation)).OfType<InjectionLocation>(), r => r.ToString().ToUpper());*/
 
-                _ValueChangedHelper.HookValueChanged(new Control[] {
+                /*_ValueChangedHelper.HookValueChanged(new Control[] {
                     checkBoxInjectEnabled,
                     fileNameControlInjectFile,
                     comboBoxInjectAt,
                     comboBoxInjectOf,
                     textBoxInjectPathAndFile,
-                });
+                });*/
 
                 _Presenter = Factory.Singleton.Resolve<IOptionsPresenter>();
                 _Presenter.Initialise(this);

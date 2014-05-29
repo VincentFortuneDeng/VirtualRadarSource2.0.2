@@ -126,13 +126,25 @@
   <data name="Enabled" xml:space="preserve">
     <value>已启用</value>
   </data>
+  <data name="EnabledBadReceiver" xml:space="preserve">
+    <value>已启用, 接收器不能启用或者无效</value>
+  </data>
   <data name="EnabledDescription" xml:space="preserve">
     <value>已启用, 浏览 /VirtualRadar/Example/Index.html</value>
+  </data>
+  <data name="EnabledNoReceiver" xml:space="preserve">
+    <value>已启用, 未指定接收器</value>
+  </data>
+  <data name="ExceptionCaught" xml:space="preserve">
+    <value>异常捕获: {0}</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>确认</value>
   </data>
   <data name="OptionsViewTitle" xml:space="preserve">
     <value>航空器轨迹记录器</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>接收器</value>
   </data>
 </root>

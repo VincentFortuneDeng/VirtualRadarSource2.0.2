@@ -19,7 +19,7 @@ using InterfaceFactory;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace VirtualRadar.Library
+namespace VirtualRadar.Plugin.AircraftTrackLog
 {
     /// <summary>
     /// Default implementation of <see cref="ITrackFlightLog"/>.

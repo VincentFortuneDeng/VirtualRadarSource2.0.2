@@ -28,7 +28,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <summary>
         /// Gets the current date and time in the local time zone.
         /// </summary>
-        /*DateTime LocalNow { get; }*/
+        DateTime LocalNow { get; }
 
         /// <summary>
         /// Creates a GUI object that allows the user to display and change the options for the plugin.

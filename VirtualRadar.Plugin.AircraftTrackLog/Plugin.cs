@@ -21,6 +21,9 @@ using VirtualRadar.Interface.Database;
 using VirtualRadar.Interface.Settings;
 using VirtualRadar.Interface.WebServer;
 using VirtualRadar.Interface.WebSite;
+using VirtualRadar.Interface.BaseStation;
+using System.Diagnostics;
+using System.Threading;
 
 namespace VirtualRadar.Plugin.AircraftTrackLog
 {
@@ -42,12 +45,14 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         class DefaultProvider : IPluginProvider
         {
             /*public DateTime UtcNow                      { get { return DateTime.UtcNow; } }*/
-            /*public DateTime LocalNow                    { get { return DateTime.Now; } }*/
-            public IOptionsView CreateOptionsView()     { return new WinForms.OptionsView(); }
+            public DateTime LocalNow { get { return DateTime.Now; } }
+            public IOptionsView CreateOptionsView() { return new WinForms.OptionsView(); }
             /*public bool FileExists(string fileName)     { return File.Exists(fileName); }*/
             /*public long FileSize(string fileName)       { return new FileInfo(fileName).Length; }*/
         }
         #endregion
+
+
 
         // Constant fields
         //private const string SettingsKey = "Settings";
@@ -56,28 +61,56 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         // Fields
         private Options _Options;
 
+        /// <summary>
+        /// The web site that's currently in use.
+        /// </summary>
+        private IWebSite _WebSite;
+
+        private PluginStartupParameters _PluginStartupParameters;
+
         private IWebSiteExtender _WebSiteExtender;
 
+        /// <summary>
+        /// The feed whose aircraft messages are being recorded in the database.
+        /// </summary>
+        private IFeed _Feed;
 
+        /// <summary>
+        /// The object that different threads synchronise on before using the contents of the fields.
+        /// </summary>
+        //private object _SyncLock = new object();
+
+
+        /// <summary>
+        /// 记录飞机轨迹日志对象
+        /// </summary>
+        private ITrackFlightLog _TrackFlightLog;
+
+        /// <summary>
+        /// The object that queues messages from BaseStation and relays them to us on a background thread.
+        /// </summary>
+        private BackgroundThreadQueue<BaseStationMessageEventArgs> _BackgroundThreadMessageQueue;
+
+        //private static log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         // Properties
         /// <summary>
         /// Gets or sets the provider that abstracts away the environment for testing.
         /// </summary>
         public IPluginProvider Provider { get; set; }
 
-        public string Id                    { get { return "VirtualRadar.Plugin.AircraftTrackLog"; } }
+        public string Id { get { return "VirtualRadar.Plugin.AircraftTrackLog"; } }
 
-        public string PluginFolder          { get; set; }
+        public string PluginFolder { get; set; }
 
-        public string Name                  { get { return "Aircraft Track Log"; } }
+        public string Name { get { return "Aircraft Track Log"; } }
 
-        public string Version               { get { return "2.0.2"; } }
+        public string Version { get { return "2.0.2"; } }
 
-        public string Status                { get; private set; }
+        public string Status { get; private set; }
 
-        public string StatusDescription     { get; private set; }
+        public string StatusDescription { get; private set; }
 
-        public bool HasOptions              { get { return true; } }
+        public bool HasOptions { get { return true; } }
 
 
         // Events
@@ -85,7 +118,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
         protected virtual void OnStatusChanged(EventArgs args)
         {
-            if(StatusChanged != null) StatusChanged(this, args);
+            if(StatusChanged != null)
+                StatusChanged(this, args);
         }
 
         #region Constructor
@@ -95,6 +129,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         public Plugin()
         {
             Provider = new DefaultProvider();
+            
             Status = PluginStrings.Disabled;
         }
         #endregion
@@ -103,18 +138,175 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         // Updates the status and raises StatusChanged
         private void UpdateStatus()
         {
-            if(!_Options.Enabled) {
-                Status = PluginStrings.Disabled;
-                StatusDescription = null;
-            } else {
-                Status = PluginStrings.Enabled;
-                StatusDescription = PluginStrings.EnabledDescription;
-            }
+            //lock(_SyncLock) {
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
 
-            OnStatusChanged(EventArgs.Empty);
+                if(!_Options.Enabled) {
+                    Status = PluginStrings.Disabled;
+                    StatusDescription = null;
+                } else if(_Options.ReceiverId == 0) {
+                    Status = PluginStrings.EnabledNoReceiver;
+                } else if(feedManager.GetByUniqueId(_Options.ReceiverId) == null) {
+                    Status = PluginStrings.EnabledBadReceiver;
+                } else {
+                    Status = PluginStrings.Enabled;
+                    StatusDescription = PluginStrings.EnabledDescription;
+                }
+
+                OnStatusChanged(EventArgs.Empty);
+            //}
         }
 
+        /// <summary>
+        /// Called when the background queue pops a message off the queue of messages.
+        /// </summary>
+        /// <param name="args"></param>
+        private void MessageQueue_MessageReceived(BaseStationMessageEventArgs args)
+        {
+            try {
+                TrackFlight(args.Message);
+            } catch(ThreadAbortException) {
+            } catch(Exception ex) {
+                Debug.WriteLine(String.Format("BaseStationDatabaseWriter.Plugin.MessageRelay_MessageReceived caught exception {0}", ex.ToString()));
+                Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine("Database writer plugin caught exception on message processing: {0}", ex.ToString());
+                StatusDescription = String.Format(PluginStrings.ExceptionCaught, ex.Message);
+                OnStatusChanged(EventArgs.Empty);
+            }
+        }
 
+        /// <summary>
+        /// Creates database records and updates internal objects to track an aircraft that is currently transmitting messages.
+        /// </summary>
+        /// <param name="message"></param>
+        private void TrackFlight(BaseStationMessage message)
+        {
+            if(IsTransmissionMessage(message)) {
+                var localNow = Provider.LocalNow;
+
+                //记录轨迹日志
+                _TrackFlightLog.FileName = localNow.ToString("yyyyMMdd") + "ICAO" + message.Icao24;
+
+                _TrackFlightLog.WriteLine(String.Concat(message.ToBaseStationString(), "\r\n"));
+
+                /*
+                log.Info("AircraftID:" + flight.AircraftID + " Callsign:" + flight.Callsign + " FlightID:" + flight.FlightID
+                    + " FirstAltitude:" + flight.FirstAltitude + " FirstGroundSpeed:" + flight.FirstGroundSpeed
+                    + " FirstLat:" + flight.FirstLat + " FirstLon:" + flight.FirstLon
+                    + " FirstTrack:" + flight.FirstTrack + " FirstVerticalRate:" + flight.FirstVerticalRate
+                    + " LastAltitude:" + flight.LastAltitude + " LastGroundSpeed:" + flight.LastGroundSpeed
+                    + " LastLat:" + flight.LastLat + " LastLon:" + flight.LastLon
+                    + " LastTrack:" + flight.LastTrack + " LastVerticalRate:" + flight.LastVerticalRate
+                    + " StartTime:" + flight.StartTime + " EndTime:" + flight.EndTime
+                    + " NumADSBMsgRec:" + flight.NumADSBMsgRec + " NumPosMsgRec:" + flight.NumPosMsgRec
+                    + " NumModeSMsgRec:" + flight.NumModeSMsgRec + " NumAirPosMsgRec:" + flight.NumAirPosMsgRec
+                    + " NumAirCallRepMsgRec:" + flight.NumAirCallRepMsgRec);*/
+                //log.Info(String.Concat(message.ToBaseStationString(), "\r\n"));
+                //log.Logger.
+
+                /*
+                 * 7500：非法行为（比如劫机）
+                 * 7600：通讯故障
+                 * 7700：紧急状况 
+                 */
+            }
+        }
+
+        /// <summary>
+        /// Returns true if the message holds values transmitted from a vehicle.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private bool IsTransmissionMessage(BaseStationMessage message)
+        {
+            return !String.IsNullOrEmpty(message.Icao24) &&
+                   message.MessageType == BaseStationMessageType.Transmission &&
+                   message.TransmissionType != BaseStationTransmissionType.None;
+        }
+
+        /// <summary>
+        /// Called when an exception is allowed to bubble up from <see cref="MessageReceived"/>. This never happens,
+        /// it's just here because the background thread queue object needs it.
+        /// </summary>
+        /// <param name="exception"></param>
+        private void MessageQueue_ExceptionCaught(Exception exception)
+        {
+
+        }
+
+        /// <summary>
+        /// Called by the listener when a BaseStation message is received.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void MessageListener_MessageReceived(object sender, BaseStationMessageEventArgs args)
+        {
+            if(_BackgroundThreadMessageQueue != null) _BackgroundThreadMessageQueue.Enqueue(args);
+        }
+
+        #region HookFeed, UnhookFeed
+        /// <summary>
+        /// Hooks the feed specified in options, unhooking the previous feed if there was one.
+        /// </summary>
+        private void HookFeed()
+        {
+            //lock(_SyncLock) {
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
+                if(feed != _Feed) {
+                    if(feed != null) {
+                        feed.Listener.Port30003MessageReceived += MessageListener_MessageReceived;
+                        feed.Listener.SourceChanged += MessageListener_SourceChanged;
+                    }
+
+                    _Feed = feed;
+                }
+            //}
+        }
+
+        /// <summary>
+        /// Unhooks the current feed if it isn't currently valid.
+        /// </summary>
+        private void UnhookFeed()
+        {
+            //lock(_SyncLock) {
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
+                if(feed != _Feed) {
+                    if(_Feed != null) {
+                        _Feed.Listener.Port30003MessageReceived -= MessageListener_MessageReceived;
+                        _Feed.Listener.SourceChanged -= MessageListener_SourceChanged;
+                    }
+
+                    _Feed = null;
+                }
+            //}
+        }
+
+        /// <summary>
+        /// Called when the listener changes source.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void MessageListener_SourceChanged(object sender, EventArgs args)
+        {
+            //EndSession();
+            //StartSession();
+            UpdateStatus();
+        }
+
+        /// <summary>
+        /// Called when the feed manager reports a change in feeds.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void FeedManager_FeedsChanged(object sender, EventArgs args)
+        {
+            UnhookFeed();
+            //StartSession();
+            UpdateStatus();
+            HookFeed();
+        }
+        #endregion
         // Configuration load and save methods
         /// <summary>
         /// Loads the XML stored in the plugin settings and deserialises it into an object. If there are
@@ -172,6 +364,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="classFactory"></param>
         public void RegisterImplementations(IClassFactory classFactory)
         {
+            classFactory.Register<ITrackFlightLog, TrackFlightLog>();
         }
 
         /// <summary>
@@ -181,20 +374,26 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="parameters">An object carrying details about the application and your plugin's environment.</param>
         public void Startup(PluginStartupParameters parameters)
         {
-            // Load the settings
-            _Options = OptionsStorage.Load(this);
-            //_Options = LoadSettings();
+            //lock(_SyncLock) {
+                // Load the settings
+                _Options = OptionsStorage.Load(this);
+                //_Options = LoadSettings();
+                _WebSite = parameters.WebSite;
+                _PluginStartupParameters = parameters;
+                _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
 
-            // Create the web site extender and initialise it. This adds our content into the web site, see the comments
-            // on IWebSiteExtender for more information.
-            _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
-            _WebSiteExtender.Enabled = _Options.Enabled;
-            _WebSiteExtender.WebRootSubFolder = "Web";
-            _WebSiteExtender.InjectContent = @"<script src=""Example/inject.js"" type=""text/javascript""></script>";
-            _WebSiteExtender.InjectMapPages();
-            _WebSiteExtender.Initialise(parameters);
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                feedManager.FeedsChanged += FeedManager_FeedsChanged;
 
-            UpdateStatus();
+                // Create the web site extender and initialise it. This adds our content into the web site, see the comments
+                // on IWebSiteExtender for more information.
+                ApplyOptions();
+
+                _BackgroundThreadMessageQueue = new BackgroundThreadQueue<BaseStationMessageEventArgs>("BaseStationDatabaseWriterMessageQueue");
+                _BackgroundThreadMessageQueue.StartBackgroundThread(MessageQueue_MessageReceived, MessageQueue_ExceptionCaught);
+
+                HookFeed();
+            //}
         }
 
         /// <summary>
@@ -213,36 +412,73 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         public void ShowWinFormsOptionsUI()
         {
-            using(var view = Factory.Singleton.Resolve<IOptionsView>()) {
-                if(view.DisplayView()) {
+            using(var view = Provider.CreateOptionsView()) {
+                view.PluginEnabled = _Options.Enabled;
+                view.ReceiverId = _Options.ReceiverId;
 
+                if(view.DisplayView()) {
+                    _Options.Enabled = view.PluginEnabled;
+                    _Options.ReceiverId = view.ReceiverId;
+                        if(view.DisplayView()) {
+                            _Options.Enabled = view.PluginEnabled;
+                            _Options.ReceiverId = view.ReceiverId;
+
+                            OptionsStorage.Save(this, _Options);
+                            UnhookFeed();
+                            ApplyOptions();
+                            HookFeed();
+                    }
                 }
             }
             // To keep things simple the plugin only has one configuration setting - an enabled switch. Rather than using
             // a form to ask the user for the setting of this we'll just use a standard message box.
-            _Options.Enabled = MessageBox.Show(
+            /*_Options.Enabled = MessageBox.Show(
                 "启用此插件添加示例内容到网站. 要启用吗?",
                 "启用插件",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button1
-            ) == DialogResult.Yes;
+            ) == DialogResult.Yes;*/
 
-            OptionsStorage.Save(this, _Options);
+            //OptionsStorage.Save(this, _Options);
             //SaveSettings(_Options);
 
-            if(_WebSiteExtender != null) _WebSiteExtender.Enabled = _Options.Enabled;
 
-            UpdateStatus();
+
+            //UpdateStatus();
         }
 
         public void Shutdown()
         {
+            if(_BackgroundThreadMessageQueue != null)
+                _BackgroundThreadMessageQueue.Dispose();
             // We just want to remove our site root from the web site here
             _WebSiteExtender.Dispose();
 
             _Options.Enabled = false;
             UpdateStatus();
         }
+
+        #region ApplyOptions
+        /// <summary>
+        /// Applies the options.
+        /// </summary>
+        private void ApplyOptions()
+        {
+            if(_Options.Enabled) {
+                _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
+                _WebSiteExtender.Enabled = _Options.Enabled;
+                _WebSiteExtender.WebRootSubFolder = "Web";
+                _WebSiteExtender.InjectContent = @"<script src=""Example/inject.js"" type=""text/javascript""></script>";
+                _WebSiteExtender.InjectMapPages();
+                _WebSiteExtender.Initialise(_PluginStartupParameters);
+            }
+
+            UpdateStatus();
+        }
+
+        //OnStatusChanged(EventArgs.Empty);
+
+        #endregion
     }
 }

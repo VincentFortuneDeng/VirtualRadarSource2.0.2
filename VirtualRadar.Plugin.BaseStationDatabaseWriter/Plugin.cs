@@ -62,10 +62,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         #endregion
 
         #region Fields
-        /// <summary>
-        /// 记录飞机轨迹日志对象
-        /// </summary>
-        private ITrackFlightLog trackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
+        
 
         /// <summary>
         /// The object that different threads synchronise on before using the contents of the fields.
@@ -452,9 +449,9 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         }
 
                         //记录轨迹日志
-                        trackFlightLog.FileName = localNow.ToString("yyyyMMdd") + "ICAO" + message.Icao24;
+                        /*trackFlightLog.FileName = localNow.ToString("yyyyMMdd") + "ICAO" + message.Icao24;
 
-                        trackFlightLog.WriteLine(String.Concat(message.ToBaseStationString(), "\r\n"));
+                        trackFlightLog.WriteLine(String.Concat(message.ToBaseStationString(), "\r\n"));*/
 
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
@@ -734,7 +731,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// <param name="exception"></param>
         private void MessageQueue_ExceptionCaught(Exception exception)
         {
-            ;
+            
         }
 
         /// <summary>

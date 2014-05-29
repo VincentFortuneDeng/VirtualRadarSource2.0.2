@@ -126,13 +126,25 @@
   <data name="Enabled" xml:space="preserve">
     <value>Enabled</value>
   </data>
+  <data name="EnabledBadReceiver" xml:space="preserve">
+    <value>Enabled, receiver not enabled or invalid</value>
+  </data>
   <data name="EnabledDescription" xml:space="preserve">
     <value>Enabled, Browse /VirtualRadar/Example/Index.html</value>
+  </data>
+  <data name="EnabledNoReceiver" xml:space="preserve">
+    <value>Enabled, receiver not enabled or invalid</value>
+  </data>
+  <data name="ExceptionCaught" xml:space="preserve">
+    <value>Exception caught: {0}</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="OptionsViewTitle" xml:space="preserve">
-    <value>AircraftTrackLog</value>
+    <value>Aircraft Track Log</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>Receiver</value>
   </data>
 </root>

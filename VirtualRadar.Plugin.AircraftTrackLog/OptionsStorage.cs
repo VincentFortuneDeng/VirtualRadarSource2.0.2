@@ -22,8 +22,10 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
     class OptionsStorage
     {
         // Field names in the configuration file
-        private const string Key = "Options";
 
+        private const string EnabledField = "Enabled";
+        
+        private const string ReceiverId = "ReceiverId";
         /// <summary>
         /// Loads the plugin's options.
         /// </summary>
@@ -33,21 +35,12 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             var pluginStorage = Factory.Singleton.Resolve<IPluginSettingsStorage>().Singleton;
             var pluginSettings = pluginStorage.Load();
-            var serialisedOptions = pluginSettings.ReadString(plugin, Key);
 
-            Options result = serialisedOptions == null ? new Options() : null;
-            if(result == null) {
-                try {
-                    using(var stream = new MemoryStream(Encoding.UTF8.GetBytes(serialisedOptions))) {
-                        var serialiser = new XmlSerializer(typeof(Options));
-                        result = (Options)serialiser.Deserialize(stream);
-                    }
-                } catch {
-                    result = new Options();
-                }
-            }
+            return new Options() {
+                Enabled = pluginSettings.ReadBool(plugin, EnabledField).GetValueOrDefault(),
 
-            return result;
+                ReceiverId = pluginSettings.ReadInt(plugin, ReceiverId).GetValueOrDefault(),
+            };
         }
 
         /// <summary>
@@ -57,15 +50,14 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="options"></param>
         public static void Save(Plugin plugin, Options options)
         {
-            using(var stream = new MemoryStream()) {
-                var serialiser = new XmlSerializer(typeof(Options));
-                serialiser.Serialize(stream, options);
+            var storage = Factory.Singleton.Resolve<IPluginSettingsStorage>().Singleton;
 
-                var pluginStorage = Factory.Singleton.Resolve<IPluginSettingsStorage>().Singleton;
-                var pluginSettings = pluginStorage.Load();
-                pluginSettings.Write(plugin, Key, Encoding.UTF8.GetString(stream.ToArray()));
-                pluginStorage.Save(pluginSettings);
-            }
+            var pluginSettings = storage.Load();
+            pluginSettings.Write(plugin, EnabledField, options.Enabled);
+            
+            pluginSettings.Write(plugin, ReceiverId, options.ReceiverId);
+
+            storage.Save(pluginSettings);
         }
     }
 }

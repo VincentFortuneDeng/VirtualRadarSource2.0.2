@@ -12,8 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VirtualRadar.Interface;
 
-namespace VirtualRadar.Interface
+namespace VirtualRadar.Plugin.AircraftTrackLog
 {
     /// <summary>
     /// The interface for objects that can manage log files for us.
