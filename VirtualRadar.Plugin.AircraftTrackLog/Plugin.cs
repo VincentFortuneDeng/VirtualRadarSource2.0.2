@@ -1,0 +1,248 @@
+﻿// Copyright © 2012 onwards, Andrew Whewell
+// All rights reserved.
+//
+// Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+//    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+//    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+//    * Neither the name of the author nor the names of the program's contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OF THE SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml.Serialization;
+using InterfaceFactory;
+using VirtualRadar.Interface;
+using VirtualRadar.Interface.Database;
+using VirtualRadar.Interface.Settings;
+using VirtualRadar.Interface.WebServer;
+using VirtualRadar.Interface.WebSite;
+
+namespace VirtualRadar.Plugin.AircraftTrackLog
+{
+    /// <summary>
+    /// An example plugin that adds a page to the web site output of the server and a link to the aircraft
+    /// detail panel.
+    /// </summary>
+    /// <remarks><para>
+    /// If you want to modify this to create your own plugin that adds content to the web site then you
+    /// will need to change the name of the plugin returned by the "Id" property and then add your content
+    /// to the Web folder.
+    /// </para></remarks>
+    public class Plugin : IPlugin
+    {
+        #region Private class - DefaultProvider
+        /// <summary>
+        /// The default implementation of <see cref="IPluginProvider"/>.
+        /// </summary>
+        class DefaultProvider : IPluginProvider
+        {
+            /*public DateTime UtcNow                      { get { return DateTime.UtcNow; } }*/
+            /*public DateTime LocalNow                    { get { return DateTime.Now; } }*/
+            public IOptionsView CreateOptionsView()     { return new WinForms.OptionsView(); }
+            /*public bool FileExists(string fileName)     { return File.Exists(fileName); }*/
+            /*public long FileSize(string fileName)       { return new FileInfo(fileName).Length; }*/
+        }
+        #endregion
+
+        // Constant fields
+        //private const string SettingsKey = "Settings";
+
+
+        // Fields
+        private Options _Options;
+
+        private IWebSiteExtender _WebSiteExtender;
+
+
+        // Properties
+        /// <summary>
+        /// Gets or sets the provider that abstracts away the environment for testing.
+        /// </summary>
+        public IPluginProvider Provider { get; set; }
+
+        public string Id                    { get { return "VirtualRadar.Plugin.AircraftTrackLog"; } }
+
+        public string PluginFolder          { get; set; }
+
+        public string Name                  { get { return "Aircraft Track Log"; } }
+
+        public string Version               { get { return "2.0.2"; } }
+
+        public string Status                { get; private set; }
+
+        public string StatusDescription     { get; private set; }
+
+        public bool HasOptions              { get { return true; } }
+
+
+        // Events
+        public event EventHandler StatusChanged;
+
+        protected virtual void OnStatusChanged(EventArgs args)
+        {
+            if(StatusChanged != null) StatusChanged(this, args);
+        }
+
+        #region Constructor
+        /// <summary>
+        /// Creates a new object.
+        /// </summary>
+        public Plugin()
+        {
+            Provider = new DefaultProvider();
+            Status = PluginStrings.Disabled;
+        }
+        #endregion
+
+
+        // Updates the status and raises StatusChanged
+        private void UpdateStatus()
+        {
+            if(!_Options.Enabled) {
+                Status = PluginStrings.Disabled;
+                StatusDescription = null;
+            } else {
+                Status = PluginStrings.Enabled;
+                StatusDescription = PluginStrings.EnabledDescription;
+            }
+
+            OnStatusChanged(EventArgs.Empty);
+        }
+
+
+        // Configuration load and save methods
+        /// <summary>
+        /// Loads the XML stored in the plugin settings and deserialises it into an object. If there are
+        /// no settings stored for the plugin then a new <see cref="Options"/> object is returned.
+        /// </summary>
+        /// <returns>The deserialised <see cref="Options"/> object.</returns>
+        /*private Options LoadSettings()
+        {
+            Options settings = null;
+
+            var pluginSettingsStorage = Factory.Singleton.Resolve<IPluginSettingsStorage>().Singleton;
+            var pluginSettings = pluginSettingsStorage.Load();
+
+            var settingsXml = pluginSettings.ReadString(this, SettingsKey);
+            if(String.IsNullOrEmpty(settingsXml)) {
+                settings = new Options();
+            } else {
+                var xmlSerialiser = new XmlSerializer(typeof(Options));
+                using(var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(settingsXml))) {
+                    settings = (Options)xmlSerialiser.Deserialize(memoryStream);
+                }
+            }
+
+            return settings;
+        }*/
+
+        /// <summary>
+        /// Serialises the <see cref="Options"/> object passed across and stores it for the plugin.
+        /// </summary>
+        /// <param name="settings"></param>
+        /*private void SaveSettings(Options settings)
+        {
+            string settingsXml = null;
+            using(var memoryStream = new MemoryStream()) {
+                var xmlSerialiser = new XmlSerializer(typeof(Options));
+                xmlSerialiser.Serialize(memoryStream, settings);
+                settingsXml = Encoding.UTF8.GetString(memoryStream.ToArray());
+            }
+
+            var pluginSettingsStorage = Factory.Singleton.Resolve<IPluginSettingsStorage>().Singleton;
+
+            var pluginSettings = pluginSettingsStorage.Load();
+            pluginSettings.Write(this, SettingsKey, settingsXml);
+
+            pluginSettingsStorage.Save(pluginSettings);
+        }*/
+
+
+        // IPlugin methods
+        /// <summary>
+        /// This is called by Virtual Radar Server before Startup is called. This is where you can override any
+        /// of the Virtual Radar Server implementations of interfaces. Do not do any other work here - Virtual
+        /// Radar Server has not yet finished initialising the application.
+        /// </summary>
+        /// <param name="classFactory"></param>
+        public void RegisterImplementations(IClassFactory classFactory)
+        {
+        }
+
+        /// <summary>
+        /// This is called by Virtual Radar Server. This is where you can be assured that Virtual Radar Server
+        /// has finished initialising the application and that it is safe to use the interfaces.
+        /// </summary>
+        /// <param name="parameters">An object carrying details about the application and your plugin's environment.</param>
+        public void Startup(PluginStartupParameters parameters)
+        {
+            // Load the settings
+            _Options = OptionsStorage.Load(this);
+            //_Options = LoadSettings();
+
+            // Create the web site extender and initialise it. This adds our content into the web site, see the comments
+            // on IWebSiteExtender for more information.
+            _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
+            _WebSiteExtender.Enabled = _Options.Enabled;
+            _WebSiteExtender.WebRootSubFolder = "Web";
+            _WebSiteExtender.InjectContent = @"<script src=""Example/inject.js"" type=""text/javascript""></script>";
+            _WebSiteExtender.InjectMapPages();
+            _WebSiteExtender.Initialise(parameters);
+
+            UpdateStatus();
+        }
+
+        /// <summary>
+        /// This is called by Virtual Radar Server when the GUI thread, the only thread where it is safe to make GUI
+        /// calls, is started. Most plugins can ignore this, you only need to use it if you need to create objects
+        /// that must be started from the GUI thread.
+        /// </summary>
+        public void GuiThreadStartup()
+        {
+        }
+
+        /// <summary>
+        /// This is called by Virtual Radar Server when the user clicks the OPTIONS button for your plugin. If you set
+        /// the <see cref="HasOptions"/> property on this class to false then it will never be called, but it's usually
+        /// a good idea to allow the user to enable or disable the plugin at a bare minimum.
+        /// </summary>
+        public void ShowWinFormsOptionsUI()
+        {
+            using(var view = Factory.Singleton.Resolve<IOptionsView>()) {
+                if(view.DisplayView()) {
+
+                }
+            }
+            // To keep things simple the plugin only has one configuration setting - an enabled switch. Rather than using
+            // a form to ask the user for the setting of this we'll just use a standard message box.
+            _Options.Enabled = MessageBox.Show(
+                "启用此插件添加示例内容到网站. 要启用吗?",
+                "启用插件",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1
+            ) == DialogResult.Yes;
+
+            OptionsStorage.Save(this, _Options);
+            //SaveSettings(_Options);
+
+            if(_WebSiteExtender != null) _WebSiteExtender.Enabled = _Options.Enabled;
+
+            UpdateStatus();
+        }
+
+        public void Shutdown()
+        {
+            // We just want to remove our site root from the web site here
+            _WebSiteExtender.Dispose();
+
+            _Options.Enabled = false;
+            UpdateStatus();
+        }
+    }
+}

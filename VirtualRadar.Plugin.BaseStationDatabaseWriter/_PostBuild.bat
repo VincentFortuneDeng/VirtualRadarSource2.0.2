@@ -29,9 +29,10 @@ rem Ensure that the XML manifest file is set to always copy to the output direct
 
     rem You need to modify the batch by hand here to copy the languages that you have translations for
     set COPYLANG=%~3..\..\..\_PostBuildCopyLanguage.bat
-    call %COPYLANG% "%1" "%2" "%3" "%4" de-DE
-    call %COPYLANG% "%1" "%2" "%3" "%4" fr-FR
-    call %COPYLANG% "%1" "%2" "%3" "%4" ru-RU
+    rem call %COPYLANG% "%1" "%2" "%3" "%4" de-DE
+    rem call %COPYLANG% "%1" "%2" "%3" "%4" fr-FR
+    rem call %COPYLANG% "%1" "%2" "%3" "%4" ru-RU
+	call %COPYLANG% "%1" "%2" "%3" "%4" zh-CN
 
     goto :END
 

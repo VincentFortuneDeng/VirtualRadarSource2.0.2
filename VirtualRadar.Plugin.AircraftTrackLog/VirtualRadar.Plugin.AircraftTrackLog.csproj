@@ -32,16 +32,89 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IOptionsPresenter.cs" />
+    <Compile Include="IOptionsView.cs" />
+    <Compile Include="IPluginProvider.cs" />
+    <Compile Include="OptionsPresenter.cs" />
+    <Compile Include="OptionsStorage.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Plugin.cs" />
+    <Compile Include="PluginLocalise.cs" />
+    <Compile Include="PluginStrings.zh-CN.Designer.cs">
+      <DependentUpon>PluginStrings.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PluginStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PluginStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="WinForms\OptionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WinForms\OptionsView.Designer.cs">
+      <DependentUpon>OptionsView.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="VirtualRadar.Plugin.AircraftTrackLog.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web\Example\Index.html" />
+    <Content Include="Web\Example\inject.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_PostBuild.bat" />
+    <None Include="_PostBuildCopyLanguage.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InterfaceFactory\InterfaceFactory.csproj">
+      <Project>{6ad23cd7-fb9f-448e-85ea-cb5aaa4e9fee}</Project>
+      <Name>InterfaceFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualRadar.Interface\VirtualRadar.Interface.csproj">
+      <Project>{8ef81105-f45d-4edb-996c-de7d5644b1e7}</Project>
+      <Name>VirtualRadar.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualRadar.Localisation\VirtualRadar.Localisation.csproj">
+      <Project>{fd3e36e1-35ea-46f3-a30b-65cea7d92b7e}</Project>
+      <Name>VirtualRadar.Localisation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualRadar.WinForms\VirtualRadar.WinForms.csproj">
+      <Project>{3a1330d8-1e7d-4c70-ba9a-39851389cfff}</Project>
+      <Name>VirtualRadar.WinForms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PluginStrings.zh-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PluginStrings.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PluginStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PluginStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForms\OptionsView.resx">
+      <DependentUpon>OptionsView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)\_PostBuild.bat "$(SolutionDir)" "$(ProjectDir)" "$(ConfigurationName)" "$(TargetDir)" $(TargetName) "AircraftTrackLog"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

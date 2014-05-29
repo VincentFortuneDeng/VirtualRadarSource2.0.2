@@ -130,7 +130,7 @@
     <value>{0} 不存在</value>
   </data>
   <data name="Disabled" xml:space="preserve">
-    <value>禁用</value>
+    <value>已禁用</value>
   </data>
   <data name="Enabled" xml:space="preserve">
     <value>已启用</value>
