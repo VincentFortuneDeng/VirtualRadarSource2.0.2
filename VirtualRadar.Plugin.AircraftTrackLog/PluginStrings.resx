@@ -123,6 +123,9 @@
   <data name="Disabled" xml:space="preserve">
     <value>Disabled</value>
   </data>
+  <data name="DisabledDescription" xml:space="preserve">
+    <value>Disabled,track log invalid</value>
+  </data>
   <data name="Enabled" xml:space="preserve">
     <value>Enabled</value>
   </data>
@@ -130,7 +133,7 @@
     <value>Enabled, receiver not enabled or invalid</value>
   </data>
   <data name="EnabledDescription" xml:space="preserve">
-    <value>Enabled, Browse /VirtualRadar/Example/Index.html</value>
+    <value>Enabled, Browse /VirtualRadar/Trail/Index.html and the receiver is working.</value>
   </data>
   <data name="EnabledNoReceiver" xml:space="preserve">
     <value>Enabled, receiver not enabled or invalid</value>
@@ -138,8 +141,8 @@
   <data name="ExceptionCaught" xml:space="preserve">
     <value>Exception caught: {0}</value>
   </data>
-  <data name="Ok" xml:space="preserve">
-    <value>Ok</value>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="OptionsViewTitle" xml:space="preserve">
     <value>Aircraft Track Log</value>

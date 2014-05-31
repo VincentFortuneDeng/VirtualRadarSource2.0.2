@@ -47,6 +47,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             /*public DateTime UtcNow                      { get { return DateTime.UtcNow; } }*/
             public DateTime LocalNow { get { return DateTime.Now; } }
             public IOptionsView CreateOptionsView() { return new WinForms.OptionsView(); }
+            public ITrackFlightLog CreateTrackFlightLog() { return new TrackFlightLog(); }
             /*public bool FileExists(string fileName)     { return File.Exists(fileName); }*/
             /*public long FileSize(string fileName)       { return new FileInfo(fileName).Length; }*/
         }
@@ -129,8 +130,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         public Plugin()
         {
             Provider = new DefaultProvider();
-            
+
             Status = PluginStrings.Disabled;
+            StatusDescription = PluginStrings.DisabledDescription;
         }
         #endregion
 
@@ -139,21 +141,21 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         private void UpdateStatus()
         {
             //lock(_SyncLock) {
-                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
 
-                if(!_Options.Enabled) {
-                    Status = PluginStrings.Disabled;
-                    StatusDescription = null;
-                } else if(_Options.ReceiverId == 0) {
-                    Status = PluginStrings.EnabledNoReceiver;
-                } else if(feedManager.GetByUniqueId(_Options.ReceiverId) == null) {
-                    Status = PluginStrings.EnabledBadReceiver;
-                } else {
-                    Status = PluginStrings.Enabled;
-                    StatusDescription = PluginStrings.EnabledDescription;
-                }
+            if(!_Options.Enabled) {
+                Status = PluginStrings.Disabled;
+                StatusDescription = null;
+            } else if(_Options.ReceiverId == 0) {
+                Status = PluginStrings.EnabledNoReceiver;
+            } else if(feedManager.GetByUniqueId(_Options.ReceiverId) == null) {
+                Status = PluginStrings.EnabledBadReceiver;
+            } else {
+                Status = PluginStrings.Enabled;
+                StatusDescription = PluginStrings.EnabledDescription;
+            }
 
-                OnStatusChanged(EventArgs.Empty);
+            OnStatusChanged(EventArgs.Empty);
             //}
         }
 
@@ -250,16 +252,16 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         private void HookFeed()
         {
             //lock(_SyncLock) {
-                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
-                var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
-                if(feed != _Feed) {
-                    if(feed != null) {
-                        feed.Listener.Port30003MessageReceived += MessageListener_MessageReceived;
-                        feed.Listener.SourceChanged += MessageListener_SourceChanged;
-                    }
-
-                    _Feed = feed;
+            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+            var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
+            if(feed != _Feed) {
+                if(feed != null) {
+                    feed.Listener.Port30003MessageReceived += MessageListener_MessageReceived;
+                    feed.Listener.SourceChanged += MessageListener_SourceChanged;
                 }
+
+                _Feed = feed;
+            }
             //}
         }
 
@@ -269,16 +271,16 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         private void UnhookFeed()
         {
             //lock(_SyncLock) {
-                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
-                var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
-                if(feed != _Feed) {
-                    if(_Feed != null) {
-                        _Feed.Listener.Port30003MessageReceived -= MessageListener_MessageReceived;
-                        _Feed.Listener.SourceChanged -= MessageListener_SourceChanged;
-                    }
-
-                    _Feed = null;
+            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+            var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
+            if(feed != _Feed) {
+                if(_Feed != null) {
+                    _Feed.Listener.Port30003MessageReceived -= MessageListener_MessageReceived;
+                    _Feed.Listener.SourceChanged -= MessageListener_SourceChanged;
                 }
+
+                _Feed = null;
+            }
             //}
         }
 
@@ -364,7 +366,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="classFactory"></param>
         public void RegisterImplementations(IClassFactory classFactory)
         {
-            classFactory.Register<ITrackFlightLog, TrackFlightLog>();
+            //classFactory.Register<ITrackFlightLog, TrackFlightLog>();
+            //classFactory.Register<IOptionsView, WinForms.OptionsView>();
+            classFactory.Register<IOptionsPresenter, OptionsPresenter>();
         }
 
         /// <summary>
@@ -375,24 +379,24 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         public void Startup(PluginStartupParameters parameters)
         {
             //lock(_SyncLock) {
-                // Load the settings
-                _Options = OptionsStorage.Load(this);
-                //_Options = LoadSettings();
-                _WebSite = parameters.WebSite;
-                _PluginStartupParameters = parameters;
-                _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
+            // Load the settings
+            _Options = OptionsStorage.Load(this);
+            //_Options = LoadSettings();
+            _WebSite = parameters.WebSite;
+            _PluginStartupParameters = parameters;
+            _TrackFlightLog =Provider.CreateTrackFlightLog();
 
-                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
-                feedManager.FeedsChanged += FeedManager_FeedsChanged;
+            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+            feedManager.FeedsChanged += FeedManager_FeedsChanged;
 
-                // Create the web site extender and initialise it. This adds our content into the web site, see the comments
-                // on IWebSiteExtender for more information.
-                ApplyOptions();
+            // Create the web site extender and initialise it. This adds our content into the web site, see the comments
+            // on IWebSiteExtender for more information.
+            ApplyOptions();
 
-                _BackgroundThreadMessageQueue = new BackgroundThreadQueue<BaseStationMessageEventArgs>("BaseStationDatabaseWriterMessageQueue");
-                _BackgroundThreadMessageQueue.StartBackgroundThread(MessageQueue_MessageReceived, MessageQueue_ExceptionCaught);
+            _BackgroundThreadMessageQueue = new BackgroundThreadQueue<BaseStationMessageEventArgs>("AircraftTrackLogMessageQueue");
+            _BackgroundThreadMessageQueue.StartBackgroundThread(MessageQueue_MessageReceived, MessageQueue_ExceptionCaught);
 
-                HookFeed();
+            HookFeed();
             //}
         }
 
@@ -416,18 +420,15 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 view.PluginEnabled = _Options.Enabled;
                 view.ReceiverId = _Options.ReceiverId;
 
+
                 if(view.DisplayView()) {
                     _Options.Enabled = view.PluginEnabled;
                     _Options.ReceiverId = view.ReceiverId;
-                        if(view.DisplayView()) {
-                            _Options.Enabled = view.PluginEnabled;
-                            _Options.ReceiverId = view.ReceiverId;
 
-                            OptionsStorage.Save(this, _Options);
-                            UnhookFeed();
-                            ApplyOptions();
-                            HookFeed();
-                    }
+                    OptionsStorage.Save(this, _Options);
+                    UnhookFeed();
+                    UpdateStatus();
+                    HookFeed();
                 }
             }
             // To keep things simple the plugin only has one configuration setting - an enabled switch. Rather than using
@@ -469,8 +470,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
                 _WebSiteExtender.Enabled = _Options.Enabled;
                 _WebSiteExtender.WebRootSubFolder = "Web";
-                _WebSiteExtender.InjectContent = @"<script src=""Example/inject.js"" type=""text/javascript""></script>";
+                _WebSiteExtender.InjectContent = @"<script src=""Trail/inject.js"" type=""text/javascript""></script>";
                 _WebSiteExtender.InjectMapPages();
+                //_WebSiteExtender.InjectReportPages();
                 _WebSiteExtender.Initialise(_PluginStartupParameters);
             }
 

@@ -57,15 +57,15 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
             if(_View.PluginEnabled) {
                 //lock(_SyncLock) {
-                    var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
 
-                    if(_View.ReceiverId == 0) {
-                        results.Add(new ValidationResult(ValidationField.Name, PluginStrings.EnabledNoReceiver));
-                    } else if(feedManager.GetByUniqueId(_View.ReceiverId) == null) {
-                        results.Add(new ValidationResult(ValidationField.Name, PluginStrings.EnabledBadReceiver));
-                    }
+                if(_View.ReceiverId == 0) {
+                    results.Add(new ValidationResult(ValidationField.ReceiverIds, PluginStrings.EnabledNoReceiver));
+                } else if(feedManager.GetByUniqueId(_View.ReceiverId) == null) {
+                    results.Add(new ValidationResult(ValidationField.ReceiverIds, PluginStrings.EnabledBadReceiver));
+                }
 
-                    //OnStatusChanged(EventArgs.Empty);
+                //OnStatusChanged(EventArgs.Empty);
 
                 //}
             }

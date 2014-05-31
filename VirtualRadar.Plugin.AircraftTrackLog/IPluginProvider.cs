@@ -35,6 +35,11 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         /// <returns></returns>
         IOptionsView CreateOptionsView();
+        /// <summary>
+        /// 创建轨迹记录器
+        /// </summary>
+        /// <returns></returns>
+        ITrackFlightLog CreateTrackFlightLog();
 
         /// <summary>
         /// Returns true if the file exists.

@@ -222,6 +222,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog.WinForms
 
                 /*FillDropDownWithValues<InjectionLocation>(comboBoxInjectOf, Enum.GetValues(typeof(InjectionLocation)).OfType<InjectionLocation>(), r => r.ToString().ToUpper());*/
 
+                //_ValueChangedHelper.HookValueChanged(new Control[] {
+                //    feedSelectControl,
+                //});
                 /*_ValueChangedHelper.HookValueChanged(new Control[] {
                     checkBoxInjectEnabled,
                     fileNameControlInjectFile,

@@ -74,10 +74,10 @@ namespace VirtualRadar.Plugin.Example
         private void UpdateStatus()
         {
             if(!_Settings.Enabled) {
-                Status = "Disabled";
+                Status = "已禁用";
                 StatusDescription = null;
             } else {
-                Status = "Enabled";
+                Status = "已启用";
                 StatusDescription = "已启用, 浏览 /VirtualRadar/Example/Index.html";
             }
 

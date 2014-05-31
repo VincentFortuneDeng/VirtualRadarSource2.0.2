@@ -208,7 +208,6 @@
     <Content Include="Site\Web\script\vrs\bootstrapReportMobile.js" />
     <Content Include="Site\Web\script\vrs\polarPlotter.js" />
     <Content Include="Site\Web\script\vrs\refreshManager.js" />
-    <Content Include="Site\Web\zz-norel-duplicateStrings.html" />
     <Content Include="Site\Reports\AircraftReport.htm" />
     <Content Include="Site\Reports\DateReport.js" />
     <Content Include="Site\Reports\DateReportCriteria.js" />
@@ -303,7 +302,6 @@
     <Content Include="Site\Web\script\vrs\reportFilter.js" />
     <Content Include="Site\Web\script\vrs\serverConfiguration.js" />
     <Content Include="Site\Web\script\vrs\timeoutManager.js" />
-    <Content Include="Site\Web\zz-norel-test.html" />
     <Content Include="Site\Web\_WARNING.txt" />
     <Content Include="Site\_external\_googleMaps.js" />
     <Content Include="Site\_external\_jQuery-1-9.js" />
@@ -321,7 +319,6 @@
     <Content Include="Site\Web\images\regions\ru.bmp" />
     <Content Include="Site\Web\images\wait.gif" />
     <Content Include="Site\Web\desktop.html" />
-    <Content Include="Site\Web\zz-norel-leak.html" />
     <Content Include="Site\Web\script\globalize.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.en-029.js" />
     <Content Include="Site\Web\script\i18n\globalize\globalize.culture.en-AU.js" />
