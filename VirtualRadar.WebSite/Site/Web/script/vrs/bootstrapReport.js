@@ -140,7 +140,7 @@
 
             // Lift-off :)
             base.doEndInitialise(pageSettings);
-            pageSettings.report.fetchPage();
+            pageSettings.report.fetchPage();//重要获取页面
         };
         //endregion
 
@@ -274,7 +274,7 @@
 
         //region Pages - initialisePageManager
         /**
-         * Adds pages to the page manager. Only used by the mobile site.
+         * Adds pages to the page manager. Only used by the mobile site.//仅移动页面
          * @param pageSettings
          */
         this.initialisePageManager = function(pageSettings)
@@ -362,7 +362,7 @@
             }
 
             // Hook the report fetched event and force a switch to the list page whenever the report is updated
-            pageSettings.report.hookRowsFetched(function() { VRS.pageManager.show(VRS.MobilePageName.AircraftList); }, this);
+            pageSettings.report.hookRowsFetched(function() { VRS.pageManager.show(VRS.MobilePageName.AircraftList); }, this);//重要 更新后列表选择
 
             base.raisePageManagerInitialised(pageSettings);
         };
