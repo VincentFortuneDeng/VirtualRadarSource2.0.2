@@ -71,6 +71,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
         private IWebSiteExtender _WebSiteExtender;
 
+        private ReportTrackLogRowsJsonPage _ReportTrackLogRowsJsonPage;
+
         /// <summary>
         /// The feed whose aircraft messages are being recorded in the database.
         /// </summary>
@@ -112,7 +114,6 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         public string StatusDescription { get; private set; }
 
         public bool HasOptions { get { return true; } }
-
 
         // Events
         public event EventHandler StatusChanged;
@@ -472,12 +473,20 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 _WebSiteExtender.WebRootSubFolder = "Web";
                 _WebSiteExtender.InjectContent = @"<script src=""Trail/inject.js"" type=""text/javascript""></script>";
                 _WebSiteExtender.InjectMapPages();
+                //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
                 //_WebSiteExtender.InjectReportPages();
+                _ReportTrackLogRowsJsonPage = new ReportTrackLogRowsJsonPage(_PluginStartupParameters.WebSite);
+                _ReportTrackLogRowsJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+                _WebSiteExtender.PageHandlers.Add("/Trail/ReportRows.json", _ReportTrackLogRowsJsonPage.HandleRequest);
+                _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", (new ServerConfigJsonPage(_PluginStartupParameters.WebSite)).HandleRequest);
+                _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", (new FaviconPage(_PluginStartupParameters.WebSite)).HandleRequest);
                 _WebSiteExtender.Initialise(_PluginStartupParameters);
             }
 
             UpdateStatus();
         }
+
+        //private void DoHandle
 
         //OnStatusChanged(EventArgs.Empty);
 

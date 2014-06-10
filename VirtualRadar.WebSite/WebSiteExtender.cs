@@ -247,6 +247,7 @@ namespace VirtualRadar.WebSite
             if(Enabled) {
                 foreach(var pageHandler in _PageHandlers) {
                     if(pageHandler.Key.Equals(args.PathAndFile, StringComparison.OrdinalIgnoreCase)) pageHandler.Value(args);
+                    Factory.Singleton.Resolve<ILog>().WriteLine(args.PathAndFile); 
                 }
             }
         }

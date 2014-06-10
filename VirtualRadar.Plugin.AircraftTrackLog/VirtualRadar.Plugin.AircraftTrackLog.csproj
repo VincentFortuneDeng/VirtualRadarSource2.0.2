@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FaviconPage.cs" />
     <Compile Include="IOptionsPresenter.cs" />
     <Compile Include="IOptionsView.cs" />
     <Compile Include="IPluginProvider.cs" />
@@ -60,6 +61,7 @@
       <SubType>
       </SubType>
     </Compile>
+    <Compile Include="Page.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginLocalise.cs" />
     <Compile Include="PluginStrings.zh-CN.Designer.cs">
@@ -74,6 +76,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Options.cs" />
+    <Compile Include="ReportTrackLogRowsJsonPage.cs" />
+    <Compile Include="ServerConfigJsonPage.cs" />
     <Compile Include="TrackFlightLog.cs" />
     <Compile Include="WinForms\OptionsView.cs">
       <SubType>Form</SubType>
@@ -86,6 +90,188 @@
     <Content Include="VirtualRadar.Plugin.AircraftTrackLog.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Web\Trail\css\jquery-ui\images\animated-overlay.gif" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_diagonals-thick_40_eeeeee_40x40.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_0_333333_40x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_100_f0f0f0_40x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_55_e13737_40x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_55_ffffff_40x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_65_ffffff_40x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_flat_thick_40_eeeeee_40x40.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_highlight-soft_25_0073ea_1x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-bg_highlight-soft_50_dddddd_1x100.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-icons_0073ea_256x240.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-icons_666666_256x240.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-icons_ede41b_256x240.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-icons_ff0084_256x240.png" />
+    <Content Include="Web\Trail\css\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Web\Trail\css\jquery-ui\jquery-ui.css" />
+    <Content Include="Web\Trail\css\jquery.dlmenu.css" />
+    <Content Include="Web\Trail\css\vrs-common.css" />
+    <Content Include="Web\Trail\css\vrs-desktop.css" />
+    <Content Include="Web\Trail\css\vrs-mobile.css" />
+    <Content Include="Web\Trail\fonts\icomoon-content.txt" />
+    <Content Include="Web\Trail\fonts\icomoon-license.txt" />
+    <Content Include="Web\Trail\fonts\icomoon.svg" />
+    <Content Include="Web\Trail\images\collapse-down.gif" />
+    <Content Include="Web\Trail\images\collapse-left.gif" />
+    <Content Include="Web\Trail\images\collapse-right.gif" />
+    <Content Include="Web\Trail\images\collapse-up.gif" />
+    <Content Include="Web\Trail\images\location.png" />
+    <Content Include="Web\Trail\images\markerLabelBackground.png" />
+    <Content Include="Web\Trail\images\regions\au.bmp" />
+    <Content Include="Web\Trail\images\regions\be.bmp" />
+    <Content Include="Web\Trail\images\regions\bz.bmp" />
+    <Content Include="Web\Trail\images\regions\ca.bmp" />
+    <Content Include="Web\Trail\images\regions\ch.bmp" />
+    <Content Include="Web\Trail\images\regions\en.bmp" />
+    <Content Include="Web\Trail\images\regions\fi.bmp" />
+    <Content Include="Web\Trail\images\regions\fr.bmp" />
+    <Content Include="Web\Trail\images\regions\ie.bmp" />
+    <Content Include="Web\Trail\images\regions\in.bmp" />
+    <Content Include="Web\Trail\images\regions\jm.bmp" />
+    <Content Include="Web\Trail\images\regions\lu.bmp" />
+    <Content Include="Web\Trail\images\regions\mc.bmp" />
+    <Content Include="Web\Trail\images\regions\my.bmp" />
+    <Content Include="Web\Trail\images\regions\no.bmp" />
+    <Content Include="Web\Trail\images\regions\nz.bmp" />
+    <Content Include="Web\Trail\images\regions\pl.bmp" />
+    <Content Include="Web\Trail\images\regions\ru.bmp" />
+    <Content Include="Web\Trail\images\regions\se.bmp" />
+    <Content Include="Web\Trail\images\regions\sg.bmp" />
+    <Content Include="Web\Trail\images\regions\tt.bmp" />
+    <Content Include="Web\Trail\images\regions\us.bmp" />
+    <Content Include="Web\Trail\images\regions\za.bmp" />
+    <Content Include="Web\Trail\images\regions\zh.bmp" />
+    <Content Include="Web\Trail\images\wait.gif" />
+    <Content Include="Web\Trail\mobileReport.html" />
+    <Content Include="Web\Trail\script\globalize.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-029.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-AU.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-BZ.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-CA.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-GB.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-IE.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-IN.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-JM.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-MY.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-NZ.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-SG.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-TT.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-US.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.en-ZA.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fi-FI.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fi.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr-BE.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr-CA.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr-CH.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr-FR.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr-LU.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr-MC.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.fr.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.ru-RU.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.ru.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.se-FI.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.se-NO.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.se-SE.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.se.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.zh-CN.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.zh-HK.js" />
+    <Content Include="Web\Trail\script\i18n\globalize\globalize.culture.zh.js" />
+    <Content Include="Web\Trail\script\i18n\localise.js" />
+    <Content Include="Web\Trail\script\i18n\strings.en.js" />
+    <Content Include="Web\Trail\script\i18n\strings.fr.js" />
+    <Content Include="Web\Trail\script\i18n\strings.ru.js" />
+    <Content Include="Web\Trail\script\i18n\strings.zh.js" />
+    <Content Include="Web\Trail\script\jquery-ui.js" />
+    <Content Include="Web\Trail\script\jquery.colorPicker.js" />
+    <Content Include="Web\Trail\script\jquery.dlmenu.js" />
+    <Content Include="Web\Trail\script\jquery.js" />
+    <Content Include="Web\Trail\script\jquery.json.js" />
+    <Content Include="Web\Trail\script\jquery.ui.touch-punch.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.aircraftDetail.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.aircraftInfoWindow.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.aircraftLinks.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.aircraftList.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.aircraftPositionMap.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.map.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.mapNextPageButton.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.menu.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionDialog.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldButton.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldCheckBox.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldColour.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldComboBox.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldDate.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldLabel.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldLinkLabel.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldNumeric.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldOrderedSubset.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldPaneList.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldRadioButton.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionFieldTextBox.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionForm.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.optionPane.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.pagePanel.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.reportDetail.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.reportList.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.reportMap.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.reportPager.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.selectDialog.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.splitter.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.storedSettingsList.js" />
+    <Content Include="Web\Trail\script\jquiplugin\jquery.vrs.timeoutMessageBox.js" />
+    <Content Include="Web\Trail\script\jstorage.js" />
+    <Content Include="Web\Trail\script\markerWithLabel.js" />
+    <Content Include="Web\Trail\script\purl.js" />
+    <Content Include="Web\Trail\script\stacktrace.js" />
+    <Content Include="Web\Trail\script\vrs\aircraft.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftAutoSelect.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftFilter.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftList.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftListFetcher.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftListFilter.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftListSorter.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftPlotter.js" />
+    <Content Include="Web\Trail\script\vrs\aircraftRenderer.js" />
+    <Content Include="Web\Trail\script\vrs\airportDataApi.js" />
+    <Content Include="Web\Trail\script\vrs\audio.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrap.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapMap.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapMapDesktop.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapMapFsx.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapMapMobile.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapReport.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapReportDesktop.js" />
+    <Content Include="Web\Trail\script\vrs\bootstrapReportMobile.js" />
+    <Content Include="Web\Trail\script\vrs\configStorage.js" />
+    <Content Include="Web\Trail\script\vrs\currentLocation.js" />
+    <Content Include="Web\Trail\script\vrs\enums.js" />
+    <Content Include="Web\Trail\script\vrs\event.js" />
+    <Content Include="Web\Trail\script\vrs\filter.js" />
+    <Content Include="Web\Trail\script\vrs\format.js" />
+    <Content Include="Web\Trail\script\vrs\layoutManager.js" />
+    <Content Include="Web\Trail\script\vrs\linksRenderer.js" />
+    <Content Include="Web\Trail\script\vrs\menuUI.js" />
+    <Content Include="Web\Trail\script\vrs\optionsUI.js" />
+    <Content Include="Web\Trail\script\vrs\pageManager.js" />
+    <Content Include="Web\Trail\script\vrs\polarPlotter.js" />
+    <Content Include="Web\Trail\script\vrs\refreshManager.js" />
+    <Content Include="Web\Trail\script\vrs\report.js" />
+    <Content Include="Web\Trail\script\vrs\reportFilter.js" />
+    <Content Include="Web\Trail\script\vrs\reportRenderer.js" />
+    <Content Include="Web\Trail\script\vrs\scriptManager.js" />
+    <Content Include="Web\Trail\script\vrs\serverConfiguration.js" />
+    <Content Include="Web\Trail\script\vrs\string.js" />
+    <Content Include="Web\Trail\script\vrs\timeoutManager.js" />
+    <Content Include="Web\Trail\script\vrs\titleUpdater.js" />
+    <Content Include="Web\Trail\script\vrs\unitDisplayPreferences.js" />
+    <Content Include="Web\Trail\script\vrs\utility.js" />
+    <Content Include="Web\Trail\_WARNING.txt" />
+    <EmbeddedResource Include="Web\Trail\favicon.ico" />
+    <Content Include="Web\Trail\desktopReport.html" />
     <Content Include="Web\Trail\Index.html" />
     <Content Include="Web\Trail\inject.js" />
   </ItemGroup>
@@ -93,6 +279,9 @@
     <None Include="Log4Net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Web\Trail\fonts\icomoon.eot" />
+    <None Include="Web\Trail\fonts\icomoon.ttf" />
+    <None Include="Web\Trail\fonts\icomoon.woff" />
     <None Include="_PostBuild.bat" />
     <None Include="_PostBuildCopyLanguage.bat" />
   </ItemGroup>
@@ -108,6 +297,10 @@
     <ProjectReference Include="..\VirtualRadar.Localisation\VirtualRadar.Localisation.csproj">
       <Project>{fd3e36e1-35ea-46f3-a30b-65cea7d92b7e}</Project>
       <Name>VirtualRadar.Localisation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualRadar.Resources\VirtualRadar.Resources.csproj">
+      <Project>{b74413ac-8898-45da-b4bd-82e4f9f58d72}</Project>
+      <Name>VirtualRadar.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\VirtualRadar.WinForms\VirtualRadar.WinForms.csproj">
       <Project>{3a1330d8-1e7d-4c70-ba9a-39851389cfff}</Project>
