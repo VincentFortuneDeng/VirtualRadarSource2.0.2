@@ -24,6 +24,7 @@ using VirtualRadar.Interface.WebSite;
 using VirtualRadar.Interface.BaseStation;
 using System.Diagnostics;
 using System.Threading;
+using VirtualRadar.Interface.StandingData;
 
 namespace VirtualRadar.Plugin.AircraftTrackLog
 {
@@ -475,11 +476,25 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 _WebSiteExtender.InjectMapPages();
                 //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
                 //_WebSiteExtender.InjectReportPages();
+
                 _ReportTrackLogRowsJsonPage = new ReportTrackLogRowsJsonPage(_PluginStartupParameters.WebSite);
                 _ReportTrackLogRowsJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+                _ReportTrackLogRowsJsonPage.BaseStationDatabase = Factory.Singleton.Resolve<IAutoConfigBaseStationDatabase>().Singleton.Database;
+                _ReportTrackLogRowsJsonPage.StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
+
+                ServerConfigJsonPage serverConfigJsonPage = new ServerConfigJsonPage(_PluginStartupParameters.WebSite);
+                serverConfigJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+                
+                FaviconPage faviconPage = new FaviconPage(_PluginStartupParameters.WebSite);
+                faviconPage.Provider = _PluginStartupParameters.WebSite.Provider;
+
+                ImagePage imagePage = new ImagePage(_PluginStartupParameters.WebSite);
+                imagePage.Provider = _PluginStartupParameters.WebSite.Provider;
+                
                 _WebSiteExtender.PageHandlers.Add("/Trail/ReportRows.json", _ReportTrackLogRowsJsonPage.HandleRequest);
-                _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", (new ServerConfigJsonPage(_PluginStartupParameters.WebSite)).HandleRequest);
-                _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", (new FaviconPage(_PluginStartupParameters.WebSite)).HandleRequest);
+                _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", serverConfigJsonPage.HandleRequest);
+                _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", faviconPage.HandleRequest);
+                _WebSiteExtender.PageHandlers.Add("/Trail/Images", imagePage.HandleRequest);
                 _WebSiteExtender.Initialise(_PluginStartupParameters);
             }
 

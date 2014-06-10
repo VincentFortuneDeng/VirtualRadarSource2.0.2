@@ -299,9 +299,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             json.ToDate = FormatReportDate(parameters.Date != null ? parameters.Date.UpperValue : null);
 
             bool hasNonDatabaseCriteria = parameters.IsMilitary != null || parameters.WakeTurbulenceCategory != null || parameters.Species != null;
-
+            
             if(!hasNonDatabaseCriteria) json.CountRows = BaseStationDatabase.GetCountOfFlights(parameters);
-
+           
             var dbFlights = BaseStationDatabase.GetFlights(
                 parameters,
                 hasNonDatabaseCriteria ? -1 : parameters.FromRow, 
@@ -325,7 +325,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                     }
                     return matches;
                 }).ToList();
-
+                
                 json.CountRows = dbFlights.Count;
 
                 int limit = parameters.ToRow == -1 || parameters.ToRow < parameters.FromRow ? int.MaxValue : (parameters.ToRow - Math.Max(0, parameters.FromRow)) + 1;
@@ -529,6 +529,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                     result.PictureWidth = pictureDetails.Width;
                     result.PictureHeight = pictureDetails.Height;
                 }
+
+                Factory.Singleton.Resolve<ILog>().WriteLine("pictureDetails:" + (result.HasPicture? "True":"False"));
             }
 
             var aircraftType = String.IsNullOrEmpty(aircraft.ICAOTypeCode) ? null : StandingDataManager.FindAircraftType(aircraft.ICAOTypeCode);

@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FaviconPage.cs" />
+    <Compile Include="FontCache.cs" />
+    <Compile Include="ImagePage.cs" />
     <Compile Include="IOptionsPresenter.cs" />
     <Compile Include="IOptionsView.cs" />
     <Compile Include="IPluginProvider.cs" />

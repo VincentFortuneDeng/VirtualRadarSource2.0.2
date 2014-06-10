@@ -529,6 +529,7 @@ namespace VirtualRadar.WebSite
                     result.PictureWidth = pictureDetails.Width;
                     result.PictureHeight = pictureDetails.Height;
                 }
+                Factory.Singleton.Resolve<ILog>().WriteLine("pictureDetails:" + (result.HasPicture ? "True" : "False"));
             }
 
             var aircraftType = String.IsNullOrEmpty(aircraft.ICAOTypeCode) ? null : StandingDataManager.FindAircraftType(aircraft.ICAOTypeCode);
