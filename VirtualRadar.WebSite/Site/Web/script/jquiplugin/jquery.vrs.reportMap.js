@@ -313,7 +313,7 @@
                 }
 
                 state.selectedAircraft = options.startSelected ? first : last;
-
+                /**/
                 if(options.showPath && first && last) {
                     last.fullTrail.arr.push(new VRS.FullTrailValue(first.latitude.val, first.longitude.val, first.heading.val, first.altitude.val, first.speed.val));
                     last.fullTrail.arr.push(new VRS.FullTrailValue(last.latitude.val, last.longitude.val, last.heading.val, last.altitude.val, last.speed.val));
