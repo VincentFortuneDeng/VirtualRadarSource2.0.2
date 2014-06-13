@@ -698,7 +698,7 @@
         _rowClicked: function(event, target)
         {
             var flight = this._getFlightForTableRow(/** @type {HTMLTableRowElement} */ target);
-            this.options.report.setSelectedFlight(flight);
+            this.options.report.setSelectedFlight(flight);/*报告行选择事件*/
         },
 
         /**
