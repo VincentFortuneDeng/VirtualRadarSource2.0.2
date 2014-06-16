@@ -10,57 +10,55 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using VirtualRadar.Interface.Database;
-using VirtualRadar.Interface.WebSite;
+using VirtualRadar.Interface;
 
 namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
 {
     /// <summary>
-    /// The interface for objects that abstract away the environment to allow testing of the plugin.
+    /// The interface for objects that can manage log files for us.
     /// </summary>
-    public interface IPluginProvider
+    /// <remarks>
+    /// You should only use the Singleton version of this object to write to the program log. Using your own
+    /// instance will work but it will not be thread-safe whereas the Singleton log is guaranteed to be thread-safe.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// ILog log = Factory.Singleton.Resolve&lt;ILog&gt;().Singleton;
+    /// log.WriteLine("This will be written to the program log");
+    /// </code>
+    /// </example>
+    public interface ITrackFlightLog : ISingleton<ITrackFlightLog>
     {
         /// <summary>
-        /// Gets the current date and time at UTC.
+        /// Gets or sets the provider that abstracts away the environment for the tests.
         /// </summary>
-        DateTime UtcNow { get; }
+        ILogProvider Provider { get; set; }
 
         /// <summary>
-        /// Gets the current date and time in the local time zone.
+        /// Gets the full path and filename of the log file.
         /// </summary>
-        DateTime LocalNow { get; }
+        int FlightID { get; set; }
 
-        string JsonSerialise(object json);
-
-        ReportFlightTrailJson ConvertToReportFlightTrailJson(BaseStationFlight flight);
+        string Date { set; get;}
+        /// <summary>
+        /// Writes a line of text to the log file.
+        /// </summary>
+        /// <param name="message"></param>
+        void WriteLine(string message);
 
         /// <summary>
-        /// Creates a GUI object that allows the user to display and change the options for the plugin.
+        /// Writes a line of text to the log file.
         /// </summary>
-        /// <returns></returns>
-        IOptionsView CreateOptionsView();
+        /// <param name="format"></param>
+        /// <param name="args"></param>
+        void WriteLine(string format, params object[] args);
 
         /// <summary>
-        /// 创建轨迹记录器
+        /// Truncates the log file to the last nn kilobytes.
         /// </summary>
-        /// <returns></returns>
-        ITrackFlightLog CreateTrackFlightLog();
-
-        /// <summary>
-        /// Returns true if the file exists.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        bool FileExists(string fileName);
-
-        /// <summary>
-        /// Returns the length of the file.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        long FileSize(string fileName);
+        /// <param name="kbLength">The number of kilobytes to preserve at the end of the file.</param>
+        void Truncate(int kbLength);
     }
 }

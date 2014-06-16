@@ -24,6 +24,7 @@ using VirtualRadar.Interface.Database;
 using VirtualRadar.Interface.Listener;
 using VirtualRadar.Interface.Settings;
 using VirtualRadar.Interface.StandingData;
+using VirtualRadar.Interface.WebSite;
 //using log4net;
 
 namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
@@ -45,6 +46,69 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
             public IOptionsView CreateOptionsView()     { return new WinForms.OptionsView(); }
             public bool FileExists(string fileName)     { return File.Exists(fileName); }
             public long FileSize(string fileName)       { return new FileInfo(fileName).Length; }
+            public ITrackFlightLog CreateTrackFlightLog() { return new TrackFlightLog(); }
+
+            private Dictionary<Type, JsonSerialiser> _JsonSerialiserMap = new Dictionary<Type, JsonSerialiser>();
+
+            /// <summary>
+            /// Creates a JSON representation of the database flight and adds it to an existing list of flights.
+            /// </summary>
+            /// <param name="flight"></param>
+            /// <param name="flightList"></param>
+            /// <param name="rowNumber"></param>
+            /// <returns></returns>
+            public ReportFlightTrailJson ConvertToReportFlightTrailJson(BaseStationFlight flight)
+            {
+                var result = new ReportFlightTrailJson() {
+                    //RowNumber = rowNumber++,
+                    /*Callsign = flight.Callsign,
+                    StartTime = flight.StartTime,
+                    EndTime = flight.EndTime.GetValueOrDefault(),
+                    FirstAltitude = flight.FirstAltitude.GetValueOrDefault(),
+                    FirstGroundSpeed = (int)flight.FirstGroundSpeed.GetValueOrDefault(),
+                    FirstIsOnGround = flight.FirstIsOnGround,
+                    FirstLatitude = flight.FirstLat.GetValueOrDefault(),
+                    FirstLongitude = flight.FirstLon.GetValueOrDefault(),
+                    FirstSquawk = flight.FirstSquawk.GetValueOrDefault(),
+                    FirstTrack = flight.FirstTrack.GetValueOrDefault(),
+                    FirstVerticalRate = flight.FirstVerticalRate.GetValueOrDefault(),
+                    HadAlert = flight.HadAlert,
+                    HadEmergency = flight.HadEmergency,
+                    HadSpi = flight.HadSpi,*/
+                    LastAltitude = flight.LastAltitude.GetValueOrDefault(),
+                    LastGroundSpeed = (int)flight.LastGroundSpeed.GetValueOrDefault(),
+                    /*LastIsOnGround = flight.LastIsOnGround,*/
+                    LastLatitude = flight.LastLat.GetValueOrDefault(),
+                    LastLongitude = flight.LastLon.GetValueOrDefault(),
+                    /*LastSquawk = flight.LastSquawk.GetValueOrDefault(),*/
+                    LastTrack = flight.LastTrack.GetValueOrDefault(),
+                    /*LastVerticalRate = flight.LastVerticalRate.GetValueOrDefault(),
+                    NumADSBMsgRec = flight.NumADSBMsgRec.GetValueOrDefault(),
+                    NumModeSMsgRec = flight.NumModeSMsgRec.GetValueOrDefault(),
+                    NumPosMsgRec = flight.NumPosMsgRec.GetValueOrDefault(),*/
+                };
+                //flightList.Add(result);
+
+                return result;
+            }
+
+            public string JsonSerialise(object json)
+            {
+                var type = json.GetType();
+                JsonSerialiser serialiser;
+                if(!_JsonSerialiserMap.TryGetValue(type, out serialiser)) {
+                    serialiser = new JsonSerialiser();
+                    serialiser.Initialise(type);
+                    _JsonSerialiserMap.Add(type, serialiser);
+                }
+
+                string text;
+                using(MemoryStream stream = new MemoryStream()) {
+                    serialiser.WriteObject(stream, json);
+                    text = Encoding.UTF8.GetString(stream.ToArray());
+                    return text;
+                }
+            }
         }
         #endregion
 
@@ -85,6 +149,11 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         private IBaseStationDatabase _Database;
 
         /// <summary>
+        /// 记录飞机轨迹日志对象
+        /// </summary>
+        private ITrackFlightLog _TrackFlightLog;
+
+        /// <summary>
         /// The object that looks up values in the standing data for us.
         /// </summary>
         private IStandingDataManager _StandingDataManager;
@@ -98,6 +167,11 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// A map of ICAO24 codes to a private class holding the database records being maintained for the flight.
         /// </summary>
         private Dictionary<string, FlightRecords> _FlightMap = new Dictionary<string, FlightRecords>();
+
+    /// <summary>
+        /// A map of types that the JSON serialiser knows about.
+        /// </summary>
+        
 
         /// <summary>
         /// The feed whose aircraft messages are being recorded in the database.
@@ -202,6 +276,8 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
 
                 _StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
                 _StandingDataManager.LoadCompleted += StandingDataManager_LoadCompleted;
+
+                _TrackFlightLog = Provider.CreateTrackFlightLog();
 
                 var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
                 feedManager.FeedsChanged += FeedManager_FeedsChanged;
@@ -425,7 +501,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         var localNow = Provider.LocalNow;
 
                         FlightRecords flightRecords;
-                        if(!_FlightMap.TryGetValue(message.Icao24, out flightRecords)) {
+                        if(!_FlightMap.TryGetValue(message.Icao24, out flightRecords)) {//新Flight
                             flightRecords = new FlightRecords();
                             _Database.StartTransaction();
                             try {
@@ -440,7 +516,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                                 throw;
                             }
                             _FlightMap.Add(message.Icao24, flightRecords);
-                        } else {
+                        } else {//已记录Flight
                             if(flightRecords.Flight.Callsign.Length == 0 && !String.IsNullOrEmpty(message.Callsign)) {
                                 var databaseVersion = _Database.GetFlightById(flightRecords.Flight.FlightID);
                                 flightRecords.Flight.Callsign = databaseVersion.Callsign = message.Callsign;
@@ -449,9 +525,10 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         }
 
                         //记录轨迹日志
-                        /*trackFlightLog.FileName = localNow.ToString("yyyyMMdd") + "ICAO" + message.Icao24;
-
-                        trackFlightLog.WriteLine(String.Concat(message.ToBaseStationString(), "\r\n"));*/
+                        _TrackFlightLog.Date = flightRecords.Flight.StartTime.Date.ToString("yyyyMMdd");
+                        _TrackFlightLog.FlightID = flightRecords.Flight.FlightID;
+                        ReportFlightTrailJson reportFlightTrailJson =  Provider.ConvertToReportFlightTrailJson(flightRecords.Flight);
+                        _TrackFlightLog.WriteLine(Provider.JsonSerialise(reportFlightTrailJson), "\r\n");
 
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
