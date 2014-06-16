@@ -196,7 +196,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 var localNow = Provider.LocalNow;
 
                 //记录轨迹日志
-                _TrackFlightLog.FileName = localNow.ToString("yyyyMMdd") + "ICAO" + message.Icao24;
+                _TrackFlightLog.Date = localNow.Date.ToString("yyyyMMdd");
+                _TrackFlightLog.ICAO24 = message.Icao24;
 
                 _TrackFlightLog.WriteLine(String.Concat(message.ToBaseStationString(), "\r\n"));
 

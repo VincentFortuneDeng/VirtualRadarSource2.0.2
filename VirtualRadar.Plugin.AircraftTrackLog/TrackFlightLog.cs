@@ -84,14 +84,14 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         public ITrackFlightLog Singleton { get { return _Singleton; } }
 
-        private int _FlightID;
+        private string _ICAO24;
         /// <summary>
         /// See interface docs.
         /// </summary>
-        public int FlightID
+        public string ICAO24
         {
-            get { return _FlightID; }
-            set { _FlightID = value; Initialise(); }
+            get { return _ICAO24; }
+            set { _ICAO24 = value; Initialise(); }
         }
 
         private string _Date;
@@ -119,7 +119,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         private void Initialise()
         {
             if(_TrackRoot == null) {
-                _TrackRoot = Path.Combine(Application.StartupPath, "TrackFlight");
+                _TrackRoot = Path.Combine(Application.StartupPath, "TrackBaseStation");
             }
 
             if(_Date == null) {
@@ -128,11 +128,11 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
             _Folder = Path.Combine(_TrackRoot, _Date);
 
-            if(_FlightID == null) {
-                _FlightID = 99999999;
+            if(_ICAO24 == null) {
+                _ICAO24 = "FFFFFF";
             }
 
-            _FileName = Path.Combine(_Folder, _FlightID + ".log");
+            _FileName = Path.Combine(_Folder, _ICAO24 + ".log");
         }
 
         /// <summary>
