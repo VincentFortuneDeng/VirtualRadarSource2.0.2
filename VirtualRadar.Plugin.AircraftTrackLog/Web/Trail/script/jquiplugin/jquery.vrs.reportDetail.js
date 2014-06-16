@@ -123,6 +123,12 @@
         this.selectedFlightChangedHookResult = null;
 
         /**
+         * The hook result for the selected flight changed event.
+         * @type {Object}
+         */
+        this.trailFetchedHookResult = null;
+
+        /**
          * The hook result for the locale changed event.
          * @type {Object}
          */
@@ -205,6 +211,7 @@
 
             VRS.globalisation.hookLocaleChanged(this._localeChanged, this);
             state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
+            state.trailFetchedHookResult = options.report.hookTrailFetchedHookResult(this._trailFetched, this);
         },
 
         /**
@@ -216,7 +223,10 @@
             var state = this._getState();
             var options = this.options;
 
-            if(state.selectedFlightChangedHookResult && options.report) options.report.unhook(state.selectedFlightChangedHookResult);
+            if (state.trailFetchedHookResult && options.report) options.report.unhook(state.trailFetchedHookResult);
+            state.trailFetchedHookResult = null;
+
+            if (state.selectedFlightChangedHookResult && options.report) options.report.unhook(state.selectedFlightChangedHookResult);
             state.selectedFlightChangedHookResult = null;
 
             if(state.localeChangedHookResult && VRS.globalisation) VRS.globalisation.unhook(state.localeChangedHookResult);
@@ -533,6 +543,16 @@
         _localeChanged: function()
         {
             this.refreshDisplay();
+        },
+
+        /**
+         * Called when the selected flight changes.
+         * @private
+         */
+        _trailFetched: function ()
+        {
+            var selectedFlight = this.options.report.getSelectedFlight();
+            this._displayFlightDetails(this._getState(), selectedFlight);
         },
 
         /**

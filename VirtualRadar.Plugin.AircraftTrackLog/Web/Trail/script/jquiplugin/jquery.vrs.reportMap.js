@@ -93,6 +93,12 @@
         this.selectedFlightChangedHookResult = null;
 
         /**
+         * The hook result for the selected flight changed event.
+         * @type {Object}
+         */
+        this.trailFetchedHookResult = null;
+
+        /**
          * The hook result for the locale changed event.
          * @type {Object}
          */
@@ -192,7 +198,10 @@
             var state = this._getState();
             var options = this.options;
 
-            if(state.selectedFlightChangedHookResult && options.report) options.report.unhook(state.selectedFlightChangedHookResult);
+            if (state.trailFetchedHookResult && options.report) options.report.unhook(state.trailFetchedHookResult);
+            state.trailFetchedHookResult = null;
+
+            if (state.selectedFlightChangedHookResult && options.report) options.report.unhook(state.selectedFlightChangedHookResult);
             state.selectedFlightChangedHookResult = null;
 
             if(state.localeChangedHookResult && VRS.globalisation) VRS.globalisation.unhook(state.localeChangedHookResult);
@@ -221,6 +230,7 @@
 
             if(options.report) {
                 state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
+                state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
             }
 
             /** @type {VRS_OPTIONS_MAP} */
@@ -361,6 +371,14 @@
          */
         _selectedFlightChanged: function()
         {
+            this.showFlight(this.options.report.getSelectedFlight());
+        },
+
+        /**
+         * Called when the report indicates that the selected flight has been changed.
+         * @private
+         */
+        _trailFetched: function () {
             this.showFlight(this.options.report.getSelectedFlight());
         },
 

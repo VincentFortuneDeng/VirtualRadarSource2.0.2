@@ -123,6 +123,12 @@
         this.selectedFlightChangedHookResult = null;
 
         /**
+         * The hook result for the selected flight changed event.
+         * @type {Object}
+         */
+        this.trailFetchedHookResult = null;
+
+        /**
          * The hook result for the locale changed event.
          * @type {Object}
          */
@@ -214,6 +220,7 @@
             VRS.globalisation.hookLocaleChanged(this._localeChanged, this);
             state.rowsFetchedHookResult = options.report.hookRowsFetched(this._rowsFetched, this);
             state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
+            state.trailFetchedHookResult = options.report.hookTrailFetchedHook(this._trailFetched, this);
         },
 
         /**
@@ -229,6 +236,9 @@
 
             if(state.selectedFlightChangedHookResult && options.report) options.report.unhook(state.selectedFlightChangedHookResult);
             state.selectedFlightChangedHookResult = null;
+
+            if (state.trailFetchedHookResult && options.report) options.report.unhook(state.trailFetchedHookResult);
+            state.trailFetchedHookResult = null;
 
             if(state.localeChangedHookResult && VRS.globalisation) VRS.globalisation.unhook(state.localeChangedHookResult);
             state.localeChangedHookResult = null;
@@ -717,6 +727,14 @@
          */
         _selectedFlightChanged: function()
         {
+            this._markSelectedRow();
+        },
+
+        /**
+         * Called when something changes the selected flight on the report.
+         * @private
+         */
+        _trailFetched: function () {
             this._markSelectedRow();
         },
         //endregion

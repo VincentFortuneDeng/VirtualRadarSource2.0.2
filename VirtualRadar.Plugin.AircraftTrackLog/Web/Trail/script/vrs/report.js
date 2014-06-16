@@ -21,7 +21,7 @@
     VRS.globalOptions.reportDefaultStepSize = VRS.globalOptions.reportDefaultStepSize || 25;            // The default step to show on the page size controls.
     VRS.globalOptions.reportDefaultPageSize = VRS.globalOptions.reportDefaultPageSize || 50;            // The default page size to show. Use -1 if you want to default to showing all rows.
     VRS.globalOptions.reportUrl = VRS.globalOptions.reportUrl || 'ReportRows.json';                     // The URL to fetch when retrieving report rows.
-    VRS.globalOptions.reportTrailUrl = 'ReportTrailRows.json';
+    VRS.globalOptions.reportTrailUrl = VRS.globalOptions.reportTrailUrl || 'ReportTrailRows.json';
     VRS.globalOptions.reportDefaultSortColumns = VRS.globalOptions.reportDefaultSortColumns || [        // The default sort order for reports. Note that the server will not accept any more than two sort columns.
         { field: VRS.ReportSortColumn.Date, ascending: true },
         { field: VRS.ReportSortColumn.None, ascending: false }
@@ -51,7 +51,8 @@
             pageSizeChanged:        'pageSizeChanged',
             rowsFetched:            'rowsFetched',
             fetchFailed:            'fetchFailed',
-            selectedFlightChanged:  'selectedFlightChanged'
+            selectedFlightChanged:  'selectedFlightChanged',
+            trailFetched:           'trailFetched'
         };
 
         var _Settings = $.extend({
@@ -66,6 +67,13 @@
          * @private
          */
         var _LastFetchResult = null;
+
+        /**
+         * The result of the last successful request for a page of results.
+         * @type {VRS_JSON_REPORT}
+         * @private
+         */
+        var _TrailFetchResult = null;
         //endregion
 
         //region Properties
@@ -129,21 +137,24 @@
             return _LastFetchResult && _LastFetchResult.errorText ? _LastFetchResult.errorText : null;
         };
 
+        var _TrailedFlights = null;
+        this.getTrailedFlights = function () { return _TrailedFlights; };
         /** @type {VRS_JSON_REPORT_FLIGHT} @private */
         var _SelectedFlight = null;
         this.getSelectedFlight = function() { return _SelectedFlight; };
         this.setSelectedFlight = function(/** VRS_JSON_REPORT_FLIGHT */value) {
             if (value !== _SelectedFlight) {
+                if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
                 var last = VRS.Report.convertFlightToVrsAircraft(value, false);
 
-                if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
+                _SelectedFlight = value;
 
                 $.ajax({
                     url: VRS.globalOptions.reportTrailUrl,
-                    dataType: 'text',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
+                    dataType: 'json',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
                     data: { icao: last.icao },
-                    success: $.proxy(trailFetched, this , value),
-                    error: $.proxy(trailFetchFailed, this , value)
+                    success: $.proxy(trailFetched, this),
+                    error: $.proxy(trailFetchFailed, this)
                 });
             }
         };
@@ -218,7 +229,15 @@
          * @param {Object}                  forceThis   The object to use as 'this' for the event callback.
          * @returns {Object}
          */
-        this.hookSelectedFlightCHanged = function(callback, forceThis) { return _Dispatcher.hook(_Events.selectedFlightChanged, callback, forceThis); };
+        this.hookSelectedFlightCHanged = function (callback, forceThis) { return _Dispatcher.hook(_Events.selectedFlightChanged, callback, forceThis); };
+
+        /**
+         * Hooks an event that is raised after the selected flight has changed.
+         * @param {function(VRS.Report)}    callback    Passed a reference to the report.
+         * @param {Object}                  forceThis   The object to use as 'this' for the event callback.
+         * @returns {Object}
+         */
+        this.hookTrailFetched = function (callback, forceThis) { return _Dispatcher.hook(_Events.trailFetched, callback, forceThis); };
 
         /**
          * Unhooks an event that was hooked on the object.
@@ -521,16 +540,15 @@
          * Called with the result of the fetch from the server.
          * @param {string} rawData
          */
-        function trailFetched(rawData,flight) {
+        function trailFetched(rawData) {
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
 
             /*保留逻辑*/
-            _SelectedFlight = flight;
-            _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+            _Dispatcher.raise(_Events.trailFetched, [that]);
 
             var json = VRS.jsonHelper.convertMicrosoftDates(rawData);
-            _LastFetchResult = eval('(' + json + ')');
-
+            _TrailFetchResult = eval('(' + json + ')');
+            _TrailedFlight = rawData;
             fixupRoutesAndAirports();
 
             that.setSelectedFlight(null);
@@ -625,10 +643,9 @@
          * @param {string}  errorThrown
          * @param {Flight}  flight
          */
-        function trailFetchFailed(flight) {
+        function trailFetchFailed(jqXHR, textStatus, errorThrown) {
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
 
-            _SelectedFlight = flight;
             _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
         }
         //endregion
