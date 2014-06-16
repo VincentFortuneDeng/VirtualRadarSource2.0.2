@@ -290,7 +290,7 @@
          * @params {VRS.ReportMapState} state
          * @private
          */
-        _buildFakeVrsAircraft: function(state)
+        _buildFakeVrsAircraft: function(state)//模拟航空器轨迹
         {
             var options = this.options;
 

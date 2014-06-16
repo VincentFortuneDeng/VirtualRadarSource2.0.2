@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VirtualRadar.Interface.Database;
+using VirtualRadar.Interface.WebSite;
 
 namespace VirtualRadar.Plugin.AircraftTrackLog
 {
@@ -54,5 +56,13 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="fileName"></param>
         /// <returns></returns>
         /*long FileSize(string fileName);*/
+
+        //string JsonSerialise(object json);
+
+        public string ReadFlightTrail(string date, int flightID);
+
+        //ReportFlightTrailJson ConvertToReportFlightTrailJson(BaseStationFlight flight);
+
+        //BaseStationFlight ConvertToBaseStationFlight(ReportFlightTrailJson flightTrail);
     }
 }

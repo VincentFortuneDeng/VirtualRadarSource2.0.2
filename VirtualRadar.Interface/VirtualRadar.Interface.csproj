@@ -381,6 +381,7 @@
     <Compile Include="WebSite\ChecksumFile.cs" />
     <Compile Include="WebSite\ChecksumFileEntry.cs" />
     <Compile Include="WebSite\FeedJson.cs" />
+    <Compile Include="WebSite\FlightTrailReportJson.cs" />
     <Compile Include="WebSite\HtmlContentInjector.cs" />
     <Compile Include="WebSite\FlightReportJson.cs" />
     <Compile Include="WebSite\IBundler.cs" />
@@ -408,6 +409,7 @@
     <Compile Include="WebSite\ProximityGadgetClosestAircraftJson.cs" />
     <Compile Include="WebSite\ReportAircraftJson.cs" />
     <Compile Include="WebSite\ReportAirportJson.cs" />
+    <Compile Include="WebSite\ReportFlightTrailJson.cs" />
     <Compile Include="WebSite\ReportFlightJson.cs" />
     <Compile Include="WebSite\ReportRouteJson.cs" />
     <Compile Include="WebSite\ReportRowsJson.cs" />

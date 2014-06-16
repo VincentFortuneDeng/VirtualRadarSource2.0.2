@@ -47,11 +47,19 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             /*public DateTime UtcNow                      { get { return DateTime.UtcNow; } }*/
             public DateTime LocalNow { get { return DateTime.Now; } }
+
+            private Dictionary<Type, JsonSerialiser> _JsonSerialiserMap = new Dictionary<Type, JsonSerialiser>();
             public IOptionsView CreateOptionsView() { return new WinForms.OptionsView(); }
             public ITrackFlightLog CreateTrackFlightLog() { return new TrackFlightLog(); }
             /*public bool FileExists(string fileName)     { return File.Exists(fileName); }*/
             /*public long FileSize(string fileName)       { return new FileInfo(fileName).Length; }*/
+            
+
+            public string ReadFlightTrail(string date, int flightID);
+
+            //public BaseStationFlight ConvertToBaseStationFlight(ReportFlightTrailJson flightTrail);
         }
+        
         #endregion
 
 
@@ -308,7 +316,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             UnhookFeed();
             //StartSession();
             UpdateStatus();
-            HookFeed();
+            //HookFeed();
         }
         #endregion
         // Configuration load and save methods
@@ -398,7 +406,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             _BackgroundThreadMessageQueue = new BackgroundThreadQueue<BaseStationMessageEventArgs>("AircraftTrackLogMessageQueue");
             _BackgroundThreadMessageQueue.StartBackgroundThread(MessageQueue_MessageReceived, MessageQueue_ExceptionCaught);
 
-            HookFeed();
+            //HookFeed();
             //}
         }
 
@@ -430,7 +438,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                     OptionsStorage.Save(this, _Options);
                     UnhookFeed();
                     UpdateStatus();
-                    HookFeed();
+                    //HookFeed();
                 }
             }
             // To keep things simple the plugin only has one configuration setting - an enabled switch. Rather than using

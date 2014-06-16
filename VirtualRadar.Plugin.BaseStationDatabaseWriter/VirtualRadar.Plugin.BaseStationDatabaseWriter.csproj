@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPluginProvider.cs" />
+    <Compile Include="ITrackFlightLog.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="OptionsStorage.cs" />
     <Compile Include="Plugin.cs" />
@@ -92,6 +93,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PluginStrings.de-DE.resx</DependentUpon>
     </Compile>
+    <Compile Include="TrackFlightLog.cs" />
     <Compile Include="WinForms\OptionsView.cs">
       <SubType>Form</SubType>
     </Compile>

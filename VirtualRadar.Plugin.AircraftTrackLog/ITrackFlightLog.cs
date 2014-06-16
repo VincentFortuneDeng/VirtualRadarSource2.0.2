@@ -39,8 +39,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <summary>
         /// Gets the full path and filename of the log file.
         /// </summary>
-        string FileName { get; set; }
+        int FlightID { get; set; }
 
+        string Date { set; get;}
         /// <summary>
         /// Writes a line of text to the log file.
         /// </summary>

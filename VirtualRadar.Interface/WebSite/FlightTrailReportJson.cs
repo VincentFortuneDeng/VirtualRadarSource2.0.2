@@ -10,57 +10,55 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using VirtualRadar.Interface.Database;
-using VirtualRadar.Interface.WebSite;
+using System.Runtime.Serialization;
 
-namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
+namespace VirtualRadar.Interface.WebSite
 {
     /// <summary>
-    /// The interface for objects that abstract away the environment to allow testing of the plugin.
+    /// The top-level JSON object for reports on the flights taken by many aircraft.
     /// </summary>
-    public interface IPluginProvider
+    [DataContract]
+    public class FlightTrailReportJson
     {
         /// <summary>
-        /// Gets the current date and time at UTC.
+        /// Gets or sets the total number of rows that match the report criteria.
         /// </summary>
-        DateTime UtcNow { get; }
+        [DataMember(Name = "countRows", IsRequired = true)]
+        public int? CountRows { get; set; }
 
         /// <summary>
-        /// Gets the current date and time in the local time zone.
+        /// Gets or sets a value indicating how long the report took to process.
         /// </summary>
-        DateTime LocalNow { get; }
-
-        string JsonSerialise(object json);
-
-        ReportFlightTrailJson ConvertToReportFlightTrailJson(BaseStationFlight flight);
+        [DataMember(Name = "processingTime")]
+        public string ProcessingTime { get; set; }
 
         /// <summary>
-        /// Creates a GUI object that allows the user to display and change the options for the plugin.
+        /// Gets or sets the content of any errors or exceptions that were thrown during the processing of the report.
         /// </summary>
-        /// <returns></returns>
-        IOptionsView CreateOptionsView();
+        [DataMember(Name = "errorText", EmitDefaultValue = false)]
 
         /// <summary>
-        /// 创建轨迹记录器
+        /// Gets or sets the first date that the report covers.
         /// </summary>
-        /// <returns></returns>
-        ITrackFlightLog CreateTrackFlightLog();
+        [DataMember(Name="startDate")]
+        public string StartDate { get; set; }
+
+        [DataMember(Name="flightID")]
+        public int FlightID { get; set; }
+        /// <summary>
+        /// Gets the list of flights that match the report criteria.
+        /// </summary>
+        [DataMember(Name="flightTrails", IsRequired=true)]
+        public List<ReportFlightTrailJson> Flights { get; private set; }
 
         /// <summary>
-        /// Returns true if the file exists.
+        /// Creates a new object.
         /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        bool FileExists(string fileName);
-
-        /// <summary>
-        /// Returns the length of the file.
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        long FileSize(string fileName);
+        public FlightTrailReportJson()
+        {
+            Flights = new List<ReportFlightTrailJson>();
+        }
     }
 }
