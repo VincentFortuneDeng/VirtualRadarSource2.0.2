@@ -59,7 +59,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
         //string JsonSerialise(object json);
 
-        public string ReadFlightTrail(string date, int flightID);
+        //string ReadFlightTrail(string date, int flightID);
 
         //ReportFlightTrailJson ConvertToReportFlightTrailJson(BaseStationFlight flight);
 

@@ -53,9 +53,6 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             public ITrackFlightLog CreateTrackFlightLog() { return new TrackFlightLog(); }
             /*public bool FileExists(string fileName)     { return File.Exists(fileName); }*/
             /*public long FileSize(string fileName)       { return new FileInfo(fileName).Length; }*/
-            
-
-            public string ReadFlightTrail(string date, int flightID);
 
             //public BaseStationFlight ConvertToBaseStationFlight(ReportFlightTrailJson flightTrail);
         }
@@ -80,7 +77,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
         private IWebSiteExtender _WebSiteExtender;
 
-        private ReportTrackLogRowsJsonPage _ReportTrackLogRowsJsonPage;
+        private ReportTrackRowsJsonPage _ReportTrackLogRowsJsonPage;
+
+        private ReportTrailsJsonPage _ReportTrailJsonPage;
 
         /// <summary>
         /// The feed whose aircraft messages are being recorded in the database.
@@ -377,7 +376,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="classFactory"></param>
         public void RegisterImplementations(IClassFactory classFactory)
         {
-            //classFactory.Register<ITrackFlightLog, TrackFlightLog>();
+            classFactory.Register<ITrackFlightLog, TrackFlightLog>();
             //classFactory.Register<IOptionsView, WinForms.OptionsView>();
             classFactory.Register<IOptionsPresenter, OptionsPresenter>();
         }
@@ -395,7 +394,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             //_Options = LoadSettings();
             _WebSite = parameters.WebSite;
             _PluginStartupParameters = parameters;
-            _TrackFlightLog =Provider.CreateTrackFlightLog();
+            //_TrackFlightLog =Provider.CreateTrackFlightLog();
+            _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
 
             var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
             feedManager.FeedsChanged += FeedManager_FeedsChanged;
@@ -486,10 +486,13 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
                 //_WebSiteExtender.InjectReportPages();
 
-                _ReportTrackLogRowsJsonPage = new ReportTrackLogRowsJsonPage(_PluginStartupParameters.WebSite);
+                _ReportTrackLogRowsJsonPage = new ReportTrackRowsJsonPage(_PluginStartupParameters.WebSite);
                 _ReportTrackLogRowsJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
                 _ReportTrackLogRowsJsonPage.BaseStationDatabase = Factory.Singleton.Resolve<IAutoConfigBaseStationDatabase>().Singleton.Database;
                 _ReportTrackLogRowsJsonPage.StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
+
+                _ReportTrailJsonPage = new ReportTrailsJsonPage(_PluginStartupParameters.WebSite);
+                _ReportTrailJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
 
                 ServerConfigJsonPage serverConfigJsonPage = new ServerConfigJsonPage(_PluginStartupParameters.WebSite);
                 serverConfigJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
@@ -499,11 +502,12 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
                 ImagePage imagePage = new ImagePage(_PluginStartupParameters.WebSite);
                 imagePage.Provider = _PluginStartupParameters.WebSite.Provider;
-                
+
                 _WebSiteExtender.PageHandlers.Add("/Trail/ReportRows.json", _ReportTrackLogRowsJsonPage.HandleRequest);
                 _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", serverConfigJsonPage.HandleRequest);
                 _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", faviconPage.HandleRequest);
                 _WebSiteExtender.PageHandlers.Add("/Trail/Images", imagePage.HandleRequest);
+                _WebSiteExtender.PageHandlers.Add("/Trail/ReportTrails", _ReportTrailJsonPage.HandleRequest);
                 _WebSiteExtender.Initialise(_PluginStartupParameters);
             }
 

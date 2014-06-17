@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VirtualRadar.Interface;
+using VirtualRadar.Interface.WebSite;
 
 namespace VirtualRadar.Plugin.AircraftTrackLog
 {
@@ -56,10 +57,20 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="args"></param>
         void WriteLine(string format, params object[] args);
 
+        object JsonDeSerialise(Type type,string json);
+
+        /// <summary>
+        /// 读取轨迹json
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="flightID"></param>
+        /// <returns></returns>
+        List<ReportFlightTrailJson> ReadFlightTrail(string date, int flightID)
+
         /// <summary>
         /// Truncates the log file to the last nn kilobytes.
         /// </summary>
         /// <param name="kbLength">The number of kilobytes to preserve at the end of the file.</param>
-        void Truncate(int kbLength);
+        void Truncate(string date, string icao24, int kbLength);
     }
 }

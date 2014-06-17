@@ -21,7 +21,7 @@
     VRS.globalOptions.reportDefaultStepSize = VRS.globalOptions.reportDefaultStepSize || 25;            // The default step to show on the page size controls.
     VRS.globalOptions.reportDefaultPageSize = VRS.globalOptions.reportDefaultPageSize || 50;            // The default page size to show. Use -1 if you want to default to showing all rows.
     VRS.globalOptions.reportUrl = VRS.globalOptions.reportUrl || 'ReportRows.json';                     // The URL to fetch when retrieving report rows.
-    VRS.globalOptions.reportTrailUrl = VRS.globalOptions.reportTrailUrl || 'ReportTrailRows.json';
+    VRS.globalOptions.reportTrailsUrl = VRS.globalOptions.reportTrailsUrl || 'ReportTrails.json';
     VRS.globalOptions.reportDefaultSortColumns = VRS.globalOptions.reportDefaultSortColumns || [        // The default sort order for reports. Note that the server will not accept any more than two sort columns.
         { field: VRS.ReportSortColumn.Date, ascending: true },
         { field: VRS.ReportSortColumn.None, ascending: false }
@@ -145,14 +145,14 @@
         this.setSelectedFlight = function(/** VRS_JSON_REPORT_FLIGHT */value) {
             if (value !== _SelectedFlight) {
                 if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
-                var last = VRS.Report.convertFlightToVrsAircraft(value, false);
+                //var last = VRS.Report.convertFlightToVrsAircraft(value, false);
 
                 _SelectedFlight = value;
 
                 $.ajax({
-                    url: VRS.globalOptions.reportTrailUrl,
-                    dataType: 'json',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
-                    data: { icao: last.icao },
+                    url: VRS.globalOptions.reportTrailsUrl,
+                    dataType: 'text',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
+                    data: { date: _SelectedFlight.start, flightID: _SelectedFlight.row },
                     success: $.proxy(trailFetched, this),
                     error: $.proxy(trailFetchFailed, this)
                 });
@@ -543,22 +543,17 @@
         function trailFetched(rawData) {
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
 
+            var json = VRS.jsonHelper.convertMicrosoftDates(rawData);
+            _TrailFetchResult = eval('(' + json + ')');
+
             /*保留逻辑*/
             _Dispatcher.raise(_Events.trailFetched, [that]);
 
-            var json = VRS.jsonHelper.convertMicrosoftDates(rawData);
-            _TrailFetchResult = eval('(' + json + ')');
-            _TrailedFlight = rawData;
-            fixupRoutesAndAirports();
-
-            that.setSelectedFlight(null);
-            _Dispatcher.raise(_Events.rowsFetched, [that]);
-
-            if (_Settings.showFetchUI && _LastFetchResult.errorText) {
-                VRS.pageHelper.showMessageBox(VRS.$$.ServerReportExceptionTitle, VRS.stringUtility.format(VRS.$$.ServerReportExceptionBody, _LastFetchResult.errorText));
+            if (_Settings.showFetchUI && _TrailFetchResult.errorText) {
+                _TrailedFlights = null;
+                VRS.pageHelper.showMessageBox(VRS.$$.ServerReportExceptionTitle, VRS.stringUtility.format(VRS.$$.ServerReportExceptionBody, _TrailFetchResult.errorText));
             } else {
-                var flights = that.getFlights();
-                if (flights.length) that.setSelectedFlight(flights[0]);
+                _TrailedFlights = _TrailFetchResult.flights;
             }
         }
 
@@ -645,7 +640,7 @@
          */
         function trailFetchFailed(jqXHR, textStatus, errorThrown) {
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
-
+            _TrailedFlights = null;
             _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
         }
         //endregion

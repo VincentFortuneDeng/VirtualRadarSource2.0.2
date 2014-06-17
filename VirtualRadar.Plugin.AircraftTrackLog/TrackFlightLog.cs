@@ -18,6 +18,9 @@ using System.IO;
 using InterfaceFactory;
 using System.Threading;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using VirtualRadar.Interface.WebSite;
 
 namespace VirtualRadar.Plugin.AircraftTrackLog
 {
@@ -91,7 +94,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         public string ICAO24
         {
             get { return _ICAO24; }
-            set { _ICAO24 = value; Initialise(); }
+            set { _ICAO24 = value; GenerateFileName(); }
         }
 
         private string _Date;
@@ -116,7 +119,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <summary>
         /// Determines the folder and filename.
         /// </summary>
-        private void Initialise()
+        private void GenerateFileName()
         {
             if(_TrackRoot == null) {
                 _TrackRoot = Path.Combine(Application.StartupPath, "TrackBaseStation");
@@ -141,7 +144,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="message"></param>
         public void WriteLine(string message)
         {
-            Initialise();
+            GenerateFileName();
             //Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine(FileName);
             if(message != null) {
                 lock(_SyncLock) {
@@ -161,19 +164,57 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             WriteLine(String.Format(format, args));
         }
 
+        public object JsonDeSerialise(Type type,string json)
+        {
+            MemoryStream stream = new MemoryStream();
+            DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(type);
+
+            return jsonSerializer.ReadObject(stream);
+        }
+
+        /// <summary>
+        /// 读取轨迹json
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="flightID"></param>
+        /// <returns></returns>
+        public List<ReportFlightTrailJson> ReadFlightTrail(string date, int flightID)
+        {
+            string folder = Path.Combine(_TrackRoot, date);
+            string fileName = Path.Combine(folder ,flightID+".log");
+
+            if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("date folder not found.");
+            if(!Provider.FileExists(fileName)) throw new ArgumentOutOfRangeException("date flightID file not found.");
+
+            List<ReportFlightTrailJson> listReportFlightTrailJson = new List<ReportFlightTrailJson>();
+            ReportFlightTrailJson RrportFlightTrailJson;
+            using(StreamReader streamReader = new StreamReader(fileName)) {
+                while(!streamReader.EndOfStream) {
+                    string json = streamReader.ReadLine(); //读取每行数据
+                    RrportFlightTrailJson = (ReportFlightTrailJson)JsonDeSerialise(typeof(ReportFlightTrailJson), json);
+                    listReportFlightTrailJson.Add(RrportFlightTrailJson);
+                    //Console.WriteLine(json); //屏幕打印每行数据
+                }
+            }
+
+            return listReportFlightTrailJson;
+        }
+
         /// <summary>
         /// See interface docs.
         /// </summary>
         /// <param name="kbLength"></param>
-        public void Truncate(int kbLength)
+        public void Truncate(string date,string icao24,int kbLength)
         {
             if(kbLength < 0) throw new ArgumentOutOfRangeException("kbLength");
-            Initialise();
+            Date = date;
+            ICAO24 = icao24;
+            //Initialise();
 
             var length = kbLength * 1024;
 
             lock(_SyncLock) {
-                if(Provider.FileExists(FlightID)) Provider.TruncateTo(FlightID, length);
+                if(Provider.FileExists(_FileName)) Provider.TruncateTo(_FileName, length);
             }
         }
     }

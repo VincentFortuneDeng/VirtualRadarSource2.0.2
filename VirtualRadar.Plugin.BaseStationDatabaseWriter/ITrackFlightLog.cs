@@ -59,6 +59,6 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// Truncates the log file to the last nn kilobytes.
         /// </summary>
         /// <param name="kbLength">The number of kilobytes to preserve at the end of the file.</param>
-        void Truncate(int kbLength);
+        void Truncate(string date,int flightID,int kbLength);
     }
 }

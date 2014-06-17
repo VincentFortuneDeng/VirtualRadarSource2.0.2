@@ -55,6 +55,8 @@
          */
         this.aircraftList = new VRS.AircraftCollection();
 
+        this.trailedFlights = null;
+
         /**
          * The next aircraft ID to assign to a fake VRS.Aircraft object.
          * @type {number}
@@ -324,9 +326,17 @@
 
                 state.selectedAircraft = options.startSelected ? first : last;
 
-                if(options.showPath && first && last) {
-                    last.fullTrail.arr.push(new VRS.FullTrailValue(first.latitude.val, first.longitude.val, first.heading.val, first.altitude.val, first.speed.val));
-                    last.fullTrail.arr.push(new VRS.FullTrailValue(last.latitude.val, last.longitude.val, last.heading.val, last.altitude.val, last.speed.val));
+                if (options.showPath && first && last) {
+                    if (state.trailedFlights) {
+                        var length = state.trailedFlights.length;
+                        for (var i = 0; i < length; ++i) {
+                            last.fullTrail.arr.push(new VRS.FullTrailValue(state.trailedFlights[i].lLat.val, state.trailedFlights[i].lLng.val, state.trailedFlights[i].lTrk.val, state.trailedFlights[i].lAlt.val, state.trailedFlights[i].lSpd.val));
+                        }
+                    }
+                    else {
+                        last.fullTrail.arr.push(new VRS.FullTrailValue(first.latitude.val, first.longitude.val, first.heading.val, first.altitude.val, first.speed.val));
+                        last.fullTrail.arr.push(new VRS.FullTrailValue(last.latitude.val, last.longitude.val, last.heading.val, last.altitude.val, last.speed.val));
+                    }
                 }
             }
         },
@@ -390,6 +400,7 @@
         {
             var state = this._getState();
             state.selectedFlight = flight;
+            state.trailedFlights = vrs.report.getTrailedFlights();
 
             var options = this.options;
             this._buildFakeVrsAircraft(state);

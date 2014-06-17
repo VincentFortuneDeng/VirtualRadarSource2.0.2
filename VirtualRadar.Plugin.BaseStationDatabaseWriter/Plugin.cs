@@ -255,7 +255,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// <param name="classFactory"></param>
         public void RegisterImplementations(IClassFactory classFactory)
         {
-            ;
+            classFactory.Register<ITrackFlightLog, TrackFlightLog>();
         }
         #endregion
 
@@ -277,7 +277,8 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                 _StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
                 _StandingDataManager.LoadCompleted += StandingDataManager_LoadCompleted;
 
-                _TrackFlightLog = Provider.CreateTrackFlightLog();
+                //_TrackFlightLog = Provider.CreateTrackFlightLog();
+                _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
 
                 var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
                 feedManager.FeedsChanged += FeedManager_FeedsChanged;

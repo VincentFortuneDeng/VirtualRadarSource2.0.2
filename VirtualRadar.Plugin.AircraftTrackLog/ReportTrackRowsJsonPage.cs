@@ -26,7 +26,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
     /// <summary>
     /// Serves pages of report rows.
     /// </summary>
-    class ReportTrackLogRowsJsonPage : Page
+    class ReportTrackRowsJsonPage : Page
     {
         #region Private class - Parameters
         /// <summary>
@@ -148,7 +148,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <summary>
         /// Creates a new object.
         /// </summary>
-        public ReportTrackLogRowsJsonPage(IWebSite webSite) : base(webSite)
+        public ReportTrackRowsJsonPage(IWebSite webSite) : base(webSite)
         {
             _PictureManager = Factory.Singleton.Resolve<IAircraftPictureManager>().Singleton;
             _PictureFolderCache = Factory.Singleton.Resolve<IAutoConfigPictureFolderCache>().Singleton.DirectoryCache;

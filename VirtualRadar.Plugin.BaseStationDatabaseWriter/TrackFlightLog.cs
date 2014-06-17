@@ -91,7 +91,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         public int FlightID
         {
             get { return _FlightID; }
-            set { _FlightID = value; Initialise(); }
+            set { _FlightID = value; GenerateFileName(); }
         }
 
         private string _Date;
@@ -116,7 +116,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// <summary>
         /// Determines the folder and filename.
         /// </summary>
-        private void Initialise()
+        private void GenerateFileName()
         {
             if(_TrackRoot == null) {
                 _TrackRoot = Path.Combine(Application.StartupPath, "TrackFlight");
@@ -141,7 +141,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// <param name="message"></param>
         public void WriteLine(string message)
         {
-            Initialise();
+            GenerateFileName();
             //Factory.Singleton.Resolve<VirtualRadar.Interface.ILog>().Singleton.WriteLine(FileName);
             if(message != null) {
                 lock(_SyncLock) {
@@ -165,15 +165,17 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// See interface docs.
         /// </summary>
         /// <param name="kbLength"></param>
-        public void Truncate(int kbLength)
+        public void Truncate(string date,int flightID,int kbLength)
         {
             if(kbLength < 0) throw new ArgumentOutOfRangeException("kbLength");
-            Initialise();
+            Date = date;
+            FlightID = flightID;
+            //Initialise();
 
             var length = kbLength * 1024;
 
             lock(_SyncLock) {
-                if(Provider.FileExists(FlightID)) Provider.TruncateTo(FlightID, length);
+                if(Provider.FileExists(_FileName)) Provider.TruncateTo(_FileName, length);
             }
         }
     }

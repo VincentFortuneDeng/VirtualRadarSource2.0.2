@@ -38,20 +38,22 @@ namespace VirtualRadar.Interface.WebSite
         /// Gets or sets the content of any errors or exceptions that were thrown during the processing of the report.
         /// </summary>
         [DataMember(Name = "errorText", EmitDefaultValue = false)]
-
+        public string ErrorText { get; set; }
         /// <summary>
         /// Gets or sets the first date that the report covers.
         /// </summary>
         [DataMember(Name="startDate")]
         public string StartDate { get; set; }
-
+        /// <summary>
+        /// Gets or sets the flightID of the report.
+        /// </summary>
         [DataMember(Name="flightID")]
         public int FlightID { get; set; }
         /// <summary>
         /// Gets the list of flights that match the report criteria.
         /// </summary>
         [DataMember(Name="flightTrails", IsRequired=true)]
-        public List<ReportFlightTrailJson> Flights { get; private set; }
+        public List<ReportFlightTrailJson> Flights { get; set; }
 
         /// <summary>
         /// Creates a new object.
