@@ -400,7 +400,7 @@
         {
             var state = this._getState();
             state.selectedFlight = flight;
-            state.trailedFlights = vrs.report.getTrailedFlights();
+            state.trailedFlights = vrs.report.getFlightTrails();
 
             var options = this.options;
             this._buildFakeVrsAircraft(state);

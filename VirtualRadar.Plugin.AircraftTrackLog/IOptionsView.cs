@@ -21,16 +21,6 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
     public interface IOptionsView : IDisposable, IValidateView
     {
         /// <summary>
-        /// Gets or sets the web site that the plugin has hooked into.
-        /// </summary>
-        /*IWebSite WebSite { get; set; }*/
-
-        /// <summary>
-        /// Gets or sets the site root being used by the plugin.
-        /// </summary>
-        /*SiteRoot SiteRoot { get; set; }*/
-
-        /// <summary>
         /// See <see cref="Options.Enabled"/>.
         /// </summary>
         bool PluginEnabled { get; set; }
@@ -41,74 +31,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         int ReceiverId { get; set; }
 
         /// <summary>
-        /// Gets a list of every InjectSettings object on display to the user.
-        /// </summary>
-        /*List<InjectSettings> InjectSettings { get; }*/
-
-        /// <summary>
-        /// Gets or sets the currently selected record in <see cref="InjectSettings"/>.
-        /// </summary>
-        /*InjectSettings SelectedInjectSettings { get; set; }*/
-
-        /// <summary>
-        /// <see cref="InjectSettings.Enabled"/>.
-        /// </summary>
-        /*bool InjectEnabled { get; set; }*/
-
-        /// <summary>
-        /// <see cref="InjectSettings.File"/>
-        /// </summary>
-        /*string InjectFileName { get; set; }*/
-
-        /// <summary>
-        /// See <see cref="InjectSettings.Start"/>
-        /// </summary>
-        /*bool InjectAtStart { get; set; }*/
-
-        /// <summary>
-        /// See <see cref="InjectSettings.InjectionLocation"/>.
-        /// </summary>
-        /*InjectionLocation InjectOf { get; set; }*/
-
-        /// <summary>
-        /// See <see cref="InjectSettings.PathAndFile"/>.
-        /// </summary>
-        /*string InjectPathAndFile { get; set; }*/
-
-        /// <summary>
-        /// See <see cref="Options.SiteRootFolder"/>.
-        /// </summary>
-        /*string SiteRootFolder { get; set; }*/
-
-        /// <summary>
-        /// See <see cref="Options.DefaultInjectionFilesFolder"/>.
-        /// </summary>
-        /*string DefaultInjectionFilesFolder { get; set; }*/
-
-        /// <summary>
-        /// Raised when the user wants to delete an existing InjectSettings object.
-        /// </summary>
-        /*event EventHandler DeleteInjectSettingsClicked;*/
-
-        /// <summary>
-        /// Raised when the user wants to create a new InjectSettings object.
-        /// </summary>
-        /*event EventHandler NewInjectSettingsClicked;*/
-
-        /// <summary>
-        /// Raised when the user clicks Reset.
-        /// </summary>
-        /*event EventHandler ResetClicked;*/
-
-        /// <summary>
         /// Raised when the user indicates that they've finished editing options.
         /// </summary>
         event CancelEventHandler SaveClicked;
-
-        /// <summary>
-        /// Raised when the <see cref="SelectedInjectSettings"/> value changes.
-        /// </summary>
-        /*event EventHandler SelectedInjectSettingsChanged;*/
 
         /// <summary>
         /// Raised when an InjectSettings value changes.
@@ -120,20 +45,5 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         /// <returns></returns>
         bool DisplayView();
-
-        /// <summary>
-        /// Sets the focus to the edit fields for the inject settings.
-        /// </summary>
-        /*void FocusOnEditFields();*/
-
-        /// <summary>
-        /// Refreshes the selected InjectSettings edit fields.
-        /// </summary>
-        /*void RefreshSelectedInjectSettings();*/
-
-        /// <summary>
-        /// Refreshes the list of InjectSettings.
-        /// </summary>
-        /*void RefreshInjectSettings();*/
     }
 }

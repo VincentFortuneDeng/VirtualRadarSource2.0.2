@@ -137,8 +137,8 @@
             return _LastFetchResult && _LastFetchResult.errorText ? _LastFetchResult.errorText : null;
         };
 
-        var _TrailedFlights = null;
-        this.getTrailedFlights = function () { return _TrailedFlights; };
+        var _FlightTrails = null;
+        this.getFlightTrails = function () { return _FlightTrails; };
         /** @type {VRS_JSON_REPORT_FLIGHT} @private */
         var _SelectedFlight = null;
         this.getSelectedFlight = function() { return _SelectedFlight; };
@@ -550,10 +550,10 @@
             _Dispatcher.raise(_Events.trailFetched, [that]);
 
             if (_Settings.showFetchUI && _TrailFetchResult.errorText) {
-                _TrailedFlights = null;
+                _FlightTrails = null;
                 VRS.pageHelper.showMessageBox(VRS.$$.ServerReportExceptionTitle, VRS.stringUtility.format(VRS.$$.ServerReportExceptionBody, _TrailFetchResult.errorText));
             } else {
-                _TrailedFlights = _TrailFetchResult.flights;
+                _FlightTrails = _TrailFetchResult.flightTrails;
             }
         }
 
@@ -640,7 +640,7 @@
          */
         function trailFetchFailed(jqXHR, textStatus, errorThrown) {
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
-            _TrailedFlights = null;
+            _FlightTrails = null;
             _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
         }
         //endregion
