@@ -89,7 +89,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <summary>
         /// The object that different threads synchronise on before using the contents of the fields.
         /// </summary>
-        //private object _SyncLock = new object();
+        private object _SyncLock = new object();
 
 
         /// <summary>
@@ -149,23 +149,23 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         // Updates the status and raises StatusChanged
         private void UpdateStatus()
         {
-            //lock(_SyncLock) {
-            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+            lock(_SyncLock) {
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
 
-            if(!_Options.Enabled) {
-                Status = PluginStrings.Disabled;
-                StatusDescription = null;
-            } else if(_Options.ReceiverId == 0) {
-                Status = PluginStrings.EnabledNoReceiver;
-            } else if(feedManager.GetByUniqueId(_Options.ReceiverId) == null) {
-                Status = PluginStrings.EnabledBadReceiver;
-            } else {
-                Status = PluginStrings.Enabled;
-                StatusDescription = PluginStrings.EnabledDescription;
+                if(!_Options.Enabled) {
+                    Status = PluginStrings.Disabled;
+                    StatusDescription = null;
+                } else if(_Options.ReceiverId == 0) {
+                    Status = PluginStrings.EnabledNoReceiver;
+                } else if(feedManager.GetByUniqueId(_Options.ReceiverId) == null) {
+                    Status = PluginStrings.EnabledBadReceiver;
+                } else {
+                    Status = PluginStrings.Enabled;
+                    StatusDescription = PluginStrings.EnabledDescription;
+                }
+
+                OnStatusChanged(EventArgs.Empty);
             }
-
-            OnStatusChanged(EventArgs.Empty);
-            //}
         }
 
         /// <summary>

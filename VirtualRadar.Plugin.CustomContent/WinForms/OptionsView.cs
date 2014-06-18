@@ -277,6 +277,5 @@ namespace VirtualRadar.Plugin.CustomContent.WinForms
             if(!_SuppressItemSelectedEventHandler) OnSelectedInjectSettingsChanged(EventArgs.Empty);
         }
         #endregion
-
     }
 }

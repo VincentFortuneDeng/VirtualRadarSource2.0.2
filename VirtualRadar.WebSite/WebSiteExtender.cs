@@ -207,8 +207,8 @@ namespace VirtualRadar.WebSite
         /// <returns></returns>
         public IWebSiteExtender InjectReportPages()
         {
-            InjectPages.Add("/VirtualRadar/Trail/desktopReport.html");
-            InjectPages.Add("/VirtualRadar/Trail/mobileReport.html");
+            InjectPages.Add("/desktopReport.html");
+            InjectPages.Add("/mobileReport.html");
 
             return this;
         }

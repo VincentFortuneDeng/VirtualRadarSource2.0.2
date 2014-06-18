@@ -24,11 +24,11 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
     {
         #region Fields
         IOptionsView _View;
-        private bool _SuppressValueChangedEventHandler;
+        //private bool _SuppressValueChangedEventHandler;
         /// <summary>
         /// The object that different threads synchronise on before using the contents of the fields.
         /// </summary>
-        //private object _SyncLock = new object();
+        private object _SyncLock = new object();
 
         #endregion
 
@@ -48,26 +48,21 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         }
         #endregion
 
-
-
         #region
         private bool DoValidation()
         {
             var results = new List<ValidationResult>();
 
             if(_View.PluginEnabled) {
-                //lock(_SyncLock) {
-                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                lock(_SyncLock) {
+                    var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
 
-                if(_View.ReceiverId == 0) {
-                    results.Add(new ValidationResult(ValidationField.ReceiverIds, PluginStrings.EnabledNoReceiver));
-                } else if(feedManager.GetByUniqueId(_View.ReceiverId) == null) {
-                    results.Add(new ValidationResult(ValidationField.ReceiverIds, PluginStrings.EnabledBadReceiver));
+                    if(_View.ReceiverId == 0) {
+                        results.Add(new ValidationResult(ValidationField.ReceiverIds, PluginStrings.EnabledNoReceiver));
+                    } else if(feedManager.GetByUniqueId(_View.ReceiverId) == null) {
+                        results.Add(new ValidationResult(ValidationField.ReceiverIds, PluginStrings.EnabledBadReceiver));
+                    }
                 }
-
-                //OnStatusChanged(EventArgs.Empty);
-
-                //}
             }
 
             _View.ShowValidationResults(results);
@@ -89,9 +84,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
         private void View_ValueChanged(object sender, EventArgs args)
         {
-            if(!_SuppressValueChangedEventHandler) {
-                DoValidation();
-            }
+            //if(!_SuppressValueChangedEventHandler) {
+            DoValidation();
+            //}
         }
     }
         #endregion
