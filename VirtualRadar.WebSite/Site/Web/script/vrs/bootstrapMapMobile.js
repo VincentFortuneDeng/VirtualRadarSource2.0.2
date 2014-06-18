@@ -25,7 +25,7 @@
     {
         VRS.BootstrapMap.call(this, {
             configPrefix:           'mobile',
-            reportUrl:              'mobileReport.html',
+            reportUrl:              'Trail/mobileReport.html',
             mapSettings: {
                 sensor:             true,
                 controlStyle:       VRS.MapControlStyle.DropdownMenu,

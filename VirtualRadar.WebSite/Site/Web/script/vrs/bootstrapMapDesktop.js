@@ -25,7 +25,7 @@
     {
         VRS.BootstrapMap.call(this, {
             configPrefix:   'desktop',
-            reportUrl: 'desktopReport.html'
+            reportUrl:      'Trail/desktopReport.html'
         });
     };
     VRS.BootstrapMapDesktop.prototype = VRS.objectHelper.subclassOf(VRS.BootstrapMap);
