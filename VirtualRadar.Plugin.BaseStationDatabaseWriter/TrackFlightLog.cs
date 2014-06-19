@@ -84,24 +84,24 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// </summary>
         public ITrackFlightLog Singleton { get { return _Singleton; } }
 
-        private int _FlightID;
+        private int? _AircraftID;
         /// <summary>
         /// See interface docs.
         /// </summary>
-        public int FlightID
+        public int? AircraftID
         {
-            get { return _FlightID; }
-            set { _FlightID = value; GenerateFileName(); }
+            get { return _AircraftID; }
+            set { _AircraftID = value; GenerateFileName(); }
         }
 
-        private string _Date;
+        private DateTime _StartTime;
         /// <summary>
         /// See interface docs.
         /// </summary>
-        public string Date
+        public DateTime StartTime
         {
-            get { return _Date; }
-            set { _Date = value; }
+            get { return _StartTime; }
+            set { _StartTime = value; }
         }
 
         /// <summary>
@@ -122,17 +122,17 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                 _TrackRoot = Path.Combine(Application.StartupPath, "TrackFlight");
             }
 
-            if(_Date == null) {
-                _Date = DateTime.Now.ToString("yyyyMMdd");
+            if(_StartTime == null) {
+                _StartTime = DateTime.Now;
             }
 
-            _Folder = Path.Combine(_TrackRoot, _Date);
+            _Folder = Path.Combine(_TrackRoot, _StartTime.ToString("yyyyMMdd"));
 
-            if(_FlightID == null) {
-                _FlightID = 99999999;
+            if(_AircraftID == null) {
+                _AircraftID = 99999999;
             }
 
-            _FileName = Path.Combine(_Folder, _FlightID + ".log");
+            _FileName = Path.Combine(_Folder, _AircraftID + _StartTime.ToString("HHmmss")+ ".log");
         }
 
         /// <summary>
@@ -165,11 +165,11 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// See interface docs.
         /// </summary>
         /// <param name="kbLength"></param>
-        public void Truncate(string date,int flightID,int kbLength)
+        public void Truncate(DateTime dateTime,int flightID,int kbLength)
         {
             if(kbLength < 0) throw new ArgumentOutOfRangeException("kbLength");
-            Date = date;
-            FlightID = flightID;
+            StartTime = dateTime;
+            AircraftID = flightID;
             //Initialise();
 
             var length = kbLength * 1024;

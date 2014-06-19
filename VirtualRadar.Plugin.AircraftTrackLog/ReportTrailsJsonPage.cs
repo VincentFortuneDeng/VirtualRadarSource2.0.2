@@ -35,9 +35,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         class Parameters 
         {
-            public string Date { get; set; }
+            public string StartTime { get; set; }
 
-            public int FlightID { get; set; }
+            public int AircraftID { get; set; }
         }
         #endregion
 
@@ -129,8 +129,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         private Parameters ExtractParameters(RequestReceivedEventArgs args)
         {
             var result = new Parameters() {
-                Date = QueryString(args, "date", false),
-                FlightID = QueryInt(args, "flightID", -1),
+                StartTime = QueryString(args, "startTime", false),
+                AircraftID = QueryInt(args, "aircraftID", -1),
             };
 
             return result;
@@ -148,11 +148,11 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             FlightTrailReportJson json = new FlightTrailReportJson() {
                 CountRows = 0,
-                StartDate = parameters.Date,
-                FlightID = parameters.FlightID,
+                StartTime =DateTime.Parse(parameters.StartTime),
+                AircraftID = parameters.AircraftID,
             };
 
-            json.Flights = _TrackFlightLog.ReadFlightTrail(parameters.Date, parameters.FlightID);
+            json.Flights = _TrackFlightLog.ReadFlightTrail(DateTime.Parse(parameters.StartTime), parameters.AircraftID);
             json.CountRows = json.Flights.Count;
 
             return json;

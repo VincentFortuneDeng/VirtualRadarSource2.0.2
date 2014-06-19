@@ -153,7 +153,7 @@
                 $.ajax({
                     url: VRS.globalOptions.reportTrailsUrl,
                     dataType: 'text',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
-                    data: { date: _SelectedFlight.start, flightID: _SelectedFlight.row },
+                    data: { startTime: _SelectedFlight.start, aircraftID: _SelectedFlight.acIdx },
                     success: $.proxy(trailFetched, this),
                     error: $.proxy(trailFetchFailed, this)
                 });

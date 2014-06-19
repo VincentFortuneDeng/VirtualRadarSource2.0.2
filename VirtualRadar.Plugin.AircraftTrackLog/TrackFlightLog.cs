@@ -177,12 +177,12 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// 读取轨迹json
         /// </summary>
         /// <param name="date"></param>
-        /// <param name="flightID"></param>
+        /// <param name="aircraftID"></param>
         /// <returns></returns>
-        public List<ReportFlightTrailJson> ReadFlightTrail(string date, int flightID)
+        public List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, int aircraftID)
         {
-            string folder = Path.Combine(_TrackRoot, date);
-            string fileName = Path.Combine(folder ,flightID+".log");
+            string folder = Path.Combine(_TrackRoot, startTime.ToString("yyyyMMdd"));
+            string fileName = Path.Combine(folder ,aircraftID + startTime.ToString("HHmmss") + ".log");
 
             if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("date folder not found.");
             if(!Provider.FileExists(fileName)) throw new ArgumentOutOfRangeException("date flightID file not found.");

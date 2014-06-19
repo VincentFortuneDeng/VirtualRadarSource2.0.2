@@ -42,13 +42,13 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the first date that the report covers.
         /// </summary>
-        [DataMember(Name="startDate")]
-        public string StartDate { get; set; }
+        [DataMember(Name="startTime")]
+        public DateTime StartTime { get; set; }
         /// <summary>
         /// Gets or sets the flightID of the report.
         /// </summary>
-        [DataMember(Name="flightID")]
-        public int FlightID { get; set; }
+        [DataMember(Name="aircraftID")]
+        public int AircraftID { get; set; }
         /// <summary>
         /// Gets the list of flights that match the report criteria.
         /// </summary>
