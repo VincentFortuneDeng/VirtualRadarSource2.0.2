@@ -82,7 +82,6 @@ namespace VirtualRadar.Library
             factory.Register<IHeartbeatService, HeartbeatService>();
             factory.Register<IImageFileManager, ParallelAccessImageFileManager>();
             factory.Register<ILog, Log>();
-            
             factory.Register<INewVersionChecker, NewVersionChecker>();
             factory.Register<IPluginManager, PluginManager>();
             factory.Register<IRebroadcastServer, RebroadcastServer>();

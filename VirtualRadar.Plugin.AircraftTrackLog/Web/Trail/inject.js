@@ -29,12 +29,19 @@ if(VRS && VRS.LinkRenderHandler && VRS.linkRenderHandlers) {
             canLinkAircraft:    function(/** VRS.Aircraft */ aircraft) { return true; },        // <-- see aircraft.js, return true if you want your link rendered for the aircraft passed across
             hasChanged:         function(/** VRS.Aircraft */ aircraft) { return false; },       // <-- see aircraft.js, return true if a value that you rely upon has changed on the aircraft
             title:              function(/** VRS.Aircraft */ aircraft) { return '航空器历史轨迹'; },   // <-- see aircraft.js, return the text to show for the link.
-            buildUrl:           function(/** VRS.Aircraft */ aircraft) { return encodeURIComponent(VRS.globalOptions.isMobile ? 'Trail/mobileReport.html' : 'Trail/desktopReport.html') +  '?icao-Q=' + encodeURIComponent(aircraft.formatIcao()) + '&sort1=' + encodeURIComponent(VRS.ReportSortColumn.Date) + '&sortAsc1=0&sort2=none'; },      // <-- see aircraft.js, return the HREF for the link
+            buildUrl:           function(/** VRS.Aircraft */ aircraft) {
+                                                                        return VRS.browserHelper.formVrsPageUrl(VRS.globalOptions.isMobile ? 'Trail/mobileReport.html' : 'Trail/desktopReport.html',
+                                                                        {
+                                                                            'icao-Q': encodeURIComponent(aircraft.formatIcao()),
+                                                                            'sort1': VRS.ReportSortColumn.Date,
+                                                                            'sortAsc1': 0,
+                                                                            'sort2': 'none'
+                                                                        })},/*(VRS.globalOptions.isMobile ? 'Trail/mobileReport.html' : 'Trail/desktopReport.html') +  '?icao-Q=' + encodeURIComponent(aircraft.formatIcao()) + '&sort1=' + encodeURIComponent(VRS.ReportSortColumn.Date) + '&sortAsc1=0&sort2=none'; */      // <-- see aircraft.js, return the HREF for the link
             /*'icao-Q':   selectedAircraft.icao.val,
                         'sort1':    VRS.ReportSortColumn.Date,
                         'sortAsc1': 0,
                         'sort2':    'none'*/
-            target:             function(/** VRS.Aircraft */ aircraft) { return '历史轨迹' + encodeURIComponent(aircraft.formatIcao()); }                                                       // <-- return the target page for the link. Omit if you don't want a target (not recommended).
+            target:             function(/** VRS.Aircraft */ aircraft) { return '历史轨迹:' + encodeURIComponent(aircraft.formatIcao()); }                                                       // <-- return the target page for the link. Omit if you don't want a target (not recommended).
         })
     );
 }

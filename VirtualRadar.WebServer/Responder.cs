@@ -92,6 +92,8 @@ namespace VirtualRadar.WebServer
                 text = Encoding.UTF8.GetString(stream.ToArray());
             }
 
+            Factory.Singleton.Resolve<ILog>().Singleton.WriteLine(text);//测试记录
+
             if(!String.IsNullOrEmpty(jsonpCallbackFunction)) text = String.Format("{0}({1})", jsonpCallbackFunction, text);
 
             SendText(request, response, text, Encoding.UTF8, mimeType ?? MimeType.Json);

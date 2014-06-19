@@ -211,7 +211,7 @@
 
             VRS.globalisation.hookLocaleChanged(this._localeChanged, this);
             state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
-            state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
+            //state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
         },
 
         /**
@@ -563,6 +563,7 @@
         {
             var selectedFlight = this.options.report.getSelectedFlight();
             this._displayFlightDetails(this._getState(), selectedFlight);
+            alert("Detail selectedFlightChanged");
         },
         //endregion
 

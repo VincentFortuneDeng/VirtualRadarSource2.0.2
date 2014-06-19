@@ -220,7 +220,8 @@
             VRS.globalisation.hookLocaleChanged(this._localeChanged, this);
             state.rowsFetchedHookResult = options.report.hookRowsFetched(this._rowsFetched, this);
             state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
-            state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
+
+            //state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
         },
 
         /**
@@ -728,6 +729,7 @@
         _selectedFlightChanged: function()
         {
             this._markSelectedRow();
+            alert("List selectedFlightChanged");
         },
 
         /**

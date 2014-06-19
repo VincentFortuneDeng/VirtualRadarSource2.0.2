@@ -255,7 +255,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// <param name="classFactory"></param>
         public void RegisterImplementations(IClassFactory classFactory)
         {
-            classFactory.Register<ITrackFlightLog, TrackFlightLog>();
+            //classFactory.Register<ITrackFlightLog, TrackFlightLog>();
         }
         #endregion
 
@@ -277,8 +277,8 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                 _StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
                 _StandingDataManager.LoadCompleted += StandingDataManager_LoadCompleted;
 
-                //_TrackFlightLog = Provider.CreateTrackFlightLog();
-                _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
+                _TrackFlightLog = Provider.CreateTrackFlightLog();
+                //_TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
 
                 var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
                 feedManager.FeedsChanged += FeedManager_FeedsChanged;
@@ -525,12 +525,6 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                             }
                         }
 
-                        //记录轨迹日志
-                        _TrackFlightLog.Date = flightRecords.Flight.StartTime.Date.ToString("yyyyMMdd");
-                        _TrackFlightLog.FlightID = flightRecords.Flight.FlightID;
-                        ReportFlightTrailJson reportFlightTrailJson =  Provider.ConvertToReportFlightTrailJson(flightRecords.Flight);
-                        _TrackFlightLog.WriteLine(Provider.JsonSerialise(reportFlightTrailJson), "\r\n");
-
                         var flight = flightRecords.Flight;
                         flightRecords.EndTimeUtc = Provider.UtcNow;
                         flight.EndTime = localNow;
@@ -559,6 +553,14 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         if (message.Squawk == 7500 || message.Squawk == 7600 || message.Squawk == 7700) flight.HadEmergency = true;
                         UpdateFirstLastValues(message, flight, flightRecords);
                         UpdateMessageCounters(message, flight);
+
+                        //记录轨迹日志
+                        if(!(flight.LastLat == null && flight.LastLon == null && flight.LastAltitude==null && flight.LastTrack==null && flight.LastGroundSpeed==null)) {
+                            _TrackFlightLog.Date = flight.StartTime.Date.ToString("yyyyMMdd");
+                            _TrackFlightLog.FlightID = flight.FlightID;
+                            ReportFlightTrailJson reportFlightTrailJson = Provider.ConvertToReportFlightTrailJson(flight);
+                            _TrackFlightLog.WriteLine(String.Concat(Provider.JsonSerialise(reportFlightTrailJson), "\r\n"));
+                        }
                     }
                 }
             }

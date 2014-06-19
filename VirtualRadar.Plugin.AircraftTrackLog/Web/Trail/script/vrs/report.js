@@ -51,8 +51,9 @@
             pageSizeChanged:        'pageSizeChanged',
             rowsFetched:            'rowsFetched',
             fetchFailed:            'fetchFailed',
-            selectedFlightChanged:  'selectedFlightChanged',
-            trailFetched:           'trailFetched'
+            selectedFlightChanged:  'selectedFlightChanged'
+            /*trailFetched:           'trailFetched',
+            trailFetchFailed:       'trailFetchFailed'*/
         };
 
         var _Settings = $.extend({
@@ -237,7 +238,9 @@
          * @param {Object}                  forceThis   The object to use as 'this' for the event callback.
          * @returns {Object}
          */
-        this.hookTrailFetched = function (callback, forceThis) { return _Dispatcher.hook(_Events.trailFetched, callback, forceThis); };
+        //this.hookTrailFetched = function(callback, forceThis) { return _Dispatcher.hook(_Events.trailFetched, callback, forceThis); };
+
+        /*this.hooktrailFetchFailed = function(callback, forceThis) { return _Dispatcher.hook(_Events.trailFetchFailed, callback ,forceThis); };*/
 
         /**
          * Unhooks an event that was hooked on the object.
@@ -541,20 +544,24 @@
          * @param {string} rawData
          */
         function trailFetched(rawData) {
+            //alert("trailFetched");
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
-
+            //alert("showFetchUI");
             var json = VRS.jsonHelper.convertMicrosoftDates(rawData);
+            //alert("json");
             _TrailFetchResult = eval('(' + json + ')');
-
-            /*保留逻辑*/
-            _Dispatcher.raise(_Events.trailFetched, [that]);
-
+            //alert("eval");
             if (_Settings.showFetchUI && _TrailFetchResult.errorText) {
                 _FlightTrails = null;
-                VRS.pageHelper.showMessageBox(VRS.$$.ServerReportExceptionTitle, VRS.stringUtility.format(VRS.$$.ServerReportExceptionBody, _TrailFetchResult.errorText));
+                //VRS.pageHelper.showMessageBox(VRS.$$.ServerReportExceptionTitle, VRS.stringUtility.format(VRS.$$.ServerReportExceptionBody, _TrailFetchResult.errorText));
+                /*保留逻辑*/
             } else {
                 _FlightTrails = _TrailFetchResult.flightTrails;
+                /*保留逻辑*/
             }
+
+            _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+            
         }
 
         /**
@@ -639,6 +646,7 @@
          * @param {Flight}  flight
          */
         function trailFetchFailed(jqXHR, textStatus, errorThrown) {
+            alert("trailFetchFailed");
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
             _FlightTrails = null;
             _Dispatcher.raise(_Events.selectedFlightChanged, [that]);

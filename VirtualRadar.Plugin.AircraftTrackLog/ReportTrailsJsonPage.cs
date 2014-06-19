@@ -148,8 +148,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             FlightTrailReportJson json = new FlightTrailReportJson() {
                 CountRows = 0,
-                StartDate=parameters.Date,
-                FlightID=parameters.FlightID,
+                StartDate = parameters.Date,
+                FlightID = parameters.FlightID,
             };
 
             json.Flights = _TrackFlightLog.ReadFlightTrail(parameters.Date, parameters.FlightID);

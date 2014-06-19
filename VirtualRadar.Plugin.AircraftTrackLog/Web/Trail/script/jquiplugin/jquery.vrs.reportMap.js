@@ -232,7 +232,7 @@
 
             if(options.report) {
                 state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
-                state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
+                //state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
             }
 
             /** @type {VRS_OPTIONS_MAP} */
@@ -333,9 +333,11 @@
                             last.fullTrail.arr.push(new VRS.FullTrailValue(state.trailedFlights[i].lLat.val, state.trailedFlights[i].lLng.val, state.trailedFlights[i].lTrk.val, state.trailedFlights[i].lAlt.val, state.trailedFlights[i].lSpd.val));
                         }
                     }
+
                     else {
                         last.fullTrail.arr.push(new VRS.FullTrailValue(first.latitude.val, first.longitude.val, first.heading.val, first.altitude.val, first.speed.val));
                         last.fullTrail.arr.push(new VRS.FullTrailValue(last.latitude.val, last.longitude.val, last.heading.val, last.altitude.val, last.speed.val));
+                        //alert("fullTrail");
                     }
                 }
             }
@@ -381,7 +383,9 @@
          */
         _selectedFlightChanged: function()
         {
+            //alert("Map selectedFlightChanged in");
             this.showFlight(this.options.report.getSelectedFlight());
+            //alert("Map selectedFlightChanged out");
         },
 
         /**
@@ -389,7 +393,7 @@
          * @private
          */
         _trailFetched: function () {
-            this.showFlight(this.options.report.getSelectedFlight());
+            this.showFlightTrails(this.options.report.getSelectedFlight());
         },
 
         /**
@@ -398,13 +402,18 @@
          */
         showFlight: function(flight)
         {
+            //alert("Map showFlight in");
             var state = this._getState();
+            //alert("Map getState out");
             state.selectedFlight = flight;
-            state.trailedFlights = vrs.report.getFlightTrails();
+            //alert("Map selectedFlight");
+            state.trailedFlights = this.options.report.getFlightTrails();
+            //alert("Map getFlightTrails");
 
             var options = this.options;
+            
             this._buildFakeVrsAircraft(state);
-
+            
             var applyWhenReady = function() {
                 var map = state.aircraftPlotter ? state.aircraftPlotter.getMap() : null;
                 if(!map || !map.isReady()) {

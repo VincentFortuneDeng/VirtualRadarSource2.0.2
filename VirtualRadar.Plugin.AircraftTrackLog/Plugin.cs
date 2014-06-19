@@ -261,18 +261,18 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         private void HookFeed()
         {
-            //lock(_SyncLock) {
-            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
-            var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
-            if(feed != _Feed) {
-                if(feed != null) {
-                    feed.Listener.Port30003MessageReceived += MessageListener_MessageReceived;
-                    feed.Listener.SourceChanged += MessageListener_SourceChanged;
-                }
+            lock(_SyncLock) {
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
+                if(feed != _Feed) {
+                    if(feed != null) {
+                        feed.Listener.Port30003MessageReceived += MessageListener_MessageReceived;
+                        feed.Listener.SourceChanged += MessageListener_SourceChanged;
+                    }
 
-                _Feed = feed;
+                    _Feed = feed;
+                }
             }
-            //}
         }
 
         /// <summary>
@@ -280,18 +280,18 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         private void UnhookFeed()
         {
-            //lock(_SyncLock) {
-            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
-            var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
-            if(feed != _Feed) {
-                if(_Feed != null) {
-                    _Feed.Listener.Port30003MessageReceived -= MessageListener_MessageReceived;
-                    _Feed.Listener.SourceChanged -= MessageListener_SourceChanged;
-                }
+            lock(_SyncLock) {
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                var feed = feedManager.GetByUniqueId(_Options.ReceiverId);
+                if(feed != _Feed) {
+                    if(_Feed != null) {
+                        _Feed.Listener.Port30003MessageReceived -= MessageListener_MessageReceived;
+                        _Feed.Listener.SourceChanged -= MessageListener_SourceChanged;
+                    }
 
-                _Feed = null;
+                    _Feed = null;
+                }
             }
-            //}
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             UnhookFeed();
             //StartSession();
             UpdateStatus();
-            //HookFeed();
+            if(_Options.Enabled) HookFeed();
         }
         #endregion
         // Configuration load and save methods
@@ -388,27 +388,27 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="parameters">An object carrying details about the application and your plugin's environment.</param>
         public void Startup(PluginStartupParameters parameters)
         {
-            //lock(_SyncLock) {
-            // Load the settings
-            _Options = OptionsStorage.Load(this);
-            //_Options = LoadSettings();
-            _WebSite = parameters.WebSite;
-            _PluginStartupParameters = parameters;
-            //_TrackFlightLog =Provider.CreateTrackFlightLog();
-            _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
+            lock(_SyncLock) {
+                // Load the settings
+                _Options = OptionsStorage.Load(this);
+                //_Options = LoadSettings();
+                _WebSite = parameters.WebSite;
+                _PluginStartupParameters = parameters;
+                //_TrackFlightLog =Provider.CreateTrackFlightLog();
+                _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
 
-            var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
-            feedManager.FeedsChanged += FeedManager_FeedsChanged;
+                var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
+                feedManager.FeedsChanged += FeedManager_FeedsChanged;
 
-            // Create the web site extender and initialise it. This adds our content into the web site, see the comments
-            // on IWebSiteExtender for more information.
-            ApplyOptions();
+                // Create the web site extender and initialise it. This adds our content into the web site, see the comments
+                // on IWebSiteExtender for more information.
+                ApplyOptions();
 
-            _BackgroundThreadMessageQueue = new BackgroundThreadQueue<BaseStationMessageEventArgs>("AircraftTrackLogMessageQueue");
-            _BackgroundThreadMessageQueue.StartBackgroundThread(MessageQueue_MessageReceived, MessageQueue_ExceptionCaught);
+                _BackgroundThreadMessageQueue = new BackgroundThreadQueue<BaseStationMessageEventArgs>("AircraftTrackLogMessageQueue");
+                _BackgroundThreadMessageQueue.StartBackgroundThread(MessageQueue_MessageReceived, MessageQueue_ExceptionCaught);
 
-            //HookFeed();
-            //}
+                if(_Options.Enabled) HookFeed();
+            }
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                     OptionsStorage.Save(this, _Options);
                     UnhookFeed();
                     UpdateStatus();
-                    //HookFeed();
+                    if(_Options.Enabled) HookFeed();
                 }
             }
             // To keep things simple the plugin only has one configuration setting - an enabled switch. Rather than using
@@ -477,39 +477,39 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         private void ApplyOptions()
         {
-            if(_Options.Enabled) {
-                _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
-                _WebSiteExtender.Enabled = _Options.Enabled;
-                _WebSiteExtender.WebRootSubFolder = "Web";
-                _WebSiteExtender.InjectContent = @"<script src=""Trail/inject.js"" type=""text/javascript""></script>";
-                _WebSiteExtender.InjectMapPages();
-                //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
-                //_WebSiteExtender.InjectReportPages();
+            //if(_Options.Enabled) {
+            _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
+            _WebSiteExtender.Enabled = true;//_Options.Enabled;
+            _WebSiteExtender.WebRootSubFolder = "Web";
+            _WebSiteExtender.InjectContent = @"<script src=""Trail/inject.js"" type=""text/javascript""></script>";
+            _WebSiteExtender.InjectMapPages();
+            //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
+            //_WebSiteExtender.InjectReportPages();
 
-                _ReportTrackLogRowsJsonPage = new ReportTrackRowsJsonPage(_PluginStartupParameters.WebSite);
-                _ReportTrackLogRowsJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
-                _ReportTrackLogRowsJsonPage.BaseStationDatabase = Factory.Singleton.Resolve<IAutoConfigBaseStationDatabase>().Singleton.Database;
-                _ReportTrackLogRowsJsonPage.StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
+            _ReportTrackLogRowsJsonPage = new ReportTrackRowsJsonPage(_PluginStartupParameters.WebSite);
+            _ReportTrackLogRowsJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            _ReportTrackLogRowsJsonPage.BaseStationDatabase = Factory.Singleton.Resolve<IAutoConfigBaseStationDatabase>().Singleton.Database;
+            _ReportTrackLogRowsJsonPage.StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
 
-                _ReportTrailJsonPage = new ReportTrailsJsonPage(_PluginStartupParameters.WebSite);
-                _ReportTrailJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            _ReportTrailJsonPage = new ReportTrailsJsonPage(_PluginStartupParameters.WebSite);
+            _ReportTrailJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
 
-                ServerConfigJsonPage serverConfigJsonPage = new ServerConfigJsonPage(_PluginStartupParameters.WebSite);
-                serverConfigJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            ServerConfigJsonPage serverConfigJsonPage = new ServerConfigJsonPage(_PluginStartupParameters.WebSite);
+            serverConfigJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
                 
-                FaviconPage faviconPage = new FaviconPage(_PluginStartupParameters.WebSite);
-                faviconPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            FaviconPage faviconPage = new FaviconPage(_PluginStartupParameters.WebSite);
+            faviconPage.Provider = _PluginStartupParameters.WebSite.Provider;
 
-                ImagePage imagePage = new ImagePage(_PluginStartupParameters.WebSite);
-                imagePage.Provider = _PluginStartupParameters.WebSite.Provider;
+            ImagePage imagePage = new ImagePage(_PluginStartupParameters.WebSite);
+            imagePage.Provider = _PluginStartupParameters.WebSite.Provider;
 
-                _WebSiteExtender.PageHandlers.Add("/Trail/ReportRows.json", _ReportTrackLogRowsJsonPage.HandleRequest);
-                _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", serverConfigJsonPage.HandleRequest);
-                _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", faviconPage.HandleRequest);
-                _WebSiteExtender.PageHandlers.Add("/Trail/Images", imagePage.HandleRequest);
-                _WebSiteExtender.PageHandlers.Add("/Trail/ReportTrails", _ReportTrailJsonPage.HandleRequest);
-                _WebSiteExtender.Initialise(_PluginStartupParameters);
-            }
+            _WebSiteExtender.PageHandlers.Add("/Trail/ReportRows.json", _ReportTrackLogRowsJsonPage.HandleRequest);
+            _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", serverConfigJsonPage.HandleRequest);
+            _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", faviconPage.HandleRequest);
+            _WebSiteExtender.PageHandlers.Add("/Trail/Images", imagePage.HandleRequest);
+            _WebSiteExtender.PageHandlers.Add("/Trail/ReportTrails.json", _ReportTrailJsonPage.HandleRequest);
+            _WebSiteExtender.Initialise(_PluginStartupParameters);
+            //}
 
             UpdateStatus();
         }

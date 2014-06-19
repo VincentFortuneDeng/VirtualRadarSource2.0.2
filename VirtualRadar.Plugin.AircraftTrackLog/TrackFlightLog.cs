@@ -114,6 +114,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             Provider = new DefaultProvider();
             _Clock = Factory.Singleton.Resolve<IClock>();
+            GenerateFileName();
         }
 
         /// <summary>
