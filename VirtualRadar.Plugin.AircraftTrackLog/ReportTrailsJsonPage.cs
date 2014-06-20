@@ -153,7 +153,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 AircraftID = parameters.AircraftID,
             };
 
-            json.Flights = _TrackFlightLog.ReadFlightTrail(DateTime.Parse(parameters.StartTime), parameters.AircraftID);
+            json.Flights = _TrackFlightLog.ReadFlightTrail(json.StartTime, json.AircraftID);
             
             json.CountRows = json.Flights.Count;
 

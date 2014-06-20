@@ -183,9 +183,10 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             string folder = Path.Combine(_TrackRoot, startTime.ToString("yyyyMMdd"));
             string fileName = Path.Combine(folder ,aircraftID + startTime.ToString("HHmmss") + ".log");
+            Factory.Singleton.Resolve<ILog>().WriteLine("folder:" + folder + " fileName:" + fileName);
 
-            if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("date folder not found.");
-            if(!Provider.FileExists(fileName)) throw new ArgumentOutOfRangeException("date flightID file not found.");
+            if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("folder not found.");
+            if(!Provider.FileExists(fileName)) throw new ArgumentOutOfRangeException("file not found.");
 
             List<ReportFlightTrailJson> listReportFlightTrailJson = new List<ReportFlightTrailJson>();
             ReportFlightTrailJson RrportFlightTrailJson;
