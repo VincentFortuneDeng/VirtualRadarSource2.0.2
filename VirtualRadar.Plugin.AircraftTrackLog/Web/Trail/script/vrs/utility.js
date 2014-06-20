@@ -954,7 +954,7 @@
 
         this.formatDateTimeString = function(dateTime)
         {
-            alert(dateTimeString);
+            alert(dateTime);
             //var dateTime = new Date(dateTimeString);
             var year = dateTime.getYear();
             var month = dateTime.getMonth() + 1;
