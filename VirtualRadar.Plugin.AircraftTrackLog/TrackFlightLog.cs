@@ -170,10 +170,13 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
         public object JsonDeSerialise(Type type,string json)
         {
-            MemoryStream stream = new MemoryStream();
-            DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(type);
+            using(MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(json))) {
+                //MemoryStream stream = new MemoryStream();
 
-            return jsonSerializer.ReadObject(stream);
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(type);
+
+                return jsonSerializer.ReadObject(stream);
+            }
         }
 
         /// <summary>
@@ -182,10 +185,10 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="date"></param>
         /// <param name="aircraftID"></param>
         /// <returns></returns>
-        public List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, string ICAO24)
+        public List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, string icao24)
         {
             string folder = Path.Combine(_TrackLogRoot, startTime.ToString("yyyyMMdd"));
-            string fileName = Path.Combine(folder, ICAO24 + startTime.ToString("HHmmss") + ".log");
+            string fileName = Path.Combine(folder, icao24 + startTime.ToString("HHmmss") + ".log");
             Factory.Singleton.Resolve<ILog>().WriteLine("folder:" + folder + " fileName:" + fileName);
 
             if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("folder not found.");

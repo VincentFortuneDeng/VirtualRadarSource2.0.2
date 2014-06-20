@@ -65,7 +65,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="date"></param>
         /// <param name="flightID"></param>
         /// <returns></returns>
-        List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, string ICAO24);
+        List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, string icao24);
 
         /// <summary>
         /// Truncates the log file to the last nn kilobytes.
