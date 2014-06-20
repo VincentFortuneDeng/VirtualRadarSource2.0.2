@@ -84,14 +84,14 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// </summary>
         public ITrackFlightLog Singleton { get { return _Singleton; } }
 
-        private int? _AircraftID;
+        private string _ICAO24;
         /// <summary>
         /// See interface docs.
         /// </summary>
-        public int? AircraftID
+        public string ICAO24
         {
-            get { return _AircraftID; }
-            set { _AircraftID = value; GenerateFileName(); }
+            get { return _ICAO24; }
+            set { _ICAO24 = value; GenerateFileName(); }
         }
 
         private DateTime _StartTime;
@@ -128,11 +128,11 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
 
             _Folder = Path.Combine(_TrackRoot, _StartTime.ToString("yyyyMMdd"));
 
-            if(_AircraftID == null) {
-                _AircraftID = 99999999;
+            if(_ICAO24 == null) {
+                _ICAO24 = "FFFFFF";
             }
 
-            _FileName = Path.Combine(_Folder, _AircraftID + _StartTime.ToString("HHmmss")+ ".log");
+            _FileName = Path.Combine(_Folder, _ICAO24 + _StartTime.ToString("HHmmss")+ ".log");
         }
 
         /// <summary>
@@ -165,11 +165,11 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// See interface docs.
         /// </summary>
         /// <param name="kbLength"></param>
-        public void Truncate(DateTime dateTime,int flightID,int kbLength)
+        public void Truncate(DateTime dateTime,string icao24,int kbLength)
         {
             if(kbLength < 0) throw new ArgumentOutOfRangeException("kbLength");
             StartTime = dateTime;
-            AircraftID = flightID;
+            ICAO24 = icao24;
             //Initialise();
 
             var length = kbLength * 1024;

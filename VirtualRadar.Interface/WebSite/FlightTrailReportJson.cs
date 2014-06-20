@@ -25,7 +25,7 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the total number of rows that match the report criteria.
         /// </summary>
-        [DataMember(Name = "countRows", IsRequired = true)]
+        [DataMember(Name = "countRows")]
         public int? CountRows { get; set; }
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the first date that the report covers.
         /// </summary>
-        [DataMember(Name="startTime")]
+        [DataMember(Name = "startTime")]
         public DateTime StartTime { get; set; }
         /// <summary>
         /// Gets or sets the flightID of the report.
         /// </summary>
-        [DataMember(Name="aircraftID")]
-        public int AircraftID { get; set; }
+        [DataMember(Name = "icao24")]
+        public string ICAO24 { get; set; }
         /// <summary>
         /// Gets the list of flights that match the report criteria.
         /// </summary>

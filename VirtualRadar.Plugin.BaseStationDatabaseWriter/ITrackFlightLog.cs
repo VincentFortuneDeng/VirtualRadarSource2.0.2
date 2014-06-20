@@ -39,7 +39,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// <summary>
         /// Gets the full path and filename of the log file.
         /// </summary>
-        int? AircraftID { get; set; }
+        string ICAO24 { get; set; }
 
         DateTime StartTime { set; get;}
         /// <summary>
@@ -59,6 +59,6 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
         /// Truncates the log file to the last nn kilobytes.
         /// </summary>
         /// <param name="kbLength">The number of kilobytes to preserve at the end of the file.</param>
-        void Truncate(DateTime date,int flightID,int kbLength);
+        void Truncate(DateTime date,string ICAO24,int kbLength);
     }
 }

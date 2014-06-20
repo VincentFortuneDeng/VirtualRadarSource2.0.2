@@ -37,7 +37,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             public string StartTime { get; set; }
 
-            public int AircraftID { get; set; }
+            public string ICAO24 { get; set; }
         }
         #endregion
 
@@ -130,7 +130,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             var result = new Parameters() {
                 StartTime = QueryString(args, "startTime", false),
-                AircraftID = QueryInt(args, "aircraftID", -1),
+                ICAO24 = QueryString(args, "aircraftID", true),
             };
 
             return result;
@@ -150,10 +150,10 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             FlightTrailReportJson json = new FlightTrailReportJson() {
                 CountRows = 0,
                 StartTime =DateTime.Parse(parameters.StartTime),
-                AircraftID = parameters.AircraftID,
+                ICAO24 = parameters.ICAO24,
             };
 
-            json.Flights = _TrackFlightLog.ReadFlightTrail(json.StartTime, json.AircraftID);
+            json.Flights = _TrackFlightLog.ReadFlightTrail(json.StartTime, json.ICAO24);
             
             json.CountRows = json.Flights.Count;
 

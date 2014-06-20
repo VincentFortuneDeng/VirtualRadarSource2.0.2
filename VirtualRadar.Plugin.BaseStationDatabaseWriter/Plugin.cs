@@ -557,7 +557,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                         //记录轨迹日志
                         if(!(flight.LastLat == null && flight.LastLon == null && flight.LastAltitude==null && flight.LastTrack==null && flight.LastGroundSpeed==null)) {
                             _TrackFlightLog.StartTime = flight.StartTime;
-                            _TrackFlightLog.AircraftID = flight.FlightID;
+                            _TrackFlightLog.ICAO24 = flightRecords.Aircraft.ModeS;
                             ReportFlightTrailJson reportFlightTrailJson = Provider.ConvertToReportFlightTrailJson(flight);
                             _TrackFlightLog.WriteLine(String.Concat(Provider.JsonSerialise(reportFlightTrailJson), "\r\n"));
                         }

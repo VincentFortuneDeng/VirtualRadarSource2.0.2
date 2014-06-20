@@ -182,10 +182,10 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <param name="date"></param>
         /// <param name="aircraftID"></param>
         /// <returns></returns>
-        public List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, int aircraftID)
+        public List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, string ICAO24)
         {
             string folder = Path.Combine(_TrackLogRoot, startTime.ToString("yyyyMMdd"));
-            string fileName = Path.Combine(folder ,aircraftID + startTime.ToString("HHmmss") + ".log");
+            string fileName = Path.Combine(folder, ICAO24 + startTime.ToString("HHmmss") + ".log");
             Factory.Singleton.Resolve<ILog>().WriteLine("folder:" + folder + " fileName:" + fileName);
 
             if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("folder not found.");
@@ -214,7 +214,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             if(kbLength < 0) throw new ArgumentOutOfRangeException("kbLength");
             Date = date;
             ICAO24 = icao24;
-            //Initialise();
+            GenerateFileName();
 
             var length = kbLength * 1024;
 
