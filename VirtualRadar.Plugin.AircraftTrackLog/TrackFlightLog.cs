@@ -70,7 +70,9 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         private string _Folder;
 
-        private string _TrackRoot;
+        private string _TrackBaseStationRoot;
+
+        private string _TrackLogRoot;
 
         /// <summary>
         /// Gets the filename that <see cref="FileName"/> was based on.
@@ -114,6 +116,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             Provider = new DefaultProvider();
             _Clock = Factory.Singleton.Resolve<IClock>();
+            _TrackLogRoot = Path.Combine(Application.StartupPath, "TrackFlight");
             GenerateFileName();
         }
 
@@ -122,15 +125,15 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         private void GenerateFileName()
         {
-            if(_TrackRoot == null) {
-                _TrackRoot = Path.Combine(Application.StartupPath, "TrackBaseStation");
+            if(_TrackBaseStationRoot == null) {
+                _TrackBaseStationRoot = Path.Combine(Application.StartupPath, "TrackBaseStation");
             }
 
             if(_Date == null) {
                 _Date = DateTime.Now.ToString("yyyyMMdd");
             }
 
-            _Folder = Path.Combine(_TrackRoot, _Date);
+            _Folder = Path.Combine(_TrackBaseStationRoot, _Date);
 
             if(_ICAO24 == null) {
                 _ICAO24 = "FFFFFF";
@@ -181,7 +184,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <returns></returns>
         public List<ReportFlightTrailJson> ReadFlightTrail(DateTime startTime, int aircraftID)
         {
-            string folder = Path.Combine(_TrackRoot, startTime.ToString("yyyyMMdd"));
+            string folder = Path.Combine(_TrackLogRoot, startTime.ToString("yyyyMMdd"));
             string fileName = Path.Combine(folder ,aircraftID + startTime.ToString("HHmmss") + ".log");
             Factory.Singleton.Resolve<ILog>().WriteLine("folder:" + folder + " fileName:" + fileName);
 
