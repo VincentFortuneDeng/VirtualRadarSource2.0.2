@@ -146,6 +146,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <returns></returns>
         private FlightTrailReportJson CreateReportTrails(Parameters parameters)
         {
+            Factory.Singleton.Resolve<ILog>().Singleton.WriteLine(parameters.StartTime);
             FlightTrailReportJson json = new FlightTrailReportJson() {
                 CountRows = 0,
                 StartTime =DateTime.Parse(parameters.StartTime),
@@ -153,6 +154,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             };
 
             json.Flights = _TrackFlightLog.ReadFlightTrail(DateTime.Parse(parameters.StartTime), parameters.AircraftID);
+            
             json.CountRows = json.Flights.Count;
 
             return json;

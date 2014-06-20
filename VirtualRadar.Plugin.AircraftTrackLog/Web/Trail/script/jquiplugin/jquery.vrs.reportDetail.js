@@ -563,7 +563,7 @@
         {
             var selectedFlight = this.options.report.getSelectedFlight();
             this._displayFlightDetails(this._getState(), selectedFlight);
-            alert("Detail selectedFlightChanged");
+            //alert("Detail selectedFlightChanged");
         },
         //endregion
 

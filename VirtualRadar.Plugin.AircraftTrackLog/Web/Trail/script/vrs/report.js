@@ -145,18 +145,27 @@
         this.getSelectedFlight = function() { return _SelectedFlight; };
         this.setSelectedFlight = function(/** VRS_JSON_REPORT_FLIGHT */value) {
             if (value !== _SelectedFlight) {
-                if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
+                
                 //var last = VRS.Report.convertFlightToVrsAircraft(value, false);
 
-                _SelectedFlight = value;
+                _SelectedFlight = value; //alert(value);
+                if (value) {
+                    if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
+                    //alert(VRS.globalOptions.reportTrailsUrl);
+                    $.ajax({
+                        url: VRS.globalOptions.reportTrailsUrl,
+                        dataType: 'text',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
+                        data: { startTime:_SelectedFlight.start, aircraftID: _SelectedFlight.acIdx },
+                        success: $.proxy(trailFetched, this),
+                        error: $.proxy(trailFetchFailed, this)
+                    });
+                }
 
-                $.ajax({
-                    url: VRS.globalOptions.reportTrailsUrl,
-                    dataType: 'text',     // It's always text - it contains Microsoft formatted dates, they need munging before we can use them
-                    data: { startTime: _SelectedFlight.start, aircraftID: _SelectedFlight.acIdx },
-                    success: $.proxy(trailFetched, this),
-                    error: $.proxy(trailFetchFailed, this)
-                });
+                else {
+                    //_TrailFetchResult = null;
+                    _FlightTrails = null;
+                    _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+                }
             }
         };
 
@@ -646,8 +655,9 @@
          * @param {Flight}  flight
          */
         function trailFetchFailed(jqXHR, textStatus, errorThrown) {
-            alert("trailFetchFailed");
+            //alert("trailFetchFailed");
             if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
+            //_TrailFetchResult = null;
             _FlightTrails = null;
             _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
         }

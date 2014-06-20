@@ -951,6 +951,20 @@
         {
             return json.replace(/\"\\\/Date\(([\d\+\-]+)\)\\\/\"/g, 'new Date($1)');
         };
+
+        this.formatDateTimeString = function(dateTimeString)
+        {
+            alert(dateTimeString);
+            var dateTime = new Date(dateTimeString);
+            var year = dateTime.getYear();
+            var month = dateTime.getMonth() + 1;
+            var date = dateTime.getDate();
+            var hour = dateTime.getHours();
+            var minute = dateTime.getMinutes();
+            var second = dateTime.getSeconds();
+            
+            return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+        };
     };
     //endregion
 

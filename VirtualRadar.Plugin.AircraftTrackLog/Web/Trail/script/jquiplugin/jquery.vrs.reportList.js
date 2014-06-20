@@ -729,7 +729,7 @@
         _selectedFlightChanged: function()
         {
             this._markSelectedRow();
-            alert("List selectedFlightChanged");
+            //alert("List selectedFlightChanged");
         },
 
         /**
