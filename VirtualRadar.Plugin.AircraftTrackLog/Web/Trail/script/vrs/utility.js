@@ -962,7 +962,7 @@
             var hour = dateTime.getHours();
             var minute = dateTime.getMinutes();
             var second = dateTime.getSeconds();
-            
+            alert(year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second);
             return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
         };
     };
