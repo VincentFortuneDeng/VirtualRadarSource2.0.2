@@ -952,10 +952,10 @@
             return json.replace(/\"\\\/Date\(([\d\+\-]+)\)\\\/\"/g, 'new Date($1)');
         };
 
-        this.formatDateTimeString = function(dateTimeString)
+        this.formatDateTimeString = function(dateTime)
         {
             alert(dateTimeString);
-            var dateTime = new Date(dateTimeString);
+            //var dateTime = new Date(dateTimeString);
             var year = dateTime.getYear();
             var month = dateTime.getMonth() + 1;
             var date = dateTime.getDate();
