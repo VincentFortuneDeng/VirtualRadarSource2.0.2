@@ -130,7 +130,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             var result = new Parameters() {
                 StartTime = QueryString(args, "startTime", false),
-                ICAO24 = QueryString(args, "aircraftID", true),
+                ICAO24 = QueryString(args, "icao24", true),
             };
 
             return result;
