@@ -328,10 +328,12 @@
 
                 if (options.showPath && first && last) {
                     if (state.trailedFlights) {
+                        alert('buildFakeVrsAircraft');
                         var length = state.trailedFlights.length;
                         for (var i = 0; i < length; ++i) {
                             last.fullTrail.arr.push(new VRS.FullTrailValue(state.trailedFlights[i].lLat.val, state.trailedFlights[i].lLng.val, state.trailedFlights[i].lTrk.val, state.trailedFlights[i].lAlt.val, state.trailedFlights[i].lSpd.val));
                         }
+                        alert('buildFakeVrsAircraft end');
                     }
 
                     else {

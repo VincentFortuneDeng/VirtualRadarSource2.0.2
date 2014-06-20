@@ -189,7 +189,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         {
             string folder = Path.Combine(_TrackLogRoot, startTime.ToString("yyyyMMdd"));
             string fileName = Path.Combine(folder, icao24 + startTime.ToString("HHmmss") + ".log");
-            Factory.Singleton.Resolve<ILog>().WriteLine("folder:" + folder + " fileName:" + fileName);
+            //Factory.Singleton.Resolve<ILog>().WriteLine("folder:" + folder + " fileName:" + fileName);
 
             if(!Provider.FolderExists(folder)) throw new ArgumentOutOfRangeException("folder not found.");
             if(!Provider.FileExists(fileName)) throw new ArgumentOutOfRangeException("file not found.");
