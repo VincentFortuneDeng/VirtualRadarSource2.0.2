@@ -231,8 +231,8 @@
             var options = this.options;
 
             if(options.report) {
-                state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
-                //state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
+                //state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
+                state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
             }
 
             /** @type {VRS_OPTIONS_MAP} */
@@ -328,18 +328,23 @@
 
                 if (options.showPath && first && last) {
                     if (state.trailedFlights) {
-                        alert('buildFakeVrsAircraft');
+                        //alert(state.trailedFlights.length);
                         var length = state.trailedFlights.length;
                         for (var i = 0; i < length; ++i) {
-                            last.fullTrail.arr.push(new VRS.FullTrailValue(state.trailedFlights[i].lLat.val, state.trailedFlights[i].lLng.val, state.trailedFlights[i].lTrk.val, state.trailedFlights[i].lAlt.val, state.trailedFlights[i].lSpd.val));
+                            //alert(state.trailedFlights[i].lLat + '-' + state.trailedFlights[i].lLng.val + '-' + state.trailedFlights[i].lTrk.val + '-' + state.trailedFlights[i].lAlt.val + '-' + state.trailedFlights[i].lSpd.val);
+                            last.fullTrail.arr.push(new VRS.FullTrailValue(state.trailedFlights[i].lLat, state.trailedFlights[i].lLng, state.trailedFlights[i].lTrk, state.trailedFlights[i].lAlt, state.trailedFlights[i].lSpd));
                         }
-                        alert('buildFakeVrsAircraft end');
+                        //alert(last.fullTrail.arr);
+                        //alert(first.latitude.val + '-' + first.longitude.val + '-' + first.heading.val + '-' + first.altitude.val + '-' + first.speed.val);
+                        //alert(last.latitude.val + '-' + last.longitude.val + '-' + last.heading.val + '-' + last.altitude.val + '-' + last.speed.val);
+                        //alert('buildFakeVrsAircraft end');
                     }
 
                     else {
                         last.fullTrail.arr.push(new VRS.FullTrailValue(first.latitude.val, first.longitude.val, first.heading.val, first.altitude.val, first.speed.val));
                         last.fullTrail.arr.push(new VRS.FullTrailValue(last.latitude.val, last.longitude.val, last.heading.val, last.altitude.val, last.speed.val));
                         //alert("fullTrail");
+                        //alert();
                     }
                 }
             }
@@ -394,8 +399,9 @@
          * Called when the report indicates that the selected flight has been changed.
          * @private
          */
-        _trailFetched: function () {
-            this.showFlightTrails(this.options.report.getSelectedFlight());
+        _trailFetched: function ()
+        {
+            this.showFlight(this.options.report.getSelectedFlight());
         },
 
         /**

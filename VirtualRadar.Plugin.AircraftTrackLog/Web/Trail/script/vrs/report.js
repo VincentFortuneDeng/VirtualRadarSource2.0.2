@@ -51,9 +51,9 @@
             pageSizeChanged:        'pageSizeChanged',
             rowsFetched:            'rowsFetched',
             fetchFailed:            'fetchFailed',
-            selectedFlightChanged:  'selectedFlightChanged'
-            /*trailFetched:           'trailFetched',
-            trailFetchFailed:       'trailFetchFailed'*/
+            selectedFlightChanged:  'selectedFlightChanged',
+            trailFetched:           'trailFetched'
+            /*trailFetchFailed:       'trailFetchFailed'*/
         };
 
         var _Settings = $.extend({
@@ -149,8 +149,9 @@
                 //var last = VRS.Report.convertFlightToVrsAircraft(value, false);
 
                 _SelectedFlight = value; //alert(value);
+                _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
                 if (value) {
-                    if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
+                    //if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
                     //alert(VRS.globalOptions.reportTrailsUrl);
                     //alert(_SelectedFlight.aircraft.icao);
                     $.ajax({
@@ -165,7 +166,7 @@
                 else {
                     //_TrailFetchResult = null;
                     _FlightTrails = null;
-                    _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+                    _Dispatcher.raise(_Events.trailFetched, [that]);
                 }
             }
         };
@@ -240,7 +241,8 @@
          * @param {Object}                  forceThis   The object to use as 'this' for the event callback.
          * @returns {Object}
          */
-        this.hookSelectedFlightCHanged = function (callback, forceThis) { return _Dispatcher.hook(_Events.selectedFlightChanged, callback, forceThis); };
+         this.hookSelectedFlightCHanged = function (callback, forceThis) { return _Dispatcher.hook(_Events.selectedFlightChanged, callback, forceThis); };
+         this.hookTrailFetched = function (callback, forceThis) { return _Dispatcher.hook(_Events.trailFetched, callback, forceThis); };
 
         /**
          * Hooks an event that is raised after the selected flight has changed.
@@ -555,7 +557,7 @@
          */
         function trailFetched(rawData) {
             //alert("trailFetched");
-            if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
+            //if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
             //alert("showFetchUI");
             var json = VRS.jsonHelper.convertMicrosoftDates(rawData);
             //alert("json");
@@ -570,7 +572,7 @@
                 /*保留逻辑*/
             }
 
-            _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+            _Dispatcher.raise(_Events.trailFetched, [that]);
             
         }
 
@@ -657,10 +659,10 @@
          */
         function trailFetchFailed(jqXHR, textStatus, errorThrown) {
             //alert("trailFetchFailed");
-            if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
+            //if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
             //_TrailFetchResult = null;
             _FlightTrails = null;
-            _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+            _Dispatcher.raise(_Events.trailFetched, [that]);
         }
         //endregion
 

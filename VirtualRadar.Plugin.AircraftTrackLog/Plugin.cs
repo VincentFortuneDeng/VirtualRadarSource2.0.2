@@ -481,7 +481,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             _WebSiteExtender = Factory.Singleton.Resolve<IWebSiteExtender>();
             _WebSiteExtender.Enabled = true;//_Options.Enabled;
             _WebSiteExtender.WebRootSubFolder = "Web";
-            _WebSiteExtender.InjectContent = @"<script src=""Trail/inject.js"" type=""text/javascript""></script>";
+            _WebSiteExtender.InjectContent = @"<script src=""Trail/inject.js"" type=""text/javascript""></script>";//@"<script src=""Trail/inject.js"" type=""text/javascript""></script>";
             _WebSiteExtender.InjectMapPages();
             //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
             //_WebSiteExtender.InjectReportPages();
