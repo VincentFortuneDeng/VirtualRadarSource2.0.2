@@ -541,6 +541,7 @@
          */
         _selectedFlightChanged: function()
         {
+            
             var selectedFlight = this.options.report.getSelectedFlight();
             this._displayFlightDetails(this._getState(), selectedFlight);
         },

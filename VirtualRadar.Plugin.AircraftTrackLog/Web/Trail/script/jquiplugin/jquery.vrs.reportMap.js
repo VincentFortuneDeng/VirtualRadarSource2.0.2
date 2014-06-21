@@ -390,8 +390,8 @@
          */
         _selectedFlightChanged: function()
         {
-            //alert("Map selectedFlightChanged in");
-            this.showFlight(this.options.report.getSelectedFlight());
+            alert('_selectedFlightChanged Map');
+            //this.showFlight(this.options.report.getSelectedFlight());
             //alert("Map selectedFlightChanged out");
         },
 
@@ -401,6 +401,7 @@
          */
         _trailFetched: function ()
         {
+            alert("_trailFetched map");
             this.showFlight(this.options.report.getSelectedFlight());
         },
 

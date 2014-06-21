@@ -145,7 +145,7 @@
         this.getSelectedFlight = function() { return _SelectedFlight; };
         this.setSelectedFlight = function(/** VRS_JSON_REPORT_FLIGHT */value) {
             if (value !== _SelectedFlight) {
-                
+                //alert("SelectedFlight");
                 //var last = VRS.Report.convertFlightToVrsAircraft(value, false);
 
                 _SelectedFlight = value; //alert(value);
