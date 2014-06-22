@@ -419,6 +419,7 @@
                 notOnline: that.notOnline() ? '1' : '0',
                 forceFrame: that.getForceFrame()
             }, params);
+            //alert(that.formUrl(url, params, recursive));
             return that.formUrl(url, params, recursive);
         };
         //endregion
@@ -433,6 +434,7 @@
          */
         this.getVrsPageTarget = function(target)
         {
+            //alert(that.getForceFrame() || target);
             return that.getForceFrame() || target;
         };
         //endregion

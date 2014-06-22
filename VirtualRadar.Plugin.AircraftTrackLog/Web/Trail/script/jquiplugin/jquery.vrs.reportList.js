@@ -717,7 +717,6 @@
          */
         _selectedFlightChanged: function()
         {
-            //alert('_selectedFlightChanged List');
             this._markSelectedRow();
         },
         //endregion

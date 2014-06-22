@@ -530,7 +530,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                     result.PictureHeight = pictureDetails.Height;
                 }
 
-                Factory.Singleton.Resolve<ILog>().WriteLine("pictureDetails:" + (result.HasPicture? "True":"False"));
+                //Factory.Singleton.Resolve<ILog>().WriteLine("pictureDetails:" + (result.HasPicture? "True":"False"));
             }
 
             var aircraftType = String.IsNullOrEmpty(aircraft.ICAOTypeCode) ? null : StandingDataManager.FindAircraftType(aircraft.ICAOTypeCode);

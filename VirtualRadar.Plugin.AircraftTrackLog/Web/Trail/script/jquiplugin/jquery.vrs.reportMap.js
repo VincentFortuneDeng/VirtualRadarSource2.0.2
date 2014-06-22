@@ -401,7 +401,7 @@
          */
         _trailFetched: function ()
         {
-            alert("_trailFetched map");
+            //alert("_trailFetched map");
             this.showFlight(this.options.report.getSelectedFlight());
         },
 

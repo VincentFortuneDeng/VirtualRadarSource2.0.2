@@ -17,6 +17,7 @@ using VirtualRadar.Interface.WebServer;
 using VirtualRadar.Interface.WebSite;
 using System.IO;
 using InterfaceFactory;
+using VirtualRadar.Interface.Settings;
 
 namespace VirtualRadar.WebSite
 {
@@ -188,7 +189,7 @@ namespace VirtualRadar.WebSite
         }
         #endregion
 
-        #region InjectMapPages, InjectReportPages
+        #region InjectMapPages, InjectReportPages,LoadConfiguration
         /// <summary>
         /// See interface docs.
         /// </summary>
@@ -234,6 +235,8 @@ namespace VirtualRadar.WebSite
                 }
             }
         }
+
+        
         #endregion
 
         #region Events consumed
@@ -251,6 +254,8 @@ namespace VirtualRadar.WebSite
                 }
             }
         }
+
+        
         #endregion
     }
 }

@@ -290,6 +290,7 @@
             that.setFlightLevelTransitionAltitude(settings.flTransitionAlt);
             that.setFlightLevelTransitionHeightUnit(settings.flTransitionUnit);
             that.setFlightLevelHeightUnit(settings.flHeightUnit);
+            //alert('unitDisplayPreferences apply');
         };
 
         /**

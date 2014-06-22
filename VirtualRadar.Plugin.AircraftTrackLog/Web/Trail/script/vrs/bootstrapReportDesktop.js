@@ -24,7 +24,7 @@
     VRS.BootstrapReportDesktop = function()
     {
         VRS.BootstrapReport.call(this, {
-            configPrefix:   'desktop-report'
+            configPrefix:   'desktop-trail-report'
         });
     };
     VRS.BootstrapReportDesktop.prototype = VRS.objectHelper.subclassOf(VRS.BootstrapReport);

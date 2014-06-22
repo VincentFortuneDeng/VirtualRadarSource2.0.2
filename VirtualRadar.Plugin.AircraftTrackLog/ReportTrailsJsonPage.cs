@@ -146,7 +146,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// <returns></returns>
         private FlightTrailReportJson CreateReportTrails(Parameters parameters)
         {
-            Factory.Singleton.Resolve<ILog>().Singleton.WriteLine(parameters.StartTime);
+            //Factory.Singleton.Resolve<ILog>().Singleton.WriteLine(parameters.StartTime);
             FlightTrailReportJson json = new FlightTrailReportJson() {
                 CountRows = 0,
                 StartTime =DateTime.Parse(parameters.StartTime),

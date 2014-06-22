@@ -69,6 +69,7 @@
             }, userPageSettings);
 
             base.doStartInitialise(pageSettings);
+            //alert('doStartInitialise');
 
             // Make sure that the current location isn't shown on any map
             VRS.currentLocation.setShowCurrentLocationOnMap(false);
@@ -86,14 +87,14 @@
             pageSettings.report.getCriteria().loadAndApplyState();
             pageSettings.report.populateFromQueryString();
             base.raiseReportCreated(pageSettings);
-
+            //alert("已经加载配置");
             // Create the settings button
             if(pageSettings.mapJQ) base.createMapSettingsControl(pageSettings);
 
             // Create the plotter options - these are used on the various maps
             pageSettings.plotterOptions = new VRS.AircraftPlotterOptions({
                 trailDisplay:           VRS.TrailDisplay.AllAircraft,
-                trailType:              VRS.TrailType.Full
+                trailType:              VRS.TrailType.FullAltitude//显示高度和位置
             });
 
             // Create the report map

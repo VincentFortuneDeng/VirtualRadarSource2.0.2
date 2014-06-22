@@ -25,6 +25,7 @@ using VirtualRadar.Interface.BaseStation;
 using System.Diagnostics;
 using System.Threading;
 using VirtualRadar.Interface.StandingData;
+using System.Net;
 
 namespace VirtualRadar.Plugin.AircraftTrackLog
 {
@@ -73,6 +74,12 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         /// </summary>
         private IWebSite _WebSite;
 
+        private IWebServer _WebServer;
+        /// <summary>
+        /// The type of proxy that the server is sitting behind.
+        /// </summary>
+        //private ProxyType _ProxyType;
+
         private PluginStartupParameters _PluginStartupParameters;
 
         private IWebSiteExtender _WebSiteExtender;
@@ -87,10 +94,29 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         private IFeed _Feed;
 
         /// <summary>
+        /// The object that synchronises threads that are performing authentication tasks for the site.
+        /// </summary>
+        private object _AuthenticationSyncLock = new object();
+
+        /// <summary>
+        /// The user that the server will allow when basic authentication is selected.
+        /// </summary>
+        private string _BasicAuthenticationUser;
+
+        /// <summary>
+        /// The password hash that the server will allow when basic authentication is selected.
+        /// </summary>
+        private Hash _BasicAuthenticationPasswordHash;
+
+        /// <summary>
         /// The object that different threads synchronise on before using the contents of the fields.
         /// </summary>
         private object _SyncLock = new object();
 
+        /// <summary>
+        /// A list of objects that can supply content for us.
+        /// </summary>
+        private List<Page> _Pages = new List<Page>();
 
         /// <summary>
         /// 记录飞机轨迹日志对象
@@ -169,6 +195,33 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
         }
 
         /// <summary>
+        /// Loads and applies the configuration from disk.
+        /// </summary>
+        /// <returns>True if the server should be restarted because of changes to the configuration.</returns>
+        private bool LoadConfiguration()
+        {
+            var configuration = Factory.Singleton.Resolve<IConfigurationStorage>().Singleton.Load();
+
+            bool result = false;
+            /*lock(_AuthenticationSyncLock) {
+                _BasicAuthenticationUser = configuration.WebServerSettings.BasicAuthenticationUser;
+                _BasicAuthenticationPasswordHash = configuration.WebServerSettings.BasicAuthenticationPasswordHash;
+                if(_WebServer.AuthenticationScheme != configuration.WebServerSettings.AuthenticationScheme) {
+                    result = true;
+                    _WebServer.AuthenticationScheme = configuration.WebServerSettings.AuthenticationScheme;
+                }
+            }*/
+
+            /*_ProxyType = configuration.GoogleMapSettings.ProxyType;*/
+
+            foreach(var page in _Pages) {
+                page.LoadConfiguration(configuration);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Called when the background queue pops a message off the queue of messages.
         /// </summary>
         /// <param name="args"></param>
@@ -184,6 +237,20 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 OnStatusChanged(EventArgs.Empty);
             }
         }
+
+        /// <summary>
+        /// Handles changes to the configuration.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void ConfigurationStorage_ConfigurationChanged(object sender, EventArgs args)
+        {
+            if(_WebServer != null && LoadConfiguration()) {
+                _WebServer.Online = false;
+                _WebServer.Online = true;
+            }
+        }
+
 
         /// <summary>
         /// Creates database records and updates internal objects to track an aircraft that is currently transmitting messages.
@@ -393,12 +460,18 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
                 _Options = OptionsStorage.Load(this);
                 //_Options = LoadSettings();
                 _WebSite = parameters.WebSite;
+                _WebServer = parameters.WebSite.WebServer;
                 _PluginStartupParameters = parameters;
                 //_TrackFlightLog =Provider.CreateTrackFlightLog();
                 _TrackFlightLog = Factory.Singleton.Resolve<ITrackFlightLog>().Singleton;
 
                 var feedManager = Factory.Singleton.Resolve<IFeedManager>().Singleton;
                 feedManager.FeedsChanged += FeedManager_FeedsChanged;
+
+                //_WebServer.AuthenticationRequired += Server_AuthenticationRequired;
+
+                var configurationStorage = Factory.Singleton.Resolve<IConfigurationStorage>().Singleton;
+                configurationStorage.ConfigurationChanged += ConfigurationStorage_ConfigurationChanged;
 
                 // Create the web site extender and initialise it. This adds our content into the web site, see the comments
                 // on IWebSiteExtender for more information.
@@ -486,22 +559,33 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             //_WebSiteExtender.PageHandlers.Add(  "/Trail/ReportRows.json",new Action<RequestReceivedEventArgs>()
             //_WebSiteExtender.InjectReportPages();
 
-            _ReportTrackLogRowsJsonPage = new ReportTrackRowsJsonPage(_PluginStartupParameters.WebSite);
-            _ReportTrackLogRowsJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            _ReportTrackLogRowsJsonPage = new ReportTrackRowsJsonPage(_WebSite);
+            //_ReportTrackLogRowsJsonPage.Provider = _WebSite.Provider;
             _ReportTrackLogRowsJsonPage.BaseStationDatabase = Factory.Singleton.Resolve<IAutoConfigBaseStationDatabase>().Singleton.Database;
             _ReportTrackLogRowsJsonPage.StandingDataManager = Factory.Singleton.Resolve<IStandingDataManager>().Singleton;
 
-            _ReportTrailJsonPage = new ReportTrailsJsonPage(_PluginStartupParameters.WebSite);
-            _ReportTrailJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            _ReportTrailJsonPage = new ReportTrailsJsonPage(_WebSite);
+            //_ReportTrailJsonPage.Provider = _WebSite.Provider;
 
-            ServerConfigJsonPage serverConfigJsonPage = new ServerConfigJsonPage(_PluginStartupParameters.WebSite);
-            serverConfigJsonPage.Provider = _PluginStartupParameters.WebSite.Provider;
-                
-            FaviconPage faviconPage = new FaviconPage(_PluginStartupParameters.WebSite);
-            faviconPage.Provider = _PluginStartupParameters.WebSite.Provider;
+            ServerConfigJsonPage serverConfigJsonPage = new ServerConfigJsonPage(_WebSite);
+            //serverConfigJsonPage.Provider = _WebSite.Provider;
 
-            ImagePage imagePage = new ImagePage(_PluginStartupParameters.WebSite);
-            imagePage.Provider = _PluginStartupParameters.WebSite.Provider;
+            FaviconPage faviconPage = new FaviconPage(_WebSite);
+            //faviconPage.Provider = _WebSite.Provider;
+
+            ImagePage imagePage = new ImagePage(_WebSite);
+            //imagePage.Provider = _WebSite.Provider;
+
+            _Pages.Add(_ReportTrackLogRowsJsonPage);
+            _Pages.Add(serverConfigJsonPage);
+            _Pages.Add(faviconPage);
+            _Pages.Add(imagePage);
+            _Pages.Add(_ReportTrailJsonPage);
+            foreach(var page in _Pages) {
+                page.Provider = _WebSite.Provider;
+            }
+
+            LoadConfiguration();
 
             _WebSiteExtender.PageHandlers.Add("/Trail/ReportRows.json", _ReportTrackLogRowsJsonPage.HandleRequest);
             _WebSiteExtender.PageHandlers.Add("/Trail/ServerConfig.json", serverConfigJsonPage.HandleRequest);
@@ -513,6 +597,23 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
             UpdateStatus();
         }
+
+        /// <summary>
+        /// Handles the authentication events from the server.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        /*private void Server_AuthenticationRequired(object sender, AuthenticationRequiredEventArgs args)
+        {
+            lock(_AuthenticationSyncLock) {
+                if(!args.IsHandled && _WebServer.AuthenticationScheme == AuthenticationSchemes.Basic) {
+                    args.IsAuthenticated = args.User != null && args.User.Equals(_BasicAuthenticationUser, StringComparison.OrdinalIgnoreCase);
+                    if(args.IsAuthenticated)
+                        args.IsAuthenticated = _BasicAuthenticationPasswordHash.PasswordMatches(args.Password);
+                    args.IsHandled = true;
+                }
+            }
+        }*/
 
         //private void DoHandle
 

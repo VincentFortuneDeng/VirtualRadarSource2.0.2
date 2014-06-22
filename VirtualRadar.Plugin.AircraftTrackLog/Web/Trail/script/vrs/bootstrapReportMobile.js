@@ -24,7 +24,7 @@
     VRS.BootstrapReportMobile = function()
     {
         VRS.BootstrapReport.call(this, {
-            configPrefix:       'mobile-report',
+            configPrefix:       'mobile-trail-report',
             showOptionsInPage:  true
         });
     };
