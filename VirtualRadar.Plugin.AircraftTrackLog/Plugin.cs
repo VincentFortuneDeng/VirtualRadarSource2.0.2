@@ -592,12 +592,22 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
             _WebSiteExtender.PageHandlers.Add("/Trail/favicon.ico", faviconPage.HandleRequest);
             _WebSiteExtender.PageHandlers.Add("/Trail/Images", imagePage.HandleRequest);
             _WebSiteExtender.PageHandlers.Add("/Trail/ReportTrails.json", _ReportTrailJsonPage.HandleRequest);
+            //_WebSiteExtender.PageHandlers.Add("/desktopReport.html", RedirectTrailReportPage);
             _WebSiteExtender.Initialise(_PluginStartupParameters);
             //}
 
             UpdateStatus();
         }
 
+        private void RedirectTrailReportPage(RequestReceivedEventArgs args)
+        {
+            Factory.Singleton.Resolve<ILog>().Singleton.WriteLine("RedirectTrailReportPage");
+            //args.Response.Abort();
+            if(args.PathAndFile.Equals("/desktopReport.html", StringComparison.OrdinalIgnoreCase)){
+                args.Response.Redirect("Trail/desktopReport.html");
+                Factory.Singleton.Resolve<ILog>().Singleton.WriteLine("Redirected");
+            }
+        }
         /// <summary>
         /// Handles the authentication events from the server.
         /// </summary>
