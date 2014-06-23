@@ -168,7 +168,7 @@
         {
             return new VRS.MenuItem({
                 name: 'options',
-                labelKey: 'Criteria',
+                labelKey: 'Options',//Criteria 修改
                 vrsIcon:  'equalizer',
                 clickCallback: function() {
                     if(objSettings.showOptionsInPage) VRS.pageManager.show(VRS.MobilePageName.Options);

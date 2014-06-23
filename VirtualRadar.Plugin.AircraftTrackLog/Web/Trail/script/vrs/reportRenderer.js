@@ -774,7 +774,7 @@
         surfaces:               VRS.ReportSurface.DetailBody,
         headingKey:             'Map',
         labelKey:               'Map',
-        hasValue:               function(/** VRS_JSON_REPORT_FLIGHT */ json) { return json.fLat || json.fLng || json.lLat || json.lLng; },
+        hasValue: function(/** VRS_JSON_REPORT_FLIGHT */ json) { return json.fLat || json.fLng || json.lLat || json.lLng; },
         suppressLabelCallback:  function() { return true; },
         createWidget:           function(/** jQuery */ element, /** Object */ options, /** VRS.ReportSurface */ surface) {
             if(surface === VRS.ReportSurface.DetailBody && !VRS.jQueryUIHelper.getReportMapPlugin(element)) {
@@ -791,10 +791,12 @@
                 reportMap.destroy();
             }
         },
-        renderWidget:           function(/** jQuery */ element, /** VRS_JSON_REPORT_FLIGHT */ flight, /** * */ options, /** VRS.ReportSurface */ surface) {
+        renderWidget: function(/** jQuery */ element, /** VRS_JSON_REPORT_FLIGHT */ flight, /*轨迹数据trails,*/ /** * */ options, /** VRS.ReportSurface */ surface) {
             var reportMap = VRS.jQueryUIHelper.getReportMapPlugin(element);
-            if(surface === VRS.ReportSurface.DetailBody && reportMap) {
-                reportMap.showFlight(flight);
+            //alert(trails);
+            if (surface === VRS.ReportSurface.DetailBody && reportMap) {
+                //alert(options.report);
+                reportMap.showFlight(flight, options.report.getFlightTrails());
             }
         }
     });

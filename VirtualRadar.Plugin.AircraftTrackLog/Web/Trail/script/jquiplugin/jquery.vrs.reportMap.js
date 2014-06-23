@@ -402,21 +402,23 @@
         _trailFetched: function ()
         {
             //alert("_trailFetched map");
-            this.showFlight(this.options.report.getSelectedFlight());
+            this.showFlight(this.options.report.getSelectedFlight(),this.options.report.getFlightTrails());
         },
 
         /**
          * Shows the flight's details on the map.
          * @param {VRS_JSON_REPORT_FLIGHT} flight
          */
-        showFlight: function(flight)
+        showFlight: function(flight,trails)
         {
             //alert("Map showFlight in");
             var state = this._getState();
-            //alert("Map getState out");
+            //("Map getState out");
             state.selectedFlight = flight;
-            //alert("Map selectedFlight");
-            state.trailedFlights = this.options.report.getFlightTrails();
+            //alert(state.trailedFlights);
+            //alert(this.options.report);
+            state.trailedFlights = trails;
+            
             //alert("Map getFlightTrails");
 
             var options = this.options;
