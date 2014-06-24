@@ -98,7 +98,7 @@
          * The hook result for the selected flight changed event.
          * @type {Object}
          */
-        this.trailFetchedHookResult = null;
+        //this.trailFetchedHookResult = null;
 
         /**
          * The hook result for the locale changed event.
@@ -200,8 +200,8 @@
             var state = this._getState();
             var options = this.options;
 
-            if (state.trailFetchedHookResult && options.report) options.report.unhook(state.trailFetchedHookResult);
-            state.trailFetchedHookResult = null;
+            /*if (state.trailFetchedHookResult && options.report) options.report.unhook(state.trailFetchedHookResult);
+            state.trailFetchedHookResult = null;*/
 
             if (state.selectedFlightChangedHookResult && options.report) options.report.unhook(state.selectedFlightChangedHookResult);
             state.selectedFlightChangedHookResult = null;
@@ -231,8 +231,8 @@
             var options = this.options;
 
             if(options.report) {
-                //state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
-                state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
+                state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
+                //state.trailFetchedHookResult = options.report.hookTrailFetched(this._trailFetched, this);
             }
 
             /** @type {VRS_OPTIONS_MAP} */
@@ -390,8 +390,8 @@
          */
         _selectedFlightChanged: function()
         {
-            alert('_selectedFlightChanged Map');
-            //this.showFlight(this.options.report.getSelectedFlight());
+            //alert('_selectedFlightChanged Map');
+            this.showFlight(this.options.report.getSelectedFlight(), this.options.report.getFlightTrails());
             //alert("Map selectedFlightChanged out");
         },
 
@@ -399,11 +399,11 @@
          * Called when the report indicates that the selected flight has been changed.
          * @private
          */
-        _trailFetched: function ()
+        /*_trailFetched: function ()
         {
             //alert("_trailFetched map");
             this.showFlight(this.options.report.getSelectedFlight(),this.options.report.getFlightTrails());
-        },
+        },*/
 
         /**
          * Shows the flight's details on the map.

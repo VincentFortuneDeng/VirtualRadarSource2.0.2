@@ -205,6 +205,7 @@
 
             VRS.globalisation.hookLocaleChanged(this._localeChanged, this);
             state.selectedFlightChangedHookResult = options.report.hookSelectedFlightCHanged(this._selectedFlightChanged, this);
+
         },
 
         /**

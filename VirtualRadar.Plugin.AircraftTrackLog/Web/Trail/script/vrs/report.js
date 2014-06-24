@@ -51,8 +51,8 @@
             pageSizeChanged:        'pageSizeChanged',
             rowsFetched:            'rowsFetched',
             fetchFailed:            'fetchFailed',
-            selectedFlightChanged:  'selectedFlightChanged',
-            trailFetched:           'trailFetched'
+            selectedFlightChanged:  'selectedFlightChanged'/*,
+            trailFetched:           'trailFetched'*/
             /*trailFetchFailed:       'trailFetchFailed'*/
         };
 
@@ -149,7 +149,7 @@
                 //var last = VRS.Report.convertFlightToVrsAircraft(value, false);
 
                 _SelectedFlight = value; //alert(value);
-                _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
+                //_Dispatcher.raise(_Events.selectedFlightChanged, [that]);
                 if (value) {
                     //if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(true);
                     //alert(VRS.globalOptions.reportTrailsUrl);
@@ -166,7 +166,8 @@
                 else {
                     //_TrailFetchResult = null;
                     _FlightTrails = null;
-                    _Dispatcher.raise(_Events.trailFetched, [that]);
+                    //_Dispatcher.raise(_Events.trailFetched, [that]);
+                    _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
                 }
             }
         };
@@ -242,7 +243,7 @@
          * @returns {Object}
          */
          this.hookSelectedFlightCHanged = function (callback, forceThis) { return _Dispatcher.hook(_Events.selectedFlightChanged, callback, forceThis); };
-         this.hookTrailFetched = function (callback, forceThis) { return _Dispatcher.hook(_Events.trailFetched, callback, forceThis); };
+         //this.hookTrailFetched = function (callback, forceThis) { return _Dispatcher.hook(_Events.trailFetched, callback, forceThis); };
 
         /**
          * Hooks an event that is raised after the selected flight has changed.
@@ -572,7 +573,8 @@
                 /*保留逻辑*/
             }
 
-            _Dispatcher.raise(_Events.trailFetched, [that]);
+            //_Dispatcher.raise(_Events.trailFetched, [that]);
+            _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
             
         }
 
@@ -662,7 +664,8 @@
             //if (_Settings.showFetchUI) VRS.pageHelper.showModalWaitAnimation(false);
             //_TrailFetchResult = null;
             _FlightTrails = null;
-            _Dispatcher.raise(_Events.trailFetched, [that]);
+            //_Dispatcher.raise(_Events.trailFetched, [that]);
+            _Dispatcher.raise(_Events.selectedFlightChanged, [that]);
         }
         //endregion
 
