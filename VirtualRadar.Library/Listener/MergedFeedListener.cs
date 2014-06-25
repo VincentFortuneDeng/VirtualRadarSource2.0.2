@@ -152,6 +152,16 @@ namespace VirtualRadar.Library.Listener
         /// <summary>
         /// See interface docs.
         /// </summary>
+        public event EventHandler<ACARSMessageEventArgs> ACARSMessageReceived;
+        protected virtual void OnACARSMessageReceived(ACARSMessageEventArgs args)
+        {
+            if(ACARSMessageReceived != null)
+                ACARSMessageReceived(this, args);
+        }
+
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
         public event EventHandler<EventArgs<string>> PositionReset;
         protected virtual void OnPositionReset(EventArgs<string> args)
         {
@@ -248,6 +258,7 @@ namespace VirtualRadar.Library.Listener
                 lock(_SyncLock) {
                     foreach(var listener in _Listeners) {
                         listener.Port30003MessageReceived -= Listener_Port30003MessageReceived;
+                        listener.ACARSMessageReceived -= Listener_ACARSMessageReceived;
                         listener.PositionReset -= Listener_PositionReset;
                     }
                     _Listeners.Clear();
@@ -272,11 +283,36 @@ namespace VirtualRadar.Library.Listener
                     oldListener.PositionReset -= Listener_PositionReset;
                 }
 
+                foreach(var oldListener in oldListeners) {
+                    oldListener.ACARSMessageReceived -= Listener_ACARSMessageReceived;
+                    oldListener.PositionReset -= Listener_PositionReset;
+                }
+
                 foreach(var newListener in newListeners) {
                     newListener.Port30003MessageReceived += Listener_Port30003MessageReceived;
                     newListener.PositionReset += Listener_PositionReset;
                     _Listeners.Add(newListener);
                 }
+
+                foreach(var newListener in newListeners) {
+                    newListener.ACARSMessageReceived += Listener_ACARSMessageReceived;
+                    newListener.PositionReset += Listener_PositionReset;
+                    _Listeners.Add(newListener);
+                }
+            }
+        }
+
+        private void Listener_ACARSMessageReceived(object sender, ACARSMessageEventArgs args)
+        {
+            try {
+                var listener = (IListener)sender;
+                var hasNoPosition = args.Message.Latitude.GetValueOrDefault() == 0.0 && args.Message.Longitude.GetValueOrDefault() == 0.0;
+                if(FilterMessageFromListener(_Clock.UtcNow, listener, args.Message.Icao24, !hasNoPosition)) {
+                    OnACARSMessageReceived(args);
+                    ++TotalMessages;
+                }
+            } catch(Exception ex) {
+                OnExceptionCaught(new EventArgs<Exception>(ex));
             }
         }
         #endregion

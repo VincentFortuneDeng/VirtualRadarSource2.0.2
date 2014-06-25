@@ -753,4 +753,7 @@ Suggestion made if the exception could indicate that the port number is in use.<
     <value>HttpListener Nicht von O/S unterstützt</value>
     <comment>Title for an error message box</comment>
   </data>
+  <data name="ACARSFeed" xml:space="preserve">
+    <value>ACARS</value>
+  </data>
 </root>

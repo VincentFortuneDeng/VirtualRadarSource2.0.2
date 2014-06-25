@@ -53,6 +53,11 @@ namespace VirtualRadar.Library.Listener
             public BaseStationMessageEventArgs Port30003MessageEventArgs;
 
             /// <summary>
+            /// The ACARS message event args.
+            /// </summary>
+            public ACARSMessageEventArgs ACARSMessageEventArgs;
+
+            /// <summary>
             /// The ModeS message event args.
             /// </summary>
             public ModeSMessageEventArgs ModeSMessageEventArgs;
@@ -69,6 +74,11 @@ namespace VirtualRadar.Library.Listener
         /// The object that can translate port 30003 messages for us.
         /// </summary>
         private IBaseStationMessageTranslator _Port30003MessageTranslator;
+
+        /// <summary>
+        /// The object that can translate port 30003 messages for us.
+        /// </summary>
+        private IACARSMessageTranslator _ACARSMessageTranslator;
 
         /// <summary>
         /// The object that can translate Mode-S messages for us.
@@ -234,6 +244,11 @@ namespace VirtualRadar.Library.Listener
         public event EventHandler<BaseStationMessageEventArgs> Port30003MessageReceived;
 
         /// <summary>
+        /// See interface docs.
+        /// </summary>
+        public event EventHandler<ACARSMessageEventArgs> ACARSMessageReceived;
+
+        /// <summary>
         /// Raises <see cref="Port30003MessageReceived"/>
         /// </summary>
         /// <param name="args"></param>
@@ -242,6 +257,18 @@ namespace VirtualRadar.Library.Listener
             if(Port30003MessageReceived != null) {
                 args.Message.ReceiverId = ReceiverId;
                 Port30003MessageReceived(this, args);
+            }
+        }
+
+        /// <summary>
+        /// Raises <see cref="Port30003MessageReceived"/>
+        /// </summary>
+        /// <param name="args"></param>
+        private void OnACARSMessageReceived(ACARSMessageEventArgs args)
+        {
+            if(ACARSMessageReceived != null) {
+                args.Message.ReceiverId = ReceiverId;
+                ACARSMessageReceived(this, args);
             }
         }
 
@@ -564,6 +591,7 @@ namespace VirtualRadar.Library.Listener
 
                             switch(extractedBytes.Format) {
                                 case ExtractedBytesFormat.Port30003:    ProcessPort30003MessageBytes(extractedBytes); break;
+                                case ExtractedBytesFormat.ACARS:        ProcessACARSMessageBytes(extractedBytes); break;
                                 case ExtractedBytesFormat.ModeS:        ProcessModeSMessageBytes(now, extractedBytes); break;
                                 case ExtractedBytesFormat.Compressed:   ProcessCompressedMessageBytes(now, extractedBytes); break;
                                 default:                                throw new NotImplementedException();
@@ -583,6 +611,28 @@ namespace VirtualRadar.Library.Listener
             } catch(Exception ex) {
                 Disconnect();
                 OnExceptionCaught(new EventArgs<Exception>(ex));
+            }
+        }
+
+        /// <summary>
+        /// Translates the bytes for a Port30003 message into a cooked message object and causes a message received event to be raised on the background thread.
+        /// </summary>
+        /// <param name="extractedBytes"></param>
+        private void ProcessACARSMessageBytes(ExtractedBytes extractedBytes)
+        {
+            try {
+                var acarsMessage = Encoding.ASCII.GetString(extractedBytes.Bytes, extractedBytes.Offset, extractedBytes.Length);
+                var translatedMessage = _ACARSMessageTranslator.Translate(acarsMessage);
+                if(translatedMessage != null) {
+                    ++TotalMessages;
+                    if(Statistics.Lock != null) { lock(Statistics.Lock) ++Statistics.BaseStationMessagesReceived; }
+                    _MessageProcessingAndDispatchQueue.Enqueue(new MessageDispatch() { ACARSMessageEventArgs = new ACARSMessageEventArgs(translatedMessage) });
+                }
+            } catch(Exception) {
+                //++TotalBadMessages;
+                //if(Statistics.Lock != null) { lock(Statistics.Lock) ++Statistics.BaseStationBadFormatMessagesReceived; }
+                if(!IgnoreBadMessages)
+                    throw;
             }
         }
 
@@ -683,7 +733,9 @@ namespace VirtualRadar.Library.Listener
                 OnRawBytesReceived(message.RawBytesEventArgs);
             } else if(message.ModeSBytesEventArgs != null) {
                 OnModeSBytesReceived(message.ModeSBytesEventArgs);
-            } else {
+            } else if(message.ACARSMessageEventArgs != null) {
+                OnACARSMessageReceived(message.ACARSMessageEventArgs);
+            }else{
                 var modeSMessageArgs = message.ModeSMessageEventArgs;
                 OnModeSMessageReceived(modeSMessageArgs);
 

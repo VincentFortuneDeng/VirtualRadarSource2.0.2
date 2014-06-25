@@ -1606,4 +1606,7 @@ odbiorników</value>
   <data name="PreferIataAirportCodes" xml:space="preserve">
     <value>Pokaż kody lotnisk według IATA</value>
   </data>
+  <data name="ACARSFeed" xml:space="preserve">
+    <value>ACARS</value>
+  </data>
 </root>

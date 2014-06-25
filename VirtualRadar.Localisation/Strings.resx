@@ -1964,4 +1964,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <data name="menuResetReceiverRange" xml:space="preserve">
     <value>Reset Receiver Range &amp;Plot</value>
   </data>
+  <data name="ACARSFeed" xml:space="preserve">
+    <value>ACARS</value>
+  </data>
 </root>

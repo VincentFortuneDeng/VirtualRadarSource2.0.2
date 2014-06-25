@@ -1,4 +1,4 @@
-// Copyright ?2010 onwards, Andrew Whewell
+﻿// Copyright © 2010 onwards, Andrew Whewell
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -10,43 +10,36 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace VirtualRadar.Interface.BaseStation
 {
     /// <summary>
-    /// An enumeration of the different status codes that can be transmitted by a StatusChange message.
+    /// Thrown by objects that translate BaseStation text messages into message objects.
     /// </summary>
-    public enum BaseStationStatusCode
+    [Serializable]
+    public class ACARSTranslatorException : Exception
     {
         /// <summary>
-        /// The message is not a StatusChange message.
+        /// Creates a new object.
         /// </summary>
-        None,
+        public ACARSTranslatorException() { }
 
         /// <summary>
-        /// The aircraft is no longer transmitting its position.
+        /// Creates a new object.
         /// </summary>
-        PositionLost,
+        public ACARSTranslatorException(string message) : base(message) { }
 
         /// <summary>
-        /// The aircraft's signal can no longer be picked up.
+        /// Creates a new object.
         /// </summary>
-        SignalLost,
+        public ACARSTranslatorException(string message, Exception inner) : base(message, inner) { }
 
         /// <summary>
-        /// The aircraft has been removed from BaseStation's display.
+        /// Creates a new object.
         /// </summary>
-        Remove,
-
-        /// <summary>
-        /// Don't know what the difference is between this and Remove.
-        /// </summary>
-        Delete,
-
-        /// <summary>
-        /// The aircraft's signal is being picked up.
-        /// </summary>
-        OK,
+        protected ACARSTranslatorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }

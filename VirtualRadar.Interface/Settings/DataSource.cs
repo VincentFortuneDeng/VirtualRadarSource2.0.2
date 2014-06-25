@@ -29,6 +29,11 @@ namespace VirtualRadar.Interface.Settings
         Port30003,
 
         /// <summary>
+        /// Any source of port 30003 data such as BaseStation, PlanePlotter etc.
+        /// </summary>
+        ACARS,
+
+        /// <summary>
         /// Raw Mode-S messages from the Kinetics Avionics SBS-3.
         /// </summary>
         Sbs3,

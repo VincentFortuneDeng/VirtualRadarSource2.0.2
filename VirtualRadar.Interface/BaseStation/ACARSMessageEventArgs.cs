@@ -15,38 +15,22 @@ using System.Text;
 namespace VirtualRadar.Interface.BaseStation
 {
     /// <summary>
-    /// An enumeration of the different status codes that can be transmitted by a StatusChange message.
+    /// Arguments to an event that carries a message from a BaseStation instance.
     /// </summary>
-    public enum BaseStationStatusCode
+    public class ACARSMessageEventArgs : EventArgs
     {
         /// <summary>
-        /// The message is not a StatusChange message.
+        /// Gets the message that was transmitted by BaseStation.
         /// </summary>
-        None,
+        public ACARSMessage Message { get; private set; }
 
         /// <summary>
-        /// The aircraft is no longer transmitting its position.
+        /// Creates a new object.
         /// </summary>
-        PositionLost,
-
-        /// <summary>
-        /// The aircraft's signal can no longer be picked up.
-        /// </summary>
-        SignalLost,
-
-        /// <summary>
-        /// The aircraft has been removed from BaseStation's display.
-        /// </summary>
-        Remove,
-
-        /// <summary>
-        /// Don't know what the difference is between this and Remove.
-        /// </summary>
-        Delete,
-
-        /// <summary>
-        /// The aircraft's signal is being picked up.
-        /// </summary>
-        OK,
+        /// <param name="message"></param>
+        public ACARSMessageEventArgs(ACARSMessage message)
+        {
+            Message = message;
+        }
     }
 }

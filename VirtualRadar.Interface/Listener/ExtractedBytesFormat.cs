@@ -31,6 +31,12 @@ namespace VirtualRadar.Interface.Listener
         Port30003,
 
         /// <summary>
+        /// The format of the payload corresponds with Kinetic's de-facto standard port 30003 text.
+        /// </summary>
+        ACARS,
+
+
+        /// <summary>
         /// The format of the payload corresponds with ICAO's specification for Mode-S messages.
         /// </summary>
         ModeS,
