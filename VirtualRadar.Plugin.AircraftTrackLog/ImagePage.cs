@@ -310,7 +310,8 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
             if(args.PathAndFile.StartsWith("/Trail/Images/", StringComparison.OrdinalIgnoreCase)) {
                 var imageRequest = ExtractImageRequest(args);
-                
+                //Factory.Singleton.Resolve<ILog>().WriteLine(args.PathAndFile);
+                //Factory.Singleton.Resolve<ILog>().WriteLine(args.File);
                 result = imageRequest != null;
 
                 // Stock image is an image from the resource file. We don't need to dispose of it, it can be reused
@@ -558,7 +559,7 @@ namespace VirtualRadar.Plugin.AircraftTrackLog
 
             const int width = 85;
             const int height = 20;
-
+            //Factory.Singleton.Resolve<ILog>().WriteLine(folder+" "+ logo);
             if(!String.IsNullOrEmpty(folder)) {
                 foreach(var chunk in logo.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries)) {
                     if(chunk.IndexOfAny(Path.GetInvalidFileNameChars()) == -1 && chunk.IndexOfAny(Path.GetInvalidPathChars()) == -1) {
