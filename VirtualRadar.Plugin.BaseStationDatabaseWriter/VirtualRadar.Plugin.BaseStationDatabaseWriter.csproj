@@ -145,6 +145,8 @@
     <None Include="_PostBuild.bat" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SqlScript\CreateTempAircraft.txt" />
+    <Content Include="SqlScript\更新航空器注册数据.txt" />
     <Content Include="VirtualRadar.Plugin.BaseStationDatabaseWriter.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
