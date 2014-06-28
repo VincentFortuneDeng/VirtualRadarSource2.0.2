@@ -145,8 +145,15 @@
     <None Include="_PostBuild.bat" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SqlScript\CreateTempAircraft.txt" />
-    <Content Include="SqlScript\更新航空器注册数据.txt" />
+    <Content Include="SqlScript\CreateTempAircraft.sql" />
+    <Content Include="SqlScript\修正法语字符.sql" />
+    <Content Include="SqlScript\修正航空公司代码错误.sql" />
+    <Content Include="SqlScript\修正错误国家.sql" />
+    <Content Include="SqlScript\创建国家数据.sql" />
+    <Content Include="SqlScript\国家字段不存在.sql" />
+    <Content Include="SqlScript\更新军民航国家统一.sql" />
+    <Content Include="SqlScript\更新航空器注册数据.sql" />
+    <Content Include="SqlScript\查询适航证过期字段不空数据.sql" />
     <Content Include="VirtualRadar.Plugin.BaseStationDatabaseWriter.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

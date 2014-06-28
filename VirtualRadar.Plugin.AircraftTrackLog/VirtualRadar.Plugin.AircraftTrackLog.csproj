@@ -281,6 +281,7 @@
     <Content Include="Web\Trail\inject.js" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BaseStation.sqb" />
     <None Include="Log4Net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

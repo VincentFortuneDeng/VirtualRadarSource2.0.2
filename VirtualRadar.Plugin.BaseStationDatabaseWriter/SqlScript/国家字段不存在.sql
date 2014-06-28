@@ -1,0 +1,1 @@
+SELECT ModeSCountry, count(ModeSCountry) FROM AircraftReg WHERE ModeSCountry NOT IN(SELECT Name FROM Country) GROUP BY ModeSCountry ORDER BY ModeSCountry ;

@@ -1,0 +1,1 @@
+SELECT ModeS,Registration,PreviousID,SerialNo,ModeSCountry,ICAOTypeCode,Type,RegisteredOwners,CofAExpiry,CofACategory,OperatorFlagCode FROM AircraftReg WHERE CofAExpiry <>'';
