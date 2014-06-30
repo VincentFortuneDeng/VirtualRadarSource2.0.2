@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VirtualRadar.Interface.BaseStation
+namespace VirtualRadar.Interface.ACARS
 {
     /// <summary>
     /// An interface for an object that can translate a string transmitted by BaseStation into a

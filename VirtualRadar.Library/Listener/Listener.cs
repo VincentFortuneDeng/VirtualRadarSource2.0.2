@@ -20,6 +20,7 @@ using VirtualRadar.Interface.BaseStation;
 using VirtualRadar.Interface.Listener;
 using VirtualRadar.Interface.ModeS;
 using VirtualRadar.Interface.Settings;
+using VirtualRadar.Interface.ACARS;
 
 namespace VirtualRadar.Library.Listener
 {

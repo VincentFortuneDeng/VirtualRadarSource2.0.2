@@ -205,7 +205,7 @@
     <comment>As in a connection between two computers</comment>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>OK</value>
+    <value>确认</value>
     <comment>As used on OK buttons</comment>
   </data>
   <data name="Operator" xml:space="preserve">

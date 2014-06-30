@@ -1,4 +1,4 @@
-// Copyright ?2010 onwards, Andrew Whewell
+﻿// Copyright © 2010 onwards, Andrew Whewell
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -10,27 +10,36 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
-namespace VirtualRadar.Interface.BaseStation
+namespace VirtualRadar.Interface.ACARS
 {
     /// <summary>
-    /// Arguments to an event that carries a message from a BaseStation instance.
+    /// Thrown by objects that translate BaseStation text messages into message objects.
     /// </summary>
-    public class ACARSMessageEventArgs : EventArgs
+    [Serializable]
+    public class ACARSTranslatorException : Exception
     {
         /// <summary>
-        /// Gets the message that was transmitted by BaseStation.
+        /// Creates a new object.
         /// </summary>
-        public ACARSMessage Message { get; private set; }
+        public ACARSTranslatorException() { }
 
         /// <summary>
         /// Creates a new object.
         /// </summary>
-        /// <param name="message"></param>
-        public ACARSMessageEventArgs(ACARSMessage message)
-        {
-            Message = message;
-        }
+        public ACARSTranslatorException(string message) : base(message) { }
+
+        /// <summary>
+        /// Creates a new object.
+        /// </summary>
+        public ACARSTranslatorException(string message, Exception inner) : base(message, inner) { }
+
+        /// <summary>
+        /// Creates a new object.
+        /// </summary>
+        protected ACARSTranslatorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }

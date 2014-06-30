@@ -32,7 +32,7 @@ namespace VirtualRadar.Library
             factory.Register<VirtualRadar.Interface.BaseStation.IBaseStationAircraftList, BaseStation.BaseStationAircraftList>();
             factory.Register<VirtualRadar.Interface.BaseStation.IBaseStationMessageCompressor, BaseStation.BaseStationMessageCompressor>();
             factory.Register<VirtualRadar.Interface.BaseStation.IBaseStationMessageTranslator, BaseStation.BaseStationMessageTranslator>();
-            factory.Register<VirtualRadar.Interface.BaseStation.IACARSMessageTranslator, BaseStation.ACARSMessageTranslator>();
+            factory.Register<VirtualRadar.Interface.ACARS.IACARSMessageTranslator,ACARS.ACARSMessageTranslator>();
             factory.Register<VirtualRadar.Interface.BaseStation.IRawMessageTranslator, BaseStation.RawMessageTranslator>();
             factory.Register<VirtualRadar.Interface.FlightSimulatorX.IFlightSimulatorX, FlightSimulatorX.FlightSimulatorX>();
             factory.Register<VirtualRadar.Interface.Listener.IBeastMessageBytesExtractor, Listener.BeastMessageBytesExtractor>();

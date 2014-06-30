@@ -100,7 +100,7 @@
     <Compile Include="AutoConfigPictureFolderCache.cs" />
     <Compile Include="BackgroundWorker.cs" />
     <Compile Include="BaseStation\BaseStationAircraftList.cs" />
-    <Compile Include="BaseStation\ACARSMessageTranslator.cs" />
+    <Compile Include="ACRAS\ACARSMessageTranslator.cs" />
     <Compile Include="BaseStation\RawMessageTranslator.cs" />
     <Compile Include="BroadcastProvider.cs" />
     <Compile Include="CallsignParser.cs" />

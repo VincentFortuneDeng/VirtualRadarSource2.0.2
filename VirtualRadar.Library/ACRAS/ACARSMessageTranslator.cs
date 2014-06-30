@@ -14,8 +14,9 @@ using System.Text;
 using VirtualRadar.Interface.BaseStation;
 using System.Globalization;
 using System.Diagnostics;
+using VirtualRadar.Interface.ACARS;
 
-namespace VirtualRadar.Library.BaseStation
+namespace VirtualRadar.Library.ACARS
 {
     /// <summary>
     /// Default implementation of <see cref="IBaseStationMessageTranslator"/>.

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
 
-namespace VirtualRadar.Interface.BaseStation
+namespace VirtualRadar.Interface.ACARS
 {
     /// <summary>
     /// An object that carries information about an incoming message from Kinetic's BaseStation application.
