@@ -123,10 +123,10 @@
     <Compile Include="AirportDataThumbnailJson.cs" />
     <Compile Include="AirportDataThumbnailsJson.cs" />
     <Compile Include="BackgroundThreadQueue.cs" />
-    <Compile Include="ACARS\ACARSMessageEventArgs.cs" />
-    <Compile Include="ACARS\ACARSMessage.cs" />
+    <Compile Include="Acars\AcarsMessageEventArgs.cs" />
+    <Compile Include="Acars\AcarsMessage.cs" />
     <Compile Include="BaseStation\BaseStationSupplementaryMessage.cs" />
-    <Compile Include="ACARS\ACARSTranslatorException.cs" />
+    <Compile Include="Acars\AcarsTranslatorException.cs" />
     <Compile Include="BaseStation\BaseStationTranslatorException.cs" />
     <Compile Include="BaseStation\IACARSMessageTranslator.cs" />
     <Compile Include="BaseStation\IRawMessageTranslator.cs" />

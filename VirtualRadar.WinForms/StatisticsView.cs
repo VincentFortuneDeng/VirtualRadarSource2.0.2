@@ -92,6 +92,21 @@ namespace VirtualRadar.WinForms
         /// <summary>
         /// See interface docs.
         /// </summary>
+        public long AcarsMessages { get; set; }
+
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
+        public long BadlyFormedAcarsMessages { get; set; }
+
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
+        public double BadlyFormedAcarsMessagesRatio { get; set; }
+
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
         public long ModeSMessageCount { get; set; }
 
         /// <summary>
@@ -243,7 +258,9 @@ namespace VirtualRadar.WinForms
                 UpdateLabel(labelThroughput, String.Format("{0:N2} {1}", ReceiverThroughput, Strings.AcronymKilobytePerSecond));
 
                 UpdateCounterLabel(labelBaseStationMessages, BaseStationMessages);
+                UpdateCounterLabel(labelAcarsMessages, AcarsMessages);
                 UpdateRatioLabel(labelBaseStationBadlyFormatted, BadlyFormedBaseStationMessages, BadlyFormedBaseStationMessagesRatio);
+                UpdateRatioLabel(labelAcarsBadlyFormatted, BadlyFormedAcarsMessages, BadlyFormedAcarsMessagesRatio);
 
                 UpdateCounterLabel(labelModeSMessages, ModeSMessageCount);
                 UpdateRatioLabel(labelNoAdsbPayload, ModeSNoAdsbPayload, ModeSNoAdsbPayloadRatio);

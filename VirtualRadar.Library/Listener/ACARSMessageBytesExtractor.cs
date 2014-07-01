@@ -19,7 +19,7 @@ namespace VirtualRadar.Library.Listener
     /// <summary>
     /// The default implementation of <see cref="IPort30003MessageBytesExtractor"/>.
     /// </summary>
-    class ACARSMessageBytesExtractor : IACARSMessageBytesExtractor
+    class AcarsMessageBytesExtractor : IAcarsMessageBytesExtractor
     {
         /// <summary>
         /// The array of bytes that carries the payload from a network packet.
@@ -34,7 +34,7 @@ namespace VirtualRadar.Library.Listener
         /// <summary>
         /// The object that is repeatedly returned from <see cref="ExtractMessageBytes"/>.
         /// </summary>
-        ExtractedBytes _ExtractedBytes = new ExtractedBytes() { Format = ExtractedBytesFormat.Port30003 };
+        ExtractedBytes _ExtractedBytes = new ExtractedBytes() { Format = ExtractedBytesFormat.Acars };
 
         /// <summary>
         /// True once the first line-end character has been seen.

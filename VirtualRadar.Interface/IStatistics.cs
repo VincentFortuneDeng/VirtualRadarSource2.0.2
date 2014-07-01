@@ -51,6 +51,16 @@ namespace VirtualRadar.Interface
         long BaseStationBadFormatMessagesReceived { get; set; }
 
         /// <summary>
+        /// Gets or sets a count of Acars format messages received.
+        /// </summary>
+        long AcarsMessagesReceived { get; set; }
+
+        /// <summary>
+        /// Gets or sets a count of badly formatted Acars messages received.
+        /// </summary>
+        long AcarsBadFormatMessagesReceived { get; set; }
+
+        /// <summary>
         /// Gets or sets the number of Mode-S messages received from a source of Mode-S data.
         /// </summary>
         long ModeSMessagesReceived { get; set; }

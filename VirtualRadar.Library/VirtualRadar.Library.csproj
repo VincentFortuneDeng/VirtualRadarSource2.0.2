@@ -100,7 +100,7 @@
     <Compile Include="AutoConfigPictureFolderCache.cs" />
     <Compile Include="BackgroundWorker.cs" />
     <Compile Include="BaseStation\BaseStationAircraftList.cs" />
-    <Compile Include="ACRAS\ACARSMessageTranslator.cs" />
+    <Compile Include="Acars\AcarsMessageTranslator.cs" />
     <Compile Include="BaseStation\RawMessageTranslator.cs" />
     <Compile Include="BroadcastProvider.cs" />
     <Compile Include="CallsignParser.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="Listener\Listener.cs" />
     <Compile Include="Listener\MergedFeedListener.cs" />
     <Compile Include="Listener\PolarPlotter.cs" />
-    <Compile Include="Listener\ACARSMessageBytesExtractor.cs" />
+    <Compile Include="Listener\AcarsMessageBytesExtractor.cs" />
     <Compile Include="Listener\SerialListenerProvider.cs" />
     <Compile Include="Listener\Port30003MessageBytesExtractor.cs" />
     <Compile Include="Listener\Sbs3MessageBytesExtractor.cs" />

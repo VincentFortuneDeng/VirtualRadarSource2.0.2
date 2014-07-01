@@ -329,7 +329,7 @@ namespace VirtualRadar.Library
             switch(receiver.DataSource) {
                 case DataSource.Beast:                  if(result == null || !(result is IBeastMessageBytesExtractor)) result = Factory.Singleton.Resolve<IBeastMessageBytesExtractor>(); break;
                 case DataSource.Port30003:              if(result == null || !(result is IPort30003MessageBytesExtractor)) result = Factory.Singleton.Resolve<IPort30003MessageBytesExtractor>(); break;
-                    case DataSource.ACARS:              if(result == null || !(result is IACARSMessageBytesExtractor)) result = Factory.Singleton.Resolve<IACARSMessageBytesExtractor>(); break;
+                    case DataSource.Acars:              if(result == null || !(result is IAcarsMessageBytesExtractor)) result = Factory.Singleton.Resolve<IAcarsMessageBytesExtractor>(); break;
                 case DataSource.Sbs3:                   if(result == null || !(result is ISbs3MessageBytesExtractor)) result = Factory.Singleton.Resolve<ISbs3MessageBytesExtractor>(); break;
                 case DataSource.CompressedVRS:    if(result == null || !(result is ICompressedMessageBytesExtractor)) result = Factory.Singleton.Resolve<ICompressedMessageBytesExtractor>(); break;
                 default:                                throw new NotImplementedException();

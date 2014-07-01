@@ -23,6 +23,7 @@ using VirtualRadar.Interface.Listener;
 using VirtualRadar.Interface.Settings;
 using VirtualRadar.Interface.StandingData;
 using System.Text.RegularExpressions;
+using VirtualRadar.Interface.Acars;
 
 namespace VirtualRadar.Library.BaseStation
 {
@@ -186,6 +187,49 @@ namespace VirtualRadar.Library.BaseStation
         }
 
         IListener _Port30003Listener;
+
+        IListener _AcarsListener;
+
+        public IListener AcarsListener
+        {
+            get { return _AcarsListener; }
+            set
+            {
+                if(_AcarsListener != value) {
+                    if(_AcarsListener != null) {
+                        _AcarsListener.AcarsMessageReceived -= AcarsListener_AcarsMessageReceived;
+                        _AcarsListener.SourceChanged -= AcarsListener_SourceChanged;
+                        _AcarsListener.PositionReset -= AcarsListener_PositionReset;
+                    }
+                    _AcarsListener = value;
+                    if(_AcarsListener != null) {
+                        _AcarsListener.AcarsMessageReceived += AcarsListener_AcarsMessageReceived;
+                        _AcarsListener.SourceChanged += AcarsListener_SourceChanged;
+                        _AcarsListener.PositionReset += AcarsListener_PositionReset;
+                    }
+                }
+            }
+        }
+
+        void AcarsListener_PositionReset(object sender, EventArgs<string> e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void AcarsListener_SourceChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void AcarsListener_AcarsMessageReceived(object sender, Interface.Acars.AcarsMessageEventArgs args)
+        {
+            if(_Started) ProcessMessage(args.Message);
+        }
+
+        private void ProcessMessage(AcarsMessage message)
+        {
+            throw new NotImplementedException();
+        }
         /// <summary>
         /// See interface docs.
         /// </summary>

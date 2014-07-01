@@ -33,7 +33,7 @@ namespace VirtualRadar.WinForms.Options
             Translations.Add(DataSource.CompressedVRS, Strings.CompressedPort30003);
             Translations.Add(DataSource.Port30003, Strings.Port30003Feed);
             Translations.Add(DataSource.Sbs3, Strings.SBS3ModeSFeed);
-            Translations.Add(DataSource.ACARS, Strings.ACARSFeed);
+            Translations.Add(DataSource.Acars, Strings.AcarsFeed);
         }
     }
 }

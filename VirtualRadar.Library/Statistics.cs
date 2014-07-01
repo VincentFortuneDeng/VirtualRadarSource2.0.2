@@ -48,6 +48,16 @@ namespace VirtualRadar.Library
         /// <summary>
         /// See interface docs.
         /// </summary>
+        public long AcarsMessagesReceived { get; set; }
+
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
+        public long AcarsBadFormatMessagesReceived { get; set; }
+
+        /// <summary>
+        /// See interface docs.
+        /// </summary>
         public long ModeSMessagesReceived { get; set; }
 
         /// <summary>

@@ -52,6 +52,11 @@ namespace VirtualRadar.Interface.View
         long BaseStationMessages { get; set; }
 
         /// <summary>
+        /// Gets or sets the count of BaseStation messages received.
+        /// </summary>
+        long AcarsMessages { get; set; }
+
+        /// <summary>
         /// Gets or sets the count of BaseStation messages that were badly formed.
         /// </summary>
         long BadlyFormedBaseStationMessages { get; set; }
@@ -60,6 +65,16 @@ namespace VirtualRadar.Interface.View
         /// Gets or sets the %age of BaseStation messages that were badly formed.
         /// </summary>
         double BadlyFormedBaseStationMessagesRatio { get; set; }
+
+        /// <summary>
+        /// Gets or sets the count of Acars messages that were badly formed.
+        /// </summary>
+        long BadlyFormedAcarsMessages { get; set; }
+
+        /// <summary>
+        /// Gets or sets the %age of Acars messages that were badly formed.
+        /// </summary>
+        double BadlyFormedAcarsMessagesRatio { get; set; }
 
         /// <summary>
         /// Gets or sets the number of Mode-S messages seen.

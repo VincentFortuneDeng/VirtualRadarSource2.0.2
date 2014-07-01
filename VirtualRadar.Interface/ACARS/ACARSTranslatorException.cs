@@ -14,32 +14,32 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace VirtualRadar.Interface.ACARS
+namespace VirtualRadar.Interface.Acars
 {
     /// <summary>
     /// Thrown by objects that translate BaseStation text messages into message objects.
     /// </summary>
     [Serializable]
-    public class ACARSTranslatorException : Exception
+    public class AcarsTranslatorException : Exception
     {
         /// <summary>
         /// Creates a new object.
         /// </summary>
-        public ACARSTranslatorException() { }
+        public AcarsTranslatorException() { }
 
         /// <summary>
         /// Creates a new object.
         /// </summary>
-        public ACARSTranslatorException(string message) : base(message) { }
+        public AcarsTranslatorException(string message) : base(message) { }
 
         /// <summary>
         /// Creates a new object.
         /// </summary>
-        public ACARSTranslatorException(string message, Exception inner) : base(message, inner) { }
+        public AcarsTranslatorException(string message, Exception inner) : base(message, inner) { }
 
         /// <summary>
         /// Creates a new object.
         /// </summary>
-        protected ACARSTranslatorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected AcarsTranslatorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }

@@ -12,13 +12,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VirtualRadar.Interface.ACARS
+namespace VirtualRadar.Interface.Acars
 {
     /// <summary>
     /// An interface for an object that can translate a string transmitted by BaseStation into a
     /// formatted message object.
     /// </summary>
-    public interface IACARSMessageTranslator
+    public interface IAcarsMessageTranslator
     {
         /// <summary>
         /// Translates from a raw message transmitted from BaseStation into a formatted message.
@@ -26,6 +26,6 @@ namespace VirtualRadar.Interface.ACARS
         /// <param name="rawMessage"></param>
         /// <param name="signalLevel"></param>
         /// <returns></returns>
-        ACARSMessage Translate(string rawMessage);
+        AcarsMessage Translate(string rawMessage);
     }
 }

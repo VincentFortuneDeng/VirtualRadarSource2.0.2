@@ -33,7 +33,7 @@ namespace VirtualRadar.Interface.Listener
         /// <summary>
         /// The format of the payload corresponds with Kinetic's de-facto standard port 30003 text.
         /// </summary>
-        ACARS,
+        Acars,
 
 
         /// <summary>

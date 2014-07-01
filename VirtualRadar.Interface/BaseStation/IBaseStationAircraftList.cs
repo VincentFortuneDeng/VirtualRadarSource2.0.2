@@ -29,6 +29,8 @@ namespace VirtualRadar.Interface.BaseStation
         /// </summary>
         IListener Listener { get; set; }
 
+        IListener AcarsListener { get; set; }
+
         /// <summary>
         /// Gets or sets the object that will look up information about aircraft from the standing data files.
         /// </summary>

@@ -73,7 +73,10 @@ namespace VirtualRadar.Library.Presenter
                     _View.ConnectedDuration = statistics.ConnectionTimeUtc == null ? TimeSpan.Zero : _Clock.UtcNow - statistics.ConnectionTimeUtc.Value;
                     _View.ReceiverBadChecksum = statistics.FailedChecksumMessages;
                     _View.BaseStationMessages = statistics.BaseStationMessagesReceived;
+                    _View.AcarsMessages = statistics.AcarsMessagesReceived;
                     _View.BadlyFormedBaseStationMessages = statistics.BaseStationBadFormatMessagesReceived;
+                    _View.AcarsMessages = statistics.AcarsMessagesReceived;
+                    _View.BadlyFormedAcarsMessages = statistics.AcarsBadFormatMessagesReceived;
                     _View.ModeSMessageCount = statistics.ModeSMessagesReceived;
                     _View.ModeSNoAdsbPayload = statistics.ModeSNotAdsbCount;
                     _View.ModeSShortFrame = statistics.ModeSShortFrameMessagesReceived;
@@ -93,6 +96,7 @@ namespace VirtualRadar.Library.Presenter
 
                 _View.ReceiverThroughput = CalculateRatio(_View.BytesReceived / 1024.0, _View.ConnectedDuration.TotalSeconds);
                 _View.BadlyFormedBaseStationMessagesRatio = CalculateRatio(_View.BadlyFormedBaseStationMessages, _View.BaseStationMessages);
+                _View.BadlyFormedAcarsMessagesRatio = CalculateRatio(_View.BadlyFormedAcarsMessages, _View.AcarsMessages);
                 _View.ModeSNoAdsbPayloadRatio = CalculateRatio(_View.ModeSNoAdsbPayload, _View.ModeSMessageCount);
                 _View.ModeSShortFrameUnusableRatio = CalculateRatio(_View.ModeSShortFrameUnusable, _View.ModeSShortFrame);
                 _View.ModeSPIBadParityRatio = CalculateRatio(_View.ModeSPIBadParity, _View.ModeSWithPI);

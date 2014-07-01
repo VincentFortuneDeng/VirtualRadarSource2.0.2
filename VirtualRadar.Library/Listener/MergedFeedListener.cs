@@ -18,7 +18,7 @@ using VirtualRadar.Interface.BaseStation;
 using VirtualRadar.Interface.Listener;
 using VirtualRadar.Interface.ModeS;
 using InterfaceFactory;
-using VirtualRadar.Interface.ACARS;
+using VirtualRadar.Interface.Acars;
 
 namespace VirtualRadar.Library.Listener
 {
@@ -153,11 +153,11 @@ namespace VirtualRadar.Library.Listener
         /// <summary>
         /// See interface docs.
         /// </summary>
-        public event EventHandler<ACARSMessageEventArgs> ACARSMessageReceived;
-        protected virtual void OnACARSMessageReceived(ACARSMessageEventArgs args)
+        public event EventHandler<AcarsMessageEventArgs> AcarsMessageReceived;
+        protected virtual void OnAcarsMessageReceived(AcarsMessageEventArgs args)
         {
-            if(ACARSMessageReceived != null)
-                ACARSMessageReceived(this, args);
+            if(AcarsMessageReceived != null)
+                AcarsMessageReceived(this, args);
         }
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace VirtualRadar.Library.Listener
                 lock(_SyncLock) {
                     foreach(var listener in _Listeners) {
                         listener.Port30003MessageReceived -= Listener_Port30003MessageReceived;
-                        listener.ACARSMessageReceived -= Listener_ACARSMessageReceived;
+                        listener.AcarsMessageReceived -= Listener_AcarsMessageReceived;
                         listener.PositionReset -= Listener_PositionReset;
                     }
                     _Listeners.Clear();
@@ -285,7 +285,7 @@ namespace VirtualRadar.Library.Listener
                 }
 
                 foreach(var oldListener in oldListeners) {
-                    oldListener.ACARSMessageReceived -= Listener_ACARSMessageReceived;
+                    oldListener.AcarsMessageReceived -= Listener_AcarsMessageReceived;
                     oldListener.PositionReset -= Listener_PositionReset;
                 }
 
@@ -296,20 +296,20 @@ namespace VirtualRadar.Library.Listener
                 }
 
                 foreach(var newListener in newListeners) {
-                    newListener.ACARSMessageReceived += Listener_ACARSMessageReceived;
+                    newListener.AcarsMessageReceived += Listener_AcarsMessageReceived;
                     newListener.PositionReset += Listener_PositionReset;
                     _Listeners.Add(newListener);
                 }
             }
         }
 
-        private void Listener_ACARSMessageReceived(object sender, ACARSMessageEventArgs args)
+        private void Listener_AcarsMessageReceived(object sender, AcarsMessageEventArgs args)
         {
             try {
                 var listener = (IListener)sender;
                 var hasNoPosition = args.Message.Latitude.GetValueOrDefault() == 0.0 && args.Message.Longitude.GetValueOrDefault() == 0.0;
                 if(FilterMessageFromListener(_Clock.UtcNow, listener, args.Message.Icao24, !hasNoPosition)) {
-                    OnACARSMessageReceived(args);
+                    OnAcarsMessageReceived(args);
                     ++TotalMessages;
                 }
             } catch(Exception ex) {

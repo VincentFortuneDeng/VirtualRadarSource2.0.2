@@ -1945,7 +1945,10 @@ All rights reserved.</value>
   <data name="menuResetReceiverRange" xml:space="preserve">
     <value>重置接收器范围 &amp;P图</value>
   </data>
-  <data name="ACARSFeed" xml:space="preserve">
-    <value>ACARS</value>
+  <data name="AcarsFeed" xml:space="preserve">
+    <value>Acars</value>
+  </data>
+  <data name="Acars" xml:space="preserve">
+    <value>Acars</value>
   </data>
 </root>

@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VirtualRadar.Interface.ACARS;
+using VirtualRadar.Interface.Acars;
 using VirtualRadar.Interface.BaseStation;
 using VirtualRadar.Interface.ModeS;
 
@@ -109,14 +109,14 @@ namespace VirtualRadar.Interface.Listener
         event EventHandler<BaseStationMessageEventArgs> Port30003MessageReceived;
 
         /// <summary>
-        /// 当收到ACARS消息时引发消息接收事件. 可能跟启动侦听器不在同一线程上
+        /// 当收到Acars消息时引发消息接收事件. 可能跟启动侦听器不在同一线程上
         ///  - 但这不影响消息将按顺序被传输
         /// </summary>
         /// <remarks>
         /// This is raised when listening to both Mode-S and Port 30003 data feeds. When listening to Mode-S sources the
         /// listener uses an <see cref="IRawMessageTranslator"/> to create the Port 30003 message.
         /// </remarks>
-        event EventHandler<ACARSMessageEventArgs> ACARSMessageReceived;
+        event EventHandler<AcarsMessageEventArgs> AcarsMessageReceived;
 
         /// <summary>
         /// Raised when a message has been received from the source of raw data. This may not be on the same thread that

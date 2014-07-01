@@ -18,7 +18,7 @@ namespace VirtualRadar.Interface.Listener
     /// <summary>
     /// The interface for objects that can extract Kinetic Port 30003 format messages.
     /// </summary>
-    public interface IACARSMessageBytesExtractor : IMessageBytesExtractor
+    public interface IAcarsMessageBytesExtractor : IMessageBytesExtractor
     {
     }
 }

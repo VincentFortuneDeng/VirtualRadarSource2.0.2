@@ -1968,7 +1968,10 @@ Suggestion made if the exception could indicate that the port number is in use.<
   <data name="SettingsPage" xml:space="preserve">
     <value>Настройки</value>
   </data>
-  <data name="ACARSFeed" xml:space="preserve">
-    <value>ACARS</value>
+  <data name="AcarsFeed" xml:space="preserve">
+    <value>Acars</value>
+  </data>
+  <data name="Acars" xml:space="preserve">
+    <value>Acars</value>
   </data>
 </root>

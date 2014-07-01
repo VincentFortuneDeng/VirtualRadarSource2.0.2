@@ -13,12 +13,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Globalization;
 
-namespace VirtualRadar.Interface.ACARS
+namespace VirtualRadar.Interface.Acars
 {
     /// <summary>
     /// An object that carries information about an incoming message from Kinetic's BaseStation application.
     /// </summary>
-    public class ACARSMessage
+    public class AcarsMessage
     {
         /// <summary>
         /// Gets or sets the unique ID of the receiver that picked up the message, if any. 0 if the ID is unknown.
@@ -50,6 +50,10 @@ namespace VirtualRadar.Interface.ACARS
         /// Gets or sets the Mode S identifier transmitted by the aircraft.
         /// </summary>
         public string Icao24 { get; set; }
+        /// <summary>
+        /// 获取或者设置注册号
+        /// </summary>
+        public string Registation { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier of the BaseStation session.
@@ -74,7 +78,7 @@ namespace VirtualRadar.Interface.ACARS
         /// <summary>
         /// Gets or sets the date and time that the message was logged by BaseStation.
         /// </summary>
-        public DateTime MessageLogged { get; set; }
+        //public DateTime MessageLogged { get; set; }
 
         /// <summary>
         /// Gets or sets the callsign of the aircraft, if known.
@@ -165,8 +169,8 @@ namespace VirtualRadar.Interface.ACARS
             //result.AppendFormat(CultureInfo.InvariantCulture, "{0},", FlightId);
             result.AppendFormat(CultureInfo.InvariantCulture, "{0:yyyy/MM/dd},", MessageGenerated);
             result.AppendFormat(CultureInfo.InvariantCulture, "{0:HH:mm:ss.fff},", MessageGenerated);
-            result.AppendFormat(CultureInfo.InvariantCulture, "{0:yyyy/MM/dd},", MessageLogged);
-            result.AppendFormat(CultureInfo.InvariantCulture, "{0:HH:mm:ss.fff},", MessageLogged);
+            //result.AppendFormat(CultureInfo.InvariantCulture, "{0:yyyy/MM/dd},", MessageLogged);
+            //result.AppendFormat(CultureInfo.InvariantCulture, "{0:HH:mm:ss.fff},", MessageLogged);
             //result.AppendFormat(CultureInfo.InvariantCulture, "{0},", MessageType == BaseStationMessageType.StatusChange ? BaseStationMessageHelper.ConvertToString(StatusCode) : Callsign);
             //result.AppendFormat(CultureInfo.InvariantCulture, "{0},", Altitude);
             //result.AppendFormat(CultureInfo.InvariantCulture, "{0},", Round.GroundSpeed(GroundSpeed));

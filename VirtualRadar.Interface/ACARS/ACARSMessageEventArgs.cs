@@ -12,23 +12,23 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VirtualRadar.Interface.ACARS
+namespace VirtualRadar.Interface.Acars
 {
     /// <summary>
     /// Arguments to an event that carries a message from a BaseStation instance.
     /// </summary>
-    public class ACARSMessageEventArgs : EventArgs
+    public class AcarsMessageEventArgs : EventArgs
     {
         /// <summary>
         /// Gets the message that was transmitted by BaseStation.
         /// </summary>
-        public ACARSMessage Message { get; private set; }
+        public AcarsMessage Message { get; private set; }
 
         /// <summary>
         /// Creates a new object.
         /// </summary>
         /// <param name="message"></param>
-        public ACARSMessageEventArgs(ACARSMessage message)
+        public AcarsMessageEventArgs(AcarsMessage message)
         {
             Message = message;
         }

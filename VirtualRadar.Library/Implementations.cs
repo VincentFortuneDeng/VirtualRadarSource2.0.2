@@ -32,7 +32,7 @@ namespace VirtualRadar.Library
             factory.Register<VirtualRadar.Interface.BaseStation.IBaseStationAircraftList, BaseStation.BaseStationAircraftList>();
             factory.Register<VirtualRadar.Interface.BaseStation.IBaseStationMessageCompressor, BaseStation.BaseStationMessageCompressor>();
             factory.Register<VirtualRadar.Interface.BaseStation.IBaseStationMessageTranslator, BaseStation.BaseStationMessageTranslator>();
-            factory.Register<VirtualRadar.Interface.ACARS.IACARSMessageTranslator,ACARS.ACARSMessageTranslator>();
+            factory.Register<VirtualRadar.Interface.Acars.IAcarsMessageTranslator, Acars.AcarsMessageTranslator>();
             factory.Register<VirtualRadar.Interface.BaseStation.IRawMessageTranslator, BaseStation.RawMessageTranslator>();
             factory.Register<VirtualRadar.Interface.FlightSimulatorX.IFlightSimulatorX, FlightSimulatorX.FlightSimulatorX>();
             factory.Register<VirtualRadar.Interface.Listener.IBeastMessageBytesExtractor, Listener.BeastMessageBytesExtractor>();
@@ -40,7 +40,7 @@ namespace VirtualRadar.Library
             factory.Register<VirtualRadar.Interface.Listener.IListener, Listener.Listener>();
             factory.Register<VirtualRadar.Interface.Listener.IMergedFeedListener, Listener.MergedFeedListener>();
             factory.Register<VirtualRadar.Interface.Listener.IPort30003MessageBytesExtractor, Listener.Port30003MessageBytesExtractor>();
-            factory.Register<VirtualRadar.Interface.Listener.IACARSMessageBytesExtractor, Listener.ACARSMessageBytesExtractor>();
+            factory.Register<VirtualRadar.Interface.Listener.IAcarsMessageBytesExtractor, Listener.AcarsMessageBytesExtractor>();
             factory.Register<VirtualRadar.Interface.Listener.ISbs3MessageBytesExtractor, Listener.Sbs3MessageBytesExtractor>();
             factory.Register<VirtualRadar.Interface.Listener.ISerialListenerProvider, Listener.SerialListenerProvider>();
             factory.Register<VirtualRadar.Interface.Listener.ITcpListenerProvider, Listener.TcpListenerProvider>();

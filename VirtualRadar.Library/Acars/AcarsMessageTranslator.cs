@@ -14,14 +14,14 @@ using System.Text;
 using VirtualRadar.Interface.BaseStation;
 using System.Globalization;
 using System.Diagnostics;
-using VirtualRadar.Interface.ACARS;
+using VirtualRadar.Interface.Acars;
 
-namespace VirtualRadar.Library.ACARS
+namespace VirtualRadar.Library.Acars
 {
     /// <summary>
     /// Default implementation of <see cref="IBaseStationMessageTranslator"/>.
     /// </summary>
-    class ACARSMessageTranslator : IACARSMessageTranslator
+    class AcarsMessageTranslator : IAcarsMessageTranslator
     {
         /// <summary>
         /// See interface docs.
@@ -29,9 +29,9 @@ namespace VirtualRadar.Library.ACARS
         /// <param name="text"></param>
         /// <param name="signalLevel"></param>
         /// <returns></returns>
-        public ACARSMessage Translate(string text)
+        public AcarsMessage Translate(string text)
         {
-            var result = new ACARSMessage();
+            var result = new AcarsMessage();
 
             if(!String.IsNullOrEmpty(text)) {
                 string[] parts = text.Split(',');
@@ -48,8 +48,8 @@ namespace VirtualRadar.Library.ACARS
                                 //case 5:     result.FlightId = ParseInt(chunk); break;
                                 case 6:     result.MessageGenerated = ParseDate(chunk); break;
                                 case 7:     result.MessageGenerated = ParseTime(result.MessageGenerated, chunk); break;
-                                case 8:     result.MessageLogged = ParseDate(chunk); break;
-                                case 9:     result.MessageLogged = ParseTime(result.MessageLogged, chunk); break;
+                                //case 8:     result.MessageLogged = ParseDate(chunk); break;
+                                //case 9:     result.MessageLogged = ParseTime(result.MessageLogged, chunk); break;
                                 //case 10:    if(result.MessageType == BaseStationMessageType.StatusChange) result.StatusCode = BaseStationMessageHelper.ConvertToBaseStationStatusCode(chunk); else result.Callsign = chunk.Replace("@", "").Trim(); break;
                                 //case 11:    result.Altitude = ParseInt(chunk); break;
                                 //case 12:    result.GroundSpeed = ParseFloat(chunk); break;
@@ -65,13 +65,13 @@ namespace VirtualRadar.Library.ACARS
                             }
                         }
                     } catch(Exception ex) {
-                        Debug.WriteLine(String.Format("ACARSMessageTranslator.Translate caught exception: {0}", ex.ToString()));
+                        Debug.WriteLine(String.Format("AcarsMessageTranslator.Translate caught exception: {0}", ex.ToString()));
 
                         // I would prefer to pass ex as the inner exception to this. However Microsoft's Application.ThreadException unhandled exception handler
                         // strips off all outer exceptions and only shows the bottom-most exception - i.e., in our case, the exception from a Parse method. This
                         // is not useful in isolation, we need to know what was being translated, the context in which the exception was thrown. So I have ended
                         // up with this, which is not very nice but shows enough information in the unhandled exception handler to allow diagnosis of the problem.
-                        throw new ACARSTranslatorException(String.Format("{0} while translating \"{1}\" (chunk {2}) in \"{3}\"", ex.Message, chunk, c, text));
+                        throw new AcarsTranslatorException(String.Format("{0} while translating \"{1}\" (chunk {2}) in \"{3}\"", ex.Message, chunk, c, text));
                     }
                 }
             }
