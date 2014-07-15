@@ -86,7 +86,7 @@ D6F4A80FF9C438290C45D7846AC447A6     16845 \script\stacktrace.js
 5EAE55573B8FB0AFC2729CEF09DA4993     48541 \script\i18n\strings.en.js
 EAEA444BAE9311B10785A9460F19E66F     48619 \script\i18n\strings.fr.js
 A9AFBAE96F83F444108B991F93C470BD     55195 \script\i18n\strings.ru.js
-70807E4AC844E06071108D4B7BDD012B     66083 \script\i18n\strings.zh.js
+950C3EE549BA995258C5A4DFFD17B83E     66083 \script\i18n\strings.zh.js
 55156A3541A65F44AD984A5EF4CF5C04       992 \script\i18n\globalize\globalize.culture.en-029.js
 5944DFCF10FA26E4869D7FBFF74A44A7      1134 \script\i18n\globalize\globalize.culture.en-AU.js
 0F992D2610B840F279AEBFBC48BC0163      1175 \script\i18n\globalize\globalize.culture.en-BZ.js

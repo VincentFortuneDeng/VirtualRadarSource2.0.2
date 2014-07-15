@@ -407,7 +407,7 @@
     VRS.$$.ShowShortTrails =                            '显示短轨迹';
     VRS.$$.ShowUnits =                                  '显示单位';
     VRS.$$.ShowVsiInSeconds =                           '显示每秒垂直速度';
-    VRS.$$.SignalLevel =                                '信号电平';
+    VRS.$$.SignalLevel =                                '油量剩余';
     VRS.$$.Silhouette =                                 '轮廓';
     VRS.$$.SilhouetteAndOpFlag =                        '轮廓和标志';
     VRS.$$.SiteTimedOut =                               '在非交互期间该站点暂停. 关闭消息框恢复更新.';
