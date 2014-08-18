@@ -16,7 +16,7 @@
 # application/1d-interleaved-parityfec
 # application/3gpp-ims+xml
 # application/activemessage
-application/andrew-inset			ez
+application/Copyright ? 2014 Honglin(∫Í¡÷), Vincent Deng(µÀ ÿ∫£)-inset			ez
 # application/applefile
 application/applixware				aw
 application/atom+xml				atom

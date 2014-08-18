@@ -1,4 +1,4 @@
-﻿// Copyright © 2013 onwards, Andrew Whewell
+﻿// Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -407,7 +407,7 @@
     VRS.$$.ShowShortTrails =                            '显示短轨迹';
     VRS.$$.ShowUnits =                                  '显示单位';
     VRS.$$.ShowVsiInSeconds =                           '显示每秒垂直速度';
-    VRS.$$.SignalLevel =                                '油量剩余';
+    VRS.$$.SignalLevel =                                '信号强度';
     VRS.$$.Silhouette =                                 '轮廓';
     VRS.$$.SilhouetteAndOpFlag =                        '轮廓和标志';
     VRS.$$.SiteTimedOut =                               '在非交互期间该站点暂停. 关闭消息框恢复更新.';

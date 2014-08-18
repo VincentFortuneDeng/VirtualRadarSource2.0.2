@@ -1,4 +1,4 @@
-﻿// Copyright © 2010 onwards, Andrew Whewell
+﻿// Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -204,14 +204,14 @@ namespace Test.VirtualRadar.WebServer
         [TestMethod]
         public void WebServer_Root_Enforces_Slashes()
         {
-            _WebServer.Root = "Andrew";
-            Assert.AreEqual("/Andrew", _WebServer.Root);
+            _WebServer.Root = "Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)";
+            Assert.AreEqual("/Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)", _WebServer.Root);
 
-            _WebServer.Root = "/Andrew";
-            Assert.AreEqual("/Andrew", _WebServer.Root);
+            _WebServer.Root = "/Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)";
+            Assert.AreEqual("/Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)", _WebServer.Root);
 
-            _WebServer.Root = "/Andrew/";
-            Assert.AreEqual("/Andrew", _WebServer.Root);
+            _WebServer.Root = "/Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)/";
+            Assert.AreEqual("/Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)", _WebServer.Root);
 
             _WebServer.Root = "";
             Assert.AreEqual("/", _WebServer.Root);

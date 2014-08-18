@@ -407,7 +407,7 @@ French translation by Francois /F5ANN.</value>
     <value>Contenu</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell</value>
+    <value>Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)</value>
   </data>
   <data name="CouldNotCheckForUpdate" xml:space="preserve">
     <value>Impossible de vérifier s'il existe une version plus récente</value>
@@ -756,7 +756,7 @@ French translation by Francois /F5ANN.</value>
     <value>Licence</value>
   </data>
   <data name="LicenseContent" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell
+    <value>Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

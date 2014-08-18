@@ -1,4 +1,4 @@
-// Copyright ?2010 onwards, Andrew Whewell
+ï»¿// Copyright Â© 2014 Honglin(å®æ—), Vincent Deng(é‚“å®ˆæµ·)
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -51,7 +51,7 @@ namespace VirtualRadar.Interface.Acars
         /// </summary>
         public string Icao24 { get; set; }
         /// <summary>
-        /// »ñÈ¡»òÕßÉèÖÃ×¢²áºÅ
+        /// è·å–æˆ–è€…è®¾ç½®æ³¨å†Œå·
         /// </summary>
         public string Registation { get; set; }
 

@@ -162,7 +162,7 @@ maintained by Kinetic forum user 'SabreJV' and hosted by Kinetic forum user 'Bon
     <value>Zawartość</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell</value>
+    <value>Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)</value>
   </data>
   <data name="DatabaseFileName" xml:space="preserve">
     <value>Nazwa pliku bazy danych</value>
@@ -639,7 +639,7 @@ maintained by Kinetic forum user 'SabreJV' and hosted by Kinetic forum user 'Bon
     <value>Ponownie łączę</value>
   </data>
   <data name="LicenseContent" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell
+    <value>Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

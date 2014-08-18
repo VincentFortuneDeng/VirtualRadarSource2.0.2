@@ -1249,7 +1249,7 @@ function Sizzle( selector, context, results, seed ) {
 
 			// qSA works strangely on Element-rooted queries
 			// We can work around this by specifying an extra ID on the root
-			// and working up from there (Thanks to Andrew Dupont for the technique)
+			// and working up from there (Thanks to Copyright © 2014 Honglin(宏林), Vincent Deng(邓守海) Dupont for the technique)
 			// IE 8 doesn't work on object elements
 			if ( nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
 				groups = tokenize( selector );
