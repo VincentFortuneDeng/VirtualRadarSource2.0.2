@@ -125,6 +125,8 @@
         var _HighContrastMapTypeName = null;
         //endregion
 
+        var _LocalMapTypeName = null;
+
         //region -- LatLng conversion
         /**
          * Converts from a Google latLng object to a VRS latLng object.
@@ -250,13 +252,15 @@
         this.fromGoogleMapType = function(mapType)
         {
             if(!mapType) return null;
-            if(!_HighContrastMapTypeName) _HighContrastMapTypeName = VRS.$$.HighContrastMap;
+            if (!_HighContrastMapTypeName) _HighContrastMapTypeName = VRS.$$.HighContrastMap;
+            if (!_LocalMapTypeName) _LocalMapTypeName = VRS.$$.LocalMap;
             switch(mapType) {
                 case google.maps.MapTypeId.HYBRID:      return VRS.MapType.Hybrid;
                 case google.maps.MapTypeId.ROADMAP:     return VRS.MapType.RoadMap;
                 case google.maps.MapTypeId.SATELLITE:   return VRS.MapType.Satellite;
                 case google.maps.MapTypeId.TERRAIN:     return VRS.MapType.Terrain;
                 case _HighContrastMapTypeName:          return VRS.MapType.HighContrast;
+                case _LocalMapTypeName:                 return VRS.MapType.LocalMap;
                 default:                                throw 'Not implemented';
             }
         };
@@ -270,13 +274,15 @@
         this.toGoogleMapType = function(mapType, suppressException)
         {
             if(!mapType) return null;
-            if(!_HighContrastMapTypeName) _HighContrastMapTypeName = VRS.$$.HighContrastMap;
+            if (!_HighContrastMapTypeName) _HighContrastMapTypeName = VRS.$$.HighContrastMap;
+            if (!_LocalMapTypeName) _LocalMapTypeName = VRS.$$.LocalMap;
             switch(mapType) {
                 case VRS.MapType.Hybrid:        return google.maps.MapTypeId.HYBRID;
                 case VRS.MapType.RoadMap:       return google.maps.MapTypeId.ROADMAP;
                 case VRS.MapType.Satellite:     return google.maps.MapTypeId.SATELLITE;
                 case VRS.MapType.Terrain:       return google.maps.MapTypeId.TERRAIN;
                 case VRS.MapType.HighContrast:  return _HighContrastMapTypeName;
+                case VRS.MapType.LocalMap:      return _LocalMapTypeName;
                 default:
                     if(suppressException) return null;
                     throw 'Not implemented';
@@ -466,6 +472,34 @@
         this.labelAnchor = labelAnchor;
     };
     //endregion
+
+    //TODO:
+    VRS.LocalMap = function()
+    {
+        this.tileSize = new google.maps.Size(256, 256);
+        this.maxZoom = 17;   //地图显示最大级别
+        this.minZoom = 13;    //地图显示最小级别
+        this.prototype.name = "本地地图";
+        this.prototype.alt = "显示本地地图数据";
+        this.getTile = function(coord, zoom, ownerDocument) {
+            var img = ownerDocument.createElement("img");
+            img.style.width = this.tileSize.width + "px";
+            img.style.height = this.tileSize.height + "px";
+            //地图存放路径
+            //谷歌矢量图 maptile/googlemaps/roadmap
+            //谷歌影像图 maptile/googlemaps/roadmap
+            //MapABC地图 maptile/mapabc/
+            //strURL = "maptile/googlemaps/roadmap/";
+
+            mapPicDir = "maptile/googlemaps/satellite/";
+            var curSize = Math.pow(2, zoom);
+            strURL = mapPicDir + zoom + "/" + (coord.x % curSize) + "/" + (coord.y % curSize) + ".JPG";
+            //strURL = "E:/地图文件/谷歌地图中国0-12级googlemaps/googlemaps/roadmap/" + zoom + "/" + (coord.x % curSize )+ "/" + (coord.y % curSize)+ ".PNG";
+
+            img.src = strURL;
+            return img;
+        };
+    }
 
     //region MapMarker
     /**
@@ -1737,7 +1771,13 @@
             }
 
             var highContrastMap;
-            var highContrastMapName = VRS.googleMapUtilities.toGoogleMapType(VRS.MapType.HighContrast);
+            var highContrastMapName = VRS.googleMapUtilities.toGoogleMapType(VRS.MapType.HighContrast);//TODO:
+
+            var localMap;
+            var localMapName = VRS.googleMapUtilities.toGoogleMapType(VRS.MapType.LocalMap);
+            //TODO:
+            localMap = new VRS.LocalMap();//TODO:
+
             if(mapOptions.showHighContrast && VRS.globalOptions.mapHighContrastMapStyle && VRS.globalOptions.mapHighContrastMapStyle.length) {
                 var googleMapTypeIds = [];
                 $.each(VRS.MapType, function(idx, /** VRS.MapType */ mapType) {
@@ -1770,6 +1810,14 @@
             } else if(mapOptions.mapTypeId === VRS.MapType.HighContrast) {
                 mapOptions.mapTypeId = VRS.MapType.RoadMap;
             }
+
+            //TODO:
+            if (localMap) {
+                state.map.mapTypes.set(localMapName, /** @type {google.maps.MapType} */ localMap);
+            } else if (mapOptions.mapTypeId === VRS.MapType.LocalMap) {
+                mapOptions.mapTypeId = VRS.MapType.Satellite;
+            }
+
             state.map.setMapTypeId(VRS.googleMapUtilities.toGoogleMapType(mapOptions.mapTypeId));
 
             if(mapOptions.mapControls && mapOptions.mapControls.length) {

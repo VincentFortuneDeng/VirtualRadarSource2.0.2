@@ -152,6 +152,7 @@
     VRS.$$.HideEmptyPinTextLines =                      'Hide empty label lines';  /** THIS IS NEW! **/
     VRS.$$.HideNoPosition =                             'Position';
     VRS.$$.HighContrastMap =                            'Contraste';  // <-- please try to keep this one short, it appears as a button on the map and there may not be a lot of room
+    VRS.$$.LocalMap =                                   'OffLine';
     VRS.$$.Icao =                                       'ICAO';
     VRS.$$.Index =                                      'Index';
     VRS.$$.IsMilitary =                                 'Militaire';

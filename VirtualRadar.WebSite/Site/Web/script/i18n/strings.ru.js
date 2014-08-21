@@ -153,6 +153,7 @@
     VRS.$$.HideEmptyPinTextLines =                      'Скрыть пустые строки у меток';  /** THIS IS NEW! **/
     VRS.$$.HideNoPosition =                             'Скрыть самолеты, не передающие позицию';
     VRS.$$.HighContrastMap =                            'Контраст';  // <-- please try to keep this one short, it appears as a button on the map and there may not be a lot of room
+    VRS.$$.LocalMap =                                   'OffLine';
     VRS.$$.Icao =                                       'ICAO адрес';
     VRS.$$.Index =                                      'Индекс';
     VRS.$$.IsMilitary =                                 'Военный';

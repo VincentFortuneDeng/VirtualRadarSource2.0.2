@@ -153,6 +153,7 @@
     VRS.$$.HideEmptyPinTextLines =                      '隐藏空标签行';
     VRS.$$.HideNoPosition =                             '存在坐标';
     VRS.$$.HighContrastMap =                            '对比';                         // <-- please try to keep this one short, it appears as a button on the map and there may not be a lot of room
+    VRS.$$.LocalMap =                                   '离线';                         // <-- please try to keep this one short, it appears as a button on the map and there may not be a lot of room
     VRS.$$.Icao =                                       'ICAO代码';
     VRS.$$.Index =                                      '索引';
     VRS.$$.IsMilitary =                                 '军航';

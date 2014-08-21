@@ -309,7 +309,8 @@
         RoadMap:        'm',
         Satellite:      's',
         Terrain:        't',
-        HighContrast:   'o'         // <-- note that this is referenced BY VALUE in VRS.globalOptions.mapGoogleMapStyles
+        HighContrast:   'o',         // <-- note that this is referenced BY VALUE in VRS.globalOptions.mapGoogleMapStyles
+        LocalMap:       'l'
     };
     //endregion
 

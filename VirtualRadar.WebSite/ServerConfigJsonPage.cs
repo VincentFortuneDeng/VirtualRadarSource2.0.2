@@ -125,6 +125,7 @@ namespace VirtualRadar.WebSite
                 case "TERRAIN":         return "t";
                 case "SATELLITE":       return "s";
                 case "HIGHCONTRAST":    return "o";
+                case "LOCALMAP":        return "l";
                 default:                return null;
             }
         }
