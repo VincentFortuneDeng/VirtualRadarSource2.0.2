@@ -142,8 +142,8 @@
 
             //添加天气\云图图层
             //pageSettings.mapPlugin
-            if (pageSettings.mapPlugin && pageSettings.mapPlugin.isOpen())
-                pageSettings.mapPlugin.setCloudLayer();
+            //天气被删除if (pageSettings.mapPlugin && pageSettings.mapPlugin.isOpen())
+                //天气被删除pageSettings.mapPlugin.setCloudLayer();
 
 
             // Set up the current location

@@ -18,10 +18,16 @@
     //region Global options
     /** @type {VRS_GLOBAL_OPTIONS} */
     VRS.globalOptions = VRS.globalOptions || {};
-    VRS.globalOptions.mapGoogleMapHttpUrl = VRS.globalOptions.mapGoogleMapHttpUrl || 'http://maps.googleapis.com/maps/api/js';            // The HTTP URL for Google Maps
-    VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'https://maps.googleapis.com/maps/api/js';         // The HTTPS URL for Google Maps
-    VRS.globalOptions.mapGoogleMapTimeout = VRS.globalOptions.mapGoogleMapTimeout || 15000;                                            // The number of milliseconds to wait before giving up and assuming that the maps aren't going to load.
-    VRS.globalOptions.mapGoogleMapUseHttps = VRS.globalOptions.mapGoogleMapUseHttps !== undefined ? VRS.globalOptions.mapGoogleMapUseHttps : true;  // True to load the HTTPS version, false to load the HTTP. Note that Chrome on iOS fails if it's not HTTPS!
+    VRS.globalOptions.mapGoogleMapHttpUrl = VRS.globalOptions.mapGoogleMapHttpUrl || 'http://maps.googleapis.com/maps/api/js';            // The HTTP URL for Google Maps 'http://maps.googleapis.com/maps/api/js'
+    VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'https://maps.googleapis.com/maps/api/js';         // The HTTPS URL for Google Maps 'http://maps.googleapis.com/maps/api/js'
+    VRS.globalOptions.mapLocalGoogleMapHttpUrl = VRS.globalOptions.mapLocalGoogleMapHttpUrl || 'http://192.168.4.201:8088/mapfiles/mapapi.js';
+    VRS.globalOptions.mapLocalGoogleMapHttpsUrl = VRS.globalOptions.mapLocalGoogleMapHttpsUrl || 'https://192.168.4.201:8088/mapfiles/mapapi.js';
+
+    //VRS.globalOptions.mapGoogleMapHttpUrl = VRS.globalOptions.mapGoogleMapHttpUrl || 'script/mapfiles/mapapi.js';            // The HTTP URL for Google Maps
+    //VRS.globalOptions.mapGoogleMapHttpsUrl = VRS.globalOptions.mapGoogleMapHttpsUrl || 'script/mapfiles/mapapi.js';         // The HTTPS URL for Google Maps
+
+    VRS.globalOptions.mapGoogleMapTimeout = VRS.globalOptions.mapGoogleMapTimeout || 20000;                                            // The number of milliseconds to wait before giving up and assuming that the maps aren't going to load.
+    VRS.globalOptions.mapGoogleMapUseHttps = VRS.globalOptions.mapGoogleMapUseHttps !== undefined ? VRS.globalOptions.mapGoogleMapUseHttps : false;  // True to load the HTTPS version, false to load the HTTP. Note that Chrome on iOS fails if it's not HTTPS!
     VRS.globalOptions.mapShowStreetView = VRS.globalOptions.mapShowStreetView !== undefined ? VRS.globalOptions.mapShowStreetView : false;              // True if the StreetView control is to be shown on Google Maps.
     VRS.globalOptions.mapScrollWheelActive = VRS.globalOptions.mapScrollWheelActive !== undefined ? VRS.globalOptions.mapScrollWheelActive : true;      // True if the scroll wheel zooms the map.
     VRS.globalOptions.mapDraggable = VRS.globalOptions.mapDraggable !== undefined ? VRS.globalOptions.mapDraggable : true;                              // True if the user can move the map.
@@ -473,31 +479,31 @@
     };
     //endregion
 
-    //TODO:
+    // TODO: 完成离线类定义
     VRS.LocalMap = function()
     {
         this.tileSize = new google.maps.Size(256, 256);
-        this.maxZoom = 17;   //地图显示最大级别
-        this.minZoom = 13;    //地图显示最小级别
-        this.prototype.name = "本地地图";
-        this.prototype.alt = "显示本地地图数据";
+        this.maxZoom = 21;   //地图显示最大级别
+        this.minZoom = 0;    //地图显示最小级别
+        this.name = "离线地图";
+        this.alt = "显示离线地图数据";
         this.getTile = function(coord, zoom, ownerDocument) {
-            var img = ownerDocument.createElement("img");
-            img.style.width = this.tileSize.width + "px";
-            img.style.height = this.tileSize.height + "px";
+            var mapTileImg = ownerDocument.createElement("mapTileImg");
+            mapTileImg.style.width = this.tileSize.width + "px";
+            mapTileImg.style.height = this.tileSize.height + "px";
             //地图存放路径
             //谷歌矢量图 maptile/googlemaps/roadmap
             //谷歌影像图 maptile/googlemaps/roadmap
             //MapABC地图 maptile/mapabc/
             //strURL = "maptile/googlemaps/roadmap/";
 
-            mapPicDir = "maptile/googlemaps/satellite/";
+            mapPicDir = "maptile/googlemaps/roadmap/";
             var curSize = Math.pow(2, zoom);
             strURL = mapPicDir + zoom + "/" + (coord.x % curSize) + "/" + (coord.y % curSize) + ".JPG";
             //strURL = "E:/地图文件/谷歌地图中国0-12级googlemaps/googlemaps/roadmap/" + zoom + "/" + (coord.x % curSize )+ "/" + (coord.y % curSize)+ ".PNG";
 
-            img.src = strURL;
-            return img;
+            mapTileImg.src = strURL;
+            return mapTileImg;
         };
     }
 
@@ -1151,13 +1157,13 @@
          * 天气图层对象
          * @type {google.maps.weather.WeatherLayer}
          */
-        this.weatherLayer = undefined;
+        //天气被删除this.weatherLayer = undefined;
 
         /**
          * 云图图层对象
          * @type {google.maps.weather.CloudLayer}
          */
-        this.cloudLayer = undefined;
+        //云图被删除this.cloudLayer = undefined;
 
         /**
          * The map's container.
@@ -1224,9 +1230,9 @@
         return $.extend({
             // Google Map load options - THESE ONLY HAVE ANY EFFECT ON THE FIRST MAP LOADED ON A PAGE
             key:                null,                                   // If supplied then the Google Maps script is loaded with this API key. API keys are optional for v3 of Google Maps.
-            version:            '3.exp',                                 // The version of Google Maps to load.
+            version:            '3.ex',                               // The version of Google Maps to load. version:            '3.ex',
             sensor:             false,                                  // True if the location-aware stuff is to be turned on.
-            libraries:          ['weather'],                            // The optional libraries to load.添加天气
+            libraries:          [],                                     // The optional libraries to load.添加天气 libraries:          ['weather'],
             loadMarkerWithLabel:false,                                  // Loads the marker-with-labels library after loading Google Maps. Has no effect with other map providers.
 
             // Google map open options
@@ -1365,16 +1371,19 @@
         _loadGoogleMapsScript: function(successCallback, failureCallback)
         {
             var url = VRS.globalOptions.mapGoogleMapUseHttps ? VRS.globalOptions.mapGoogleMapHttpsUrl : VRS.globalOptions.mapGoogleMapHttpUrl;
+            //var url = VRS.globalOptions.mapGoogleMapUseHttps ? VRS.globalOptions.mapLocalGoogleMapHttpsUrl : VRS.globalOptions.mapLocalGoogleMapHttpUrl;
             var params = {
                 v:      this.options.version,
                 sensor: this.options.sensor
             };
             if(this.options.key)                  params.key = this.options.key;
             if(this.options.libraries.length > 0) params.libraries = this.options.libraries.join(',');
-
-            if(VRS.browserHelper && VRS.browserHelper.notOnline()) {
+            //TODO:处理离线状态
+            if (VRS.browserHelper && VRS.browserHelper.notOnline()) {
+                //alert('notOnline');
                 failureCallback(null, VRS.$$.WorkingInOfflineMode, VRS.$$.WorkingInOfflineMode);
             } else {
+                //alert('Online');
                 var callback = successCallback;
                 if(this.options.loadMarkerWithLabel) {
                     callback = function() {
@@ -1387,11 +1396,13 @@
                         });
                     }
                 }
-
+            
                 if(window.google && google.maps) callback();
                 else {
+                    //alert('CallSuccess');
+                    /*修改原始google脚本加载*/
                     VRS.scriptManager.loadScript({
-                        key:        VRS.scriptKey.GoogleMaps,
+                        key:        VRS.scriptKey.GoogleMaps,//'LocalGoogleMaps',
                         url:        url,
                         params:     params,
                         async:      true,
@@ -1400,6 +1411,15 @@
                         error:      failureCallback || null,
                         timeout:    VRS.globalOptions.mapGoogleMapTimeout
                     });
+                    /*测试修改参数VRS.scriptManager.loadScript({
+                        key:  VRS.scriptKey.GoogleMaps,
+                        url:  url,
+                        async: true,
+                        queue: true,
+                        success: callback,
+                        error: failureCallback || null,
+                        timeout: VRS.globalOptions.mapGoogleMapTimeout
+                    });*/
                 }
             }
         },
@@ -1505,18 +1525,18 @@
          * 设置云图
          * @param {number} zoom
          */
-        setCloudLayer: function () { this._setCloudLayer(this._getState()); },
+        //云图被删除setCloudLayer: function () { this._setCloudLayer(this._getState()); },
         /**
          * Worker method for getCenter.
          * @param {VRS.MapPluginState} state
          * @returns {VRS_LAT_LNG}
          * @private
          */
-        _setCloudLayer: function (state) {
+        /*云图被删除_setCloudLayer: function (state) {
             if (state.map) {
                 state.cloudLayer.setMap(state.map);
             }
-        },
+        },*/
 
         /**
          * Gets a value indicating whether the scroll wheel zooms the map.
@@ -1771,12 +1791,13 @@
             }
 
             var highContrastMap;
-            var highContrastMapName = VRS.googleMapUtilities.toGoogleMapType(VRS.MapType.HighContrast);//TODO:
+            var highContrastMapName = VRS.googleMapUtilities.toGoogleMapType(VRS.MapType.HighContrast);
 
+            //TODO:定义离线类实例
             var localMap;
             var localMapName = VRS.googleMapUtilities.toGoogleMapType(VRS.MapType.LocalMap);
             //TODO:
-            localMap = new VRS.LocalMap();//TODO:
+            localMap = new VRS.LocalMap();
 
             if(mapOptions.showHighContrast && VRS.globalOptions.mapHighContrastMapStyle && VRS.globalOptions.mapHighContrastMapStyle.length) {
                 var googleMapTypeIds = [];
@@ -1802,7 +1823,7 @@
 
             var cloudLayer = new google.maps.weather.CloudLayer();
             cloudLayer.setMap(state.map);*/
-            state.cloudLayer = new google.maps.weather.CloudLayer();
+            //云图被删除state.cloudLayer = new google.maps.weather.CloudLayer();
             
 
             if(highContrastMap) {
@@ -1813,7 +1834,7 @@
 
             //TODO:
             if (localMap) {
-                state.map.mapTypes.set(localMapName, /** @type {google.maps.MapType} */ localMap);
+                state.map.mapTypes.set(localMapName, localMap);
             } else if (mapOptions.mapTypeId === VRS.MapType.LocalMap) {
                 mapOptions.mapTypeId = VRS.MapType.Satellite;
             }

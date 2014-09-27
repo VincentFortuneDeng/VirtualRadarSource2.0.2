@@ -115,7 +115,7 @@
             if(options.key && _LoadedScripts[options.key]) {
                 callSuccess();
             } else {
-                if(options.key !== VRS.scriptKey.GoogleMaps) {
+                if (options.key !== VRS.scriptKey.GoogleMaps) {
                     $.ajax({
                         url: options.url,
                         data: options.params,
@@ -133,6 +133,7 @@
                         timeout: VRS.globalOptions.scriptManagerTimeout
                     });
                 } else {
+                    //alert('GoogleMaps');
                     if(!options.async) throw 'Cannot load Google Maps synchronously';
 
                     var callbackName = 'googleMapCallback_' + $.now();
@@ -153,9 +154,12 @@
                     };
 
                     var fullUrl = options.url + '?' + $.param(options.params);
+                    //alert(fullUrl);
+                    //alert(options.url);
                     var script = $('<script/>')
                         .attr('type', 'text/javascript')
-                        .attr('src', fullUrl);
+                        .attr('src', fullUrl);//TODO:
+                        //.attr('src', options.url);//取消参数传递
                     $(document).find('head').last().append(script);
                 }
             }

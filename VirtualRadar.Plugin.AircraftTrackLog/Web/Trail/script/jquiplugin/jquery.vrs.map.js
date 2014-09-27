@@ -1337,23 +1337,52 @@
             };
             if(this.options.key)                  params.key = this.options.key;
             if(this.options.libraries.length > 0) params.libraries = this.options.libraries.join(',');
-
-            if(VRS.browserHelper && VRS.browserHelper.notOnline()) {
+            
+            if (VRS.browserHelper && VRS.browserHelper.notOnline()) {
                 failureCallback(null, VRS.$$.WorkingInOfflineMode, VRS.$$.WorkingInOfflineMode);
-            } else {
-                var callback = successCallback;
-                if(this.options.loadMarkerWithLabel) {
+                //添加部分
+                /*var callback = successCallback;
+                if (this.options.loadMarkerWithLabel) {
                     callback = function() {
                         VRS.scriptManager.loadScript({
-                            key:        'markerWithLabel',
-                            url:        'script/markerWithLabel.js',
-                            async:      true,
-                            queue:      true,
-                            success:    successCallback
+                            key: 'markerWithLabel',
+                            url: 'script/markerWithLabel.js',
+                            async: true,
+                            queue: true,
+                            success: successCallback
                         });
                     }
                 }
 
+                //TODO:确定离线地图
+                if (window.google && google.maps) callback();
+                else {
+                    VRS.scriptManager.loadScript({
+                        key: VRS.scriptKey.GoogleMaps,
+                        url: url,
+                        params: params,
+                        async: true,
+                        queue: true,
+                        success: callback,
+                        error: failureCallback || null,
+                        timeout: VRS.globalOptions.mapGoogleMapTimeout
+                    });
+                }*/
+            } else {
+                var callback = successCallback;
+                if (this.options.loadMarkerWithLabel) {
+                    callback = function() {
+                        VRS.scriptManager.loadScript({
+                            key: 'markerWithLabel',
+                            url: 'script/markerWithLabel.js',
+                            async: true,
+                            queue: true,
+                            success: successCallback
+                        });
+                    }
+                }
+
+                //TODO:确定离线地图
                 if(window.google && google.maps) callback();
                 else {
                     VRS.scriptManager.loadScript({

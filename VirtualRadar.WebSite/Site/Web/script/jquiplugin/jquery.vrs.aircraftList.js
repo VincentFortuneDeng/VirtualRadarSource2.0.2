@@ -610,7 +610,7 @@
             state.poweredByElement
                 .empty()
                 .append($('<a/>')
-                    .attr('href', 'http://www.lnjy.cc/')
+                    .attr('href', 'http://www.hlhk.cc/')
                     .attr('target', 'external')
                     .attr('title', VRS.stringUtility.format(VRS.$$.VrsVersion, version))
                     .text(VRS.$$.PoweredByVRS)
