@@ -128,7 +128,7 @@
     <Compile Include="BaseStation\BaseStationSupplementaryMessage.cs" />
     <Compile Include="Acars\AcarsTranslatorException.cs" />
     <Compile Include="BaseStation\BaseStationTranslatorException.cs" />
-    <Compile Include="BaseStation\IACARSMessageTranslator.cs" />
+    <Compile Include="Acars\IACARSMessageTranslator.cs" />
     <Compile Include="BaseStation\IRawMessageTranslator.cs" />
     <Compile Include="AircraftDetail.cs" />
     <Compile Include="Certainty.cs" />
