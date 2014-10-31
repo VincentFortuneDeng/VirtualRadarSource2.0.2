@@ -1,5 +1,5 @@
 ﻿/**
- * @license Copyright © 2013 onwards, Andrew Whewell
+ * @license Copyright © 2013 onwards, Vincent Deng(邓守海)
  * All rights reserved.
  *
  * Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

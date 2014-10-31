@@ -170,7 +170,7 @@ iPhone CSS был позаимствован из jQTouch проекта (http:/
     <value>Содержание</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell</value>
+    <value>Copyright © Honglin Aviation, Vincent Deng(邓守海)</value>
   </data>
   <data name="DatabaseFileName" xml:space="preserve">
     <value>Файл базы данных</value>
@@ -743,7 +743,7 @@ Suggestion made if the exception could indicate that the port number is in use.<
     <value>Повторное подключение</value>
   </data>
   <data name="LicenseContent" xml:space="preserve">
-    <value>Авторское право © 2010, Andrew Whewell
+    <value>Авторское право © 2014, Vincent Deng(邓守海)
 Все права защищены.
 
 Разрешается повторное распространение и использование как в виде исходного кода, так и в двоичной форме, с модификациями или без, при соблюдении следующих условий:

@@ -170,7 +170,7 @@ French translation by Francois /F5ANN.</value>
     <value>Content</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell</value>
+    <value>Copyright © Honglin Aviation, Vincent Deng(邓守海)</value>
   </data>
   <data name="DatabaseFileName" xml:space="preserve">
     <value>Database filename</value>
@@ -741,7 +741,7 @@ Suggestion made if the exception could indicate that the port number is in use.<
     <value>Reconnecting</value>
   </data>
   <data name="LicenseContent" xml:space="preserve">
-    <value>Copyright © 2010 onwards, Andrew Whewell
+    <value>Copyright © Honglin Aviation, Vincent Deng(邓守海)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

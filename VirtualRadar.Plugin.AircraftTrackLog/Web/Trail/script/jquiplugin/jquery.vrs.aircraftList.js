@@ -1,5 +1,5 @@
 ﻿/**
- * @license Copyright © 2013 onwards, Andrew Whewell
+ * @license Copyright © 2013 onwards, Vincent Deng(邓守海)
  * All rights reserved.
  *
  * Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -610,7 +610,7 @@
             state.poweredByElement
                 .empty()
                 .append($('<a/>')
-                    .attr('href', 'http://www.lnjy.cc/')
+                    .attr('href', 'http://www.hlhk.cc/')
                     .attr('target', 'external')
                     .attr('title', VRS.stringUtility.format(VRS.$$.VrsVersion, version))
                     .text(VRS.$$.PoweredByVRS)

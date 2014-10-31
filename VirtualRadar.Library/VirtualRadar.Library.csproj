@@ -104,6 +104,7 @@
     <Compile Include="BaseStation\RawMessageTranslator.cs" />
     <Compile Include="BroadcastProvider.cs" />
     <Compile Include="CallsignParser.cs" />
+    <Compile Include="ChinaMapShift.cs" />
     <Compile Include="Clock.cs" />
     <Compile Include="BaseStation\BaseStationMessageCompressor.cs" />
     <Compile Include="BaseStation\BaseStationMessageTranslator.cs" />

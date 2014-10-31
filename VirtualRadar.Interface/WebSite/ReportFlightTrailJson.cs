@@ -1,4 +1,4 @@
-﻿// Copyright © 2010 onwards, Andrew Whewell
+﻿// Copyright © Honglin Aviation, Vincent Deng(邓守海)
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -38,8 +38,8 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the callsign that the aircraft used during the flight.
         /// </summary>
-        /*[DataMember(Name="call", EmitDefaultValue=false)]
-        public string Callsign { get; set; }*/
+        [DataMember(Name="call", EmitDefaultValue=false)]
+        public string Callsign { get; set; }
 
         /// <summary>
         /// Gets or sets the index in the Routes list on either <see cref="AircraftReportJson"/> or <see cref="FlightReportJson"/>
@@ -57,8 +57,8 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the time that a transmission from the aircraft was last seen.
         /// </summary>
-        /*[DataMember(Name="end", EmitDefaultValue=false)]
-        public DateTime EndTime { get; set; }*/
+        [DataMember(Name="end", EmitDefaultValue=false)]
+        public string EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the altitude that the aircraft was flying at when it was first seen.
@@ -111,20 +111,20 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets a value indicating that the aircraft changed its squawk during the flight.
         /// </summary>
-        /*[DataMember(Name="hAlrt", EmitDefaultValue=false)]
-        public bool HadAlert { get; set; }*/
+        [DataMember(Name="hAlrt", EmitDefaultValue=false)]
+        public bool HadAlert { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating that the aircraft transmitted an emergency squawk code during the flight.
         /// </summary>
-        /*[DataMember(Name="hEmg", EmitDefaultValue=false)]
-        public bool HadEmergency { get; set; }*/
+        [DataMember(Name="hEmg", EmitDefaultValue=false)]
+        public bool HadEmergency { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating that the pilot pressed the IDENT button at some point during the flight.
         /// </summary>
-        /*[DataMember(Name="hSpi", EmitDefaultValue=false)]
-        public bool HadSpi { get; set; }*/
+        [DataMember(Name="hSpi", EmitDefaultValue=false)]
+        public bool HadSpi { get; set; }
 
         /// <summary>
         /// Gets or sets the altitude that the aircraft was flying at when it was last seen.
@@ -141,8 +141,8 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets a value indicating whether the aircraft was on the ground when it was last seen.
         /// </summary>
-        /*[DataMember(Name="lOnGnd", EmitDefaultValue=false)]
-        public bool LastIsOnGround { get; set; }*/
+        [DataMember(Name="lOnGnd", EmitDefaultValue=false)]
+        public bool LastIsOnGround { get; set; }
 
         /// <summary>
         /// Gets or sets the latitude of the aircraft when it was last seen.
@@ -159,8 +159,8 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the squawk that the aircraft was transmitting when it was last seen.
         /// </summary>
-        /*[DataMember(Name="lSqk", EmitDefaultValue=false)]
-        public int LastSquawk { get; set; }*/
+        [DataMember(Name="lSqk", EmitDefaultValue=false)]
+        public int LastSquawk { get; set; }
 
         /// <summary>
         /// Gets or sets the heading that the aircraft was flying over the ground when it was last seen.
@@ -171,8 +171,8 @@ namespace VirtualRadar.Interface.WebSite
         /// <summary>
         /// Gets or sets the rate of climb / descent that the aircraft was making when last seen.
         /// </summary>
-        /*[DataMember(Name="lVsi", EmitDefaultValue=false)]
-        public int LastVerticalRate { get; set; }*/
+        [DataMember(Name="lVsi", EmitDefaultValue=false)]
+        public int LastVerticalRate { get; set; }
 
         /// <summary>
         /// Gets or sets the total number of ADSB messages received over the course of the flight.

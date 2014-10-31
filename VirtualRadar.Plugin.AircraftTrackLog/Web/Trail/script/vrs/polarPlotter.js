@@ -1,5 +1,5 @@
 ﻿/**
- * @license Copyright © 2014 onwards, Andrew Whewell
+ * @license Copyright © Honglin Aviation, Vincent Deng(邓守海)
  * All rights reserved.
  *
  * Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

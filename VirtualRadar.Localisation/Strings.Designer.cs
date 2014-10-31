@@ -845,7 +845,7 @@ namespace VirtualRadar.Localisation {
         }
         
         /// <summary>
-        ///   查找类似 Copyright © 2010 onwards, Andrew Whewell 的本地化字符串。
+        ///   查找类似 Copyright © Honglin Aviation, Vincent Deng(邓守海) 的本地化字符串。
         /// </summary>
         public static string Copyright {
             get {
@@ -1853,7 +1853,7 @@ namespace VirtualRadar.Localisation {
         }
         
         /// <summary>
-        ///   查找类似 Copyright © 2010 onwards, Andrew Whewell
+        ///   查找类似 Copyright © Honglin Aviation, Vincent Deng(邓守海)
         ///All rights reserved.
         ///
         ///Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

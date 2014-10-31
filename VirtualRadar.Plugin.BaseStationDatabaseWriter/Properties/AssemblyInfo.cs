@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Virtual Radar Server")]
-[assembly: AssemblyCopyright("Copyright © 2011 Andrew Whewell")]
+[assembly: AssemblyCopyright("Copyright © 2011 Vincent Deng(邓守海)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

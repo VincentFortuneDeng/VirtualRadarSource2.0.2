@@ -1,4 +1,4 @@
-﻿// Copyright © 2010 onwards, Andrew Whewell
+﻿// Copyright © Honglin Aviation, Vincent Deng(邓守海)
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -60,30 +60,30 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
             public ReportFlightTrailJson ConvertToReportFlightTrailJson(BaseStationFlight flight)
             {
                 var result = new ReportFlightTrailJson() {
-                    //RowNumber = rowNumber++,
-                    /*Callsign = flight.Callsign,
-                    StartTime = flight.StartTime,
-                    EndTime = flight.EndTime.GetValueOrDefault(),
-                    FirstAltitude = flight.FirstAltitude.GetValueOrDefault(),
+                    /*RowNumber = rowNumber++,*/
+                    Callsign = flight.Callsign,
+                    /*StartTime = flight.StartTime,*/
+                    EndTime = flight.EndTime.GetValueOrDefault().ToUniversalTime().ToString("HH:mm:ss"),
+                    /*FirstAltitude = flight.FirstAltitude.GetValueOrDefault(),
                     FirstGroundSpeed = (int)flight.FirstGroundSpeed.GetValueOrDefault(),
                     FirstIsOnGround = flight.FirstIsOnGround,
                     FirstLatitude = flight.FirstLat.GetValueOrDefault(),
                     FirstLongitude = flight.FirstLon.GetValueOrDefault(),
                     FirstSquawk = flight.FirstSquawk.GetValueOrDefault(),
                     FirstTrack = flight.FirstTrack.GetValueOrDefault(),
-                    FirstVerticalRate = flight.FirstVerticalRate.GetValueOrDefault(),
+                    FirstVerticalRate = flight.FirstVerticalRate.GetValueOrDefault(),*/
                     HadAlert = flight.HadAlert,
                     HadEmergency = flight.HadEmergency,
-                    HadSpi = flight.HadSpi,*/
+                    HadSpi = flight.HadSpi,
                     LastAltitude = flight.LastAltitude.GetValueOrDefault(),
                     LastGroundSpeed = (int)flight.LastGroundSpeed.GetValueOrDefault(),
-                    /*LastIsOnGround = flight.LastIsOnGround,*/
+                    LastIsOnGround = flight.LastIsOnGround,
                     LastLatitude = flight.LastLat.GetValueOrDefault(),
                     LastLongitude = flight.LastLon.GetValueOrDefault(),
-                    /*LastSquawk = flight.LastSquawk.GetValueOrDefault(),*/
+                    LastSquawk = flight.LastSquawk.GetValueOrDefault(),
                     LastTrack = flight.LastTrack.GetValueOrDefault(),
-                    /*LastVerticalRate = flight.LastVerticalRate.GetValueOrDefault(),
-                    NumADSBMsgRec = flight.NumADSBMsgRec.GetValueOrDefault(),
+                    LastVerticalRate = flight.LastVerticalRate.GetValueOrDefault(),
+                    /*NumADSBMsgRec = flight.NumADSBMsgRec.GetValueOrDefault(),
                     NumModeSMsgRec = flight.NumModeSMsgRec.GetValueOrDefault(),
                     NumPosMsgRec = flight.NumPosMsgRec.GetValueOrDefault(),*/
                 };

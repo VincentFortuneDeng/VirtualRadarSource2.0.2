@@ -1,4 +1,4 @@
-﻿// Copyright © 2010 onwards, Andrew Whewell
+﻿// Copyright © Honglin Aviation, Vincent Deng(邓守海)
 // All rights reserved.
 //
 // Redistribution and use of this software in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -30,7 +30,7 @@ namespace VirtualRadar.Library.BaseStation
     /// <summary>
     /// The default implementation of <see cref="IBaseStationAircraftList"/>.
     /// </summary>
-    sealed class BaseStationAircraftList : IBaseStationAircraftList
+    sealed class BaseStationAircraftList:IBaseStationAircraftList
     {
         #region Private Class - TrackCalculationParameters
         /// <summary>
@@ -102,7 +102,7 @@ namespace VirtualRadar.Library.BaseStation
         /// <summary>
         /// A map of unique identifiers to aircraft objects.
         /// </summary>
-        private Dictionary<int, IAircraft> _AircraftMap = new Dictionary<int, IAircraft>();
+        private Dictionary<int,IAircraft> _AircraftMap = new Dictionary<int,IAircraft>();
 
         /// <summary>
         /// The object that fetches aircraft details for us.
@@ -144,7 +144,7 @@ namespace VirtualRadar.Library.BaseStation
         /// A map of aircraft identifiers to the parameters used for calculating its track. This is a parallel list to
         /// <see cref="_AircraftMap"/> and is locked using <see cref="_AircraftMapLock"/>.
         /// </summary>
-        private Dictionary<int, TrackCalculationParameters> _CalculatedTrackCoordinates = new Dictionary<int,TrackCalculationParameters>();
+        private Dictionary<int,TrackCalculationParameters> _CalculatedTrackCoordinates = new Dictionary<int,TrackCalculationParameters>();
 
         /// <summary>
         /// The time that the last removal of old aircraft from the list was performed.
@@ -211,17 +211,17 @@ namespace VirtualRadar.Library.BaseStation
             }
         }
 
-        void AcarsListener_PositionReset(object sender, EventArgs<string> e)
+        void AcarsListener_PositionReset(object sender,EventArgs<string> e)
         {
             throw new NotImplementedException();
         }
 
-        void AcarsListener_SourceChanged(object sender, EventArgs e)
+        void AcarsListener_SourceChanged(object sender,EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        void AcarsListener_AcarsMessageReceived(object sender, Interface.Acars.AcarsMessageEventArgs args)
+        void AcarsListener_AcarsMessageReceived(object sender,Interface.Acars.AcarsMessageEventArgs args)
         {
             if(_Started) ProcessMessage(args.Message);
         }
@@ -278,7 +278,7 @@ namespace VirtualRadar.Library.BaseStation
         /// <param name="args"></param>
         private void OnExceptionCaught(EventArgs<Exception> args)
         {
-            if(ExceptionCaught != null) ExceptionCaught(this, args);
+            if(ExceptionCaught != null) ExceptionCaught(this,args);
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace VirtualRadar.Library.BaseStation
         /// <param name="args"></param>
         private void OnCountChanged(EventArgs args)
         {
-            if(CountChanged != null) CountChanged(this, args);
+            if(CountChanged != null) CountChanged(this,args);
         }
         #endregion
 
@@ -402,10 +402,10 @@ namespace VirtualRadar.Library.BaseStation
                         var altitudeCertainty = isOnGround ? Certainty.ProbablyRight : Certainty.Uncertain;
                         var positionCertainty = Certainty.Uncertain;
                         if(message.Altitude != null && !isOnGround) {
-                            isInsane = (altitudeCertainty = _SanityChecker.CheckAltitude(uniqueId, now, message.Altitude.Value)) == Certainty.CertainlyWrong;
+                            isInsane = (altitudeCertainty = _SanityChecker.CheckAltitude(uniqueId,now,message.Altitude.Value)) == Certainty.CertainlyWrong;
                         }
                         if(!isInsane && message.Latitude != null && message.Longitude != null && (message.Latitude != 0.0 || message.Longitude != 0.0)) {
-                            isInsane = (positionCertainty = _SanityChecker.CheckPosition(uniqueId, now, message.Latitude.Value, message.Longitude.Value)) == Certainty.CertainlyWrong;
+                            isInsane = (positionCertainty = _SanityChecker.CheckPosition(uniqueId,now,message.Latitude.Value,message.Longitude.Value)) == Certainty.CertainlyWrong;
                         }
 
                         if(!isInsane) {
@@ -415,19 +415,19 @@ namespace VirtualRadar.Library.BaseStation
                             // so care must be taken to avoid deadlocks.
                             lock(_AircraftMapLock) {
                                 IAircraft aircraft;
-                                isNewAircraft = !_AircraftMap.TryGetValue(uniqueId, out aircraft);
+                                isNewAircraft = !_AircraftMap.TryGetValue(uniqueId,out aircraft);
                                 if(isNewAircraft) {
                                     aircraft = Factory.Singleton.Resolve<IAircraft>();
                                     aircraft.UniqueId = uniqueId;
-                                    _AircraftMap.Add(uniqueId, aircraft);
+                                    _AircraftMap.Add(uniqueId,aircraft);
                                 }
 
-                                ApplyMessageToAircraft(message, aircraft, isNewAircraft);
+                                ApplyMessageToAircraft(message,aircraft,isNewAircraft);
                             }
 
                             if(altitudeCertainty == Certainty.ProbablyRight && positionCertainty == Certainty.ProbablyRight) {
                                 if(PolarPlotter != null) {
-                                    PolarPlotter.AddCheckedCoordinate(uniqueId, isOnGround ? 0 : message.Altitude.Value, message.Latitude.Value, message.Longitude.Value);
+                                    PolarPlotter.AddCheckedCoordinate(uniqueId,isOnGround ? 0 : message.Altitude.Value,message.Latitude.Value,message.Longitude.Value);
                                 }
                             }
 
@@ -436,12 +436,12 @@ namespace VirtualRadar.Library.BaseStation
                     }
                 }
             } catch(Exception ex) {
-                Debug.WriteLine(String.Format("BaseStationAircraftList.ProcessMessage caught exception: {0}", ex.ToString()));
+                Debug.WriteLine(String.Format("BaseStationAircraftList.ProcessMessage caught exception: {0}",ex.ToString()));
                 OnExceptionCaught(new EventArgs<Exception>(ex));
             }
         }
 
-        private void ApplyMessageToAircraft(BaseStationMessage message, IAircraft aircraft, bool isNewAircraft)
+        private void ApplyMessageToAircraft(BaseStationMessage message,IAircraft aircraft,bool isNewAircraft)
         {
             var now = _Clock.UtcNow;
 
@@ -458,7 +458,7 @@ namespace VirtualRadar.Library.BaseStation
                 operatorIcao = aircraft.OperatorIcao;
             }
 
-            var track = CalculateTrack(message, aircraft);
+            var track = CalculateTrack(message,aircraft);
 
             lock(aircraft) {
                 GenerateDataVersion(aircraft);
@@ -475,8 +475,18 @@ namespace VirtualRadar.Library.BaseStation
                 if(message.GroundSpeed != null) aircraft.GroundSpeed = message.GroundSpeed;
                 if(track != null) aircraft.Track = track;
                 if(message.Track != null && message.Track != 0.0) aircraft.IsTransmittingTrack = true;
-                if(message.Latitude != null) aircraft.Latitude = message.Latitude;
-                if(message.Longitude != null) aircraft.Longitude = message.Longitude;
+                //坐标转换
+                ChinaMapShift.Location loc = new ChinaMapShift.Location();
+                if(message.Latitude != null && message.Latitude != null) {
+                    loc.Lat =(double)message.Latitude; loc.Lng =(double)message.Longitude;
+                    loc= ChinaMapShift.TransformFromWGSToGCJ(loc);
+                }
+                if(message.Latitude != null) aircraft.Latitude = loc.Lat;
+                if(message.Longitude != null) aircraft.Longitude = loc.Lng;
+
+                /*if(message.Latitude != null) aircraft.Latitude = message.Latitude;
+                if(message.Longitude != null) aircraft.Longitude = message.Longitude;*/
+
                 if(message.VerticalRate != null) aircraft.VerticalRate = message.VerticalRate;
                 if(message.OnGround != null) aircraft.OnGround = message.OnGround;
                 if(message.Squawk != null) {
@@ -492,18 +502,18 @@ namespace VirtualRadar.Library.BaseStation
 
                 var callsignRouteDetail = _CallsignRouteFetcher.RegisterAircraft(aircraft);
                 if(isNewAircraft || callsignChanged) {
-                    ApplyRoute(aircraft, callsignRouteDetail == null ? null : callsignRouteDetail.Route);
+                    ApplyRoute(aircraft,callsignRouteDetail == null ? null : callsignRouteDetail.Route);
                 }
 
-                ApplyCodeBlock(aircraft , codeBlock);
+                ApplyCodeBlock(aircraft,codeBlock);
 
                 if(message.Latitude != null && message.Longitude != null) {
-                    aircraft.UpdateCoordinates(now, _ShortTrailLengthSeconds);
+                    aircraft.UpdateCoordinates(now,_ShortTrailLengthSeconds);
                 }
 
                 var aircraftDetail = _AircraftDetailFetcher.RegisterAircraft(aircraft);
                 if(isNewAircraft) {
-                    if(aircraftDetail != null) ApplyAircraftDetail(aircraft, aircraftDetail);
+                    if(aircraftDetail != null) ApplyAircraftDetail(aircraft,aircraftDetail);
                 }
             }
         }
@@ -514,7 +524,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="aircraft"></param>
         /// <param name="aircraftDetail"></param>
-        private void ApplyAircraftDetail(IAircraft aircraft, AircraftDetail aircraftDetail)
+        private void ApplyAircraftDetail(IAircraft aircraft,AircraftDetail aircraftDetail)
         {
             var baseStationAircraft = aircraftDetail.Aircraft ?? _EmptyBaseStationAircraft;
             var operatorIcao = aircraft.OperatorIcao;
@@ -533,11 +543,11 @@ namespace VirtualRadar.Library.BaseStation
             if(operatorIcao != aircraft.OperatorIcao) {
                 var callsignRouteDetail = _CallsignRouteFetcher.RegisterAircraft(aircraft);
                 if(callsignRouteDetail != null && callsignRouteDetail.Route != null) {
-                    ApplyRoute(aircraft, callsignRouteDetail.Route);
+                    ApplyRoute(aircraft,callsignRouteDetail.Route);
                 }
             }
-            ApplyAircraftPicture(aircraft, aircraftDetail.Picture);
-            ApplyAircraftType(aircraft, aircraftDetail.AircraftType);
+            ApplyAircraftPicture(aircraft,aircraftDetail.Picture);
+            ApplyAircraftType(aircraft,aircraftDetail.AircraftType);
         }
 
         /// <summary>
@@ -546,7 +556,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="aircraft"></param>
         /// <param name="pictureDetail"></param>
-        private void ApplyAircraftPicture(IAircraft aircraft, PictureDetail pictureDetail)
+        private void ApplyAircraftPicture(IAircraft aircraft,PictureDetail pictureDetail)
         {
             var fileName = pictureDetail == null ? null : pictureDetail.FileName;
             var width = pictureDetail == null ? 0 : pictureDetail.Width;
@@ -562,7 +572,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="aircraft"></param>
         /// <param name="codeBlock"></param>
-        private static void ApplyCodeBlock(IAircraft aircraft, CodeBlock codeBlock)
+        private static void ApplyCodeBlock(IAircraft aircraft,CodeBlock codeBlock)
         {
             if(codeBlock != null) {
                 aircraft.Icao24Country = codeBlock.Country;
@@ -575,18 +585,18 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="aircraft"></param>
         /// <param name="route"></param>
-        private void ApplyRoute(IAircraft aircraft, Route route)
+        private void ApplyRoute(IAircraft aircraft,Route route)
         {
-            var origin = route == null ? null : Describe.Airport(route.From, _PreferIataAirportCodes);
-            var destination = route == null ? null : Describe.Airport(route.To, _PreferIataAirportCodes);
+            var origin = route == null ? null : Describe.Airport(route.From,_PreferIataAirportCodes);
+            var destination = route == null ? null : Describe.Airport(route.To,_PreferIataAirportCodes);
             var stopovers = new List<string>();
             if(route != null) {
                 foreach(var stopover in route.Stopovers) {
-                    stopovers.Add(Describe.Airport(stopover, _PreferIataAirportCodes));
+                    stopovers.Add(Describe.Airport(stopover,_PreferIataAirportCodes));
                 }
             }
 
-            if(aircraft.Origin != origin)           aircraft.Origin = origin;
+            if(aircraft.Origin != origin) aircraft.Origin = origin;
             if(aircraft.Destination != destination) aircraft.Destination = destination;
             if(!aircraft.Stopovers.SequenceEqual(stopovers)) {
                 aircraft.Stopovers.Clear();
@@ -603,7 +613,7 @@ namespace VirtualRadar.Library.BaseStation
         /// <param name="message"></param>
         /// <param name="aircraft"></param>
         /// <returns></returns>
-        private float? CalculateTrack(BaseStationMessage message, IAircraft aircraft)
+        private float? CalculateTrack(BaseStationMessage message,IAircraft aircraft)
         {
             var result = message.Track;
 
@@ -616,7 +626,7 @@ namespace VirtualRadar.Library.BaseStation
             if(positionPresent && (onGround || trackNeverTransmitted)) {
                 TrackCalculationParameters calcParameters;
                 lock(_AircraftMapLock) {
-                    _CalculatedTrackCoordinates.TryGetValue(aircraft.UniqueId, out calcParameters);
+                    _CalculatedTrackCoordinates.TryGetValue(aircraft.UniqueId,out calcParameters);
                     if(calcParameters != null && onGround && calcParameters.TrackFrozenAt.AddMinutes(30) <= _Clock.UtcNow) {
                         _CalculatedTrackCoordinates.Remove(aircraft.UniqueId);
                         calcParameters = null;
@@ -628,8 +638,8 @@ namespace VirtualRadar.Library.BaseStation
                 if(trackSuspect || trackFrozen) {
                     var trackCalculated = false;
                     if(calcParameters == null) {
-                        calcParameters = new TrackCalculationParameters() { LastLatitude = message.Latitude.Value, LastLongitude = message.Longitude.Value, LastTransmittedTrack = message.Track, TrackFrozen = true, TrackFrozenAt = _Clock.UtcNow };
-                        lock(_AircraftMapLock) _CalculatedTrackCoordinates.Add(aircraft.UniqueId, calcParameters);
+                        calcParameters = new TrackCalculationParameters() { LastLatitude = message.Latitude.Value,LastLongitude = message.Longitude.Value,LastTransmittedTrack = message.Track,TrackFrozen = true,TrackFrozenAt = _Clock.UtcNow };
+                        lock(_AircraftMapLock) _CalculatedTrackCoordinates.Add(aircraft.UniqueId,calcParameters);
                         trackCalculated = true;
                     } else if(message.Latitude != calcParameters.LastLatitude || message.Longitude != calcParameters.LastLongitude) {
                         if(trackFrozen && onGround && calcParameters.LastTransmittedTrack != message.Track) {
@@ -637,8 +647,8 @@ namespace VirtualRadar.Library.BaseStation
                         }
                         if(trackSuspect || trackFrozen) {
                             var minimumDistanceKm = message.OnGround.GetValueOrDefault() ? 0.010 : 0.25;
-                            if(GreatCircleMaths.Distance(message.Latitude, message.Longitude, calcParameters.LastLatitude, calcParameters.LastLongitude).GetValueOrDefault() >= minimumDistanceKm) {
-                                result = (float?)GreatCircleMaths.Bearing(calcParameters.LastLatitude, calcParameters.LastLongitude, message.Latitude, message.Longitude, null, false, false);
+                            if(GreatCircleMaths.Distance(message.Latitude,message.Longitude,calcParameters.LastLatitude,calcParameters.LastLongitude).GetValueOrDefault() >= minimumDistanceKm) {
+                                result = (float?)GreatCircleMaths.Bearing(calcParameters.LastLatitude,calcParameters.LastLongitude,message.Latitude,message.Longitude,null,false,false);
                                 result = Round.Track(result);
                                 calcParameters.LastLatitude = message.Latitude.Value;
                                 calcParameters.LastLongitude = message.Longitude.Value;
@@ -666,9 +676,9 @@ namespace VirtualRadar.Library.BaseStation
             int uniqueId = -1;
             if(!String.IsNullOrEmpty(icao)) {
                 try {
-                    uniqueId = Convert.ToInt32(icao, 16);
+                    uniqueId = Convert.ToInt32(icao,16);
                 } catch(Exception ex) {
-                    Debug.WriteLine(String.Format("BaseStationAircraftList.ConvertIcaoToUniqueId caught exception {0}", ex.ToString()));
+                    Debug.WriteLine(String.Format("BaseStationAircraftList.ConvertIcaoToUniqueId caught exception {0}",ex.ToString()));
                 }
             }
 
@@ -715,7 +725,7 @@ namespace VirtualRadar.Library.BaseStation
 
             lock(_AircraftMapLock) {
                 IAircraft aircraft;
-                if(_AircraftMap.TryGetValue(uniqueId, out aircraft)) {
+                if(_AircraftMap.TryGetValue(uniqueId,out aircraft)) {
                     lock(aircraft) {
                         result = (IAircraft)aircraft.Clone();
                     }
@@ -731,7 +741,7 @@ namespace VirtualRadar.Library.BaseStation
         /// <param name="snapshotTimeStamp"></param>
         /// <param name="snapshotDataVersion"></param>
         /// <returns></returns>
-        public List<IAircraft> TakeSnapshot(out long snapshotTimeStamp, out long snapshotDataVersion)
+        public List<IAircraft> TakeSnapshot(out long snapshotTimeStamp,out long snapshotDataVersion)
         {
             snapshotTimeStamp = _Clock.UtcNow.Ticks;
             snapshotDataVersion = -1L;
@@ -761,7 +771,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="aircraft"></param>
         /// <param name="typeDetails"></param>
-        private static void ApplyAircraftType(IAircraft aircraft, AircraftType typeDetails)
+        private static void ApplyAircraftType(IAircraft aircraft,AircraftType typeDetails)
         {
             aircraft.NumberOfEngines = typeDetails == null ? null : typeDetails.Engines;
             aircraft.EngineType = typeDetails == null ? EngineType.None : typeDetails.EngineType;
@@ -782,7 +792,7 @@ namespace VirtualRadar.Library.BaseStation
                     if(codeBlock != null && (aircraft.Icao24Country != codeBlock.Country || aircraft.IsMilitary != codeBlock.IsMilitary)) {
                         lock(aircraft) {
                             GenerateDataVersion(aircraft);
-                            ApplyCodeBlock(aircraft, codeBlock);
+                            ApplyCodeBlock(aircraft,codeBlock);
                         }
                     }
                 }
@@ -790,7 +800,7 @@ namespace VirtualRadar.Library.BaseStation
         }
         #endregion
 
-        #region RemoveOldAircraft, ResetAircraftList, 
+        #region RemoveOldAircraft, ResetAircraftList,
         /// <summary>
         /// Removes aircraft that have not been seen for a while.
         /// </summary>
@@ -837,7 +847,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void AircraftDetailFetcher_Fetched(object sender, EventArgs<AircraftDetail> args)
+        private void AircraftDetailFetcher_Fetched(object sender,EventArgs<AircraftDetail> args)
         {
             try {
                 var aircraftDetail = args.Value;
@@ -845,10 +855,10 @@ namespace VirtualRadar.Library.BaseStation
                 if(uniqueId != -1) {
                     lock(_AircraftMapLock) {
                         IAircraft aircraft;
-                        if(_AircraftMap.TryGetValue(uniqueId, out aircraft)) {
+                        if(_AircraftMap.TryGetValue(uniqueId,out aircraft)) {
                             lock(aircraft) {
                                 GenerateDataVersion(aircraft);
-                                ApplyAircraftDetail(aircraft, aircraftDetail);
+                                ApplyAircraftDetail(aircraft,aircraftDetail);
                             }
                         }
                     }
@@ -867,7 +877,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void CallsignRouteFetcher_Fetched(object sender, EventArgs<CallsignRouteDetail> args)
+        private void CallsignRouteFetcher_Fetched(object sender,EventArgs<CallsignRouteDetail> args)
         {
             try {
                 var callsignRouteDetail = args.Value;
@@ -875,10 +885,10 @@ namespace VirtualRadar.Library.BaseStation
                 if(uniqueId != -1) {
                     lock(_AircraftMapLock) {
                         IAircraft aircraft;
-                        if(_AircraftMap.TryGetValue(uniqueId, out aircraft) && aircraft.Callsign == callsignRouteDetail.Callsign) {
+                        if(_AircraftMap.TryGetValue(uniqueId,out aircraft) && aircraft.Callsign == callsignRouteDetail.Callsign) {
                             lock(aircraft) {
                                 GenerateDataVersion(aircraft);
-                                ApplyRoute(aircraft, callsignRouteDetail.Route);
+                                ApplyRoute(aircraft,callsignRouteDetail.Route);
                             }
                         }
                     }
@@ -895,7 +905,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void BaseStationListener_MessageReceived(object sender, BaseStationMessageEventArgs args)
+        private void BaseStationListener_MessageReceived(object sender,BaseStationMessageEventArgs args)
         {
             if(_Started) ProcessMessage(args.Message);
         }
@@ -905,7 +915,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void BaseStationListener_SourceChanged(object sender, EventArgs args)
+        private void BaseStationListener_SourceChanged(object sender,EventArgs args)
         {
             ResetAircraftList();
         }
@@ -916,14 +926,14 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void BaseStationListener_PositionReset(object sender, EventArgs<string> args)
+        private void BaseStationListener_PositionReset(object sender,EventArgs<string> args)
         {
             var key = ConvertIcaoToUniqueId(args.Value);
             _SanityChecker.ResetAircraft(key);
 
             lock(_AircraftMapLock) {
                 IAircraft aircraft;
-                if(_AircraftMap.TryGetValue(key, out aircraft)) {
+                if(_AircraftMap.TryGetValue(key,out aircraft)) {
                     aircraft.ResetCoordinates();
                 }
             }
@@ -934,7 +944,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void ConfigurationStorage_ConfigurationChanged(object sender, EventArgs args)
+        private void ConfigurationStorage_ConfigurationChanged(object sender,EventArgs args)
         {
             LoadConfiguration();
         }
@@ -944,7 +954,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void Heartbeat_SlowTick(object sender, EventArgs args)
+        private void Heartbeat_SlowTick(object sender,EventArgs args)
         {
             var now = _Clock.UtcNow;
 
@@ -962,7 +972,7 @@ namespace VirtualRadar.Library.BaseStation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void StandingDataManager_LoadCompleted(object sender, EventArgs args)
+        private void StandingDataManager_LoadCompleted(object sender,EventArgs args)
         {
             RefreshCodeBlocks();
         }
