@@ -478,12 +478,12 @@ namespace VirtualRadar.Library.BaseStation
                 //坐标转换
                 ChinaMapShift.Location loc = new ChinaMapShift.Location();
                 if(message.Latitude != null && message.Latitude != null) {
-                    loc.Lat =(double)message.Latitude; loc.Lng =(double)message.Longitude;
+                    loc.Lat =message.Latitude.GetValueOrDefault(); loc.Lng =message.Longitude.GetValueOrDefault();
                     loc= ChinaMapShift.TransformFromWGSToGCJ(loc);
                 }
                 if(message.Latitude != null) aircraft.Latitude = loc.Lat;
                 if(message.Longitude != null) aircraft.Longitude = loc.Lng;
-
+                //坐标转换
                 /*if(message.Latitude != null) aircraft.Latitude = message.Latitude;
                 if(message.Longitude != null) aircraft.Longitude = message.Longitude;*/
 

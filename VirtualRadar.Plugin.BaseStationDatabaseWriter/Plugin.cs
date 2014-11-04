@@ -63,7 +63,7 @@ namespace VirtualRadar.Plugin.BaseStationDatabaseWriter
                     /*RowNumber = rowNumber++,*/
                     Callsign = flight.Callsign,
                     /*StartTime = flight.StartTime,*/
-                    EndTime = flight.EndTime.GetValueOrDefault().ToUniversalTime().ToString("HH:mm:ss"),
+                    EndTime = flight.EndTime.GetValueOrDefault(),
                     /*FirstAltitude = flight.FirstAltitude.GetValueOrDefault(),
                     FirstGroundSpeed = (int)flight.FirstGroundSpeed.GetValueOrDefault(),
                     FirstIsOnGround = flight.FirstIsOnGround,

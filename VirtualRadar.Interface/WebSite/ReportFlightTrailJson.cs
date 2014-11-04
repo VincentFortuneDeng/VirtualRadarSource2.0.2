@@ -58,7 +58,7 @@ namespace VirtualRadar.Interface.WebSite
         /// Gets or sets the time that a transmission from the aircraft was last seen.
         /// </summary>
         [DataMember(Name="end", EmitDefaultValue=false)]
-        public string EndTime { get; set; }
+        public DateTime EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the altitude that the aircraft was flying at when it was first seen.

@@ -1,0 +1,17 @@
+[GroundVehicleCodes]
+FOLLOW ME
+BIRD SCARER
+BUS
+ELECTRICIAN
+FIRE
+FUEL
+TUG
+VAN
+MEDIC
+NISSANPATROL
+
+[TowerCodes]
+VOR #全向信标台
+MRP #强制报告点
+ARP #要求报告点
+NDB #无方向性导航台
